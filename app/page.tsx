@@ -7,8 +7,9 @@ import Input from "@/components/atoms/Input";
 import Textarea from "@/components/atoms/Textarea";
 import Select from "@/components/atoms/Select";
 import Checkbox from "@/components/atoms/Checkbox";
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+export default function HomePage() {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [fuel, setFuel] = useState<string | null>(null);
@@ -70,5 +71,5 @@ export default function Home() {
         <Checkbox label="Гибрид" checked={hybrid} onChange={setHybrid} />
       </div>
     </div>
-  );
+  )
 }
