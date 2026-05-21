@@ -82,6 +82,7 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
                 >
                   Log in
                 </Link>
+                
                 <Link
                   href="/login?tab=register"
                   onClick={() => setOpen(false)}
