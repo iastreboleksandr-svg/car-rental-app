@@ -13,7 +13,7 @@ export function Header() {
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white">
+    <header className="sticky top-0 z-50 shadow-sm border-gray-100 bg-white">
       <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         <Link href="/search" className="text-lg font-semibold text-gray-900">
           CarRental
@@ -36,9 +36,11 @@ export function Header() {
             </>
           ) : (
             <>
+            
               <Link href="/login" className="text-sm text-gray-600 hover:text-gray-900">
                 Log in
               </Link>
+
               <Link
                 href="/login?tab=register"
                 className="rounded-md bg-gray-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-gray-700"
