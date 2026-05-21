@@ -3,34 +3,24 @@
 import { Input } from '@/components/atoms/Input';
 import Button from '@/components/atoms/Button';
 import { Camera, Phone } from 'lucide-react';
-import { useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useProfileSetupPage } from '@/hooks/useProfileSetupPage';
 
 export default function ProfileSetupPage() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [avatar, setAvatar] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
-
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => setAvatar(reader.result as string);
-    reader.readAsDataURL(file);
-  };
-
-  const handleContinue = () => {
-    router.push('/profile');
-  };
+  const {
+    firstName, setFirstName,
+    lastName, setLastName,
+    phone, setPhone,
+    avatar,
+    fileInputRef,
+    openFilePicker,
+    handleAvatarChange,
+    handleContinue,
+    handleSkip,
+  } = useProfileSetupPage();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white rounded-2xl shadow-md w-full max-w-md p-6 flex flex-col gap-6">
-        {/* Заголовок */}
         <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">
           Шаг 1 из 1 — Заполни профиль
         </p>
@@ -38,10 +28,11 @@ export default function ProfileSetupPage() {
         {/* Аватар */}
         <div className="flex flex-col items-center gap-3">
           <button
-            onClick={() => fileInputRef.current?.click()}
+            onClick={openFilePicker}
             className="w-24 h-24 rounded-full border-2 border-dashed border-blue-300 bg-blue-50 flex flex-col items-center justify-center text-blue-400 hover:bg-blue-100 transition-colors"
           >
             {avatar ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={avatar} alt="Avatar" className="w-full h-full rounded-full object-cover" />
             ) : (
               <>
@@ -95,25 +86,15 @@ export default function ProfileSetupPage() {
 
         <hr className="border-gray-100" />
 
-        {/* Кнопки */}
         <div className="flex flex-col gap-2">
           <Button className="w-full" onClick={handleContinue}>
             Продолжить
           </Button>
-
-          <button onClick={() => router.push('/profile')}>Пропустить</button>
+          <button onClick={handleSkip} className="text-sm text-gray-400 hover:text-gray-600 text-center">
+            Пропустить
+          </button>
         </div>
       </div>
     </div>
   );
 }
-
-// import { PrivateRoute } from '@/components/layout/PrivateRoute';
-
-// export default function ProfileSetupPage() {
-//   return (
-//     <PrivateRoute>
-//       <div>ProfileSetupPage</div>
-//     </PrivateRoute>
-//   );
-// }

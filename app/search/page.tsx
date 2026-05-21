@@ -1,191 +1,198 @@
 'use client';
 
 import { useState } from 'react';
-import { Car, Calendar, MapPin, Star } from 'lucide-react';
+import { Car, ChevronDown } from 'lucide-react';
+import Spinner from '@/components/atoms/Spinner';
 import Button from '@/components/atoms/Button';
-import { Input } from '@/components/atoms/Input';
+import { Checkbox } from '@/components/atoms/Checkbox';
+import { RadioButton } from '@/components/atoms/RadioButton';
+import Input from '@/components/atoms/Input';
+import StarRating from '@/components/atoms/StarRating';
+import { useSearchPage } from '@/hooks/useSearchPage';
+import { DayPicker } from 'react-day-picker';
+import { ru } from 'react-day-picker/locale';
+import Link from 'next/link';
 
-const mockCars = [
-  { id: 1, price: 50, rating: 4, reviews: 8, status: 'active' },
-  { id: 2, price: 35, rating: 5, reviews: 14, status: 'active' },
-  { id: 3, price: 70, rating: 3, reviews: 3, status: 'active' },
-  { id: 4, price: 45, rating: 0, reviews: 0, status: 'active' },
+const FUEL_OPTIONS = [
+  { value: 'petrol', label: 'Бензин' },
+  { value: 'diesel', label: 'Дизель' },
+  { value: 'electric', label: 'Электро' },
+  { value: 'hybrid', label: 'Гибрид' },
 ];
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          size={12}
-          className={star <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300 fill-gray-300'}
-        />
-      ))}
-    </div>
-  );
+function formatDate(date: Date) {
+  return date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
 export default function SearchPage() {
-  const [startDate, setStartDate] = useState('01.06.2025');
-  const [endDate, setEndDate] = useState('05.06.2025');
-  const [city, setCity] = useState('Киев');
-  const [maxPrice, setMaxPrice] = useState('100');
-  const [fuel, setFuel] = useState<string[]>(['Бензин']);
-  const [transmission, setTransmission] = useState('auto');
+  const {
+    dateRange, setDateRange,
+    fuel, toggleFuel,
+    transmission, setTransmission,
+    maxPrice, setMaxPrice,
+    applyFilters,
+    resetFilters,
+    cars,
+    isLoading,
+    isError,
+  } = useSearchPage();
 
-  const toggleFuel = (type: string) => {
-    setFuel((prev) =>
-      prev.includes(type) ? prev.filter((f) => f !== type) : [...prev, type]
-    );
-  };
+  const [calendarOpen, setCalendarOpen] = useState(false);
+
+  const dateLabel = dateRange?.from
+    ? dateRange.to
+      ? `${formatDate(dateRange.from)} — ${formatDate(dateRange.to)}`
+      : formatDate(dateRange.from)
+    : '';
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-md w-full max-w-2xl p-6 flex flex-col gap-6">
-
-        {/* Filters + Results */}
         <div className="flex gap-6">
 
           {/* Left: Filters */}
-          <div className="flex flex-col gap-4 w-48 flex-shrink-0">
+          <div className="flex flex-col gap-4 w-48 shrink-0">
             <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">Фильтры</p>
 
-            {/* Dates */}
-            <div className="flex flex-col gap-1">
-              <label className="text-xs text-gray-500">Дата начала</label>
-              <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700">
-                <Calendar size={14} className="text-gray-400" />
-                <input
-                  type="text"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="outline-none bg-transparent w-full text-sm"
-                />
-              </div>
+            {/* Date picker */}
+            <div className="flex flex-col gap-1 relative">
+              <label className="text-xs font-medium text-gray-700">Даты аренды</label>
+              <button
+                type="button"
+                onClick={() => setCalendarOpen((v) => !v)}
+                className="flex items-center justify-between w-full h-10 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:border-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-colors"
+              >
+                <span className={dateLabel ? 'text-gray-900' : 'text-gray-400'}>
+                  {dateLabel || 'Выберите даты'}
+                </span>
+                <ChevronDown size={16} className={`text-gray-400 transition-transform ${calendarOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {calendarOpen && (
+                <div className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-2xl shadow-lg p-3">
+                  <DayPicker
+                    mode="range"
+                    selected={dateRange}
+                    onSelect={(range) => {
+                      setDateRange(range);
+                      if (range?.from && range?.to) setCalendarOpen(false);
+                    }}
+                    locale={ru}
+                    disabled={{ before: new Date() }}
+                    classNames={{
+                      today: 'font-semibold text-blue-500',
+                      range_start: '!bg-blue-500 !text-white rounded-l-lg',
+                      range_end: '!bg-blue-500 !text-white rounded-r-lg',
+                      range_middle: '!bg-blue-50 !text-blue-700',
+                      selected: '!bg-blue-500 !text-white',
+                    }}
+                  />
+                  {dateRange?.from && (
+                    <button
+                      onClick={() => { setDateRange(undefined); setCalendarOpen(false); }}
+                      className="w-full text-xs text-gray-400 hover:text-gray-600 mt-1 py-1"
+                    >
+                      Сбросить даты
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
 
-            <div className="flex flex-col gap-1">
-              <label className="text-xs text-gray-500">Дата окончания</label>
-              <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700">
-                <Calendar size={14} className="text-gray-400" />
-                <input
-                  type="text"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="outline-none bg-transparent w-full text-sm"
-                />
-              </div>
-            </div>
-
-            {/* City */}
-            <div className="flex flex-col gap-1">
-              <label className="text-xs text-gray-500">Город</label>
-              <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700">
-                <MapPin size={14} className="text-gray-400" />
-                <input
-                  type="text"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  className="outline-none bg-transparent w-full text-sm"
-                />
-              </div>
-            </div>
-
-            {/* Fuel */}
+            {/* Fuel checkboxes */}
             <div className="flex flex-col gap-2">
               <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">Тип топлива</p>
-              {['Бензин', 'Дизель', 'Электро', 'Гибрид'].map((type) => (
-                <label key={type} className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={fuel.includes(type)}
-                    onChange={() => toggleFuel(type)}
-                    className="w-4 h-4 rounded border-gray-300 accent-blue-500"
-                  />
-                  {type}
-                </label>
+              {FUEL_OPTIONS.map((o) => (
+                <Checkbox
+                  key={o.value}
+                  label={o.label}
+                  checked={fuel.includes(o.value)}
+                  onChange={() => toggleFuel(o.value)}
+                />
               ))}
             </div>
 
-            {/* Transmission */}
+            {/* Transmission radio */}
             <div className="flex flex-col gap-2">
               <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">КПП</p>
-              <div className="flex items-center gap-3">
-                {[{ value: 'auto', label: 'Авто' }, { value: 'manual', label: 'Механ.' }].map((t) => (
-                  <label key={t.value} className="flex items-center gap-1.5 text-sm text-gray-600 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="transmission"
-                      value={t.value}
-                      checked={transmission === t.value}
-                      onChange={() => setTransmission(t.value)}
-                      className="accent-blue-500"
-                    />
-                    {t.label}
-                  </label>
-                ))}
-              </div>
+              <RadioButton
+                label="Авто"
+                value="automatic"
+                name="transmission"
+                checked={transmission === 'automatic'}
+                onChange={setTransmission}
+              />
+              <RadioButton
+                label="Механ."
+                value="manual"
+                name="transmission"
+                checked={transmission === 'manual'}
+                onChange={setTransmission}
+              />
             </div>
 
             {/* Max price */}
-            <div className="flex flex-col gap-1">
-              <label className="text-xs text-gray-500">Макс. цена/день</label>
-              <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700">
-                <span className="text-gray-400">$</span>
-                <input
-                  type="number"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(e.target.value)}
-                  className="outline-none bg-transparent w-full text-sm"
-                />
-              </div>
-            </div>
+            <Input
+              label="Макс. цена/день"
+              type="number"
+              placeholder="любая"
+              value={maxPrice}
+              onChange={setMaxPrice}
+            />
 
-            {/* Buttons */}
-            <Button className="w-full">Найти</Button>
-            <button className="text-sm text-gray-400 hover:text-gray-600 text-center">
+            <Button className="w-full" onClick={applyFilters}>Найти</Button>
+            <button onClick={resetFilters} className="text-sm text-gray-400 hover:text-gray-600 text-center">
               Сбросить фильтры
             </button>
           </div>
 
           {/* Right: Results */}
           <div className="flex flex-col gap-4 flex-1">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-600">Найдено: {mockCars.length} машин</p>
-              <button className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 text-gray-600 hover:bg-gray-50">
-                Сортировка ▾
-              </button>
-            </div>
+            {isLoading && (
+              <div className="flex items-center justify-center gap-2 pt-8 text-sm text-gray-400">
+                <Spinner size="sm" /> Загрузка...
+              </div>
+            )}
 
-            {/* Grid */}
-            <div className="grid grid-cols-2 gap-3">
-              {mockCars.map((car) => (
-                <div
-                  key={car.id}
-                  className="border border-gray-200 rounded-xl p-3 flex flex-col gap-2 cursor-pointer hover:shadow-md transition-shadow"
-                >
-                  <div className="w-full h-24 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-                    <Car size={32} />
-                  </div>
-                  <div className="h-2.5 w-3/4 bg-gray-200 rounded" />
-                  <div className="h-2 w-1/2 bg-gray-100 rounded" />
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold text-blue-500">${car.price}/д</p>
-                  </div>
-                  {car.reviews > 0 && (
-                    <div className="flex items-center gap-1">
-                      <StarRating rating={car.rating} />
-                      <span className="text-xs text-gray-400">({car.reviews})</span>
-                    </div>
-                  )}
+            {isError && (
+              <p className="text-sm text-red-500 text-center pt-8">Не удалось загрузить машины</p>
+            )}
+
+            {!isLoading && !isError && (
+              <>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-gray-600">Найдено: {cars.length} машин</p>
                 </div>
-              ))}
-            </div>
 
-            <button className="w-full border border-gray-200 rounded-lg py-2 text-sm text-gray-600 hover:bg-gray-50 transition-colors">
-              Загрузить ещё
-            </button>
+                {cars.length === 0 && (
+                  <p className="text-sm text-gray-400 text-center pt-8">Ничего не найдено</p>
+                )}
+
+                <div className="grid grid-cols-2 gap-3">
+                  {cars.map((car) => (
+                    <Link
+                      key={car.id}
+                      href={`/cars/${car.id}`}
+                      className="border border-gray-200 rounded-xl p-3 flex flex-col gap-2 hover:shadow-md transition-shadow"
+                    >
+                      <div className="w-full h-24 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
+                        <Car size={32} />
+                      </div>
+                      <p className="text-sm font-medium text-gray-800 truncate">{car.brand} {car.model}</p>
+                      <p className="text-xs text-gray-400 truncate">{car.year} · {car.address}</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-semibold text-blue-500">${car.pricePerDay}/д</p>
+                        {car.averageRating ? (
+                          <StarRating value={car.averageRating} size="sm" />
+                        ) : (
+                          <span className="text-xs text-gray-300">нет отзывов</span>
+                        )}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
         </div>

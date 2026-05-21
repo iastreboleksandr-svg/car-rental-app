@@ -73,25 +73,7 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
                   Log out
                 </button>
               </>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Log in
-                </Link>
-                
-                <Link
-                  href="/login?tab=register"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Sign up
-                </Link>
-              </>
-            )}
+            ) : null}
           </nav>
         </div>
       )}

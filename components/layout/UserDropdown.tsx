@@ -2,12 +2,29 @@
 
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/auth.store';
+import { authService } from '@/services/auth.service';
+
+function initials(user: { firstName: string | null; lastName: string | null; email: string } | null): string {
+  if (!user) return 'U';
+  const first = user.firstName?.[0] ?? user.email[0];
+  const second = user.lastName?.[0] ?? user.email[1];
+  return (first + second).toUpperCase();
+}
 
 export function UserDropdown() {
-  const { user, logout } = useAuthStore();
+  const { user, token, logout } = useAuthStore();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  async function handleLogout() {
+    setOpen(false);
+    if (token) await authService.logout(token).catch(() => {});
+    logout();
+    router.replace('/login');
+  }
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -28,9 +45,9 @@ export function UserDropdown() {
       >
         {user?.avatarUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={user.avatarUrl} alt={user.name} className="h-8 w-8 rounded-full object-cover" />
+          <img src={user.avatarUrl} alt={user.firstName ?? 'User'} className="h-8 w-8 rounded-full object-cover" />
         ) : (
-          <span>{user?.name?.[0]?.toUpperCase() ?? 'U'}</span>
+          <span>{initials(user)}</span>
         )}
       </button>
 
@@ -45,7 +62,7 @@ export function UserDropdown() {
           </Link>
           <button
             type="button"
-            onClick={() => { setOpen(false); logout(); }}
+            onClick={handleLogout}
             className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
           >
             Log out
