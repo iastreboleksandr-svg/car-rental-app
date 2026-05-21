@@ -1,51 +1,16 @@
 "use client";
 
 import { useAuthStore } from "@/lib/store/authStore";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-const profileSchema = z.object({
-  firstName: z.string().min(1, "Введите имя"),
-  lastName: z.string().min(1, "Введите фамилию"),
-  phone: z.string().optional(),
-});
-
-type ProfileFormValues = z.infer<typeof profileSchema>;
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
   const user = useAuthStore((state) => state.user);
-  const [saved, setSaved] = useState(false);
   const [avatar, setAvatar] = useState<string | null>(user?.avatarUrl || null);
-
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileSchema),
-    defaultValues: {
-      firstName: user?.firstName,
-      lastName: user?.lastName,
-      phone: user?.phone,
-    },
-  });
-
-  useEffect(() => {
-    if (user) {
-      reset({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phone: user.phone,
-      });
-      setAvatar(user.avatarUrl || null);
-    }
-  }, [user, reset]);
+  const router = useRouter();
 
   if (!user) {
     return <div>Вы не авторизованы</div>;
-  }
-
-  function onSubmit(data: ProfileFormValues) {
-    // TODO: updateUser в сторе
-    setSaved(true);
   }
 
   function handleAvatar(e: React.ChangeEvent<HTMLInputElement>) {
@@ -57,6 +22,7 @@ export default function ProfilePage() {
   return (
     <div>
       <h1>Мой профиль</h1>
+
       {avatar && <img src={avatar} alt="avatar" width={100} height={100} />}
       <div>
         <label>Аватар</label>
@@ -64,24 +30,13 @@ export default function ProfilePage() {
       </div>
 
       <p>{user.email}</p>
+      <p>{user.firstName}</p>
+      <p>{user.lastName}</p>
+      {user.phone && <p>{user.phone}</p>}
 
-      <div>
-        <label>Имя</label>
-        <input {...register("firstName")} />
-        {errors.firstName && <p style={{ color: "red" }}>{errors.firstName.message}</p>}
-      </div>
-      <div>
-        <label>Фамилия</label>
-        <input {...register("lastName")} />
-        {errors.lastName && <p style={{ color: "red" }}>{errors.lastName.message}</p>}
-      </div>
-      <div>
-        <label>Телефон</label>
-        <input {...register("phone")} />
-      </div>
-
-      <button onClick={handleSubmit(onSubmit)}>Сохранить</button>
-      {saved && <p>Профиль обновлён!</p>}
+      <button onClick={() => router.push("/profile/edit")}>
+        Редактировать
+      </button>
     </div>
   );
 }

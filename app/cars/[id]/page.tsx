@@ -1,19 +1,30 @@
-import BookingForm from "@/components/booking/BookingForm";
+"use client";
+
 import { FUEL_TYPE, TRANSMISSION } from "@/lib/constants/car";
-import mockCars from "@/lib/mocks/cars";
+import { useCarStore } from "@/lib/store/carStore";
+import { useAuthStore } from "@/lib/store/authStore";
+import { useParams, useRouter } from "next/navigation";
 
-type CarDetailsPageProps = {
-  params: Promise<{
-    id: string;
-  }>;
-};
+export default function CarDetailsPage() {
+  const { id } = useParams<{ id: string }>();
+  const router = useRouter();
 
-export default async function CarDetailsPage({ params }: CarDetailsPageProps) {
-  const { id } = await params;
-  const car = mockCars.find((car) => car.id === id);
+  const user = useAuthStore((state) => state.user);
+  const cars = useCarStore((state) => state.cars);
+  const car = cars.find((c) => c.id === id);
 
   if (!car) {
-    return <div>Car not found</div>;
+    return <div>Машина не найдена</div>;
+  }
+
+  const isOwner = user?.id === car.ownerId;
+
+  function handleBooking() {
+    if (!user) {
+      router.push("/auth/login");
+      return;
+    }
+    router.push(`/bookings/new?carId=${car!.id}`);
   }
 
   return (
@@ -35,9 +46,16 @@ export default async function CarDetailsPage({ params }: CarDetailsPageProps) {
       </p>
       <p>{car.address}</p>
       <p>{car.description}</p>
-      <p>{car.pricePerDay} $ / день</p>
-      <p>Депозит: {car.deposit} $</p>
-      <BookingForm carId={car.id} pricePerDay={car.pricePerDay} />
+      <p>{car.pricePerDay} € / день</p>
+      <p>Депозит: {car.deposit} €</p>
+
+      {!isOwner && <button onClick={handleBooking}>Забронировать</button>}
+
+      {isOwner && (
+        <button onClick={() => router.push(`/cars/${car.id}/edit`)}>
+          Редактировать
+        </button>
+      )}
     </div>
   );
 }

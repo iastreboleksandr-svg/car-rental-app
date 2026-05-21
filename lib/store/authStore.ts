@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import User from "@/lib/types/user";
+import { mockUsers } from "@/lib/mocks/users";
 
 type AuthStore = {
   user: User | null;
@@ -15,7 +16,7 @@ export const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       user: null,
-      users: [],
+      users: mockUsers,
       login: (user) => set({ user }),
       logout: () => set({ user: null }),
       register: (user) =>
