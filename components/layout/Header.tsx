@@ -34,21 +34,7 @@ export function Header() {
               <NotificationBadge count={unreadCount} href="/notifications" />
               <UserDropdown />
             </>
-          ) : (
-            <>
-            
-              <Link href="/login" className="text-sm text-gray-600 hover:text-gray-900">
-                Log in
-              </Link>
-
-              <Link
-                href="/login?tab=register"
-                className="rounded-md bg-gray-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-gray-700"
-              >
-                Sign up
-              </Link>
-            </>
-          )}
+          ) : null}
         </nav>
 
         <MobileMenu isAuthenticated={authenticated} unreadCount={unreadCount} />
