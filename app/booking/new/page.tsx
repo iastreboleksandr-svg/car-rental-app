@@ -1,9 +1,11 @@
-import { PrivateRoute } from '@/components/layout/PrivateRoute';
 
-export default function BookingCheckoutPage() {
+import { BookingCheckout } from '@/components/booking/BookingCheckout';
+
+export default function Page() {
   return (
-    <PrivateRoute>
-      <div>BookingCheckoutPage</div>
-    </PrivateRoute>
+    <div className="min-h-screen bg-gray-100">
+      <BookingCheckout />
+    </div>
   );
 }
+
