@@ -11,7 +11,7 @@ const profileSchema = z.object({
   lastName: z.string().min(1, "Введите фамилию"),
   phone: z.string().optional(),
 });
-
+// text
 type ProfileFormValues = z.infer<typeof profileSchema>;
 
 export default function ProfilePage() {
