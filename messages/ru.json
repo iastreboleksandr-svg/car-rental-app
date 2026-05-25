@@ -1,0 +1,152 @@
+{
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Что-то пошло не так",
+    "back": "Назад",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "reset": "Сбросить",
+    "submit": "Отправить",
+    "skip": "Пропустить",
+    "add": "Добавить",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "confirm": "Подтвердить",
+    "notFound": "Не найдено"
+  },
+  "auth": {
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+    "logout": "Выйти",
+    "email": "Email",
+    "password": "Пароль",
+    "confirmPassword": "Подтверждение пароля",
+    "noAccount": "Нет аккаунта?",
+    "hasAccount": "Уже есть аккаунт?",
+    "loginLoading": "Загрузка..."
+  },
+  "dashboard": {
+    "title": "Мои машины",
+    "subtitle": "Дашборд",
+    "addCar": "+ Добавить",
+    "addFirst": "Добавить первую",
+    "noCars": "У вас пока нет машин",
+    "pricePerDay": "${price}/день",
+    "status": {
+      "active": "Активна",
+      "rented": "Арендована",
+      "inactive": "Неактивна"
+    },
+    "actions": {
+      "edit": "Редактировать",
+      "availability": "Доступность"
+    }
+  },
+  "search": {
+    "filters": "Фильтры",
+    "rentalDates": "Даты аренды",
+    "fuelType": "Тип топлива",
+    "transmission": "КПП",
+    "maxPrice": "Макс. цена/день",
+    "find": "Найти",
+    "resetFilters": "Сбросить фильтры",
+    "found": "Найдено: {count} машин",
+    "nothingFound": "Ничего не найдено",
+    "loadError": "Не удалось загрузить машины",
+    "noReviews": "нет отзывов",
+    "fuel": {
+      "petrol": "Бензин",
+      "diesel": "Дизель",
+      "electric": "Электро",
+      "hybrid": "Гибрид"
+    },
+    "gearbox": {
+      "automatic": "Авто",
+      "manual": "Механ."
+    }
+  },
+  "car": {
+    "new": {
+      "title": "Новая машина",
+      "brand": "Марка",
+      "model": "Модель",
+      "year": "Год выпуска",
+      "fuelType": "Тип топлива",
+      "transmission": "Коробка передач",
+      "seats": "Количество мест (1–9)",
+      "pricePerDay": "Цена/день ($)",
+      "deposit": "Депозит ($)",
+      "address": "Адрес",
+      "lat": "Широта (lat)",
+      "lng": "Долгота (lng)",
+      "description": "Описание",
+      "descriptionPlaceholder": "Расскажите о машине...",
+      "submit": "Создать машину",
+      "submitting": "Сохранение...",
+      "gearbox": {
+        "automatic": "Автомат",
+        "manual": "Механика"
+      },
+      "fuel": {
+        "petrol": "Бензин",
+        "diesel": "Дизель",
+        "electric": "Электро",
+        "hybrid": "Гибрид"
+      }
+    },
+    "detail": {
+      "notFound": "Машина не найдена",
+      "description": "Описание",
+      "owner": "Владелец",
+      "features": "Характеристики",
+      "booking": "Бронирование",
+      "showMore": "Показать больше",
+      "showLess": "Скрыть",
+      "writeMessage": "Написать",
+      "bookNow": "Забронировать",
+      "booked": "✓ Забронировано",
+      "processing": "Обработка...",
+      "pricePerDay": "${price} / день",
+      "deposit": "Депозит: ${amount}",
+      "seats": "{count} мест",
+      "fuel": {
+        "petrol": "Бензин",
+        "diesel": "Дизель",
+        "electric": "Электро",
+        "hybrid": "Гибрид"
+      },
+      "transmission": {
+        "automatic": "Автомат",
+        "manual": "Механика"
+      }
+    }
+  },
+  "profile": {
+    "setup": {
+      "title": "Шаг 1 из 1 — Заполни профиль",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "phone": "Телефон (необязательно)",
+      "photo": "Фото",
+      "continue": "Продолжить",
+      "skip": "Пропустить"
+    }
+  },
+  "calendar": {
+    "selectDates": "Выберите даты",
+    "resetDates": "Сбросить даты"
+  },
+  "bookings": {
+    "title": "Бронирование",
+    "rentalDates": "Даты аренды",
+    "startDate": "Начало",
+    "endDate": "Конец",
+    "payment": "Способ оплаты",
+    "cashPayment": "Наличными при получении",
+    "cashDescription": "Оплата напрямую владельцу",
+    "confirm": "Подтвердить бронирование",
+    "confirmed": "✓ Бронирование подтверждено",
+    "processing": "Обработка...",
+    "backToSearch": "Назад к поиску"
+  }
+}
