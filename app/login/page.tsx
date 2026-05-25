@@ -4,8 +4,10 @@ import { Input } from '@/components/atoms/Input';
 import Button from '@/components/atoms/Button';
 import { Mail, Lock, Eye } from 'lucide-react';
 import { useLoginPage } from '@/hooks/useLoginPage';
+import { useTranslations } from 'next-intl';
 
 export default function LoginPage() {
+  const t = useTranslations('auth');
   const {
     tab, switchTab,
     email, setEmail,
@@ -19,12 +21,11 @@ export default function LoginPage() {
   } = useLoginPage();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="flex items-center justify-center p-4 py-12">
       <form
         onSubmit={handleSubmit}
         className="bg-white rounded-2xl shadow-md w-full max-w-md p-6 flex flex-col gap-6"
       >
-        {/* Tabs */}
         <div className="flex border-b border-gray-200">
           <button
             type="button"
@@ -35,7 +36,7 @@ export default function LoginPage() {
                 : 'text-gray-400 hover:text-gray-600'
             }`}
           >
-            Войти
+            {t('login')}
           </button>
           <button
             type="button"
@@ -46,14 +47,13 @@ export default function LoginPage() {
                 : 'text-gray-400 hover:text-gray-600'
             }`}
           >
-            Зарегистрироваться
+            {t('register')}
           </button>
         </div>
 
-        {/* Fields */}
         <div className="flex flex-col gap-4">
           <Input
-            label="Email"
+            label={t('email')}
             type="email"
             leadingIcon={<Mail size={16} />}
             placeholder="user@example.com"
@@ -61,9 +61,8 @@ export default function LoginPage() {
             onChange={setEmail}
             required
           />
-
           <Input
-            label="Пароль"
+            label={t('password')}
             type={showPassword ? 'text' : 'password'}
             leadingIcon={<Lock size={16} />}
             trailingIcon={
@@ -75,10 +74,9 @@ export default function LoginPage() {
             onChange={setPassword}
             required
           />
-
           {tab === 'register' && (
             <Input
-              label="Подтверждение пароля"
+              label={t('confirmPassword')}
               type={showConfirmPassword ? 'text' : 'password'}
               leadingIcon={<Lock size={16} />}
               trailingIcon={
@@ -96,22 +94,22 @@ export default function LoginPage() {
         {error && <p className="text-sm text-red-500 -mt-2">{error}</p>}
 
         <Button type="submit" className="w-full" disabled={loading}>
-          {loading ? 'Загрузка...' : tab === 'login' ? 'Войти' : 'Зарегистрироваться'}
+          {loading ? t('loginLoading') : tab === 'login' ? t('login') : t('register')}
         </Button>
 
         <p className="text-center text-sm text-gray-500">
           {tab === 'login' ? (
             <>
-              Нет аккаунта?{' '}
+              {t('noAccount')}{' '}
               <button type="button" onClick={() => switchTab('register')} className="text-blue-500 hover:underline">
-                Зарегистрируйтесь
+                {t('register')}
               </button>
             </>
           ) : (
             <>
-              Уже есть аккаунт?{' '}
+              {t('hasAccount')}{' '}
               <button type="button" onClick={() => switchTab('login')} className="text-blue-500 hover:underline">
-                Войти
+                {t('login')}
               </button>
             </>
           )}
