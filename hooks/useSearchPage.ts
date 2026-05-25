@@ -27,7 +27,7 @@ export function useSearchPage() {
     const filters: CarFilters = {};
     if (dateRange?.from) filters.date_from = dateRange.from.toISOString().split('T')[0];
     if (dateRange?.to) filters.date_to = dateRange.to.toISOString().split('T')[0];
-    if (fuel.length === 1) filters.fuel_type = fuel[0];
+    if (fuel.length > 0) filters.fuel_type = fuel;
     if (transmission) filters.transmission = transmission;
     if (maxPrice) filters.price_max = Number(maxPrice);
     setAppliedFilters(filters);

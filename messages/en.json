@@ -1,0 +1,152 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "submit": "Submit",
+    "skip": "Skip",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "notFound": "Not found"
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Sign up",
+    "logout": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginLoading": "Loading..."
+  },
+  "dashboard": {
+    "title": "My cars",
+    "subtitle": "Dashboard",
+    "addCar": "+ Add",
+    "addFirst": "Add first car",
+    "noCars": "You have no cars yet",
+    "pricePerDay": "${price}/day",
+    "status": {
+      "active": "Active",
+      "rented": "Rented",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "edit": "Edit",
+      "availability": "Availability"
+    }
+  },
+  "search": {
+    "filters": "Filters",
+    "rentalDates": "Rental dates",
+    "fuelType": "Fuel type",
+    "transmission": "Gearbox",
+    "maxPrice": "Max price/day",
+    "find": "Search",
+    "resetFilters": "Reset filters",
+    "found": "Found: {count} cars",
+    "nothingFound": "Nothing found",
+    "loadError": "Failed to load cars",
+    "noReviews": "no reviews",
+    "fuel": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "electric": "Electric",
+      "hybrid": "Hybrid"
+    },
+    "gearbox": {
+      "automatic": "Auto",
+      "manual": "Manual"
+    }
+  },
+  "car": {
+    "new": {
+      "title": "New car",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "fuelType": "Fuel type",
+      "transmission": "Transmission",
+      "seats": "Seats (1–9)",
+      "pricePerDay": "Price/day ($)",
+      "deposit": "Deposit ($)",
+      "address": "Address",
+      "lat": "Latitude",
+      "lng": "Longitude",
+      "description": "Description",
+      "descriptionPlaceholder": "Tell about the car...",
+      "submit": "Create car",
+      "submitting": "Saving...",
+      "gearbox": {
+        "automatic": "Automatic",
+        "manual": "Manual"
+      },
+      "fuel": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "electric": "Electric",
+        "hybrid": "Hybrid"
+      }
+    },
+    "detail": {
+      "notFound": "Car not found",
+      "description": "Description",
+      "owner": "Owner",
+      "features": "Features",
+      "booking": "Booking",
+      "showMore": "Show more",
+      "showLess": "Hide",
+      "writeMessage": "Message",
+      "bookNow": "Book now",
+      "booked": "✓ Booked",
+      "processing": "Processing...",
+      "pricePerDay": "${price} / day",
+      "deposit": "Deposit: ${amount}",
+      "seats": "{count} seats",
+      "fuel": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "electric": "Electric",
+        "hybrid": "Hybrid"
+      },
+      "transmission": {
+        "automatic": "Automatic",
+        "manual": "Manual"
+      }
+    }
+  },
+  "profile": {
+    "setup": {
+      "title": "Step 1 of 1 — Fill in your profile",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phone": "Phone (optional)",
+      "photo": "Photo",
+      "continue": "Continue",
+      "skip": "Skip"
+    }
+  },
+  "calendar": {
+    "selectDates": "Select dates",
+    "resetDates": "Reset dates"
+  },
+  "bookings": {
+    "title": "Booking",
+    "rentalDates": "Rental dates",
+    "startDate": "Start",
+    "endDate": "End",
+    "payment": "Payment method",
+    "cashPayment": "Cash on delivery",
+    "cashDescription": "Pay directly to the owner",
+    "confirm": "Confirm booking",
+    "confirmed": "✓ Booking confirmed",
+    "processing": "Processing...",
+    "backToSearch": "Back to search"
+  }
+}

@@ -6,6 +6,7 @@ interface AuthState {
   user: UserResponse | null;
   token: string | null;
   isAuthenticated: boolean;
+  _hydrated: boolean;
   setAuth: (user: UserResponse, token: string) => void;
   logout: () => void;
 }
@@ -30,12 +31,16 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthenticated: false,
+      _hydrated: false,
       setAuth: (user, token) => set({ user, token, isAuthenticated: true }),
       logout: () => set({ user: null, token: null, isAuthenticated: false }),
     }),
     {
       name: 'auth',
       storage: createJSONStorage(() => cookieStorage),
+      onRehydrateStorage: () => (state) => {
+        if (state) state._hydrated = true;
+      },
     },
   ),
 );
