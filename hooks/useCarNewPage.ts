@@ -13,6 +13,7 @@ const INITIAL_FORM: CreateCarDto = {
   year: new Date().getFullYear(),
   fuelType: 'petrol',
   transmission: 'automatic',
+  seats: 5,
   description: '',
   pricePerDay: 0,
   deposit: 0,

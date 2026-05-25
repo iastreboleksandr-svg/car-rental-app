@@ -10,13 +10,7 @@ import {
   ArrowLeft, ShieldCheck, MessageCircle,
 } from 'lucide-react';
 import { useCarDetailPage } from '@/hooks/useCarDetailPage';
-
-const fuelLabel: Record<string, string> = {
-  petrol: 'Бензин', diesel: 'Дизель', electric: 'Электро', hybrid: 'Гибрид',
-};
-const transmissionLabel: Record<string, string> = {
-  automatic: 'Автомат', manual: 'Механика',
-};
+import { useTranslations } from 'next-intl';
 
 function Tag({ label }: { label: string }) {
   return (
@@ -50,6 +44,8 @@ function CarImagePlaceholder() {
 
 export default function CarDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const t = useTranslations('car.detail');
+  const tCommon = useTranslations('common');
   const {
     car, isLoading, isError,
     activeImg, setActiveImg,
@@ -59,169 +55,153 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center gap-2 text-gray-400">
-        <Spinner size="sm" /> Загрузка...
+      <div className="flex items-center justify-center gap-2 py-20 text-gray-400">
+        <Spinner size="sm" /> {tCommon('loading')}
       </div>
     );
   }
 
   if (isError || !car) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-red-500 text-sm">
-        Машина не найдена
+      <div className="flex items-center justify-center py-20 text-red-500 text-sm">
+        {t('notFound')}
       </div>
     );
   }
 
-  const fuel = fuelLabel[car.fuelType] ?? car.fuelType;
-  const transmission = transmissionLabel[car.transmission] ?? car.transmission;
+  const fuel = t(`fuel.${car.fuelType}`);
+  const transmission = t(`transmission.${car.transmission}`);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <main className="max-w-5xl mx-auto px-4 py-6">
+      <Button variant="secondary" size="sm" className="mb-4 w-8 h-8 p-0" onClick={() => window.history.back()}>
+        <ArrowLeft size={16} />
+      </Button>
 
-      {/* ── Body ── */}
-      <main className="max-w-5xl mx-auto px-4 py-6">
-        {/* Back */}
-        <button
-          onClick={() => window.history.back()}
-          className="flex items-center justify-center mb-4 w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors"
-        >
-          <ArrowLeft size={16} />
-        </button>
+      <div className="flex flex-col lg:flex-row gap-6 items-start">
 
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        {/* ─── Left Column ─── */}
+        <div className="flex-1 flex flex-col gap-5">
 
-          {/* ─── Left Column ─── */}
-          <div className="flex-1 flex flex-col gap-5">
-
-            {/* Gallery Card */}
-            <div className="bg-white rounded-2xl shadow-sm p-4 flex flex-col gap-3">
-              <CarImagePlaceholder />
-              <div className="flex gap-2">
-                {[0, 1, 2].map((i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImg(i)}
-                    className={`w-16 h-12 rounded-lg border-2 transition-colors flex items-center justify-center bg-gray-50 ${
-                      activeImg === i ? 'border-blue-500' : 'border-transparent hover:border-gray-200'
-                    }`}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-gray-300">
-                      <path d="M5 11l1.5-4.5h11L19 11M3 11h18v7H3v-7zm2 7v2h2v-2H5zm12 0v2h2v-2h-2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Info Card */}
-            <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-5">
-
-              {/* Name & Rating */}
-              <div>
-                <p className="text-xs text-gray-400 mb-1">{car.year}</p>
-                <h1 className="text-xl font-semibold text-gray-800 mb-2">{car.brand} {car.model}</h1>
-                <div className="flex items-center gap-2">
-                  <StarRating value={car.averageRating ?? 0} size="sm" readonly />
-                  {car.averageRating
-                    ? <span className="text-sm text-gray-400">{car.averageRating.toFixed(1)}</span>
-                    : <span className="text-sm text-gray-400">нет отзывов</span>
-                  }
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="flex gap-2 flex-wrap">
-                <Tag label={fuel} />
-                <Tag label={transmission} />
-                {car.seats && <Tag label={`${car.seats} мест`} />}
-              </div>
-
-              {/* Description */}
-              {car.description && (
-                <Section title="Описание">
-                  <p className={`text-sm text-gray-500 leading-relaxed ${!expanded ? 'line-clamp-3' : ''}`}>
-                    {car.description}
-                  </p>
-                  <button
-                    onClick={toggleExpanded}
-                    className="flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 mt-2 transition-colors"
-                  >
-                    {expanded ? 'Скрыть' : 'Показать больше'}
-                    {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                  </button>
-                </Section>
-              )}
-
-              {/* Owner — заглушка пока нет API */}
-              <Section title="Владелец">
-                <div className="flex items-center gap-3">
-                  <Avatar firstName="?" lastName="" size="md" />
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-700">Владелец</p>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <StarRating value={0} size="sm" readonly />
-                    </div>
-                  </div>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-lg text-xs text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors">
-                    <MessageCircle size={13} />
-                    Написать
-                  </button>
-                </div>
-              </Section>
-
+          <div className="bg-white rounded-2xl shadow-sm p-4 flex flex-col gap-3">
+            <CarImagePlaceholder />
+            <div className="flex gap-2">
+              {[0, 1, 2].map((i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImg(i)}
+                  className={`w-16 h-12 rounded-lg border-2 transition-colors flex items-center justify-center bg-gray-50 ${
+                    activeImg === i ? 'border-blue-500' : 'border-transparent hover:border-gray-200'
+                  }`}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-gray-300">
+                    <path d="M5 11l1.5-4.5h11L19 11M3 11h18v7H3v-7zm2 7v2h2v-2H5zm12 0v2h2v-2h-2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* ─── Sidebar ─── */}
-          <div className="w-full lg:w-72 lg:sticky lg:top-20 flex flex-col gap-3">
+          <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-5">
 
-            {/* Booking Card */}
-            <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-4">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Бронирование</p>
-
-              <div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold text-gray-800">${car.pricePerDay}</span>
-                  <span className="text-sm text-gray-400">/ день</span>
-                </div>
-                <p className="text-sm text-gray-400 mt-0.5">Депозит: ${car.deposit}</p>
+            <div>
+              <p className="text-xs text-gray-400 mb-1">{car.year}</p>
+              <h1 className="text-xl font-semibold text-gray-800 mb-2">{car.brand} {car.model}</h1>
+              <div className="flex items-center gap-2">
+                <StarRating value={car.averageRating ?? 0} size="sm" readonly />
+                {car.averageRating
+                  ? <span className="text-sm text-gray-400">{car.averageRating.toFixed(1)}</span>
+                  : <span className="text-sm text-gray-400">{t('noReviews' as any)}</span>
+                }
               </div>
+            </div>
 
-              {/* Feature chips */}
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { icon: <Fuel size={14} />, label: 'Топливо', value: fuel },
-                  { icon: <Settings2 size={14} />, label: 'КПП', value: transmission },
-                  { icon: <Users size={14} />, label: 'Мест', value: car.seats ?? '—' },
-                  { icon: <StarRating value={0} size="sm" readonly />, label: 'Рейтинг', value: car.averageRating?.toFixed(1) ?? '—' },
-                ].map(({ icon, label, value }) => (
-                  <div key={label} className="bg-gray-50 rounded-xl p-3 flex items-center gap-2">
-                    <span className="text-gray-400">{icon}</span>
-                    <div>
-                      <p className="text-xs text-gray-400">{label}</p>
-                      <p className="text-sm font-medium text-gray-700">{value}</p>
-                    </div>
+            <div className="flex gap-2 flex-wrap">
+              <Tag label={fuel} />
+              <Tag label={transmission} />
+              {car.seats && <Tag label={`${car.seats} мест`} />}
+            </div>
+
+            {car.description && (
+              <Section title={t('description')}>
+                <p className={`text-sm text-gray-500 leading-relaxed ${!expanded ? 'line-clamp-3' : ''}`}>
+                  {car.description}
+                </p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="mt-2 text-blue-500 hover:text-blue-600 px-0"
+                  rightIcon={expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                  onClick={toggleExpanded}
+                >
+                  {expanded ? t('showLess') : t('showMore')}
+                </Button>
+              </Section>
+            )}
+
+            <Section title={t('owner')}>
+              <div className="flex items-center gap-3">
+                <Avatar firstName="?" lastName="" size="md" />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-gray-700">{t('owner')}</p>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <StarRating value={0} size="sm" readonly />
                   </div>
-                ))}
+                </div>
+                <Button variant="secondary" size="sm" leftIcon={<MessageCircle size={13} />}>
+                  {t('writeMessage')}
+                </Button>
               </div>
-
-              <Button className="w-full" onClick={handleBook} disabled={loading || booked}>
-                {booked ? '✓ Забронировано' : loading ? 'Обработка...' : 'Забронировать'}
-              </Button>
-            </div>
-
-            {/* Safety note */}
-            <div className="bg-white rounded-2xl shadow-sm p-4 flex gap-3 items-start">
-              <ShieldCheck size={16} className="text-blue-500 mt-0.5 shrink-0" />
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Ваш платёж защищён. Средства поступают владельцу только после начала аренды.
-              </p>
-            </div>
+            </Section>
 
           </div>
         </div>
-      </main>
-    </div>
+
+        {/* ─── Sidebar ─── */}
+        <div className="w-full lg:w-72 lg:sticky lg:top-20 flex flex-col gap-3">
+
+          <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-4">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">{t('booking')}</p>
+
+            <div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-3xl font-bold text-gray-800">${car.pricePerDay}</span>
+                <span className="text-sm text-gray-400">/ день</span>
+              </div>
+              <p className="text-sm text-gray-400 mt-0.5">{t('deposit', { amount: car.deposit })}</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { icon: <Fuel size={14} />, label: t('features' as any), value: fuel },
+                { icon: <Settings2 size={14} />, label: 'КПП', value: transmission },
+                { icon: <Users size={14} />, label: 'Мест', value: car.seats ?? '—' },
+                { icon: <StarRating value={0} size="sm" readonly />, label: 'Рейтинг', value: car.averageRating?.toFixed(1) ?? '—' },
+              ].map(({ icon, label, value }) => (
+                <div key={label} className="bg-gray-50 rounded-xl p-3 flex items-center gap-2">
+                  <span className="text-gray-400">{icon}</span>
+                  <div>
+                    <p className="text-xs text-gray-400">{label}</p>
+                    <p className="text-sm font-medium text-gray-700">{value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <Button className="w-full" onClick={handleBook} disabled={loading || booked}>
+              {booked ? t('booked') : loading ? t('processing') : t('bookNow')}
+            </Button>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm p-4 flex gap-3 items-start">
+            <ShieldCheck size={16} className="text-blue-500 mt-0.5 shrink-0" />
+            <p className="text-xs text-gray-400 leading-relaxed">
+              Ваш платёж защищён. Средства поступают владельцу только после начала аренды.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </main>
   );
 }

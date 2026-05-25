@@ -7,6 +7,7 @@ import { useAuthStore } from '@/store/auth.store';
 
 export function useCarDetailPage(id: string) {
   const token = useAuthStore((s) => s.token);
+  const hydrated = useAuthStore((s) => s._hydrated);
   const [activeImg, setActiveImg] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [booked, setBooked] = useState(false);
@@ -15,7 +16,7 @@ export function useCarDetailPage(id: string) {
   const { data: car, isLoading, isError } = useQuery({
     queryKey: ['car', id],
     queryFn: () => carService.getById(id, token!),
-    enabled: !!id && !!token,
+    enabled: !!id && hydrated && !!token,
   });
 
   function handleBook() {
@@ -32,7 +33,7 @@ export function useCarDetailPage(id: string) {
 
   return {
     car,
-    isLoading,
+    isLoading: !hydrated || isLoading,
     isError,
     activeImg, setActiveImg,
     expanded, toggleExpanded,
