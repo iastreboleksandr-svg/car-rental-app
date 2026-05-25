@@ -1,4 +1,4 @@
-// components/Spinner.tsx
+// Spinner
 import React from "react";
 
 type SpinnerSize = "sm" | "md" | "lg";
@@ -17,9 +17,10 @@ const sizeMap: Record<SpinnerSize, number> = {
 
 const colorMap: Record<SpinnerColor, string> = {
   inherit: "currentColor",
-  primary: "#6366f1",
+  primary: "#48C964",
   white: "#ffffff",
 };
+
 
 export default function Spinner({
   size = "md",

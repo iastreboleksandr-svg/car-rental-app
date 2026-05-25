@@ -34,8 +34,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     disabled
       ? "border-gray-200 bg-gray-100 cursor-not-allowed"
       : checked || indeterminate
-      ? "border-blue-600 bg-blue-600 cursor-pointer"
-      : "border-gray-300 bg-white cursor-pointer hover:border-blue-400",
+      // ? "border-blue-600 bg-blue-600 cursor-pointer"
+      // : "border-gray-300 bg-white cursor-pointer hover:border-blue-400",
+      ? "border-[#48C964] bg-[#48C964] cursor-pointer"
+      : "border-gray-300 bg-white cursor-pointer hover:border-[#48C964]",
+      
   ].join(" ");
 
   return (

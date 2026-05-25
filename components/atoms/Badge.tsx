@@ -19,13 +19,17 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  pending: 'bg-yellow-100 text-yellow-700 border border-yellow-200',
-  confirmed: 'bg-green-100 text-green-700 border border-green-200',
-  active: 'bg-blue-100 text-blue-700 border border-blue-200',
+  // pending: 'bg-yellow-100 text-yellow-700 border border-yellow-200',
+  pending: 'bg-blue-100 text-blue-700 border border-blue-200',
+  // confirmed: 'bg-green-100 text-green-700 border border-green-200',
+  confirmed: "bg-[#f0fdf3] text-[#32a84d] border border-[#d4f5dc]",
+  // active: 'bg-blue-100 text-blue-700 border border-blue-200',
+  active: "bg-[#f0fdf3] text-[#32a84d] border border-[#d4f5dc]",
   completed: 'bg-purple-100 text-purple-700 border border-purple-200',
   cancelled: 'bg-gray-100 text-gray-500 border border-gray-400',
   inactive: 'bg-gray-50 text-gray-500 border border-gray-400',
-  rented: 'bg-blue-100 text-blue-700 border border-blue-200',
+  // rented: 'bg-blue-100 text-blue-700 border border-blue-200',
+  rented: "bg-[#f0fdf3] text-[#32a84d] border border-[#d4f5dc]"
 };
 
 const defaultLabels: Record<BadgeVariant, string> = {

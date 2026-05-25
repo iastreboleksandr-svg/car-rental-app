@@ -53,10 +53,12 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
             ? "border-gray-200 bg-gray-100"
             : checked
             ? "border-blue-600 bg-white"
-            : "border-gray-300 bg-white hover:border-blue-400",
+            // : "border-gray-300 bg-white hover:border-blue-400",
+            : "border-gray-300 bg-white hover:border-[#48C964]"
         ].join(" ")}
       >
         {/* Внутренняя точка */}
+        {/* <span className="w-2 h-2 rounded-full bg-[#48C964]" /> */}
         {checked && (
           <span
             className={[

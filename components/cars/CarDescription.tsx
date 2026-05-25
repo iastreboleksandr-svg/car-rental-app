@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { Section } from '@/components/atoms/Section';
+import { Section } from '@/components/common/Section';
 
 interface CarDescriptionProps {
   description: string;

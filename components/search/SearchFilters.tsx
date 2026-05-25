@@ -21,19 +21,40 @@ interface SearchFiltersProps {
 }
 
 export function SearchFilters({
-  startDate, endDate, city, maxPrice, fuel, transmission,
-  onStartDateChange, onEndDateChange, onCityChange, onMaxPriceChange,
-  onFuelToggle, onTransmissionChange, onSearch, onReset,
+  startDate,
+  endDate,
+  city,
+  maxPrice,
+  fuel,
+  transmission,
+  onStartDateChange,
+  onEndDateChange,
+  onCityChange,
+  onMaxPriceChange,
+  onFuelToggle,
+  onTransmissionChange,
+  onSearch,
+  onReset,
 }: SearchFiltersProps) {
   return (
     <div className="flex flex-col gap-4 w-48 flex-shrink-0">
-      <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">Фильтры</p>
+      <p
+        className="text-xs font-bold text-[#32a84d] tracking-widest uppercase 
+      bg-[#f0fdf3] border border-[#d4f5dc] self-start px-3 py-1 rounded-full"
+      >
+        Фильтры
+      </p>
 
       <div className="flex flex-col gap-1">
         <label className="text-xs text-gray-500">Дата начала</label>
         <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2">
           <Calendar size={14} className="text-gray-400" />
-          <input type="text" value={startDate} onChange={(e) => onStartDateChange(e.target.value)} className="outline-none bg-transparent w-full text-sm" />
+          <input
+            type="text"
+            value={startDate}
+            onChange={(e) => onStartDateChange(e.target.value)}
+            className="outline-none bg-transparent w-full text-sm"
+          />
         </div>
       </div>
 
@@ -41,7 +62,12 @@ export function SearchFilters({
         <label className="text-xs text-gray-500">Дата окончания</label>
         <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2">
           <Calendar size={14} className="text-gray-400" />
-          <input type="text" value={endDate} onChange={(e) => onEndDateChange(e.target.value)} className="outline-none bg-transparent w-full text-sm" />
+          <input
+            type="text"
+            value={endDate}
+            onChange={(e) => onEndDateChange(e.target.value)}
+            className="outline-none bg-transparent w-full text-sm"
+          />
         </div>
       </div>
 
@@ -49,15 +75,28 @@ export function SearchFilters({
         <label className="text-xs text-gray-500">Город</label>
         <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2">
           <MapPin size={14} className="text-gray-400" />
-          <input type="text" value={city} onChange={(e) => onCityChange(e.target.value)} className="outline-none bg-transparent w-full text-sm" />
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => onCityChange(e.target.value)}
+            className="outline-none bg-transparent w-full text-sm"
+          />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
         <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">Тип топлива</p>
         {['Бензин', 'Дизель', 'Электро', 'Гибрид'].map((type) => (
-          <label key={type} className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
-            <input type="checkbox" checked={fuel.includes(type)} onChange={() => onFuelToggle(type)} className="w-4 h-4 rounded border-gray-300 accent-blue-500" />
+          <label
+            key={type}
+            className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"
+          >
+            <input
+              type="checkbox"
+              checked={fuel.includes(type)}
+              onChange={() => onFuelToggle(type)}
+              className="w-4 h-4 rounded border-gray-300 accent-[#48C964]"
+            />
             {type}
           </label>
         ))}
@@ -66,9 +105,22 @@ export function SearchFilters({
       <div className="flex flex-col gap-2">
         <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">КПП</p>
         <div className="flex items-center gap-3">
-          {[{ value: 'auto', label: 'Авто' }, { value: 'manual', label: 'Механ.' }].map((t) => (
-            <label key={t.value} className="flex items-center gap-1.5 text-sm text-gray-600 cursor-pointer">
-              <input type="radio" name="transmission" value={t.value} checked={transmission === t.value} onChange={() => onTransmissionChange(t.value)} className="accent-blue-500" />
+          {[
+            { value: 'auto', label: 'Авто' },
+            { value: 'manual', label: 'Механ.' },
+          ].map((t) => (
+            <label
+              key={t.value}
+              className="flex items-center gap-1.5 text-sm text-gray-600 cursor-pointer"
+            >
+              <input
+                type="radio"
+                name="transmission"
+                value={t.value}
+                checked={transmission === t.value}
+                onChange={() => onTransmissionChange(t.value)}
+                className="accent-[#48C964]"
+              />
               {t.label}
             </label>
           ))}
@@ -79,12 +131,21 @@ export function SearchFilters({
         <label className="text-xs text-gray-500">Макс. цена/день</label>
         <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-2">
           <span className="text-gray-400">$</span>
-          <input type="number" value={maxPrice} onChange={(e) => onMaxPriceChange(e.target.value)} className="outline-none bg-transparent w-full text-sm" />
+          <input
+            type="number"
+            value={maxPrice}
+            onChange={(e) => onMaxPriceChange(e.target.value)}
+            className="outline-none bg-transparent w-full text-sm"
+          />
         </div>
       </div>
 
-      <Button className="w-full" onClick={onSearch}>Найти</Button>
-      <button onClick={onReset} className="text-sm text-gray-400 hover:text-gray-600 text-center">Сбросить фильтры</button>
+      <Button variant="green" className="w-full" onClick={onSearch}>
+        Найти
+      </Button>
+      <button onClick={onReset} className="text-sm text-gray-400 hover:text-gray-600 text-center">
+        Сбросить фильтры
+      </button>
     </div>
   );
 }

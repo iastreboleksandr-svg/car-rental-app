@@ -144,7 +144,7 @@ export const Select: React.FC<SelectProps> = ({
                   ].join(" ")}
                 >
                   {option.label}
-                  {isSelected && <Check size={14} className="text-blue-600" />}
+                  {isSelected && <Check size={14} className="text-[#48C964]" />}
                 </div>
               );
             })

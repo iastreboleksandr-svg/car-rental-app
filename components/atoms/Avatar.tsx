@@ -64,7 +64,8 @@ export const Avatar: React.FC<AvatarProps> = ({
   const baseStyles = [
     "relative rounded-full overflow-hidden flex items-center justify-center flex-shrink-0 select-none",
     container,
-    onClick ? "cursor-pointer ring-2 ring-transparent hover:ring-blue-400 transition-all duration-150" : "",
+    // onClick ? "cursor-pointer ring-2 ring-transparent hover:ring-blue-400 transition-all duration-150" : "",
+    onClick ? "cursor-pointer ring-2 ring-transparent hover:ring-[#48C964] transition-all duration-150" : "",
     className,
   ].join(" ");
 

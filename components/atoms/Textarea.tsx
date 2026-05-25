@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useId } from 'react';
 
 interface TextareaProps {
   label?: string;
@@ -16,7 +16,7 @@ interface TextareaProps {
 
 export const Textarea: React.FC<TextareaProps> = ({
   label,
-  value = "",
+  value = '',
   onChange,
   placeholder,
   error,
@@ -25,7 +25,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   rows = 4,
   disabled = false,
   required = false,
-  className = "",
+  className = '',
 }) => {
   const id = useId();
   const errorId = `${id}-error`;
@@ -33,16 +33,16 @@ export const Textarea: React.FC<TextareaProps> = ({
   const hasError = Boolean(error);
   const isMaxReached = maxLength !== undefined && value.length >= maxLength;
 
-  const wrapperBase =
-    "w-full rounded-lg border px-3 py-2.5 transition-colors duration-150";
+  const wrapperBase = 'w-full rounded-lg border px-3 py-2.5 transition-colors duration-150';
 
   const wrapperState = disabled
-    ? "border-gray-200 bg-gray-50 cursor-not-allowed"
+    ? 'border-gray-200 bg-gray-50 cursor-not-allowed'
     : isMaxReached
-    ? "border-orange-400 bg-white focus-within:ring-2 focus-within:ring-orange-300"
-    : hasError
-    ? "border-red-400 bg-white focus-within:ring-2 focus-within:ring-red-300"
-    : "border-gray-300 bg-white focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100";
+      ? 'border-orange-400 bg-white focus-within:ring-2 focus-within:ring-orange-300'
+      : hasError
+        ? 'border-red-400 bg-white focus-within:ring-2 focus-within:ring-red-300'
+         // : "border-gray-300 bg-white focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100";
+        : 'border-gray-300 bg-white focus-within:border-[#48C964] focus-within:ring-2 focus-within:ring-[#48C964]/20';
 
   return (
     <div className={`flex flex-col gap-1 w-full ${className}`}>
@@ -50,9 +50,7 @@ export const Textarea: React.FC<TextareaProps> = ({
       {label && (
         <label
           htmlFor={id}
-          className={`text-sm font-medium ${
-            disabled ? "text-gray-400" : "text-gray-700"
-          }`}
+          className={`text-sm font-medium ${disabled ? 'text-gray-400' : 'text-gray-700'}`}
         >
           {label}
           {required && (
@@ -78,11 +76,11 @@ export const Textarea: React.FC<TextareaProps> = ({
         className={[
           wrapperBase,
           wrapperState,
-          "text-sm resize-none outline-none",
+          'text-sm resize-none outline-none',
           disabled
-            ? "text-gray-400 cursor-not-allowed placeholder:text-gray-300"
-            : "text-gray-900 placeholder:text-gray-400",
-        ].join(" ")}
+            ? 'text-gray-400 cursor-not-allowed placeholder:text-gray-300'
+            : 'text-gray-900 placeholder:text-gray-400',
+        ].join(' ')}
       />
 
       {/* Footer: error + counter */}
@@ -108,7 +106,7 @@ export const Textarea: React.FC<TextareaProps> = ({
         {showCount && maxLength !== undefined && (
           <p
             className={`text-xs flex-shrink-0 ${
-              isMaxReached ? "text-orange-500 font-medium" : "text-gray-400"
+              isMaxReached ? 'text-orange-500 font-medium' : 'text-gray-400'
             }`}
           >
             {value.length} / {maxLength}

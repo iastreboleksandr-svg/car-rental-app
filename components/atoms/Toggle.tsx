@@ -32,8 +32,10 @@ export const Toggle: React.FC<ToggleProps> = ({
     disabled
       ? 'cursor-not-allowed bg-gray-200'
       : checked
-        ? 'bg-blue-600 cursor-pointer'
+        // ? 'bg-blue-600 cursor-pointer'
+        ? 'bg-[#48C964] cursor-pointer'
         : 'bg-gray-300 cursor-pointer hover:bg-gray-400',
+        
   ].join(' ');
 
   const thumb = [

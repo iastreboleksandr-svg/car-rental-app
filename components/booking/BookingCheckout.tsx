@@ -7,7 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 import { DateInput } from './DateInput';
 import { CostSummary } from './CostSummary';
 import { PaymentMethod } from './PaymentMethod';
-import { Section } from '@/components/atoms/Section';
+import { Section } from '@/components/common/Section';
 
 const CAR = {
   id: '1',
@@ -45,7 +45,13 @@ export function BookingCheckout() {
           <div className="flex items-center gap-4">
             <div className="w-16 h-14 rounded-xl border border-gray-200 bg-gray-50 flex items-center justify-center shrink-0">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-gray-400">
-                <path d="M5 11l1.5-4.5h11L19 11M3 11h18v7H3v-7zm2 7v2h2v-2H5zm12 0v2h2v-2h-2zM5.5 15a1 1 0 100-2 1 1 0 000 2zm13 0a1 1 0 100-2 1 1 0 000 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d="M5 11l1.5-4.5h11L19 11M3 11h18v7H3v-7zm2 7v2h2v-2H5zm12 0v2h2v-2h-2zM5.5 15a1 1 0 100-2 1 1 0 000 2zm13 0a1 1 0 100-2 1 1 0 000 2z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
             <div>
@@ -61,7 +67,15 @@ export function BookingCheckout() {
       <div className="bg-white rounded-2xl shadow-sm p-5">
         <Section title="Даты аренды">
           <div className="flex gap-3">
-            <DateInput label="Начало" value={startDate} min={today} onChange={(v) => { setStartDate(v); if (v >= endDate) setEndDate(v); }} />
+            <DateInput
+              label="Начало"
+              value={startDate}
+              min={today}
+              onChange={(v) => {
+                setStartDate(v);
+                if (v >= endDate) setEndDate(v);
+              }}
+            />
             <DateInput label="Конец" value={endDate} min={startDate} onChange={setEndDate} />
           </div>
         </Section>
@@ -80,10 +94,21 @@ export function BookingCheckout() {
       </div>
 
       <div className="flex flex-col gap-3">
-        <Button className="w-full" onClick={handleConfirm} disabled={loading || confirmed || days === 0}>
-          {confirmed ? '✓ Бронирование подтверждено' : loading ? 'Обработка...' : 'Подтвердить бронирование'}
+        <Button
+          className="w-full"
+          onClick={handleConfirm}
+          disabled={loading || confirmed || days === 0}
+        >
+          {confirmed
+            ? '✓ Бронирование подтверждено'
+            : loading
+              ? 'Обработка...'
+              : 'Подтвердить бронирование'}
         </Button>
-        <Link href={`/cars/${CAR.id}`} className="flex items-center justify-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors">
+        <Link
+          href={`/cars/${CAR.id}`}
+          className="flex items-center justify-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors"
+        >
           <ArrowLeft size={14} />
           Назад к машине
         </Link>

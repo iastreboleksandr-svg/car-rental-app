@@ -48,7 +48,8 @@ export const Input: React.FC<InputProps> = ({
     ? "border-gray-200 bg-gray-50 cursor-default"
     : hasError
     ? "border-red-400 bg-white focus-within:ring-2 focus-within:ring-red-300 focus-within:ring-offset-0"
-    : "border-gray-300 bg-white focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100";
+    // : "border-gray-300 bg-white focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100";
+    : "border-gray-300 bg-white focus-within:border-[#48C964] focus-within:ring-2 focus-within:ring-[#48C964]/20";
 
   // Icon color
   const iconColor = disabled
