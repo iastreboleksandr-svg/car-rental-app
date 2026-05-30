@@ -73,7 +73,7 @@ export function NotificationsList() {
         {unreadCount > 0 && (
           <button
             onClick={handleReadAll}
-            className="text-sm text-blue-500 hover:text-blue-600 transition-colors"
+            className="text-sm text-[#48C964] hover:text-[#32a84d] transition-colors"
           >
             Прочитать все
           </button>

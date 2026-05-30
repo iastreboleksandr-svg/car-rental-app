@@ -13,7 +13,7 @@ interface NotificationItemProps {
 }
 
 const iconMap: Record<NotificationType, React.ReactNode> = {
-  booking: <Car size={16} className="text-blue-500" />,
+  booking: <Car size={16} className="text-[#48C964]" />,
   confirmed: <CheckCircle size={16} className="text-green-500" />,
   cancelled: <XCircle size={16} className="text-red-400" />,
   system: <Bell size={16} className="text-gray-400" />,
@@ -24,7 +24,7 @@ export function NotificationItem({ id, type, title, message, date, isRead, onRea
     <div
       onClick={() => onRead(id)}
       className={`flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-colors ${
-        isRead ? 'bg-white' : 'bg-blue-50'
+        isRead ? 'bg-white' : 'bg-[#48C964]/5'
       } hover:bg-gray-50`}
     >
       <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
@@ -38,7 +38,7 @@ export function NotificationItem({ id, type, title, message, date, isRead, onRea
         <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{message}</p>
       </div>
       {!isRead && (
-        <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1.5" />
+        <div className="w-2 h-2 rounded-full bg-[#48C964] shrink-0 mt-1.5" />
       )}
     </div>
   );

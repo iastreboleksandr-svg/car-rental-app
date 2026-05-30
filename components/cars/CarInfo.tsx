@@ -23,7 +23,8 @@ function Tag({ label }: { label: string }) {
   );
 }
 
-export default function CarInfo({ name, year, rating, reviewsCount, fuel, transmission, seats, description }: CarInfoProps) {
+export default function CarInfo({ name, year, rating, reviewsCount, fuel, transmission, 
+  seats, description }: CarInfoProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -44,13 +45,15 @@ export default function CarInfo({ name, year, rating, reviewsCount, fuel, transm
       </div>
 
       <div className="border-t border-gray-100 pt-5">
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Описание</p>
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+          Описание</p>
         <p className={`text-sm text-gray-500 leading-relaxed ${!expanded ? 'line-clamp-3' : ''}`}>
           {description}
         </p>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 mt-2 transition-colors"
+          className="flex items-center gap-1 text-sm text-[#48C964] hover:text-[#32a84d]
+           mt-2 transition-colors"
         >
           {expanded ? 'Скрыть' : 'Показать больше'}
           {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}

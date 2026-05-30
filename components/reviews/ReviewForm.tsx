@@ -75,15 +75,13 @@ export function ReviewForm({ onSubmit }: ReviewFormProps) {
           onChange={(e) => setText(e.target.value)}
           placeholder="Расскажите о поездке..."
           rows={4}
-          className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-colors resize-none"
+          className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm
+           text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#48C964]/20 
+           focus:border-[#48C964] transition-colors resize-none"
         />
       </div>
 
-      <Button
-        className="w-full"
-        onClick={handleSubmit}
-        disabled={rating === 0}
-      >
+      <Button className="w-full" onClick={handleSubmit} disabled={rating === 0}>
         Отправить отзыв
       </Button>
     </div>

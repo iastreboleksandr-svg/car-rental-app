@@ -22,13 +22,13 @@ export function BookingsTabs({ activeTab, onChange, activeCounts }: BookingsTabs
           onClick={() => onChange(tab.id)}
           className={`pb-2 px-4 text-sm font-medium transition-colors flex items-center gap-1.5 ${
             activeTab === tab.id
-              ? 'text-blue-500 border-b-2 border-blue-500'
+              ? 'text-[#48C964] border-b-2 border-[#48C964]'
               : 'text-gray-400 hover:text-gray-600'
           }`}
         >
           {tab.label}
           {tab.id === 'active' && activeCounts > 0 && (
-            <span className="bg-blue-100 text-blue-500 text-xs font-semibold px-1.5 py-0.5 rounded-full">
+            <span className="bg-[#48C964]/10 text-[#2a9043] text-xs font-semibold px-1.5 py-0.5 rounded-full">
               {activeCounts}
             </span>
           )}

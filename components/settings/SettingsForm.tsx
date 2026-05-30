@@ -66,7 +66,7 @@ export function SettingsForm() {
             <button
               onClick={() => setNotifications(!notifications)}
               className={`w-11 h-6 rounded-full transition-colors ${
-                notifications ? 'bg-blue-500' : 'bg-gray-200'
+                notifications ? 'bg-[#48C964]' : 'bg-gray-200'
               }`}
             >
               <div className={`w-5 h-5 bg-white rounded-full shadow transition-transform mx-0.5 ${

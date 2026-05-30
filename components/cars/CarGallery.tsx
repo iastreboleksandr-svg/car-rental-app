@@ -30,7 +30,7 @@ export default function CarGallery() {
             key={i}
             onClick={() => setActiveImg(i)}
             className={`w-16 h-12 rounded-lg border-2 transition-colors flex items-center justify-center bg-gray-50 ${
-              activeImg === i ? 'border-blue-500' : 'border-transparent hover:border-gray-200'
+              activeImg === i ? 'border-[#48C964]' : 'border-transparent hover:border-gray-200'
             }`}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-gray-300">

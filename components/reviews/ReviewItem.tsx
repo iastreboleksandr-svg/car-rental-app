@@ -1,5 +1,5 @@
 import { Avatar } from '@/components/atoms/Avatar';
-import { StarRating } from '@/components/atoms/StarRating';
+import StarRating from '@/components/atoms/StarRating';
 
 interface ReviewItemProps {
   id: number;
