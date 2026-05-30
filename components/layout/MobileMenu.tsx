@@ -31,6 +31,9 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
 
             {isAuthenticated ? (
               <>
+                <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Главная
+                </Link>
                 {isOwner ? (
                   <>
                     <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
@@ -69,6 +72,9 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
               </>
             ) : (
               <>
+                <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Главная
+                </Link>
                 <Link href="/login" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   Войти
                 </Link>

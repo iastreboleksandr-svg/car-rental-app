@@ -20,16 +20,12 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
       href={href}
       className={`
         text-sm font-medium transition-colors relative
-        ${isActive
-          ? 'text-[#48C964]'
-          : 'text-gray-600 hover:text-gray-900'}
+        ${isActive ? 'text-[#48C964]' : 'text-gray-600 hover:text-gray-900'}
       `}
     >
       {children}
       {/* Подчёркивание под активной ссылкой */}
-      {isActive && (
-        <span className="absolute -bottom-[18px] left-0 right-0 h-0.5 bg-[#48C964]" />
-      )}
+      {isActive && <span className="absolute -bottom-[18px] left-0 right-0 h-0.5 bg-[#48C964]" />}
     </Link>
   );
 }
@@ -43,9 +39,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
-
         {/* Логотип с иконкой и зелёным акцентом */}
-        <Link href="/search" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-[#48C964] flex items-center justify-center">
             <Car size={16} className="text-white" />
           </div>
@@ -59,15 +54,18 @@ export function Header() {
             <>
               {isOwner ? (
                 <>
+                  <NavLink href="/">Главная</NavLink>
                   <NavLink href="/dashboard">Мои машины</NavLink>
                   <NavLink href="/bookings/incoming">Входящие брони</NavLink>
                 </>
               ) : (
                 <>
+                  <NavLink href="/">Главная</NavLink>
                   <NavLink href="/search">Поиск</NavLink>
                   <NavLink href="/bookings">Мои брони</NavLink>
                 </>
               )}
+
               <NotificationBadge count={unreadCount} href="/notifications" />
               <UserDropdown />
             </>

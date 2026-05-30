@@ -16,7 +16,7 @@ interface ProfileFormData {
 
 // ─── Компонент страницы ───────────────────────────────────────────────────────
 
-export default function ProfilePage() {
+export default function ProfileForm() {
   const { user } = useAuthStore();
 
   // Состояние: режим редактирования вкл/выкл
