@@ -39,7 +39,6 @@ export const Select: React.FC<SelectProps> = ({
   const selectedOption = options.find((o) => o.value === value) ?? null;
   const hasError = Boolean(error);
 
-  // Закрыть при клике вне компонента
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -62,30 +61,22 @@ export const Select: React.FC<SelectProps> = ({
       : hasError
       ? "border-red-400 bg-white cursor-pointer"
       : open
-      ? "border-blue-500 bg-white ring-2 ring-blue-100 cursor-pointer"
+      ? "border-[#48C964] bg-white ring-2 ring-[#48C964]/20 cursor-pointer"
       : "border-gray-300 bg-white hover:border-gray-400 cursor-pointer",
   ].join(" ");
 
   return (
     <div ref={ref} className={`flex flex-col gap-1 w-full ${className}`}>
-      {/* Label */}
       {label && (
         <label
           htmlFor={id}
-          className={`text-sm font-medium ${
-            disabled ? "text-gray-400" : "text-gray-700"
-          }`}
+          className={`text-sm font-medium ${disabled ? "text-gray-400" : "text-gray-700"}`}
         >
           {label}
-          {required && (
-            <span className="ml-1 text-red-500" aria-hidden="true">
-              *
-            </span>
-          )}
+          {required && <span className="ml-1 text-red-500" aria-hidden="true">*</span>}
         </label>
       )}
 
-      {/* Trigger */}
       <div
         id={id}
         role="combobox"
@@ -110,13 +101,10 @@ export const Select: React.FC<SelectProps> = ({
         </span>
         <ChevronDown
           size={16}
-          className={`flex-shrink-0 text-gray-400 transition-transform duration-150 ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`flex-shrink-0 text-gray-400 transition-transform duration-150 ${open ? "rotate-180" : ""}`}
         />
       </div>
 
-      {/* Dropdown */}
       {open && (
         <div
           role="listbox"
@@ -124,9 +112,7 @@ export const Select: React.FC<SelectProps> = ({
           style={{ width: ref.current?.offsetWidth }}
         >
           {options.length === 0 ? (
-            <div className="px-3 py-2 text-sm text-gray-400">
-              Нет вариантов
-            </div>
+            <div className="px-3 py-2 text-sm text-gray-400">Нет вариантов</div>
           ) : (
             options.map((option) => {
               const isSelected = option.value === value;
@@ -139,7 +125,7 @@ export const Select: React.FC<SelectProps> = ({
                   className={[
                     "flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-colors duration-100",
                     isSelected
-                      ? "bg-blue-50 text-blue-600 font-medium"
+                      ? "bg-[#48C964]/10 text-[#2a9043] font-medium"
                       : "text-gray-700 hover:bg-gray-50",
                   ].join(" ")}
                 >
@@ -152,15 +138,9 @@ export const Select: React.FC<SelectProps> = ({
         </div>
       )}
 
-      {/* Error */}
       {hasError && (
         <p id={errorId} className="text-xs text-red-500 flex items-center gap-1">
-          <svg
-            className="w-3.5 h-3.5 flex-shrink-0"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            aria-hidden="true"
-          >
+          <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3.5a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3A.75.75 0 0 1 8 4.5zm0 6.5a.875.875 0 1 1 0-1.75A.875.875 0 0 1 8 11z" />
           </svg>
           {error}

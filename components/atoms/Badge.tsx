@@ -19,8 +19,9 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
+  pending: 'bg-orange-50 text-orange-500 border border-orange-200',
   // pending: 'bg-yellow-100 text-yellow-700 border border-yellow-200',
-  pending: 'bg-blue-100 text-blue-700 border border-blue-200',
+  // pending: 'bg-blue-100 text-blue-700 border border-blue-200',
   // confirmed: 'bg-green-100 text-green-700 border border-green-200',
   confirmed: "bg-[#f0fdf3] text-[#32a84d] border border-[#d4f5dc]",
   // active: 'bg-blue-100 text-blue-700 border border-blue-200',
