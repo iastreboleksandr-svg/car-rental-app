@@ -11,14 +11,15 @@ interface MobileMenuProps {
 
 export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
-  const { logout } = useAuthStore();
+  const { logout, user } = useAuthStore();
+  const isOwner = user?.role === 'owner';
 
   return (
     <div className="md:hidden">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-label="Menu"
+        aria-label="Меню"
         className="flex h-8 w-8 items-center justify-center rounded text-gray-600"
       >
         {open ? '✕' : '☰'}
@@ -27,71 +28,56 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
       {open && (
         <div className="absolute left-0 right-0 top-full border-t border-gray-100 bg-white px-4 py-3 shadow-md">
           <nav className="flex flex-col gap-1">
-            <Link
-              href="/search"
-              onClick={() => setOpen(false)}
-              className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-            >
-              Search
-            </Link>
 
             {isAuthenticated ? (
               <>
-                <Link
-                  href="/bookings"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  My bookings
+                {isOwner ? (
+                  <>
+                    <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      Мои машины
+                    </Link>
+                    <Link href="/bookings/incoming" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      Входящие брони
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/search" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      Поиск
+                    </Link>
+                    <Link href="/bookings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      Мои брони
+                    </Link>
+                  </>
+                )}
+                <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Уведомления{unreadCount > 0 && ` (${unreadCount})`}
                 </Link>
-                <Link
-                  href="/dashboard"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Dashboard
+                <Link href="/profile" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Профиль
                 </Link>
-                <Link
-                  href="/notifications"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Notifications{unreadCount > 0 && ` (${unreadCount})`}
-                </Link>
-                <Link
-                  href="/settings"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Profile settings
+                <Link href="/settings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Настройки
                 </Link>
                 <button
                   type="button"
                   onClick={() => { setOpen(false); logout(); }}
-                  className="rounded px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                  className="rounded px-3 py-2 text-left text-sm text-red-500 hover:bg-red-50"
                 >
-                  Log out
+                  Выйти
                 </button>
               </>
             ) : (
               <>
-                <Link
-                  href="/login"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Log in
+                <Link href="/login" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Войти
                 </Link>
-                
-                <Link
-                  href="/login?tab=register"
-                  onClick={() => setOpen(false)}
-                  className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                >
-                  Sign up
+                <Link href="/login?tab=register" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  Регистрация
                 </Link>
               </>
             )}
+
           </nav>
         </div>
       )}

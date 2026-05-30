@@ -1,7 +1,9 @@
+import { ProfileForm } from '@/components/profile/ProfileForm';
+
 export default function ProfilePage() {
   return (
-    <div>
-      <h1>Профиль</h1>
+    <div className="min-h-screen bg-gray-50">
+      <ProfileForm />
     </div>
   );
 }

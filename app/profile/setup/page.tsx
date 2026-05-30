@@ -23,9 +23,12 @@ export default function ProfileSetupPage() {
     reader.readAsDataURL(file);
   };
 
+  // const handleContinue = () => {
+  //   router.push('/profile');
+  // };
   const handleContinue = () => {
-    router.push('/profile');
-  };
+  router.push('/search');
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -101,7 +104,8 @@ export default function ProfileSetupPage() {
             Продолжить
           </Button>
 
-          <button onClick={() => router.push('/profile')}>Пропустить</button>
+          {/* <button onClick={() => router.push('/profile')}>Пропустить</button> */}
+          <button onClick={() => router.push('/search')}>Пропустить</button>
         </div>
       </div>
     </div>
