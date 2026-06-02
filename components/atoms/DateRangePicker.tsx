@@ -49,7 +49,7 @@ export function DateRangePicker({ label, value, onChange }: DateRangePickerProps
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center justify-between w-full h-10 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:border-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-colors"
+        className="flex items-center justify-between w-full h-10 px-3 rounded-lg border border-gray-300 bg-white text-sm text-gray-700 hover:border-gray-400 focus:outline-none focus:border-[#48C964] focus:ring-2 focus:ring-[#48C964]/20 transition-colors"
       >
         <span className={dateLabel ? 'text-gray-900' : 'text-gray-400'}>
           {dateLabel || 'Выберите даты'}
@@ -67,8 +67,8 @@ export function DateRangePicker({ label, value, onChange }: DateRangePickerProps
             locale={ru}
             disabled={{ before: new Date() }}
             style={{
-              '--rdp-accent-color': '#3b82f6',
-              '--rdp-accent-background-color': '#eff6ff',
+              '--rdp-accent-color': '#48C964',
+              '--rdp-accent-background-color': '#e8f9ed',
             } as React.CSSProperties}
           />
           {value?.from && (

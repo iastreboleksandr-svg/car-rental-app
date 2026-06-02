@@ -1,4 +1,3 @@
-// components/StarRating.tsx
 "use client";
 
 import { useState } from "react";
@@ -49,7 +48,6 @@ export default function StarRating({
         userSelect: "none",
       }}
     >
-      {/* Stars */}
       <div style={{ display: "flex", alignItems: "center", gap }}>
         {[1, 2, 3, 4, 5].map((star) => {
           const filled = star <= displayed;
@@ -109,7 +107,6 @@ export default function StarRating({
         })}
       </div>
 
-      {/* showValue */}
       {showValue && (
         <span
           style={{
@@ -123,7 +120,6 @@ export default function StarRating({
         </span>
       )}
 
-      {/* totalCount */}
       {totalCount !== undefined && (
         <span
           style={{

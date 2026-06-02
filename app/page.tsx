@@ -11,7 +11,7 @@ export default async function RootPage() {
       const parsed = JSON.parse(raw);
       isAuthenticated = !!parsed?.state?.token;
     } catch {
-      // invalid cookie — treat as unauthenticated
+      isAuthenticated = false;
     }
   }
 

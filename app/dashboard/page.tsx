@@ -2,15 +2,10 @@
 
 import Button from '@/components/atoms/Button';
 import Spinner from '@/components/atoms/Spinner';
-import { Car, Pencil, Calendar } from 'lucide-react';
+import { Car } from 'lucide-react';
+import { DashboardCarCard } from '@/components/dashboard/DashboardCarCard';
 import { useDashboardPage } from '@/hooks/useDashboardPage';
 import { useTranslations } from 'next-intl';
-
-const statusClass: Record<string, string> = {
-  active: 'bg-green-100 text-green-600',
-  rented: 'bg-orange-100 text-orange-500',
-  inactive: 'bg-gray-100 text-gray-500',
-};
 
 export default function DashboardPage() {
   const t = useTranslations('dashboard');
@@ -46,32 +41,15 @@ export default function DashboardPage() {
 
       <div className="flex flex-col gap-3">
         {cars.map((car) => (
-          <div key={car.id} className="border border-gray-200 rounded-xl p-4 flex flex-col gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 shrink-0">
-                <Car size={24} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-gray-800">{car.brand} {car.model} · {car.year}</p>
-                <p className="text-xs text-gray-400 truncate mt-0.5">{car.address}</p>
-                <div className="flex items-center gap-2 mt-1.5">
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusClass[car.status] ?? statusClass.inactive}`}>
-                    {t(`status.${car.status}`)}
-                  </span>
-                  <span className="text-xs text-gray-500 font-medium">${car.pricePerDay}/день</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <Button variant="secondary" size="sm" className="flex-1" leftIcon={<Pencil size={13} />} onClick={() => goToEdit(car.id)}>
-                {t('actions.edit')}
-              </Button>
-              <Button variant="secondary" size="sm" className="flex-1" leftIcon={<Calendar size={13} />} onClick={() => goToSlots(car.id)}>
-                {t('actions.availability')}
-              </Button>
-            </div>
-          </div>
+          <DashboardCarCard
+            key={car.id}
+            car={car}
+            statusLabel={t(`status.${car.status}`)}
+            editLabel={t('actions.edit')}
+            availabilityLabel={t('actions.availability')}
+            onEdit={goToEdit}
+            onSlots={goToSlots}
+          />
         ))}
       </div>
 

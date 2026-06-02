@@ -22,7 +22,7 @@ function DateInput({ label, value, onChange, min }: {
           value={value}
           min={min}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-xl border border-gray-200 bg-white pl-9 pr-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-colors"
+          className="w-full rounded-xl border border-gray-200 bg-white pl-9 pr-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#48C964]/20 focus:border-[#48C964] transition-colors"
         />
       </div>
     </div>
