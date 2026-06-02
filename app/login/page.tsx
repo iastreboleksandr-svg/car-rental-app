@@ -32,7 +32,7 @@ export default function LoginPage() {
             onClick={() => switchTab('login')}
             className={`pb-2 px-4 text-sm font-medium transition-colors ${
               tab === 'login'
-                ? 'text-blue-500 border-b-2 border-blue-500'
+                ? 'text-[#48C964] border-b-2 border-[#48C964]'
                 : 'text-gray-400 hover:text-gray-600'
             }`}
           >
@@ -43,7 +43,7 @@ export default function LoginPage() {
             onClick={() => switchTab('register')}
             className={`pb-2 px-4 text-sm font-medium transition-colors ${
               tab === 'register'
-                ? 'text-blue-500 border-b-2 border-blue-500'
+                ? 'text-[#48C964] border-b-2 border-[#48C964]'
                 : 'text-gray-400 hover:text-gray-600'
             }`}
           >
@@ -59,6 +59,7 @@ export default function LoginPage() {
             placeholder="user@example.com"
             value={email}
             onChange={setEmail}
+            autoComplete="off"
             required
           />
           <Input
@@ -72,6 +73,7 @@ export default function LoginPage() {
             }
             value={password}
             onChange={setPassword}
+            autoComplete="new-password"
             required
           />
           {tab === 'register' && (
@@ -101,14 +103,14 @@ export default function LoginPage() {
           {tab === 'login' ? (
             <>
               {t('noAccount')}{' '}
-              <button type="button" onClick={() => switchTab('register')} className="text-blue-500 hover:underline">
+              <button type="button" onClick={() => switchTab('register')} className="text-[#48C964] hover:underline">
                 {t('register')}
               </button>
             </>
           ) : (
             <>
               {t('hasAccount')}{' '}
-              <button type="button" onClick={() => switchTab('login')} className="text-blue-500 hover:underline">
+              <button type="button" onClick={() => switchTab('login')} className="text-[#48C964] hover:underline">
                 {t('login')}
               </button>
             </>

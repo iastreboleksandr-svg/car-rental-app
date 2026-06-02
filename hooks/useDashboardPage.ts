@@ -10,7 +10,6 @@ export function useDashboardPage() {
   const token = useAuthStore((s) => s.token);
   const user = useAuthStore((s) => s.user);
 
-  // GET /cars/me не реализован на беке — фильтруем по ownerId
   const { data: allCars = [], isLoading } = useQuery({
     queryKey: ['cars'],
     queryFn: () => carService.getAll(),

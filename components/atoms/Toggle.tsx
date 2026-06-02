@@ -32,7 +32,7 @@ export const Toggle: React.FC<ToggleProps> = ({
     disabled
       ? 'cursor-not-allowed bg-gray-200'
       : checked
-        ? 'bg-blue-600 cursor-pointer'
+        ? 'bg-[#48C964] cursor-pointer'
         : 'bg-gray-300 cursor-pointer hover:bg-gray-400',
   ].join(' ');
 
@@ -68,7 +68,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         aria-label={label}
         disabled={disabled}
         onClick={(e) => e.stopPropagation()}
-        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#48C964] 
         focus-visible:ring-offset-2 rounded-full flex items-center"
       >
         <div className={track}>

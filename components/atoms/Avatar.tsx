@@ -21,7 +21,6 @@ const sizeStyles: Record<AvatarSize, { container: string; text: string; px: numb
   xl: { container: "w-30 h-30", text: "text-3xl", px: 120 },
 };
 
-// Стабильный цвет фона по инициалам
 const bgColors = [
   "bg-blue-500",
   "bg-purple-500",
@@ -64,23 +63,20 @@ export const Avatar: React.FC<AvatarProps> = ({
   const baseStyles = [
     "relative rounded-full overflow-hidden flex items-center justify-center flex-shrink-0 select-none",
     container,
-    onClick ? "cursor-pointer ring-2 ring-transparent hover:ring-blue-400 transition-all duration-150" : "",
+    onClick ? "cursor-pointer ring-2 ring-transparent hover:ring-[#48C964] transition-all duration-150" : "",
     className,
   ].join(" ");
 
   const content = (
     <>
-      {/* Initials fallback */}
       {!showImage && (
         <span className={`${bgColor} w-full h-full flex items-center justify-center text-white font-semibold ${text}`}>
           {initials}
         </span>
       )}
 
-      {/* Image */}
       {showImage && (
         <>
-          {/* Loading skeleton */}
           {imgLoading && (
             <span className="absolute inset-0 bg-gray-200 animate-pulse" />
           )}

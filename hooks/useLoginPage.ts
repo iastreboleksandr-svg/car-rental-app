@@ -42,7 +42,7 @@ export function useLoginPage() {
           ? await authService.login(email, password)
           : await authService.register(email, password);
 
-      setAuth(data.user, data.accessToken);
+      setAuth(data.user, data.accessToken, data.refreshToken);
       router.replace('/search');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Что-то пошло не так');

@@ -1,16 +1,14 @@
 'use client';
 
-import { Car } from 'lucide-react';
 import Spinner from '@/components/atoms/Spinner';
 import Button from '@/components/atoms/Button';
 import { Checkbox } from '@/components/atoms/Checkbox';
 import { RadioButton } from '@/components/atoms/RadioButton';
 import Input from '@/components/atoms/Input';
-import StarRating from '@/components/atoms/StarRating';
 import { DateRangePicker } from '@/components/atoms/DateRangePicker';
+import { CarCard } from '@/components/search/CarCard';
 import { useSearchPage } from '@/hooks/useSearchPage';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 export default function SearchPage() {
   const t = useTranslations('search');
@@ -33,7 +31,6 @@ export default function SearchPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 flex gap-6">
-      {/* Left: Filters */}
       <div className="flex flex-col gap-4 w-48 shrink-0">
         <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">{t('filters')}</p>
 
@@ -63,7 +60,6 @@ export default function SearchPage() {
         <Button variant="ghost" size="sm" className="w-full text-gray-400" onClick={resetFilters}>{t('resetFilters')}</Button>
       </div>
 
-      {/* Right: Results */}
       <div className="flex flex-col gap-4 flex-1">
         {isLoading && (
           <div className="flex items-center justify-center gap-2 pt-8 text-sm text-gray-400">
@@ -85,25 +81,7 @@ export default function SearchPage() {
 
             <div className="grid grid-cols-2 gap-3">
               {cars.map((car) => (
-                <Link
-                  key={car.id}
-                  href={`/cars/${car.id}`}
-                  className="border border-gray-200 rounded-xl p-3 flex flex-col gap-2 hover:shadow-md transition-shadow"
-                >
-                  <div className="w-full h-24 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-                    <Car size={32} />
-                  </div>
-                  <p className="text-sm font-medium text-gray-800 truncate">{car.brand} {car.model}</p>
-                  <p className="text-xs text-gray-400 truncate">{car.year} · {car.address}</p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold text-blue-500">${car.pricePerDay}/д</p>
-                    {car.averageRating ? (
-                      <StarRating value={car.averageRating} size="sm" />
-                    ) : (
-                      <span className="text-xs text-gray-300">{t('noReviews')}</span>
-                    )}
-                  </div>
-                </Link>
+                <CarCard key={car.id} car={car} noReviewsLabel={t('noReviews')} />
               ))}
             </div>
           </>
