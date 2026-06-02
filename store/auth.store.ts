@@ -5,9 +5,11 @@ import type { UserResponse } from '@/services/auth.service';
 interface AuthState {
   user: UserResponse | null;
   token: string | null;
+  refreshToken: string | null;
   isAuthenticated: boolean;
   _hydrated: boolean;
-  setAuth: (user: UserResponse, token: string) => void;
+  setAuth: (user: UserResponse, token: string, refreshToken: string) => void;
+  setTokens: (token: string, refreshToken: string) => void;
   logout: () => void;
 }
 
@@ -30,10 +32,14 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: null,
       token: null,
+      refreshToken: null,
       isAuthenticated: false,
       _hydrated: false,
-      setAuth: (user, token) => set({ user, token, isAuthenticated: true }),
-      logout: () => set({ user: null, token: null, isAuthenticated: false }),
+      setAuth: (user, token, refreshToken) =>
+        set({ user, token, refreshToken, isAuthenticated: true }),
+      setTokens: (token, refreshToken) => set({ token, refreshToken }),
+      logout: () =>
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false }),
     }),
     {
       name: 'auth',
