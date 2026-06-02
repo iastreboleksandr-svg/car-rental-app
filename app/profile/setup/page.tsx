@@ -28,7 +28,7 @@ export default function ProfileSetupPage() {
         <div className="flex flex-col items-center gap-3">
           <button
             onClick={openFilePicker}
-            className="w-24 h-24 rounded-full border-2 border-dashed border-blue-300 bg-blue-50 flex flex-col items-center justify-center text-blue-400 hover:bg-blue-100 transition-colors"
+            className="w-24 h-24 rounded-full border-2 border-dashed border-[#48C964]/50 bg-[#48C964]/10 flex flex-col items-center justify-center text-[#48C964] hover:bg-[#48C964]/20 transition-colors"
           >
             {avatar ? (
               // eslint-disable-next-line @next/next/no-img-element

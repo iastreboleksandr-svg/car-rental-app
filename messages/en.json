@@ -96,6 +96,7 @@
     },
     "detail": {
       "notFound": "Car not found",
+      "noReviews": "no reviews",
       "description": "Description",
       "owner": "Owner",
       "features": "Features",

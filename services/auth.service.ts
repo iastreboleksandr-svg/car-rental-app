@@ -12,6 +12,7 @@ export interface UserResponse {
 
 export interface AuthResponse {
   accessToken: string;
+  refreshToken: string;
   user: UserResponse;
 }
 
@@ -40,6 +41,8 @@ export const authService = {
   register: (email: string, password: string) =>
     request<AuthResponse>('/auth/register', { email, password }),
 
-  logout: (token: string) =>
-    request<{ message: string }>('/auth/logout', {}, token),
+  refresh: (refreshToken: string) =>
+    request<AuthResponse>('/auth/refresh', { refreshToken }),
+  logout: (accessToken: string, refreshToken: string) =>
+    request<{ message: string }>('/auth/logout', { refreshToken }, accessToken),
 };

@@ -13,6 +13,7 @@ interface InputProps {
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
+  autoComplete?: string;
   className?: string;
 }
 
@@ -29,6 +30,7 @@ export const Input: React.FC<InputProps> = ({
   disabled = false,
   readOnly = false,
   required = false,
+  autoComplete,
   className = "",
 }) => {
   const id = useId();
@@ -38,7 +40,6 @@ export const Input: React.FC<InputProps> = ({
   const hasError = Boolean(error);
   const isInteractive = !disabled && !readOnly;
 
-  // Wrapper border styles
   const wrapperBase =
     "flex items-center gap-2 w-full rounded-lg border px-3 h-10 transition-colors duration-150";
 
@@ -48,9 +49,8 @@ export const Input: React.FC<InputProps> = ({
     ? "border-gray-200 bg-gray-50 cursor-default"
     : hasError
     ? "border-red-400 bg-white focus-within:ring-2 focus-within:ring-red-300 focus-within:ring-offset-0"
-    : "border-gray-300 bg-white focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100";
+    : "border-gray-300 bg-white focus-within:border-[#48C964] focus-within:ring-2 focus-within:ring-[#48C964]/20";
 
-  // Icon color
   const iconColor = disabled
     ? "text-gray-300"
     : hasError
@@ -59,7 +59,6 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <div className={`flex flex-col gap-1 w-full ${className}`}>
-      {/* Label */}
       {label && (
         <label
           htmlFor={id}
@@ -76,16 +75,13 @@ export const Input: React.FC<InputProps> = ({
         </label>
       )}
 
-      {/* Input wrapper */}
       <div className={`${wrapperBase} ${wrapperState}`}>
-        {/* Leading icon */}
         {leadingIcon && (
           <span className={`flex-shrink-0 w-4 h-4 ${iconColor}`} aria-hidden="true">
             {leadingIcon}
           </span>
         )}
 
-        {/* Native input */}
         <input
           id={id}
           type={type}
@@ -97,6 +93,7 @@ export const Input: React.FC<InputProps> = ({
           disabled={disabled}
           readOnly={readOnly}
           required={required}
+          autoComplete={autoComplete}
           aria-invalid={hasError}
           aria-describedby={
             [error ? errorId : null, hint ? hintId : null]
@@ -113,7 +110,6 @@ export const Input: React.FC<InputProps> = ({
           ].join(" ")}
         />
 
-        {/* Trailing icon */}
         {trailingIcon && (
           <span className={`flex-shrink-0 w-4 h-4 ${iconColor}`} aria-hidden="true">
             {trailingIcon}
@@ -121,7 +117,6 @@ export const Input: React.FC<InputProps> = ({
         )}
       </div>
 
-      {/* Error message */}
       {error && (
         <p id={errorId} className="text-xs text-red-500 flex items-center gap-1">
           <svg
@@ -136,7 +131,6 @@ export const Input: React.FC<InputProps> = ({
         </p>
       )}
 
-      {/* Hint (hidden when error is shown) */}
       {hint && !error && (
         <p id={hintId} className="text-xs text-gray-400">
           {hint}

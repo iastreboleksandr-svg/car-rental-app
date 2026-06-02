@@ -96,6 +96,7 @@
     },
     "detail": {
       "notFound": "Машина не найдена",
+      "noReviews": "нет отзывов",
       "description": "Описание",
       "owner": "Владелец",
       "features": "Характеристики",

@@ -22,7 +22,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const id = useId();
   const ref = useRef<HTMLInputElement>(null);
 
-  // indeterminate не управляется через атрибут HTML — только через JS
   useEffect(() => {
     if (ref.current) {
       ref.current.indeterminate = indeterminate;
@@ -34,8 +33,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     disabled
       ? "border-gray-200 bg-gray-100 cursor-not-allowed"
       : checked || indeterminate
-      ? "border-blue-600 bg-blue-600 cursor-pointer"
-      : "border-gray-300 bg-white cursor-pointer hover:border-blue-400",
+      ? "border-[#48C964] bg-[#48C964] cursor-pointer"
+      : "border-gray-300 bg-white cursor-pointer hover:border-[#48C964]",
   ].join(" ");
 
   return (
@@ -47,7 +46,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         className,
       ].join(" ")}
     >
-      {/* Скрытый нативный input */}
       <input
         ref={ref}
         id={id}
@@ -58,9 +56,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         className="sr-only"
       />
 
-      {/* Кастомный чекбокс */}
       <span className={boxStyles} aria-hidden="true">
-        {/* Галочка */}
         {checked && !indeterminate && (
           <svg
             viewBox="0 0 12 12"
@@ -78,7 +74,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           </svg>
         )}
 
-        {/* Indeterminate — тире */}
         {indeterminate && (
           <svg
             viewBox="0 0 12 12"
@@ -96,7 +91,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         )}
       </span>
 
-      {/* Label */}
       {label && (
         <span className="text-sm text-gray-700 select-none">{label}</span>
       )}
