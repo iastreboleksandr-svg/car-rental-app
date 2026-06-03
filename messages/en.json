@@ -148,5 +148,23 @@
     "confirmed": "✓ Booking confirmed",
     "processing": "Processing...",
     "backToSearch": "Back to search"
+  },
+  "slots": {
+    "title": "Availability slots",
+    "alwaysAvailable": "Always available",
+    "alwaysAvailableNote": "The car is available for any dates, regardless of slots.",
+    "hint": "Click a range → popup: choose type + save",
+    "selectedPeriod": "Selected period: {range}",
+    "markAvailable": "Available",
+    "markBlocked": "Blocked",
+    "save": "Save",
+    "cancel": "Cancel",
+    "deletePeriod": "Delete this period",
+    "loadError": "Failed to load slots",
+    "legend": {
+      "available": "Available",
+      "blocked": "Blocked",
+      "booked": "Booked"
+    }
   }
 }
