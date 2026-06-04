@@ -17,32 +17,27 @@ export default function ProfileSetupPage() {
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = () => setAvatar(reader.result as string);
     reader.readAsDataURL(file);
   };
 
-  // const handleContinue = () => {
-  //   router.push('/profile');
-  // };
   const handleContinue = () => {
-  router.push('/search');
-};
+    router.push('/search');
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white rounded-2xl shadow-md w-full max-w-md p-6 flex flex-col gap-6">
-        {/* Заголовок */}
-        <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">
+    <div className="min-h-screen flex items-center justify-center bg-bg-page">
+      <div className="bg-bg-card rounded-2xl shadow-md w-full max-w-md p-6 flex flex-col gap-6">
+
+        <p className="text-xs font-semibold text-text-muted tracking-widest uppercase">
           Шаг 1 из 1 — Заполни профиль
         </p>
 
-        {/* Аватар */}
         <div className="flex flex-col items-center gap-3">
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="w-24 h-24 rounded-full border-2 border-dashed border-blue-300 bg-blue-50 flex flex-col items-center justify-center text-blue-400 hover:bg-blue-100 transition-colors"
+            className="w-24 h-24 rounded-full border-2 border-dashed border-border-default bg-bg-page flex flex-col items-center justify-center text-text-muted hover:bg-brand-subtle transition-colors"
           >
             {avatar ? (
               <img src={avatar} alt="Avatar" className="w-full h-full rounded-full object-cover" />
@@ -63,9 +58,8 @@ export default function ProfileSetupPage() {
           />
         </div>
 
-        <hr className="border-gray-100" />
+        <hr className="border-border-default" />
 
-        {/* Поля */}
         <div className="flex flex-col gap-4">
           <div className="flex gap-3">
             <Input
@@ -96,28 +90,23 @@ export default function ProfileSetupPage() {
           />
         </div>
 
-        <hr className="border-gray-100" />
+        <hr className="border-border-default" />
 
-        {/* Кнопки */}
         <div className="flex flex-col gap-2">
           <Button className="w-full" onClick={handleContinue}>
             Продолжить
           </Button>
-
-          {/* <button onClick={() => router.push('/profile')}>Пропустить</button> */}
-          <button onClick={() => router.push('/search')}>Пропустить</button>
+          <button
+            onClick={() => router.push('/search')}
+            className="text-sm text-text-secondary hover:text-text-base transition-colors text-center"
+          >
+            Пропустить
+          </button>
         </div>
+
       </div>
     </div>
   );
 }
 
-// import { PrivateRoute } from '@/components/layout/PrivateRoute';
 
-// export default function ProfileSetupPage() {
-//   return (
-//     <PrivateRoute>
-//       <div>ProfileSetupPage</div>
-//     </PrivateRoute>
-//   );
-// }

@@ -19,7 +19,6 @@ export function UserDropdown() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Инициал из firstName — исправляем баг с name
   const initial = user?.firstName?.[0]?.toUpperCase() ?? 'U';
 
   return (
@@ -27,7 +26,10 @@ export function UserDropdown() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-[#48C964] text-sm font-medium text-white"
+        aria-label="Меню пользователя"
+        aria-expanded={open}
+        aria-haspopup="true"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-ring text-sm font-medium text-text-inverse"
       >
         {user?.avatarUrl ? (
           <img
@@ -41,31 +43,37 @@ export function UserDropdown() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-44 rounded-md border border-gray-100 bg-white py-1 shadow-lg">
-          <div className="px-4 py-2 border-b border-gray-100">
-            <p className="text-sm font-medium text-gray-900">
+        <div
+          role="menu"
+          className="absolute right-0 mt-2 w-44 rounded-md border border-border-default bg-bg-card py-1 shadow-lg"
+        >
+          <div className="px-4 py-2 border-b border-border-default">
+            <p className="text-sm font-medium text-text-base">
               {user?.firstName} {user?.lastName}
             </p>
-            <p className="text-xs text-gray-400 truncate">{user?.email}</p>
+            <p className="text-xs text-text-muted truncate">{user?.email}</p>
           </div>
           <Link
             href="/profile"
+            role="menuitem"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="block px-4 py-2 text-sm text-text-secondary hover:bg-brand-subtle"
           >
             Профиль
           </Link>
           <Link
             href="/settings"
+            role="menuitem"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="block px-4 py-2 text-sm text-text-secondary hover:bg-brand-subtle"
           >
             Настройки
           </Link>
           <button
             type="button"
+            role="menuitem"
             onClick={() => { setOpen(false); logout(); }}
-            className="block w-full px-4 py-2 text-left text-sm text-red-500 hover:bg-red-50"
+            className="block w-full px-4 py-2 text-left text-sm text-status-error hover:bg-bg-error"
           >
             Выйти
           </button>

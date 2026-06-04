@@ -1,6 +1,5 @@
 import { CarForm } from '@/components/cars/CarForm';
 
-// Моковые данные — в реальности придут с API по id из params
 const MOCK_CAR = {
   make: 'Mercedes-Benz',
   model: 'S-Class',
@@ -15,7 +14,7 @@ const MOCK_CAR = {
 
 export default function CarEditPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-bg-page">
       <main className="max-w-lg mx-auto px-4 py-6">
         <CarForm initialData={MOCK_CAR} mode="edit" />
       </main>

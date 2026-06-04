@@ -67,22 +67,22 @@ export function NotificationsList() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-text-secondary">
           {unreadCount > 0 ? `Непрочитанных: ${unreadCount}` : 'Все прочитаны'}
         </p>
         {unreadCount > 0 && (
           <button
             onClick={handleReadAll}
-            className="text-sm text-[#48C964] hover:text-[#32a84d] transition-colors"
+            className="text-sm text-brand hover:text-brand-hover transition-colors"
           >
             Прочитать все
           </button>
         )}
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden divide-y divide-gray-100">
+      <div className="bg-bg-card rounded-2xl shadow-sm overflow-hidden divide-y divide-border-default">
         {notifications.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-8">Нет уведомлений</p>
+          <p className="text-sm text-text-muted text-center py-8">Нет уведомлений</p>
         ) : (
           notifications.map((n) => (
             <NotificationItem key={n.id} {...n} onRead={handleRead} />

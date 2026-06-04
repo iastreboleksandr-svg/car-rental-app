@@ -40,12 +40,12 @@ const CAR = {
 
 export default function CarDetailPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-bg-page">
       <main className="max-w-5xl mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6 items-start">
           <div className="flex-1 flex flex-col gap-5">
             <CarGallery />
-            <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-5">
+            <div className="bg-bg-card rounded-2xl shadow-sm p-5 flex flex-col gap-5">
 
               <CarInfo
                 name={CAR.name}
@@ -82,21 +82,4 @@ export default function CarDetailPage() {
     </div>
   );
 }
-// "use client";
 
-// import BookingCard from './BookingCard';
-
-// export default function App() {
-//   return (
-//     <div style={{ padding: 40 }}>
-//       <BookingCard
-//         pricePerDay={89}
-//         deposit={500}
-//         fuel="Бензин"
-//         transmission="Автомат"
-//         seats={5}
-//         rating={4.9}
-//       />
-//     </div>
-//   );
-// }

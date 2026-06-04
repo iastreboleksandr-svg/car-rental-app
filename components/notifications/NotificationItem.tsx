@@ -13,10 +13,10 @@ interface NotificationItemProps {
 }
 
 const iconMap: Record<NotificationType, React.ReactNode> = {
-  booking: <Car size={16} className="text-[#48C964]" />,
-  confirmed: <CheckCircle size={16} className="text-green-500" />,
-  cancelled: <XCircle size={16} className="text-red-400" />,
-  system: <Bell size={16} className="text-gray-400" />,
+  booking: <Car size={16} className="text-brand" />,
+  confirmed: <CheckCircle size={16} className="text-brand" />,
+  cancelled: <XCircle size={16} className="text-text-error" />,
+  system: <Bell size={16} className="text-text-muted" />,
 };
 
 export function NotificationItem({ id, type, title, message, date, isRead, onRead }: NotificationItemProps) {
@@ -24,21 +24,21 @@ export function NotificationItem({ id, type, title, message, date, isRead, onRea
     <div
       onClick={() => onRead(id)}
       className={`flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-colors ${
-        isRead ? 'bg-white' : 'bg-[#48C964]/5'
-      } hover:bg-gray-50`}
+        isRead ? 'bg-bg-card' : 'bg-brand-subtle'
+      } hover:bg-bg-page`}
     >
-      <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+      <div className="w-8 h-8 rounded-full bg-bg-page flex items-center justify-center shrink-0">
         {iconMap[type]}
       </div>
       <div className="flex-1">
         <div className="flex items-center justify-between gap-2">
-          <p className="text-sm font-medium text-gray-800">{title}</p>
-          <span className="text-xs text-gray-400 shrink-0">{date}</span>
+          <p className="text-sm font-medium text-text-base">{title}</p>
+          <span className="text-xs text-text-muted shrink-0">{date}</span>
         </div>
-        <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{message}</p>
+        <p className="text-xs text-text-muted mt-0.5 leading-relaxed">{message}</p>
       </div>
       {!isRead && (
-        <div className="w-2 h-2 rounded-full bg-[#48C964] shrink-0 mt-1.5" />
+        <div className="w-2 h-2 rounded-full bg-brand shrink-0 mt-1.5" />
       )}
     </div>
   );

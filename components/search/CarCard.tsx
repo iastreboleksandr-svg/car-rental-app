@@ -15,7 +15,7 @@ function StarRating({ rating }: { rating: number }) {
         <Star
           key={star}
           size={12}
-          className={star <= rating ? 'text-yellow-400 fill-yellow-400' : 'text-[#e4eaf0] fill-[#e4eaf0]'}
+          className={star <= rating ? 'text-status-star fill-status-star' : 'text-border-default fill-border-default'}
         />
       ))}
     </div>
@@ -26,18 +26,18 @@ export function CarCard({ id, price, rating, reviews }: CarCardProps) {
   return (
     <Link
       href={`/cars/${id}`}
-      className="border border-[#e4eaf0] rounded-xl p-3 flex flex-col gap-2 cursor-pointer hover:border-[#d4f5dc] hover:shadow-[0_4px_24px_rgba(72,201,100,0.1)] transition-all"
+      className="border border-border-default rounded-xl p-3 flex flex-col gap-2 cursor-pointer hover:border-brand hover:shadow-sm transition-all"
     >
-      <div className="w-full h-24 bg-[#f0fdf3] rounded-lg flex items-center justify-center text-[#48C964]">
+      <div className="w-full h-24 bg-brand-subtle rounded-lg flex items-center justify-center text-brand">
         <Car size={32} />
       </div>
-      <div className="h-2.5 w-3/4 bg-[#e4eaf0] rounded" />
-      <div className="h-2 w-1/2 bg-[#f4f7f9] rounded" />
-      <p className="text-sm font-semibold text-[#48C964]">${price}/д</p>
+      <div className="h-2.5 w-3/4 bg-border-default rounded" />
+      <div className="h-2 w-1/2 bg-bg-page rounded" />
+      <p className="text-sm font-semibold text-brand">${price}/д</p>
       {reviews > 0 && (
         <div className="flex items-center gap-1">
           <StarRating rating={rating} />
-          <span className="text-xs text-[#8a97a8]">({reviews})</span>
+          <span className="text-xs text-text-muted">({reviews})</span>
         </div>
       )}
     </Link>

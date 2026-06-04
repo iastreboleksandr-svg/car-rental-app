@@ -20,65 +20,65 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label="Меню"
-        className="flex h-8 w-8 items-center justify-center rounded text-gray-600"
+        className="flex h-8 w-8 items-center justify-center rounded text-text-secondary"
       >
         {open ? '✕' : '☰'}
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 top-full border-t border-gray-100 bg-white px-4 py-3 shadow-md">
+        <div className="absolute left-0 right-0 top-full border-t border-border-default bg-bg-card px-4 py-3 shadow-md">
           <nav className="flex flex-col gap-1">
 
             {isAuthenticated ? (
               <>
-                <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Главная
                 </Link>
                 {isOwner ? (
                   <>
-                    <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                    <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                       Мои машины
                     </Link>
-                    <Link href="/bookings/incoming" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                    <Link href="/bookings/incoming" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                       Входящие брони
                     </Link>
                   </>
                 ) : (
                   <>
-                    <Link href="/search" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                    <Link href="/search" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                       Поиск
                     </Link>
-                    <Link href="/bookings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                    <Link href="/bookings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                       Мои брони
                     </Link>
                   </>
                 )}
-                <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Уведомления{unreadCount > 0 && ` (${unreadCount})`}
                 </Link>
-                <Link href="/profile" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/profile" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Профиль
                 </Link>
-                <Link href="/settings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/settings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Настройки
                 </Link>
                 <button
                   type="button"
                   onClick={() => { setOpen(false); logout(); }}
-                  className="rounded px-3 py-2 text-left text-sm text-red-500 hover:bg-red-50"
+                  className="rounded px-3 py-2 text-left text-sm text-text-error hover:bg-bg-error"
                 >
                   Выйти
                 </button>
               </>
             ) : (
               <>
-                <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Главная
                 </Link>
-                <Link href="/login" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/login" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Войти
                 </Link>
-                <Link href="/login?tab=register" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/login?tab=register" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Регистрация
                 </Link>
               </>

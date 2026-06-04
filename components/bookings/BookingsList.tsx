@@ -49,7 +49,7 @@ export function BookingsList() {
       />
       <div className="flex flex-col gap-3">
         {filtered.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-8">Нет бронирований</p>
+          <p className="text-sm text-text-muted text-center py-8">Нет бронирований</p>
         ) : (
           filtered.map((b) => (
             <BookingItem key={b.id} {...b} onCancel={handleCancel} />

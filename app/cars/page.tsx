@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { SearchResults } from '@/components/search/SearchResults';
 
-// Моковые данные — в реальности придут с API
 const MOCK_CARS = [
   { id: 1, price: 50, rating: 4, reviews: 8 },
   { id: 2, price: 35, rating: 5, reviews: 14 },
@@ -26,35 +25,32 @@ export default function CarsPage() {
   const [sortKey, setSortKey] = useState<SortKey>('default');
   const [showSortMenu, setShowSortMenu] = useState(false);
 
-  // Сортируем копию массива — оригинал не трогаем
   const sorted = [...MOCK_CARS].sort((a, b) => {
     if (sortKey === 'price_asc') return a.price - b.price;
     if (sortKey === 'price_desc') return b.price - a.price;
     if (sortKey === 'rating') return b.rating - a.rating;
-    return 0; // default — без сортировки
+    return 0;
   });
 
   const activeSortLabel = SORT_OPTIONS.find((o) => o.key === sortKey)?.label;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-bg-page py-8 px-4">
       <div className="max-w-2xl mx-auto flex flex-col gap-6">
 
-        {/* Заголовок + сортировка */}
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-semibold text-gray-900">Все автомобили</h1>
+          <h1 className="text-xl font-semibold text-text-base">Все автомобили</h1>
 
-          {/* Дропдаун сортировки */}
           <div className="relative">
             <button
               onClick={() => setShowSortMenu((v) => !v)}
-              className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 text-gray-600 hover:bg-gray-50 transition-colors bg-white"
+              className="text-sm border border-border-default rounded-lg px-3 py-1.5 text-text-secondary hover:bg-bg-page transition-colors bg-bg-card"
             >
               {activeSortLabel} ▾
             </button>
 
             {showSortMenu && (
-              <div className="absolute right-0 top-full mt-1 bg-white border border-gray-100 rounded-xl shadow-lg z-10 overflow-hidden min-w-36">
+              <div className="absolute right-0 top-full mt-1 bg-bg-card border border-border-default rounded-xl shadow-lg z-10 overflow-hidden min-w-36">
                 {SORT_OPTIONS.map(({ key, label }) => (
                   <button
                     key={key}
@@ -65,8 +61,8 @@ export default function CarsPage() {
                     className={`
                       w-full text-left px-4 py-2.5 text-sm transition-colors
                       ${sortKey === key
-                        ? 'bg-[#48C964]/10 text-[#2a9043] font-medium'
-                        : 'text-gray-600 hover:bg-gray-50'}
+                        ? 'bg-brand-subtle text-brand font-medium'
+                        : 'text-text-secondary hover:bg-bg-page'}
                     `}
                   >
                     {label}
@@ -77,7 +73,6 @@ export default function CarsPage() {
           </div>
         </div>
 
-        {/* Список машин */}
         <SearchResults cars={sorted} />
 
       </div>

@@ -13,12 +13,12 @@ export function CarDescription({ description }: CarDescriptionProps) {
 
   return (
     <Section title="Описание">
-      <p className={`text-sm text-gray-500 leading-relaxed ${!expanded ? 'line-clamp-3' : ''}`}>
+      <p className={`text-sm text-text-muted leading-relaxed ${!expanded ? 'line-clamp-3' : ''}`}>
         {description}
       </p>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 mt-2 transition-colors"
+        className="flex items-center gap-1 text-sm text-text-link hover:text-brand-hover mt-2 transition-colors"
       >
         {expanded ? 'Скрыть' : 'Показать больше'}
         {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}

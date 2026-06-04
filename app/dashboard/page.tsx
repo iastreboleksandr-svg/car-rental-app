@@ -21,13 +21,13 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f7f9] flex items-center justify-center">
-      <div className="bg-white rounded-2xl border border-[#e4eaf0] shadow-[0_4px_24px_rgba(72,201,100,0.1)] w-full max-w-lg p-6 flex flex-col gap-6">
+    <div className="min-h-screen bg-bg-page flex items-center justify-center">
+      <div className="bg-bg-card rounded-2xl border border-border-default shadow-sm w-full max-w-lg p-6 flex flex-col gap-6">
 
         <DashboardHeader />
 
         <div className="flex flex-col gap-4">
-          <p className="text-xs font-bold text-[#32a84d] tracking-widest uppercase bg-[#f0fdf3] border border-[#d4f5dc] self-start px-3 py-1 rounded-full">
+          <p className="text-xs font-bold text-brand tracking-widest uppercase bg-brand-subtle border border-brand-subtle self-start px-3 py-1 rounded-full">
             Мои машины
           </p>
 
@@ -44,13 +44,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-// import { PrivateRoute } from '@/components/layout/PrivateRoute';
-
-// export default function DashboardPage() {
-//   return (
-//     <PrivateRoute>
-//       <div>DashboardPage</div>
-//     </PrivateRoute>
-//   );
-// }

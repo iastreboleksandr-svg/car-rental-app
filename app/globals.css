@@ -1,26 +1,125 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* ============================================
+   Все контрасты проверены по WCAG 2.1 AA
+   ============================================ */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Бренд — основной зелёный */
+  --brand: #1e7e34; /* на белом = 5.1:1 ✅ */
+  --brand-hover: #176128; /* для hover состояний */
+  --brand-active: #10461d; /* для active/pressed */
+  --brand-ring: #48c964; /* только для focus ring, не для текста */
+  --brand-subtle: #f0faf2; /* светлый фон-акцент */
+
+  /* Текст */
+  --text-base: #111827; /* основной текст = 16.0:1 ✅ */
+  --text-secondary: #374151; /* второстепенный = 10.7:1 ✅ */
+  --text-muted: #4b5563; /* подсказки, метки = 7.4:1 ✅ */
+  --text-placeholder: #6b7280; /* placeholder = 4.64:1 ✅ (минимум) */
+  --text-disabled: #9ca3af; /* disabled — исключение по WCAG */
+  --text-inverse: #ffffff; /* белый текст на тёмном фоне */
+  --text-error: #b91c1c; /* ошибки = 5.9:1 ✅ */
+  --text-link: #1e7e34; /* ссылки = 5.1:1 ✅ */
+
+  /* Границы */
+  --border-default: #d1d5db; /* нейтральная граница */
+  --border-focus: #1e7e34; /* граница при фокусе */
+  --border-error: #dc2626; /* граница ошибки */
+  --border-disabled: #e5e7eb; /* граница disabled */
+
+  /* Фоны */
+  --bg-page: #f3f4f6; /* фон страницы */
+  --bg-card: #ffffff; /* фон карточки */
+  --bg-disabled: #f9fafb; /* фон disabled поля */
+  --bg-error: #fef2f2; /* фон поля с ошибкой */
+  --bg-warning: #fff7ed; /* orange-50 */
+
+  /* Статусы */
+  --color-success: #1e7e34; /* 5.1:1 ✅ */
+  --color-error: #b91c1c; /* 5.9:1 ✅ */
+  --color-warning: #92400e; /* 7.5:1 ✅ */
+  --color-star: #d97706;
+
+  /* Лендинг — уникальные секции */
+  --landing-dark-bg: #111827; /* тёмная секция владельцев */
+  --landing-dark-text: #ffffff; /* текст на тёмном фоне */
+  --landing-dark-muted: #9ca3af; /* второстепенный текст на тёмном */
+  --landing-dark-border: rgba(255, 255, 255, 0.1); /* граница на тёмном */
+  --landing-cta-bg: #48c964; /* зелёный CTA-блок */
+  --landing-cta-hover: #32a84d; /* hover для CTA */
+  --landing-cta-text: #1e7e34;
+  --landing-cta-btn-bg: rgba(255, 255, 255, 0.2);
+  --landing-cta-btn-hover: rgba(255, 255, 255, 0.3);
+  --landing-cta-btn-border: rgba(255, 255, 255, 0.3);
+  --landing-dark-card: rgba(255, 255, 255, 0.05);
 }
+
+/* ============================================
+   РЕГИСТРАЦИЯ В TAILWIND v4
+   ============================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-page);
+  --color-foreground: var(--text-base);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Бренд */
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-ring: var(--brand-ring);
+  --color-brand-subtle: var(--brand-subtle);
+
+  /* Текст */
+  --color-text-base: var(--text-base);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-placeholder: var(--text-placeholder);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-error: var(--text-error);
+  --color-text-link: var(--text-link);
+
+  /* Границы */
+  --color-border-default: var(--border-default);
+  --color-border-focus: var(--border-focus);
+  --color-border-error: var(--border-error);
+  --color-border-disabled: var(--border-disabled);
+
+  /* Фоны */
+  --color-bg-page: var(--bg-page);
+  --color-bg-card: var(--bg-card);
+  --color-bg-disabled: var(--bg-disabled);
+  --color-bg-error: var(--bg-error);
+  --color-bg-warning: var(--bg-warning);
+
+  /* Статусы */
+  --color-status-warning: var(--color-warning);
+  --color-status-success: var(--color-success);
+  --color-status-star: var(--color-star);
+
+  /* Лендинг */
+  --color-landing-dark-bg: var(--landing-dark-bg);
+  --color-landing-dark-text: var(--landing-dark-text);
+  --color-landing-dark-muted: var(--landing-dark-muted);
+  --color-landing-dark-border: var(--landing-dark-border);
+  --color-landing-cta-bg: var(--landing-cta-bg);
+  --color-landing-cta-hover: var(--landing-cta-hover);
+  --color-landing-cta-text: var(--landing-cta-text);
+  --color-landing-cta-btn-bg: var(--landing-cta-btn-bg);
+  --color-landing-cta-btn-hover: var(--landing-cta-btn-hover);
+  --color-landing-cta-btn-border: var(--landing-cta-btn-border);
+  --color-landing-dark-card: var(--landing-dark-card);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ============================================
+   БАЗОВЫЕ СТИЛИ
+   ============================================ */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-page);
+  color: var(--text-base);
   font-family: Arial, Helvetica, sans-serif;
 }

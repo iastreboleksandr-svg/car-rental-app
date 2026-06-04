@@ -9,10 +9,8 @@ import { UserDropdown } from './UserDropdown';
 import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
 
-// Компонент навигационной ссылки с подсветкой активной страницы
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname();
-  // Проверяем совпадает ли текущий путь с href
   const isActive = pathname === href || pathname.startsWith(href + '/');
 
   return (
@@ -20,12 +18,11 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
       href={href}
       className={`
         text-sm font-medium transition-colors relative
-        ${isActive ? 'text-[#48C964]' : 'text-gray-600 hover:text-gray-900'}
+        ${isActive ? 'text-brand' : 'text-text-muted hover:text-text-base'}
       `}
     >
       {children}
-      {/* Подчёркивание под активной ссылкой */}
-      {isActive && <span className="absolute -bottom-[18px] left-0 right-0 h-0.5 bg-[#48C964]" />}
+      {isActive && <span className="absolute bottom-4.5 left-0 right-0 h-0.5 bg-brand" />}
     </Link>
   );
 }
@@ -37,15 +34,14 @@ export function Header() {
   const isOwner = user?.role === 'owner';
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-bg-card border-b border-border-default shadow-sm">
       <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
-        {/* Логотип с иконкой и зелёным акцентом */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#48C964] flex items-center justify-center">
-            <Car size={16} className="text-white" />
+          <div className="w-8 h-8 rounded-lg bg-brand-ring flex items-center justify-center">
+            <Car size={16} className="text-text-base" />
           </div>
-          <span className="text-lg font-bold text-gray-900">
-            Car<span className="text-[#48C964]">Rental</span>
+          <span className="text-lg font-bold text-text-base">
+            Car<span className="text-brand">Rental</span>
           </span>
         </Link>
 
@@ -71,12 +67,12 @@ export function Header() {
             </>
           ) : (
             <>
-              <Link href="/login" className="text-sm text-gray-600 hover:text-gray-900">
+              <Link href="/login" className="text-sm text-text-muted hover:text-text-base">
                 Войти
               </Link>
               <Link
                 href="/login?tab=register"
-                className="rounded-lg bg-[#48C964] px-4 py-1.5 text-sm font-medium text-white hover:bg-[#32a84d] transition-colors"
+                className="rounded-lg bg-brand-ring px-4 py-1.5 text-sm font-medium text-text-base hover:bg-brand-hover transition-colors"
               >
                 Регистрация
               </Link>

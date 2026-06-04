@@ -4,7 +4,7 @@ import { SettingsForm } from '@/components/settings/SettingsForm';
 export default function SettingsPage() {
   return (
     <PrivateRoute>
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-bg-page">
         <main className="max-w-lg mx-auto px-4 py-6">
           <SettingsForm />
         </main>

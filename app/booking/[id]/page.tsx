@@ -2,7 +2,7 @@ import { BookingConfirmation } from '@/components/booking/BookingConfirmation';
 
 export default function BookingConfirmationPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-bg-page">
       <main className="max-w-lg mx-auto px-4 py-6">
         <BookingConfirmation
           bookingId="12345"

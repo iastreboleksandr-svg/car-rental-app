@@ -40,11 +40,11 @@ export function BookingCheckout() {
 
   return (
     <main className="max-w-lg mx-auto px-4 py-6 flex flex-col gap-4">
-      <div className="bg-white rounded-2xl shadow-sm p-5">
+      <div className="bg-bg-card rounded-2xl shadow-sm p-5">
         <Section title="Машина">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-14 rounded-xl border border-gray-200 bg-gray-50 flex items-center justify-center shrink-0">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-gray-400">
+            <div className="w-16 h-14 rounded-xl border border-border-default bg-bg-disabled flex items-center justify-center shrink-0">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-text-muted">
                 <path
                   d="M5 11l1.5-4.5h11L19 11M3 11h18v7H3v-7zm2 7v2h2v-2H5zm12 0v2h2v-2h-2zM5.5 15a1 1 0 100-2 1 1 0 000 2zm13 0a1 1 0 100-2 1 1 0 000 2z"
                   stroke="currentColor"
@@ -55,16 +55,16 @@ export function BookingCheckout() {
               </svg>
             </div>
             <div>
-              <div className="w-24 h-3 bg-gray-200 rounded mb-2" />
-              <p className="text-base font-semibold text-blue-500">
-                ${CAR.pricePerDay} <span className="text-sm font-normal text-gray-400">/ день</span>
+              <div className="w-24 h-3 bg-border-default rounded mb-2" />
+              <p className="text-base font-semibold text-brand">
+                ${CAR.pricePerDay} <span className="text-sm font-normal text-text-muted">/ день</span>
               </p>
             </div>
           </div>
         </Section>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-5">
+      <div className="bg-bg-card rounded-2xl shadow-sm p-5">
         <Section title="Даты аренды">
           <div className="flex gap-3">
             <DateInput
@@ -81,13 +81,13 @@ export function BookingCheckout() {
         </Section>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-5">
+      <div className="bg-bg-card rounded-2xl shadow-sm p-5">
         <Section title="Расчёт стоимости">
           <CostSummary days={days} pricePerDay={CAR.pricePerDay} deposit={CAR.deposit} />
         </Section>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-5">
+      <div className="bg-bg-card rounded-2xl shadow-sm p-5">
         <Section title="Способ оплаты">
           <PaymentMethod />
         </Section>
@@ -107,7 +107,7 @@ export function BookingCheckout() {
         </Button>
         <Link
           href={`/cars/${CAR.id}`}
-          className="flex items-center justify-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors"
+          className="flex items-center justify-center gap-1.5 text-sm text-text-muted hover:text-text-secondary transition-colors"
         >
           <ArrowLeft size={14} />
           Назад к машине

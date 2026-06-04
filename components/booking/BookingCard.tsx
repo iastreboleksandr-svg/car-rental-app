@@ -34,22 +34,22 @@ export function BookingCard({ pricePerDay, deposit, fuel, transmission, seats, r
 
   return (
     <div className="w-full lg:w-72 lg:sticky lg:top-20 flex flex-col gap-3">
-      <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-4">
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">Бронирование</p>
+      <div className="bg-bg-card rounded-2xl shadow-sm p-5 flex flex-col gap-4">
+        <p className="text-xs font-semibold text-text-muted uppercase tracking-widest">Бронирование</p>
         <div>
           <div className="flex items-baseline gap-1">
-            <span className="text-3xl font-bold text-gray-800">${pricePerDay}</span>
-            <span className="text-sm text-gray-400">/ день</span>
+            <span className="text-3xl font-bold text-text-base">${pricePerDay}</span>
+            <span className="text-sm text-text-muted">/ день</span>
           </div>
-          <p className="text-sm text-gray-400 mt-0.5">Депозит: ${deposit}</p>
+          <p className="text-sm text-text-muted mt-0.5">Депозит: ${deposit}</p>
         </div>
         <div className="grid grid-cols-2 gap-2">
           {features.map(({ icon, label, value }) => (
-            <div key={label} className="bg-gray-50 rounded-xl p-3 flex items-center gap-2">
-              <span className="text-gray-400">{icon}</span>
+            <div key={label} className="bg-bg-disabled rounded-xl p-3 flex items-center gap-2">
+              <span className="text-text-muted">{icon}</span>
               <div>
-                <p className="text-xs text-gray-400">{label}</p>
-                <p className="text-sm font-medium text-gray-700">{value}</p>
+                <p className="text-xs text-text-muted">{label}</p>
+                <p className="text-sm font-medium text-text-secondary">{value}</p>
               </div>
             </div>
           ))}
@@ -58,9 +58,9 @@ export function BookingCard({ pricePerDay, deposit, fuel, transmission, seats, r
           {booked ? '✓ Забронировано' : loading ? 'Обработка...' : 'Забронировать'}
         </Button>
       </div>
-      <div className="bg-white rounded-2xl shadow-sm p-4 flex gap-3 items-start">
-        <ShieldCheck size={16} className="text-blue-500 mt-0.5 shrink-0" />
-        <p className="text-xs text-gray-400 leading-relaxed">
+      <div className="bg-bg-card rounded-2xl shadow-sm p-4 flex gap-3 items-start">
+        <ShieldCheck size={16} className="text-brand mt-0.5 shrink-0" />
+        <p className="text-xs text-text-muted leading-relaxed">
           Ваш платёж защищён. Средства поступают владельцу только после начала аренды.
         </p>
       </div>
