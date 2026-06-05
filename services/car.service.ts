@@ -1,9 +1,8 @@
 import type { Car, CarSearchItem, CarDetail, CreateCarDto } from '@/types/car';
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+import { apiFetch } from '@/lib/apiFetch';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE_URL}${path}`, options);
+  const res = await apiFetch(path, options);
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
     throw new Error(data?.message ?? `Request failed: ${res.status}`);
@@ -65,18 +64,16 @@ export const carService = {
       .then((res) => res.cars.map(normalizeSearchItem));
   },
 
-  getById: (id: string, token?: string): Promise<Car> =>
-    request<CarDetail>(`/cars/${id}`, {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    }).then(normalizeDetail),
+  getMine: (): Promise<Car[]> =>
+    request<CarDetail[]>('/cars/me').then((cars) => cars.map(normalizeDetail)),
 
-  create: (dto: CreateCarDto, token: string): Promise<Car> =>
+  getById: (id: string): Promise<Car> =>
+    request<CarDetail>(`/cars/${id}`).then(normalizeDetail),
+
+  create: (dto: CreateCarDto): Promise<Car> =>
     request<CarDetail>('/cars', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dto),
     }).then(normalizeDetail),
 };

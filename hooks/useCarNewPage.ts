@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { carService } from '@/services/car.service';
-import { useAuthStore } from '@/store/auth.store';
 import type { CreateCarDto, FuelType, Transmission } from '@/types/car';
 
 const INITIAL_FORM: CreateCarDto = {
@@ -24,14 +23,13 @@ const INITIAL_FORM: CreateCarDto = {
 
 export function useCarNewPage() {
   const router = useRouter();
-  const token = useAuthStore((s) => s.token);
   const queryClient = useQueryClient();
   const [form, setForm] = useState<CreateCarDto>(INITIAL_FORM);
 
   const { mutate: createCar, isPending, error } = useMutation({
-    mutationFn: (dto: CreateCarDto) => carService.create(dto, token!),
+    mutationFn: (dto: CreateCarDto) => carService.create(dto),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['cars-me'] });
+      queryClient.invalidateQueries({ queryKey: ['cars', 'me'] });
       router.replace('/dashboard');
     },
   });

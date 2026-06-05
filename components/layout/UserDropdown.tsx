@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/store/auth.store';
 import { authService } from '@/services/auth.service';
 
@@ -14,6 +15,8 @@ function initials(user: { firstName: string | null; lastName: string | null; ema
 }
 
 export function UserDropdown() {
+  const t = useTranslations('nav');
+  const tAuth = useTranslations('auth');
   const { user, token, refreshToken, logout } = useAuthStore();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -66,21 +69,21 @@ export function UserDropdown() {
             onClick={() => setOpen(false)}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
           >
-            Профиль
+            {t('profile')}
           </Link>
           <Link
             href="/settings"
             onClick={() => setOpen(false)}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
           >
-            Настройки
+            {t('settings')}
           </Link>
           <button
             type="button"
             onClick={handleLogout}
             className="block w-full px-4 py-2 text-left text-sm text-red-500 hover:bg-red-50"
           >
-            Выйти
+            {tAuth('logout')}
           </button>
         </div>
       )}

@@ -14,6 +14,15 @@
     "confirm": "Подтвердить",
     "notFound": "Не найдено"
   },
+  "nav": {
+    "home": "Главная",
+    "search": "Поиск",
+    "myBookings": "Мои брони",
+    "myCars": "Мои машины",
+    "notifications": "Уведомления",
+    "profile": "Профиль",
+    "settings": "Настройки"
+  },
   "auth": {
     "login": "Войти",
     "register": "Зарегистрироваться",
