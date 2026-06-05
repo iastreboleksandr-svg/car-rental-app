@@ -1,0 +1,162 @@
+{
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schiefgelaufen",
+    "back": "Zurück",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "reset": "Zurücksetzen",
+    "submit": "Senden",
+    "skip": "Überspringen",
+    "add": "Hinzufügen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "confirm": "Bestätigen",
+    "notFound": "Nicht gefunden"
+  },
+  "nav": {
+    "home": "Startseite",
+    "search": "Suchen",
+    "myBookings": "Meine Buchungen",
+    "myCars": "Meine Autos",
+    "notifications": "Benachrichtigungen",
+    "profile": "Profil",
+    "settings": "Einstellungen"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits ein Konto?",
+    "loginLoading": "Wird geladen..."
+  },
+  "dashboard": {
+    "title": "Meine Autos",
+    "subtitle": "Dashboard",
+    "addCar": "+ Hinzufügen",
+    "addFirst": "Erstes hinzufügen",
+    "noCars": "Sie haben noch keine Autos",
+    "pricePerDay": "${price}/Tag",
+    "status": {
+      "active": "Aktiv",
+      "rented": "Vermietet",
+      "inactive": "Inaktiv"
+    },
+    "actions": {
+      "edit": "Bearbeiten",
+      "availability": "Verfügbarkeit"
+    }
+  },
+  "search": {
+    "filters": "Filter",
+    "rentalDates": "Mietdaten",
+    "fuelType": "Kraftstoffart",
+    "transmission": "Getriebe",
+    "maxPrice": "Max. Preis/Tag",
+    "find": "Suchen",
+    "resetFilters": "Filter zurücksetzen",
+    "found": "Gefunden: {count} Autos",
+    "nothingFound": "Nichts gefunden",
+    "loadError": "Autos konnten nicht geladen werden",
+    "noReviews": "keine Bewertungen",
+    "fuel": {
+      "petrol": "Benzin",
+      "diesel": "Diesel",
+      "electric": "Elektro",
+      "hybrid": "Hybrid"
+    },
+    "gearbox": {
+      "automatic": "Auto.",
+      "manual": "Man."
+    }
+  },
+  "car": {
+    "new": {
+      "title": "Neues Auto",
+      "brand": "Marke",
+      "model": "Modell",
+      "year": "Baujahr",
+      "fuelType": "Kraftstoffart",
+      "transmission": "Getriebe",
+      "seats": "Sitzplätze (1–9)",
+      "pricePerDay": "Preis/Tag ($)",
+      "deposit": "Kaution ($)",
+      "address": "Adresse",
+      "lat": "Breitengrad (lat)",
+      "lng": "Längengrad (lng)",
+      "description": "Beschreibung",
+      "descriptionPlaceholder": "Erzählen Sie etwas über das Auto...",
+      "submit": "Auto erstellen",
+      "submitting": "Wird gespeichert...",
+      "gearbox": {
+        "automatic": "Automatik",
+        "manual": "Schaltgetriebe"
+      },
+      "fuel": {
+        "petrol": "Benzin",
+        "diesel": "Diesel",
+        "electric": "Elektro",
+        "hybrid": "Hybrid"
+      }
+    },
+    "detail": {
+      "notFound": "Auto nicht gefunden",
+      "noReviews": "keine Bewertungen",
+      "description": "Beschreibung",
+      "owner": "Besitzer",
+      "features": "Merkmale",
+      "booking": "Buchung",
+      "showMore": "Mehr anzeigen",
+      "showLess": "Weniger anzeigen",
+      "writeMessage": "Nachricht",
+      "bookNow": "Jetzt buchen",
+      "booked": "✓ Gebucht",
+      "processing": "Wird verarbeitet...",
+      "pricePerDay": "${price} / Tag",
+      "deposit": "Kaution: ${amount}",
+      "seats": "{count} Sitzplätze",
+      "fuel": {
+        "petrol": "Benzin",
+        "diesel": "Diesel",
+        "electric": "Elektro",
+        "hybrid": "Hybrid"
+      },
+      "transmission": {
+        "automatic": "Automatik",
+        "manual": "Schaltgetriebe"
+      }
+    }
+  },
+  "profile": {
+    "setup": {
+      "title": "Schritt 1 von 1 — Profil ausfüllen",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "phone": "Telefon (optional)",
+      "photo": "Foto",
+      "continue": "Weiter",
+      "skip": "Überspringen"
+    }
+  },
+  "calendar": {
+    "selectDates": "Daten auswählen",
+    "resetDates": "Daten zurücksetzen"
+  },
+  "bookings": {
+    "title": "Buchung",
+    "rentalDates": "Mietdaten",
+    "startDate": "Beginn",
+    "endDate": "Ende",
+    "payment": "Zahlungsmethode",
+    "cashPayment": "Barzahlung bei Abholung",
+    "cashDescription": "Direkte Zahlung an den Besitzer",
+    "confirm": "Buchung bestätigen",
+    "confirmed": "✓ Buchung bestätigt",
+    "processing": "Wird verarbeitet...",
+    "backToSearch": "Zurück zur Suche"
+  }
+}

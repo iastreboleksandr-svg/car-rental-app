@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { Car } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
 import { useNotificationStore } from '@/store/notification.store';
 import { UserDropdown } from './UserDropdown';
 import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname();
@@ -27,6 +29,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 export function Header() {
+  const t = useTranslations('nav');
   const { isAuthenticated } = useAuthStore();
   const { unreadCount } = useNotificationStore();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
@@ -43,15 +46,18 @@ export function Header() {
           </span>
         </Link>
 
-        {authenticated && (
-          <nav className="hidden items-center gap-6 md:flex">
-            <NavLink href="/search">Поиск</NavLink>
-            <NavLink href="/bookings">Мои брони</NavLink>
-            <NavLink href="/dashboard">Мои машины</NavLink>
-            <NotificationBadge count={unreadCount} href="/notifications" />
-            <UserDropdown />
-          </nav>
-        )}
+        <div className="hidden items-center gap-6 md:flex">
+          {authenticated && (
+            <nav className="flex items-center gap-6">
+              <NavLink href="/search">{t('search')}</NavLink>
+              <NavLink href="/bookings">{t('myBookings')}</NavLink>
+              <NavLink href="/dashboard">{t('myCars')}</NavLink>
+              <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} />
+              <UserDropdown />
+            </nav>
+          )}
+          <LanguageSwitcher />
+        </div>
 
         <MobileMenu isAuthenticated={authenticated} unreadCount={unreadCount} />
       </div>
