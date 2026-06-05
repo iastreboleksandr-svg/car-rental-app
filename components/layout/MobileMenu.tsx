@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/store/auth.store';
 import { authService } from '@/services/auth.service';
 
@@ -12,6 +13,8 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
+  const t = useTranslations('nav');
+  const tAuth = useTranslations('auth');
   const [open, setOpen] = useState(false);
   const { token, refreshToken, logout } = useAuthStore();
   const router = useRouter();
@@ -40,35 +43,35 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
         <div className="absolute left-0 right-0 top-full border-t border-gray-100 bg-white px-4 py-3 shadow-md">
           <nav className="flex flex-col gap-1">
             <Link href="/" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-              Главная
+              {t('home')}
             </Link>
 
             {isAuthenticated && (
               <>
                 <Link href="/search" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                  Поиск
+                  {t('search')}
                 </Link>
                 <Link href="/bookings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                  Мои брони
+                  {t('myBookings')}
                 </Link>
                 <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                  Мои машины
+                  {t('myCars')}
                 </Link>
                 <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                  Уведомления{unreadCount > 0 && ` (${unreadCount})`}
+                  {t('notifications')}{unreadCount > 0 && ` (${unreadCount})`}
                 </Link>
                 <Link href="/profile" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                  Профиль
+                  {t('profile')}
                 </Link>
                 <Link href="/settings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                  Настройки
+                  {t('settings')}
                 </Link>
                 <button
                   type="button"
                   onClick={handleLogout}
                   className="rounded px-3 py-2 text-left text-sm text-red-500 hover:bg-red-50"
                 >
-                  Выйти
+                  {tAuth('logout')}
                 </button>
               </>
             )}

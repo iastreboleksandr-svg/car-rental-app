@@ -6,15 +6,14 @@ import { carService } from '@/services/car.service';
 import { useAuthStore } from '@/store/auth.store';
 
 export function useCarDetailPage(id: string) {
-  const token = useAuthStore((s) => s.token);
   const hydrated = useAuthStore((s) => s._hydrated);
   const [booked, setBooked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { data: car, isLoading, isError } = useQuery({
     queryKey: ['car', id],
-    queryFn: () => carService.getById(id, token ?? undefined),
-    enabled: !!id && hydrated && !!token,
+    queryFn: () => carService.getById(id),
+    enabled: !!id && hydrated,
   });
 
   function handleBook() {
