@@ -70,6 +70,7 @@ export default function CarDetailPage() {
           </div>
 
           <BookingCard
+            carId={CAR.id}
             pricePerDay={CAR.pricePerDay}
             deposit={CAR.deposit}
             fuel={CAR.fuel}

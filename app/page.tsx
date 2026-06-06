@@ -424,26 +424,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Футер ── */}
-      <footer className="py-10 px-6 border-t border-border-default">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-landing-cta-bg flex items-center justify-center">
-              <Car size={14} className="text-text-inverse" />
-            </div>
-            <span className="font-bold text-text-base">
-              Car<span className="text-brand">Rental</span>
-            </span>
-          </div>
-          <p className="text-sm text-text-muted">© 2025 CarRental. Германия.</p>
-          <div className="flex gap-6">
-            <Link href="/search" className="text-sm text-text-muted hover:text-text-secondary transition-colors">Поиск</Link>
-            <Link href="/login" className="text-sm text-text-muted hover:text-text-secondary transition-colors">Войти</Link>
-            <Link href="/login?tab=register" className="text-sm text-text-muted hover:text-text-secondary transition-colors">Регистрация</Link>
-          </div>
-        </div>
-      </footer>
-
     </div>
   );
 }

@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Car } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
-import { useNotificationStore } from '@/store/notification.store';
 import { UserDropdown } from './UserDropdown';
-import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -29,7 +27,6 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 export function Header() {
   const { isAuthenticated, user } = useAuthStore();
-  const { unreadCount } = useNotificationStore();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
   const isOwner = user?.role === 'owner';
 
@@ -61,8 +58,6 @@ export function Header() {
                   <NavLink href="/bookings">Мои брони</NavLink>
                 </>
               )}
-
-              <NotificationBadge count={unreadCount} href="/notifications" />
               <UserDropdown />
             </>
           ) : (
@@ -80,7 +75,7 @@ export function Header() {
           )}
         </nav>
 
-        <MobileMenu isAuthenticated={authenticated} unreadCount={unreadCount} />
+        <MobileMenu isAuthenticated={authenticated} />
       </div>
     </header>
   );

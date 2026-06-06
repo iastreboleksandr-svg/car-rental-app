@@ -6,10 +6,9 @@ import { useAuthStore } from '@/store/auth.store';
 
 interface MobileMenuProps {
   isAuthenticated: boolean;
-  unreadCount: number;
 }
 
-export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
+export function MobileMenu({ isAuthenticated }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const { logout, user } = useAuthStore();
   const isOwner = user?.role === 'owner';
@@ -53,9 +52,6 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
                     </Link>
                   </>
                 )}
-                <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
-                  Уведомления{unreadCount > 0 && ` (${unreadCount})`}
-                </Link>
                 <Link href="/profile" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-text-secondary hover:bg-bg-page">
                   Профиль
                 </Link>

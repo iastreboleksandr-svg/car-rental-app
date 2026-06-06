@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Fuel, Settings2, Users, Star, ShieldCheck } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 
 interface BookingCardProps {
+  carId: string;
   pricePerDay: number;
   deposit: number;
   fuel: string;
@@ -13,16 +14,11 @@ interface BookingCardProps {
   rating: number;
 }
 
-export function BookingCard({ pricePerDay, deposit, fuel, transmission, seats, rating }: BookingCardProps) {
-  const [booked, setBooked] = useState(false);
-  const [loading, setLoading] = useState(false);
+export function BookingCard({ carId, pricePerDay, deposit, fuel, transmission, seats, rating }: BookingCardProps) {
+  const router = useRouter();
 
   const handleBook = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setBooked(true);
-      setLoading(false);
-    }, 800);
+    router.push(`/booking/new?carId=${carId}`);
   };
 
   const features = [
@@ -54,8 +50,8 @@ export function BookingCard({ pricePerDay, deposit, fuel, transmission, seats, r
             </div>
           ))}
         </div>
-        <Button className="w-full" onClick={handleBook} disabled={loading || booked}>
-          {booked ? '✓ Забронировано' : loading ? 'Обработка...' : 'Забронировать'}
+        <Button className="w-full" onClick={handleBook}>
+          Забронировать
         </Button>
       </div>
       <div className="bg-bg-card rounded-2xl shadow-sm p-4 flex gap-3 items-start">

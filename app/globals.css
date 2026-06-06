@@ -39,6 +39,7 @@
   --color-success: #1e7e34; /* 5.1:1 ✅ */
   --color-error: #b91c1c; /* 5.9:1 ✅ */
   --color-warning: #92400e; /* 7.5:1 ✅ */
+  --color-error-hover: #991b1b;
   --color-star: #d97706;
 
   /* Лендинг — уникальные секции */
@@ -97,6 +98,7 @@
 
   /* Статусы */
   --color-status-warning: var(--color-warning);
+  --color-error-hover: var(--color-error-hover);
   --color-status-success: var(--color-success);
   --color-status-star: var(--color-star);
 

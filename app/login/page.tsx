@@ -66,9 +66,12 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg-page">
       <div className="bg-bg-card rounded-2xl shadow-md w-full max-w-md p-6 flex flex-col gap-6">
-
         {/* Tabs */}
-        <div role="tablist" aria-label="Форма входа" className="flex border-b border-border-default">
+        <div
+          role="tablist"
+          aria-label="Форма входа"
+          className="flex border-b border-border-default"
+        >
           <button
             role="tab"
             aria-selected={tab === 'login'}
@@ -111,19 +114,21 @@ export default function LoginPage() {
               <Input
                 label="Имя"
                 type="text"
-                placeholder="Иван"
+                // placeholder="Иван"
                 value={firstName}
                 onChange={setFirstName}
                 error={errors.firstName}
+                hint="Например: Иван"
                 required
               />
               <Input
                 label="Фамилия"
                 type="text"
-                placeholder="Иванов"
+                // placeholder="Иванов"
                 value={lastName}
                 onChange={setLastName}
                 error={errors.lastName}
+                hint="Например: Иванов"
                 required
               />
             </>
@@ -133,10 +138,11 @@ export default function LoginPage() {
             label="Email"
             type="email"
             leadingIcon={<Mail size={16} />}
-            placeholder="user@example.com"
+            // placeholder="user@example.com"
             value={email}
             onChange={setEmail}
             error={errors.email}
+            hint="Например: user@example.com"
             required
           />
 
@@ -156,7 +162,7 @@ export default function LoginPage() {
             value={password}
             onChange={setPassword}
             error={errors.password}
-            hint={tab === 'register' ? 'Минимум 8 символов' : undefined}
+            hint="Например: MyP@ssw0rd!"
             required
           />
 
@@ -215,7 +221,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-
-
-
