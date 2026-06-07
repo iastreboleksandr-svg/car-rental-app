@@ -79,6 +79,13 @@
   "car": {
     "new": {
       "title": "Neues Auto",
+      "sectionPhoto": "Foto",
+      "sectionMain": "Allgemein",
+      "sectionLocation": "Standort",
+      "sectionPricing": "Preis",
+      "sectionDescription": "Beschreibung",
+      "uploadPhoto": "Foto hochladen",
+      "cancel": "Abbrechen",
       "brand": "Marke",
       "model": "Modell",
       "year": "Baujahr",
@@ -160,6 +167,23 @@
     "confirmed": "✓ Buchung bestätigt",
     "processing": "Wird verarbeitet...",
     "backToSearch": "Zurück zur Suche"
+  },
+  "incomingBookings": {
+    "title": "Eingehende Buchungen",
+    "empty": "Keine Buchungen in dieser Kategorie",
+    "daysOfRental": "{count} Miettage",
+    "confirm": "Bestätigen",
+    "decline": "Ablehnen",
+    "tabs": {
+      "all": "Alle",
+      "pending": "Ausstehend",
+      "confirmed": "Bestätigt"
+    },
+    "status": {
+      "pending": "Ausstehend",
+      "confirmed": "Bestätigt",
+      "declined": "Abgelehnt"
+    }
   },
   "landing": {
     "nav": {

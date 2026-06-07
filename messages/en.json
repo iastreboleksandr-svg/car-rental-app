@@ -79,6 +79,13 @@
   "car": {
     "new": {
       "title": "New car",
+      "sectionPhoto": "Photo",
+      "sectionMain": "Main",
+      "sectionLocation": "Location",
+      "sectionPricing": "Pricing",
+      "sectionDescription": "Description",
+      "uploadPhoto": "Upload photo",
+      "cancel": "Cancel",
       "brand": "Brand",
       "model": "Model",
       "year": "Year",
@@ -160,6 +167,23 @@
     "confirmed": "✓ Booking confirmed",
     "processing": "Processing...",
     "backToSearch": "Back to search"
+  },
+  "incomingBookings": {
+    "title": "Incoming bookings",
+    "empty": "No bookings in this category",
+    "daysOfRental": "{count} rental days",
+    "confirm": "Confirm",
+    "decline": "Decline",
+    "tabs": {
+      "all": "All",
+      "pending": "Pending",
+      "confirmed": "Confirmed"
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "declined": "Declined"
+    }
   },
   "landing": {
     "nav": {

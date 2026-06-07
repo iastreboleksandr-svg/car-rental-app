@@ -79,6 +79,13 @@
   "car": {
     "new": {
       "title": "Новая машина",
+      "sectionPhoto": "Фото",
+      "sectionMain": "Основное",
+      "sectionLocation": "Локация",
+      "sectionPricing": "Цена",
+      "sectionDescription": "Описание",
+      "uploadPhoto": "Загрузить фото",
+      "cancel": "Отмена",
       "brand": "Марка",
       "model": "Модель",
       "year": "Год выпуска",
@@ -160,6 +167,23 @@
     "confirmed": "✓ Бронирование подтверждено",
     "processing": "Обработка...",
     "backToSearch": "Назад к поиску"
+  },
+  "incomingBookings": {
+    "title": "Входящие брони",
+    "empty": "Нет броней в этой категории",
+    "daysOfRental": "{count} дн. аренды",
+    "confirm": "Подтвердить",
+    "decline": "Отклонить",
+    "tabs": {
+      "all": "Все",
+      "pending": "Ожидают",
+      "confirmed": "Подтверждённые"
+    },
+    "status": {
+      "pending": "Ожидает",
+      "confirmed": "Подтверждено",
+      "declined": "Отклонено"
+    }
   },
   "landing": {
     "nav": {
