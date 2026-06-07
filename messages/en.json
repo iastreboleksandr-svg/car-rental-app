@@ -158,5 +158,93 @@
     "confirmed": "✓ Booking confirmed",
     "processing": "Processing...",
     "backToSearch": "Back to search"
+  },
+  "landing": {
+    "nav": {
+      "how": "How it works",
+      "cars": "Cars",
+      "owners": "For owners",
+      "login": "Sign in",
+      "start": "Get started"
+    },
+    "hero": {
+      "badge": "Available in 12 cities across Germany",
+      "titleStart": "Rent a car",
+      "titleAccent": "directly",
+      "titleEnd": "from the owner",
+      "subtitle": "No middlemen. No hidden fees. Thousands of cars from verified owners all over Germany.",
+      "findCar": "Find a car",
+      "rentOut": "Rent out your car",
+      "happyRenters": "happy renters",
+      "cardLocation": "Berlin · Petrol · Automatic",
+      "perDay": "/ day",
+      "reviews": "{rating} ({count} reviews)",
+      "book": "Book now",
+      "verified": "Owner verified",
+      "responseTime": "Owner response",
+      "responseValue": "~45 minutes"
+    },
+    "stats": {
+      "cars": "Cars",
+      "trips": "Trips",
+      "rating": "Average rating",
+      "cities": "German cities"
+    },
+    "how": {
+      "label": "How it works",
+      "title": "Three simple steps",
+      "subtitle": "Find a car, book it and drive. It's that simple.",
+      "step1Title": "Find a car",
+      "step1Desc": "Enter your city, dates and filters. We'll show available cars near you.",
+      "step2Title": "Book it",
+      "step2Desc": "Send a request to the owner. Pay cash on pickup — no hidden fees.",
+      "step3Title": "Drive",
+      "step3Desc": "Meet the owner, get the keys and hit the road."
+    },
+    "popular": {
+      "label": "Popular",
+      "title": "Cars near you",
+      "viewAll": "View all",
+      "viewAllMobile": "View all cars"
+    },
+    "features": {
+      "label": "Why us",
+      "title": "Reliable and convenient",
+      "f1Title": "Verified owners",
+      "f1Desc": "Every owner is verified. Reviews from real renters.",
+      "f2Title": "Fast booking",
+      "f2Desc": "Request in 2 minutes. Owners respond within an hour.",
+      "f3Title": "All over Germany",
+      "f3Desc": "Berlin, Munich, Hamburg, Frankfurt and 8 more cities.",
+      "f4Title": "Honest reviews",
+      "f4Desc": "Only real ratings from renters after the trip."
+    },
+    "owners": {
+      "label": "For owners",
+      "title": "Your car is idle — it could be earning",
+      "subtitle": "Rent out your car when you're not using it. You set the price and choose the renters. We take a minimal commission.",
+      "benefit1": "You choose who to rent to",
+      "benefit2": "Set your own prices",
+      "benefit3": "Get paid in cash",
+      "addCar": "Add a car",
+      "stat1Value": "€800",
+      "stat1Label": "Average monthly income",
+      "stat1Sub": "at 16 rental days",
+      "stat2Value": "< 1h",
+      "stat2Label": "Response time",
+      "stat2Sub": "platform average",
+      "stat3Value": "4.8★",
+      "stat3Label": "Platform rating",
+      "stat3Sub": "from owners",
+      "stat4Value": "0%",
+      "stat4Label": "Hidden fees",
+      "stat4Sub": "only fair terms"
+    },
+    "cta": {
+      "title": "Ready to ride?",
+      "subtitle": "Thousands of cars are waiting. Find yours in 2 minutes.",
+      "findCar": "Find a car",
+      "register": "Sign up"
+    }
   }
 }

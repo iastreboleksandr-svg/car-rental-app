@@ -18,6 +18,10 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const authed = isAuthenticated(request);
 
+  if (pathname === '/') {
+    return NextResponse.next();
+  }
+
   if (PUBLIC_ROUTES.some((r) => pathname.startsWith(r))) {
     if (authed && pathname.startsWith('/login')) {
       return NextResponse.redirect(new URL('/search', request.url));

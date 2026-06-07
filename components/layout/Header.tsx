@@ -28,11 +28,18 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   );
 }
 
+const HIDDEN_ON = ['/', '/login'];
+
 export function Header() {
   const t = useTranslations('nav');
+  const pathname = usePathname();
   const { isAuthenticated } = useAuthStore();
   const { unreadCount } = useNotificationStore();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
+
+  if (HIDDEN_ON.includes(pathname)) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">

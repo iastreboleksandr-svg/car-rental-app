@@ -158,5 +158,93 @@
     "confirmed": "✓ Buchung bestätigt",
     "processing": "Wird verarbeitet...",
     "backToSearch": "Zurück zur Suche"
+  },
+  "landing": {
+    "nav": {
+      "how": "So funktioniert's",
+      "cars": "Autos",
+      "owners": "Für Besitzer",
+      "login": "Anmelden",
+      "start": "Loslegen"
+    },
+    "hero": {
+      "badge": "Verfügbar in 12 Städten in Deutschland",
+      "titleStart": "Miete ein Auto",
+      "titleAccent": "direkt",
+      "titleEnd": "vom Besitzer",
+      "subtitle": "Keine Vermittler. Keine versteckten Gebühren. Tausende Autos von verifizierten Besitzern in ganz Deutschland.",
+      "findCar": "Auto finden",
+      "rentOut": "Eigenes Auto vermieten",
+      "happyRenters": "zufriedene Mieter",
+      "cardLocation": "Berlin · Benzin · Automatik",
+      "perDay": "/ Tag",
+      "reviews": "{rating} ({count} Bewertungen)",
+      "book": "Jetzt buchen",
+      "verified": "Besitzer verifiziert",
+      "responseTime": "Antwort des Besitzers",
+      "responseValue": "~45 Minuten"
+    },
+    "stats": {
+      "cars": "Autos",
+      "trips": "Fahrten",
+      "rating": "Durchschnittsbewertung",
+      "cities": "Deutsche Städte"
+    },
+    "how": {
+      "label": "So funktioniert's",
+      "title": "Drei einfache Schritte",
+      "subtitle": "Auto finden, buchen und losfahren. So einfach ist das.",
+      "step1Title": "Auto finden",
+      "step1Desc": "Gib Stadt, Daten und Filter ein. Wir zeigen verfügbare Autos in deiner Nähe.",
+      "step2Title": "Buchen",
+      "step2Desc": "Sende eine Anfrage an den Besitzer. Barzahlung bei Abholung — keine versteckten Gebühren.",
+      "step3Title": "Losfahren",
+      "step3Desc": "Triff den Besitzer, hol die Schlüssel und mach dich auf den Weg."
+    },
+    "popular": {
+      "label": "Beliebt",
+      "title": "Autos in deiner Nähe",
+      "viewAll": "Alle ansehen",
+      "viewAllMobile": "Alle Autos ansehen"
+    },
+    "features": {
+      "label": "Warum wir",
+      "title": "Zuverlässig und bequem",
+      "f1Title": "Verifizierte Besitzer",
+      "f1Desc": "Jeder Besitzer ist verifiziert. Bewertungen von echten Mietern.",
+      "f2Title": "Schnelle Buchung",
+      "f2Desc": "Anfrage in 2 Minuten. Besitzer antworten innerhalb einer Stunde.",
+      "f3Title": "In ganz Deutschland",
+      "f3Desc": "Berlin, München, Hamburg, Frankfurt und 8 weitere Städte.",
+      "f4Title": "Ehrliche Bewertungen",
+      "f4Desc": "Nur echte Bewertungen von Mietern nach der Fahrt."
+    },
+    "owners": {
+      "label": "Für Besitzer",
+      "title": "Dein Auto steht — es könnte Geld verdienen",
+      "subtitle": "Vermiete dein Auto, wenn du es nicht nutzt. Du legst den Preis fest und wählst die Mieter. Wir nehmen eine minimale Provision.",
+      "benefit1": "Du wählst, an wen du vermietest",
+      "benefit2": "Du legst deine Preise fest",
+      "benefit3": "Du erhältst Barzahlung",
+      "addCar": "Auto hinzufügen",
+      "stat1Value": "€800",
+      "stat1Label": "Durchschnittliches Monatseinkommen",
+      "stat1Sub": "bei 16 Miettagen",
+      "stat2Value": "< 1 Std.",
+      "stat2Label": "Antwortzeit",
+      "stat2Sub": "Plattformdurchschnitt",
+      "stat3Value": "4.8★",
+      "stat3Label": "Plattformbewertung",
+      "stat3Sub": "von Besitzern",
+      "stat4Value": "0%",
+      "stat4Label": "Versteckte Gebühren",
+      "stat4Sub": "nur faire Bedingungen"
+    },
+    "cta": {
+      "title": "Bereit für die Fahrt?",
+      "subtitle": "Tausende Autos warten auf dich. Finde deins in 2 Minuten.",
+      "findCar": "Auto finden",
+      "register": "Registrieren"
+    }
   }
 }
