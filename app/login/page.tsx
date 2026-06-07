@@ -57,6 +57,7 @@ export default function LoginPage() {
             type="email"
             leadingIcon={<Mail size={16} />}
             placeholder="user@example.com"
+            hint={t('emailHint')}
             value={email}
             onChange={setEmail}
             autoComplete="off"
@@ -66,6 +67,8 @@ export default function LoginPage() {
             label={t('password')}
             type={showPassword ? 'text' : 'password'}
             leadingIcon={<Lock size={16} />}
+            placeholder="••••••••"
+            hint={t('passwordHint')}
             trailingIcon={
               <button onClick={() => setShowPassword(!showPassword)} type="button">
                 <Eye size={16} className="text-gray-400 hover:text-gray-600" />

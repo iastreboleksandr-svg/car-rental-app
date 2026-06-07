@@ -28,7 +28,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   );
 }
 
-const HIDDEN_ON = ['/', '/login'];
+const HIDDEN_ON = ['/'];
 
 export function Header() {
   const t = useTranslations('nav');

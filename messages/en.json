@@ -30,6 +30,8 @@
     "email": "Email",
     "password": "Password",
     "confirmPassword": "Confirm password",
+    "emailHint": "Example: user@example.com",
+    "passwordHint": "Example: MyP@ssw0rd!",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "loginLoading": "Loading..."

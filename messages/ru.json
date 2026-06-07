@@ -30,6 +30,8 @@
     "email": "Email",
     "password": "Пароль",
     "confirmPassword": "Подтверждение пароля",
+    "emailHint": "Например: user@example.com",
+    "passwordHint": "Например: MyP@ssw0rd!",
     "noAccount": "Нет аккаунта?",
     "hasAccount": "Уже есть аккаунт?",
     "loginLoading": "Загрузка..."
