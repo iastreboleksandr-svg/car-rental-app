@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 interface StarRatingProps {
   value?: number;
   onChange?: (value: number) => void;
   readonly?: boolean;
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   showValue?: boolean;
   totalCount?: number;
 }
@@ -21,7 +21,7 @@ export default function StarRating({
   value = 0,
   onChange,
   readonly = false,
-  size = "md",
+  size = 'md',
   showValue = false,
   totalCount,
 }: StarRatingProps) {
@@ -42,36 +42,33 @@ export default function StarRating({
   return (
     <div
       style={{
-        display: "inline-flex",
-        alignItems: "center",
+        display: 'inline-flex',
+        alignItems: 'center',
         gap: gap * 2,
-        userSelect: "none",
+        userSelect: 'none',
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap }}>
         {[1, 2, 3, 4, 5].map((star) => {
           const filled = star <= displayed;
-          const isHalf =
-            !filled && star - 0.5 <= displayed && displayed % 1 !== 0;
+          const isHalf = !filled && star - 0.5 <= displayed && displayed % 1 !== 0;
 
           return (
             <div
               key={star}
-              role={isReadonly ? undefined : "button"}
+              role={isReadonly ? undefined : 'button'}
               aria-label={isReadonly ? undefined : `${star} stars`}
               tabIndex={isReadonly ? undefined : 0}
               onMouseEnter={() => !isReadonly && setHovered(star)}
               onMouseLeave={() => !isReadonly && setHovered(null)}
               onClick={() => handleClick(star)}
               onKeyDown={(e) => {
-                if (!isReadonly && (e.key === "Enter" || e.key === " "))
-                  handleClick(star);
+                if (!isReadonly && (e.key === 'Enter' || e.key === ' ')) handleClick(star);
               }}
               style={{
-                cursor: isReadonly ? "default" : "pointer",
-                transition: "transform 0.12s ease",
-                transform:
-                  !isReadonly && hovered === star ? "scale(1.2)" : "scale(1)",
+                cursor: isReadonly ? 'default' : 'pointer',
+                transition: 'transform 0.12s ease',
+                transform: !isReadonly && hovered === star ? 'scale(1.2)' : 'scale(1)',
               }}
             >
               <svg
@@ -83,23 +80,23 @@ export default function StarRating({
               >
                 <defs>
                   <linearGradient id={`half-${star}`} x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="50%" stopColor="#f59e0b" />
-                    <stop offset="50%" stopColor="#e5e7eb" />
+                    <stop offset="50%" stopColor="var(--color-star)"/>
+                    <stop offset="50%" stopColor="var(--border-default)" />
                   </linearGradient>
                 </defs>
                 <polygon
                   points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
                   fill={
                     filled
-                      ? "#f59e0b"
+                      ? 'var(--color-star)'
                       : isHalf
-                      ? `url(#half-${star})`
-                      : "#e5e7eb"
+                        ? `url(#half-${star})`
+                        : 'var(--border-default)'
                   }
-                  stroke={filled || isHalf ? "#f59e0b" : "#d1d5db"}
+                  stroke={filled || isHalf ? 'var(--color-star)' : 'var(--border-default)'}
                   strokeWidth="1"
                   strokeLinejoin="round"
-                  style={{ transition: "fill 0.15s ease" }}
+                  style={{ transition: 'fill 0.15s ease' }}
                 />
               </svg>
             </div>
@@ -112,7 +109,7 @@ export default function StarRating({
           style={{
             fontSize: textSize,
             fontWeight: 600,
-            color: "#374151",
+            color: "var(--text-secondary)",
             lineHeight: 1,
           }}
         >
@@ -124,7 +121,7 @@ export default function StarRating({
         <span
           style={{
             fontSize: textSize,
-            color: "#9ca3af",
+            color: "var(--text-placeholder)",
             lineHeight: 1,
           }}
         >

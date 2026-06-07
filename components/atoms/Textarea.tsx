@@ -36,23 +36,23 @@ export const Textarea: React.FC<TextareaProps> = ({
   const wrapperBase = 'w-full rounded-lg border px-3 py-2.5 transition-colors duration-150';
 
   const wrapperState = disabled
-    ? 'border-gray-200 bg-gray-50 cursor-not-allowed'
+    ? 'border-border-disabled bg-bg-disabled cursor-not-allowed'
     : isMaxReached
-      ? 'border-orange-400 bg-white focus-within:ring-2 focus-within:ring-orange-300'
+      ? 'border-status-warning bg-bg-card focus-within:ring-2 focus-within:ring-status-warning/30'
       : hasError
-        ? 'border-red-400 bg-white focus-within:ring-2 focus-within:ring-red-300'
-        : 'border-gray-300 bg-white focus-within:border-[#48C964] focus-within:ring-2 focus-within:ring-[#48C964]/20';
+        ? 'border-border-error bg-bg-error focus-within:ring-2 focus-within:ring-border-error/30'
+        : 'border-border-default bg-bg-card focus-within:border-border-focus focus-within:ring-2 focus-within:ring-brand/20';
 
   return (
     <div className={`flex flex-col gap-1 w-full ${className}`}>
       {label && (
         <label
           htmlFor={id}
-          className={`text-sm font-medium ${disabled ? 'text-gray-400' : 'text-gray-700'}`}
+          className={`text-sm font-medium ${disabled ? 'text-text-disabled' : 'text-text-secondary'}`}
         >
           {label}
           {required && (
-            <span className="ml-1 text-red-500" aria-hidden="true">
+            <span className="ml-1 text-text-error" aria-hidden="true">
               *
             </span>
           )}
@@ -75,16 +75,16 @@ export const Textarea: React.FC<TextareaProps> = ({
           wrapperState,
           'text-sm resize-none outline-none',
           disabled
-            ? 'text-gray-400 cursor-not-allowed placeholder:text-gray-300'
-            : 'text-gray-900 placeholder:text-gray-400',
+            ? 'text-text-disabled cursor-not-allowed placeholder:text-text-disabled'
+            : 'text-text-base placeholder:text-text-placeholder',
         ].join(' ')}
       />
 
       <div className="flex items-start justify-between gap-2">
         {hasError ? (
-          <p id={errorId} className="text-xs text-red-500 flex items-center gap-1">
+          <p id={errorId} className="text-xs text-text-error flex items-center gap-1">
             <svg
-              className="w-3.5 h-3.5 flex-shrink-0"
+              className="w-3.5 h-3.5 shrink-0"
               viewBox="0 0 16 16"
               fill="currentColor"
               aria-hidden="true"
@@ -99,8 +99,8 @@ export const Textarea: React.FC<TextareaProps> = ({
 
         {showCount && maxLength !== undefined && (
           <p
-            className={`text-xs flex-shrink-0 ${
-              isMaxReached ? 'text-orange-500 font-medium' : 'text-gray-400'
+            className={`text-xs shrink-0 ${
+              isMaxReached ? 'text-status-warning font-medium' : 'text-text-muted'
             }`}
           >
             {value.length} / {maxLength}

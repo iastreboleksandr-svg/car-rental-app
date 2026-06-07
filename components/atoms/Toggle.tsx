@@ -28,12 +28,12 @@ export const Toggle: React.FC<ToggleProps> = ({
   };
 
   const track = [
-    'relative w-10 h-6 rounded-full transition-colors duration-200 flex-shrink-0',
+    'relative w-10 h-6 rounded-full transition-colors duration-200 shrink-0',
     disabled
-      ? 'cursor-not-allowed bg-gray-200'
+      ? 'cursor-not-allowed bg-border-disabled'
       : checked
-        ? 'bg-[#48C964] cursor-pointer'
-        : 'bg-gray-300 cursor-pointer hover:bg-gray-400',
+        ? 'bg-brand cursor-pointer'
+        : 'bg-border-default cursor-pointer hover:bg-text-disabled',
   ].join(' ');
 
   const thumb = [
@@ -43,7 +43,10 @@ export const Toggle: React.FC<ToggleProps> = ({
 
   const labelEl = label && (
     <span
-      className={['text-sm select-none', disabled ? 'text-gray-400' : 'text-gray-700'].join(' ')}
+      className={[
+        'text-sm select-none',
+        disabled ? 'text-text-disabled' : 'text-text-secondary',
+      ].join(' ')}
     >
       {label}
     </span>
@@ -68,8 +71,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         aria-label={label}
         disabled={disabled}
         onClick={(e) => e.stopPropagation()}
-        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#48C964] 
-        focus-visible:ring-offset-2 rounded-full flex items-center"
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 rounded-full flex items-center"
       >
         <div className={track}>
           <div className={thumb} />

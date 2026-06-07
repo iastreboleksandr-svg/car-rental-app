@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-type SpinnerSize = "sm" | "md" | "lg";
-type SpinnerColor = "inherit" | "primary" | "white";
+type SpinnerSize = 'sm' | 'md' | 'lg';
+type SpinnerColor = 'inherit' | 'primary' | 'white';
 
 interface SpinnerProps {
   size?: SpinnerSize;
@@ -15,19 +15,15 @@ const sizeMap: Record<SpinnerSize, number> = {
 };
 
 const colorMap: Record<SpinnerColor, string> = {
-  inherit: "currentColor",
-  primary: "#48C964",
-  white: "#ffffff",
+  inherit: 'currentColor',
+  primary: 'var(--brand)',
+  white: 'var(--text-inverse)',
 };
 
-
-export default function Spinner({
-  size = "md",
-  color = "inherit",
-}: SpinnerProps) {
+export default function Spinner({ size = 'md', color = 'inherit' }: SpinnerProps) {
   const px = sizeMap[size];
   const stroke = colorMap[color];
-  const thickness = size === "sm" ? 2 : size === "md" ? 2.5 : 3.5;
+  const thickness = size === 'sm' ? 2 : size === 'md' ? 2.5 : 3.5;
 
   return (
     <svg
@@ -37,7 +33,7 @@ export default function Spinner({
       fill="none"
       aria-label="Loading"
       role="status"
-      style={{ display: "inline-block", flexShrink: 0 }}
+      style={{ display: 'inline-block', flexShrink: 0 }}
     >
       <style>{`
         @keyframes spinner-rotate {

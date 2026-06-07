@@ -17,11 +17,11 @@ interface ButtonProps {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-[#48C964] text-white hover:bg-[#32a84d] active:bg-[#2a9043] border border-transparent',
-  secondary: 'bg-white text-gray-800 hover:bg-gray-50 active:bg-gray-100 border border-gray-300',
-  danger: 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 border border-transparent',
-  ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 active:bg-gray-200 border border-transparent',
-  green: 'bg-[#48C964] text-white hover:bg-[#32a84d] active:bg-[#2a9043] border border-transparent',
+  primary: 'bg-brand text-text-inverse hover:bg-brand-hover active:bg-brand-active border border-transparent',
+  secondary: 'bg-bg-card text-text-base hover:bg-gray-50 active:bg-gray-100 border border-border-default',
+  danger: 'bg-red-700 text-text-inverse hover:bg-red-800 active:bg-red-900 border border-transparent',
+  ghost: 'bg-transparent text-text-secondary hover:bg-gray-100 active:bg-gray-200 border border-transparent',
+  green: 'bg-brand text-text-inverse hover:bg-brand-hover active:bg-brand-active border border-transparent',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -75,7 +75,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={[
         'inline-flex items-center justify-center font-medium rounded-lg',
         'transition-colors duration-150 ease-in-out',
-        'focus:outline-none focus-visible:ring-2 focus-visible:ring-[#48C964] focus-visible:ring-offset-2',
+        'focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2',
         'select-none cursor-pointer',
         variantStyles[variant],
         sizeStyles[size],
@@ -90,7 +90,7 @@ export const Button: React.FC<ButtonProps> = ({
       {loading ? (
         <Spinner size={size} />
       ) : leftIcon ? (
-        <span className={`flex-shrink-0 ${iconSizeStyles[size]}`} aria-hidden="true">
+        <span className={`shrink-0 ${iconSizeStyles[size]}`} aria-hidden="true">
           {leftIcon}
         </span>
       ) : null}
@@ -98,7 +98,7 @@ export const Button: React.FC<ButtonProps> = ({
       {children && <span>{children}</span>}
 
       {!loading && rightIcon && (
-        <span className={`flex-shrink-0 ${iconSizeStyles[size]}`} aria-hidden="true">
+        <span className={`shrink-0 ${iconSizeStyles[size]}`} aria-hidden="true">
           {rightIcon}
         </span>
       )}
