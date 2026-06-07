@@ -19,7 +19,8 @@ export default function SearchPage() {
     transmission, setTransmission,
     maxPrice, setMaxPrice,
     applyFilters, resetFilters,
-    cars, isLoading, isError,
+    cars, total, isLoading, isError,
+    hasNextPage, isFetchingNextPage, loadMore,
   } = useSearchPage();
 
   const FUEL_OPTIONS = [
@@ -73,7 +74,7 @@ export default function SearchPage() {
 
         {!isLoading && !isError && (
           <>
-            <p className="text-sm text-gray-600">{t('found', { count: cars.length })}</p>
+            <p className="text-sm text-gray-600">{t('found', { count: total })}</p>
 
             {cars.length === 0 && (
               <p className="text-sm text-gray-400 text-center pt-8">{t('nothingFound')}</p>
@@ -84,6 +85,17 @@ export default function SearchPage() {
                 <CarCard key={car.id} car={car} noReviewsLabel={t('noReviews')} />
               ))}
             </div>
+
+            {hasNextPage && (
+              <Button
+                variant="secondary"
+                className="w-full"
+                onClick={() => loadMore()}
+                disabled={isFetchingNextPage}
+              >
+                {isFetchingNextPage ? tCommon('loading') : t('loadMore')}
+              </Button>
+            )}
           </>
         )}
       </div>

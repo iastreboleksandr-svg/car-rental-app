@@ -1,34 +1,42 @@
 'use client';
 
-import { Car, Check, X } from 'lucide-react';
+import { Car, Check, X, Flag } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
-import type { IncomingBooking } from '@/hooks/useIncomingBookingsPage';
+import { formatBookingDates, bookingCarName } from '@/lib/formatBookingDates';
+import type { Booking, BookingStatus } from '@/types/booking';
 
 interface BookingIncomingItemProps {
-  booking: IncomingBooking;
+  booking: Booking;
   statusLabel: string;
-  daysLabel: string;
+  totalLabel: string;
   confirmLabel: string;
   declineLabel: string;
-  onConfirm: (id: number) => void;
-  onDecline: (id: number) => void;
+  completeLabel: string;
+  onConfirm: (id: string) => void;
+  onDecline: (id: string) => void;
+  onComplete: (id: string) => void;
+  disabled: boolean;
 }
 
-const badgeVariant: Record<IncomingBooking['status'], 'pending' | 'confirmed' | 'cancelled'> = {
-  pending: 'pending',
-  confirmed: 'confirmed',
-  declined: 'cancelled',
+const badgeVariant: Record<BookingStatus, 'pending' | 'confirmed' | 'completed' | 'cancelled'> = {
+  PENDING: 'pending',
+  CONFIRMED: 'confirmed',
+  COMPLETED: 'completed',
+  CANCELLED: 'cancelled',
 };
 
 export function BookingIncomingItem({
   booking,
   statusLabel,
-  daysLabel,
+  totalLabel,
   confirmLabel,
   declineLabel,
+  completeLabel,
   onConfirm,
   onDecline,
+  onComplete,
+  disabled,
 }: BookingIncomingItemProps) {
   return (
     <div className="bg-bg-card rounded-2xl shadow-sm border border-border-default p-4 flex flex-col gap-4">
@@ -38,31 +46,32 @@ export function BookingIncomingItem({
         </div>
 
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-text-base truncate">{booking.carName}</p>
-          <p className="text-sm text-text-muted">{booking.dates}</p>
-          <p className="text-xs text-text-muted mt-0.5">
-            {booking.renterFirstName} {booking.renterLastName}
-          </p>
+          <p className="text-sm font-semibold text-text-base truncate">{bookingCarName(booking.car)}</p>
+          <p className="text-sm text-text-muted">{formatBookingDates(booking.startAt, booking.endAt)}</p>
+          <p className="text-xs text-text-muted mt-0.5 truncate">{booking.renter?.email ?? '—'}</p>
         </div>
 
         <Badge variant={badgeVariant[booking.status]} size="sm" label={statusLabel} className="min-w-0 shrink-0" />
       </div>
 
       <div className="flex items-center justify-between">
-        <div>
-          <p className="text-base font-bold text-text-base">${booking.total}</p>
-          <p className="text-xs text-text-muted">{daysLabel}</p>
-        </div>
+        <p className="text-base font-bold text-text-base">{totalLabel}</p>
 
-        {booking.status === 'pending' && (
+        {booking.status === 'PENDING' && (
           <div className="flex gap-2">
-            <Button variant="secondary" size="sm" leftIcon={<X size={14} />} onClick={() => onDecline(booking.id)}>
+            <Button variant="secondary" size="sm" leftIcon={<X size={14} />} onClick={() => onDecline(booking.id)} disabled={disabled}>
               {declineLabel}
             </Button>
-            <Button size="sm" leftIcon={<Check size={14} />} onClick={() => onConfirm(booking.id)}>
+            <Button size="sm" leftIcon={<Check size={14} />} onClick={() => onConfirm(booking.id)} disabled={disabled}>
               {confirmLabel}
             </Button>
           </div>
+        )}
+
+        {booking.status === 'CONFIRMED' && (
+          <Button size="sm" leftIcon={<Flag size={14} />} onClick={() => onComplete(booking.id)} disabled={disabled}>
+            {completeLabel}
+          </Button>
         )}
       </div>
     </div>

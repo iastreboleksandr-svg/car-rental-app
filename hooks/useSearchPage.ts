@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { carService, type CarFilters } from '@/services/car.service';
 import type { DateRange } from 'react-day-picker';
+
+const PAGE_SIZE = 20;
 
 export function useSearchPage() {
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
@@ -12,10 +14,26 @@ export function useSearchPage() {
   const [maxPrice, setMaxPrice] = useState('');
   const [appliedFilters, setAppliedFilters] = useState<CarFilters>({});
 
-  const { data: cars = [], isLoading, isError } = useQuery({
+  const {
+    data,
+    isLoading,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ['cars', appliedFilters],
-    queryFn: () => carService.getAll(appliedFilters),
+    queryFn: ({ pageParam }) =>
+      carService.getAll({ ...appliedFilters, limit: PAGE_SIZE, offset: pageParam }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) => {
+      const loaded = allPages.reduce((sum, p) => sum + p.cars.length, 0);
+      return loaded < lastPage.total ? loaded : undefined;
+    },
   });
+
+  const cars = data?.pages.flatMap((p) => p.cars) ?? [];
+  const total = data?.pages[0]?.total ?? 0;
 
   function toggleFuel(type: string) {
     setFuel((prev) =>
@@ -49,7 +67,11 @@ export function useSearchPage() {
     applyFilters,
     resetFilters,
     cars,
+    total,
     isLoading,
     isError,
+    hasNextPage,
+    isFetchingNextPage,
+    loadMore: fetchNextPage,
   };
 }

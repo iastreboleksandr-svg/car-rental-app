@@ -47,10 +47,17 @@ export interface CarFilters {
   lat?: number;
   lng?: number;
   radius?: number;
+  limit?: number;
+  offset?: number;
+}
+
+export interface CarSearchResult {
+  cars: Car[];
+  total: number;
 }
 
 export const carService = {
-  getAll: (filters?: CarFilters): Promise<Car[]> => {
+  getAll: (filters?: CarFilters): Promise<CarSearchResult> => {
     const params = new URLSearchParams();
     if (filters) {
       const { fuel_type, ...rest } = filters;
@@ -61,7 +68,7 @@ export const carService = {
     }
     const qs = params.toString();
     return request<{ cars: CarSearchItem[]; total: number }>(`/cars${qs ? `?${qs}` : ''}`)
-      .then((res) => res.cars.map(normalizeSearchItem));
+      .then((res) => ({ cars: res.cars.map(normalizeSearchItem), total: res.total }));
   },
 
   getMine: (): Promise<Car[]> =>

@@ -25,7 +25,7 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
       await authService.logout(token, refreshToken).catch(() => {});
     }
     logout();
-    router.replace('/login');
+    router.replace('/');
   }
 
   return (

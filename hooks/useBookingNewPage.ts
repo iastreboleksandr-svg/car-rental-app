@@ -1,44 +1,48 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useMutation } from '@tanstack/react-query';
+import type { DateRange } from 'react-day-picker';
+import { bookingService } from '@/services/booking.service';
 
-function diffDays(from: string, to: string): number {
-  return Math.max(0, Math.round((new Date(to).getTime() - new Date(from).getTime()) / (1000 * 60 * 60 * 24)));
+function diffDays(from: Date, to: Date): number {
+  return Math.max(0, Math.round((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24)));
 }
 
 export function useBookingNewPage() {
-  const today = new Date().toISOString().split('T')[0];
-  const defaultEnd = new Date(Date.now() + 4 * 86400000).toISOString().split('T')[0];
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const carId = searchParams.get('carId') ?? '';
 
-  const [startDate, setStartDate] = useState(today);
-  const [endDate, setEndDate] = useState(defaultEnd);
-  const [loading, setLoading] = useState(false);
-  const [confirmed, setConfirmed] = useState(false);
+  const [dateRange, setDateRange] = useState<DateRange | undefined>();
 
-  const days = diffDays(startDate, endDate);
+  const days = dateRange?.from && dateRange?.to ? diffDays(dateRange.from, dateRange.to) : 0;
 
-  function handleStartDateChange(v: string) {
-    setStartDate(v);
-    if (v >= endDate) setEndDate(v);
-  }
+  const { mutate, isPending, isSuccess, error } = useMutation({
+    mutationFn: () =>
+      bookingService.create({
+        carId,
+        startAt: dateRange!.from!.toISOString(),
+        endAt: dateRange!.to!.toISOString(),
+      }),
+    onSuccess: () => {
+      setTimeout(() => router.replace('/bookings'), 1000);
+    },
+  });
 
   function handleConfirm() {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setConfirmed(true);
-    }, 900);
+    if (dateRange?.from && dateRange?.to) mutate();
   }
 
   return {
-    today,
-    startDate,
-    endDate,
+    carId,
+    dateRange,
+    setDateRange,
     days,
-    loading,
-    confirmed,
-    handleStartDateChange,
-    setEndDate,
+    loading: isPending,
+    confirmed: isSuccess,
+    error,
     handleConfirm,
   };
 }

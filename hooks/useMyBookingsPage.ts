@@ -1,36 +1,49 @@
 'use client';
 
 import { useState } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { bookingService } from '@/services/booking.service';
+import { useAuthStore } from '@/store/auth.store';
+import type { BookingStatus } from '@/types/booking';
 
-export type MyBookingStatus = 'pending' | 'confirmed' | 'active' | 'completed' | 'cancelled';
 export type MyBookingsTab = 'all' | 'active' | 'completed' | 'cancelled';
 
-export interface MyBooking {
-  id: number;
-  carName: string;
-  dates: string;
-  days: number;
-  total: number;
-  status: MyBookingStatus;
-}
-
-const MOCK_BOOKINGS: MyBooking[] = [
-  { id: 1, carName: 'BMW 3 Series 2022', dates: '10.06 - 14.06', days: 4, total: 260, status: 'confirmed' },
-  { id: 2, carName: 'Volkswagen Golf 2023', dates: '20.06 - 22.06', days: 2, total: 90, status: 'pending' },
-  { id: 3, carName: 'Mercedes C-Class 2021', dates: '01.05 - 03.05', days: 2, total: 160, status: 'completed' },
-  { id: 4, carName: 'Honda Civic 2020', dates: '12.04 - 13.04', days: 1, total: 35, status: 'cancelled' },
-];
-
-const ACTIVE_STATUSES: MyBookingStatus[] = ['pending', 'confirmed', 'active'];
+const ACTIVE_STATUSES: BookingStatus[] = ['PENDING', 'CONFIRMED'];
 
 export function useMyBookingsPage() {
+  const hydrated = useAuthStore((s) => s._hydrated);
+  const token = useAuthStore((s) => s.token);
+  const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<MyBookingsTab>('all');
 
-  const bookings = MOCK_BOOKINGS.filter((b) => {
-    if (activeTab === 'all') return true;
-    if (activeTab === 'active') return ACTIVE_STATUSES.includes(b.status);
-    return b.status === activeTab;
+  const { data: allBookings = [], isLoading, isError } = useQuery({
+    queryKey: ['bookings', 'my'],
+    queryFn: () => bookingService.getMy(),
+    enabled: hydrated && !!token,
+    refetchInterval: 5000,
   });
 
-  return { bookings, activeTab, setActiveTab };
+  const { mutate: cancel, isPending: isCancelling } = useMutation({
+    mutationFn: (id: string) => bookingService.cancel(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['bookings', 'my'] });
+    },
+  });
+
+  const bookings = allBookings.filter((b) => {
+    if (activeTab === 'all') return true;
+    if (activeTab === 'active') return ACTIVE_STATUSES.includes(b.status);
+    if (activeTab === 'completed') return b.status === 'COMPLETED';
+    return b.status === 'CANCELLED';
+  });
+
+  return {
+    bookings,
+    isLoading,
+    isError,
+    activeTab,
+    setActiveTab,
+    cancel,
+    isCancelling,
+  };
 }

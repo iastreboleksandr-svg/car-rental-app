@@ -1,52 +1,60 @@
 'use client';
 
 import { useState } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { bookingService } from '@/services/booking.service';
+import { useAuthStore } from '@/store/auth.store';
 
-export type IncomingBookingStatus = 'pending' | 'confirmed' | 'declined';
 export type IncomingFilterTab = 'all' | 'pending' | 'confirmed';
 
-export interface IncomingBooking {
-  id: number;
-  renterFirstName: string;
-  renterLastName: string;
-  carName: string;
-  dates: string;
-  days: number;
-  total: number;
-  status: IncomingBookingStatus;
-}
-
-const MOCK_BOOKINGS: IncomingBooking[] = [
-  { id: 1, renterFirstName: 'Максим', renterLastName: 'Р.', carName: 'Toyota Camry 2021', dates: '01.06 - 05.06', days: 4, total: 200, status: 'pending' },
-  { id: 2, renterFirstName: 'Алина', renterLastName: 'И.', carName: 'Toyota Camry 2021', dates: '10.06 - 12.06', days: 2, total: 100, status: 'pending' },
-  { id: 3, renterFirstName: 'Дмитрий', renterLastName: 'С.', carName: 'Honda Civic 2020', dates: '15.05 - 17.05', days: 2, total: 70, status: 'confirmed' },
-];
-
 export function useIncomingBookingsPage() {
-  const [bookings, setBookings] = useState<IncomingBooking[]>(MOCK_BOOKINGS);
+  const hydrated = useAuthStore((s) => s._hydrated);
+  const token = useAuthStore((s) => s.token);
+  const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<IncomingFilterTab>('all');
 
-  function confirmBooking(id: number) {
-    setBookings((prev) => prev.map((b) => (b.id === id ? { ...b, status: 'confirmed' } : b)));
-  }
-
-  function declineBooking(id: number) {
-    setBookings((prev) => prev.map((b) => (b.id === id ? { ...b, status: 'declined' } : b)));
-  }
-
-  const filtered = bookings.filter((b) => {
-    if (activeTab === 'all') return b.status !== 'declined';
-    return b.status === activeTab;
+  const { data: allBookings = [], isLoading, isError } = useQuery({
+    queryKey: ['bookings', 'incoming'],
+    queryFn: () => bookingService.getIncoming(),
+    enabled: hydrated && !!token,
+    refetchInterval: 5000,
   });
 
-  const pendingCount = bookings.filter((b) => b.status === 'pending').length;
+  const invalidate = () => queryClient.invalidateQueries({ queryKey: ['bookings', 'incoming'] });
+
+  const { mutate: confirm, isPending: isConfirming } = useMutation({
+    mutationFn: (id: string) => bookingService.confirm(id),
+    onSuccess: invalidate,
+  });
+
+  const { mutate: decline, isPending: isDeclining } = useMutation({
+    mutationFn: (id: string) => bookingService.cancel(id),
+    onSuccess: invalidate,
+  });
+
+  const { mutate: complete, isPending: isCompleting } = useMutation({
+    mutationFn: (id: string) => bookingService.complete(id),
+    onSuccess: invalidate,
+  });
+
+  const bookings = allBookings.filter((b) => {
+    if (activeTab === 'all') return b.status !== 'CANCELLED';
+    if (activeTab === 'pending') return b.status === 'PENDING';
+    return b.status === 'CONFIRMED';
+  });
+
+  const pendingCount = allBookings.filter((b) => b.status === 'PENDING').length;
 
   return {
-    bookings: filtered,
+    bookings,
+    isLoading,
+    isError,
     activeTab,
     setActiveTab,
-    confirmBooking,
-    declineBooking,
+    confirm,
+    decline,
+    complete,
+    isMutating: isConfirming || isDeclining || isCompleting,
     pendingCount,
   };
 }

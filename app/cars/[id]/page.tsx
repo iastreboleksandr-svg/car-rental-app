@@ -1,6 +1,7 @@
 'use client';
 
 import { use } from 'react';
+import Link from 'next/link';
 import Button from '@/components/atoms/Button';
 import Avatar from '@/components/atoms/Avatar';
 import StarRating from '@/components/atoms/StarRating';
@@ -24,7 +25,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
   const { id } = use(params);
   const t = useTranslations('car.detail');
   const tCommon = useTranslations('common');
-  const { car, isLoading, isError, booked, loading, handleBook } = useCarDetailPage(id);
+  const { car, isLoading, isError } = useCarDetailPage(id);
 
   if (isLoading) {
     return (
@@ -134,9 +135,9 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
               ))}
             </div>
 
-            <Button className="w-full" onClick={handleBook} disabled={loading || booked}>
-              {booked ? t('booked') : loading ? t('processing') : t('bookNow')}
-            </Button>
+            <Link href={`/booking/new?carId=${car.id}`} className="w-full">
+              <Button className="w-full">{t('bookNow')}</Button>
+            </Link>
           </div>
 
           <div className="bg-white rounded-2xl shadow-sm p-4 flex gap-3 items-start">

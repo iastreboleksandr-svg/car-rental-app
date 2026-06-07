@@ -72,6 +72,7 @@
     "resetFilters": "Сбросить фильтры",
     "found": "Найдено: {count} машин",
     "nothingFound": "Ничего не найдено",
+    "loadMore": "Показать ещё",
     "loadError": "Не удалось загрузить машины",
     "noReviews": "нет отзывов",
     "fuel": {
@@ -167,8 +168,8 @@
   "bookings": {
     "title": "Бронирование",
     "rentalDates": "Даты аренды",
-    "startDate": "Начало",
-    "endDate": "Конец",
+    "selectPeriod": "Период аренды",
+    "daysSelected": "Выбрано дней: {count}",
     "payment": "Способ оплаты",
     "cashPayment": "Наличными при получении",
     "cashDescription": "Оплата напрямую владельцу",
@@ -181,7 +182,8 @@
     "title": "Мои брони",
     "empty": "У вас пока нет броней",
     "browseCars": "Найти машину",
-    "daysOfRental": "{count} дн. · ${total}",
+    "cancel": "Отменить",
+    "total": "${total}",
     "tabs": {
       "all": "Все",
       "active": "Активные",
@@ -189,28 +191,29 @@
       "cancelled": "Отменённые"
     },
     "status": {
-      "pending": "Ожидает",
-      "confirmed": "Подтверждено",
-      "active": "Активна",
-      "completed": "Завершена",
-      "cancelled": "Отменена"
+      "PENDING": "Ожидает",
+      "CONFIRMED": "Подтверждено",
+      "COMPLETED": "Завершена",
+      "CANCELLED": "Отменена"
     }
   },
   "incomingBookings": {
     "title": "Входящие брони",
     "empty": "Нет броней в этой категории",
-    "daysOfRental": "{count} дн. аренды",
+    "total": "${total}",
     "confirm": "Подтвердить",
     "decline": "Отклонить",
+    "complete": "Завершить",
     "tabs": {
       "all": "Все",
       "pending": "Ожидают",
       "confirmed": "Подтверждённые"
     },
     "status": {
-      "pending": "Ожидает",
-      "confirmed": "Подтверждено",
-      "declined": "Отклонено"
+      "PENDING": "Ожидает",
+      "CONFIRMED": "Подтверждено",
+      "COMPLETED": "Завершена",
+      "CANCELLED": "Отклонено"
     }
   },
   "landing": {

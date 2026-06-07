@@ -72,6 +72,7 @@
     "resetFilters": "Filter zurücksetzen",
     "found": "Gefunden: {count} Autos",
     "nothingFound": "Nichts gefunden",
+    "loadMore": "Mehr anzeigen",
     "loadError": "Autos konnten nicht geladen werden",
     "noReviews": "keine Bewertungen",
     "fuel": {
@@ -167,8 +168,8 @@
   "bookings": {
     "title": "Buchung",
     "rentalDates": "Mietdaten",
-    "startDate": "Beginn",
-    "endDate": "Ende",
+    "selectPeriod": "Mietzeitraum",
+    "daysSelected": "Ausgewählte Tage: {count}",
     "payment": "Zahlungsmethode",
     "cashPayment": "Barzahlung bei Abholung",
     "cashDescription": "Direkte Zahlung an den Besitzer",
@@ -181,7 +182,8 @@
     "title": "Meine Buchungen",
     "empty": "Sie haben noch keine Buchungen",
     "browseCars": "Auto finden",
-    "daysOfRental": "{count} Tage · ${total}",
+    "cancel": "Stornieren",
+    "total": "${total}",
     "tabs": {
       "all": "Alle",
       "active": "Aktiv",
@@ -189,28 +191,29 @@
       "cancelled": "Storniert"
     },
     "status": {
-      "pending": "Ausstehend",
-      "confirmed": "Bestätigt",
-      "active": "Aktiv",
-      "completed": "Abgeschlossen",
-      "cancelled": "Storniert"
+      "PENDING": "Ausstehend",
+      "CONFIRMED": "Bestätigt",
+      "COMPLETED": "Abgeschlossen",
+      "CANCELLED": "Storniert"
     }
   },
   "incomingBookings": {
     "title": "Eingehende Buchungen",
     "empty": "Keine Buchungen in dieser Kategorie",
-    "daysOfRental": "{count} Miettage",
+    "total": "${total}",
     "confirm": "Bestätigen",
     "decline": "Ablehnen",
+    "complete": "Abschließen",
     "tabs": {
       "all": "Alle",
       "pending": "Ausstehend",
       "confirmed": "Bestätigt"
     },
     "status": {
-      "pending": "Ausstehend",
-      "confirmed": "Bestätigt",
-      "declined": "Abgelehnt"
+      "PENDING": "Ausstehend",
+      "CONFIRMED": "Bestätigt",
+      "COMPLETED": "Abgeschlossen",
+      "CANCELLED": "Abgelehnt"
     }
   },
   "landing": {

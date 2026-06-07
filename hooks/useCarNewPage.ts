@@ -29,7 +29,7 @@ export function useCarNewPage() {
   const { mutate: createCar, isPending, error } = useMutation({
     mutationFn: (dto: CreateCarDto) => carService.create(dto),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['cars', 'me'] });
+      queryClient.invalidateQueries({ queryKey: ['cars'] });
       router.replace('/dashboard');
     },
   });

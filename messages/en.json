@@ -72,6 +72,7 @@
     "resetFilters": "Reset filters",
     "found": "Found: {count} cars",
     "nothingFound": "Nothing found",
+    "loadMore": "Load more",
     "loadError": "Failed to load cars",
     "noReviews": "no reviews",
     "fuel": {
@@ -167,8 +168,8 @@
   "bookings": {
     "title": "Booking",
     "rentalDates": "Rental dates",
-    "startDate": "Start",
-    "endDate": "End",
+    "selectPeriod": "Rental period",
+    "daysSelected": "Days selected: {count}",
     "payment": "Payment method",
     "cashPayment": "Cash on delivery",
     "cashDescription": "Pay directly to the owner",
@@ -181,7 +182,8 @@
     "title": "My bookings",
     "empty": "You have no bookings yet",
     "browseCars": "Find a car",
-    "daysOfRental": "{count} days · ${total}",
+    "cancel": "Cancel",
+    "total": "${total}",
     "tabs": {
       "all": "All",
       "active": "Active",
@@ -189,28 +191,29 @@
       "cancelled": "Cancelled"
     },
     "status": {
-      "pending": "Pending",
-      "confirmed": "Confirmed",
-      "active": "Active",
-      "completed": "Completed",
-      "cancelled": "Cancelled"
+      "PENDING": "Pending",
+      "CONFIRMED": "Confirmed",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
     }
   },
   "incomingBookings": {
     "title": "Incoming bookings",
     "empty": "No bookings in this category",
-    "daysOfRental": "{count} rental days",
+    "total": "${total}",
     "confirm": "Confirm",
     "decline": "Decline",
+    "complete": "Complete",
     "tabs": {
       "all": "All",
       "pending": "Pending",
       "confirmed": "Confirmed"
     },
     "status": {
-      "pending": "Pending",
-      "confirmed": "Confirmed",
-      "declined": "Declined"
+      "PENDING": "Pending",
+      "CONFIRMED": "Confirmed",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Declined"
     }
   },
   "landing": {

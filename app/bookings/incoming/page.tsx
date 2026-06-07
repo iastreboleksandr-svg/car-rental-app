@@ -2,6 +2,7 @@
 
 import { Car } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Spinner from '@/components/atoms/Spinner';
 import { BookingIncomingItem } from '@/components/bookings/BookingIncomingItem';
 import { useIncomingBookingsPage, type IncomingFilterTab } from '@/hooks/useIncomingBookingsPage';
 
@@ -9,7 +10,8 @@ const TABS: IncomingFilterTab[] = ['all', 'pending', 'confirmed'];
 
 export default function IncomingBookingsPage() {
   const t = useTranslations('incomingBookings');
-  const { bookings, activeTab, setActiveTab, confirmBooking, declineBooking, pendingCount } =
+  const tCommon = useTranslations('common');
+  const { bookings, isLoading, isError, activeTab, setActiveTab, confirm, decline, complete, isMutating, pendingCount } =
     useIncomingBookingsPage();
 
   return (
@@ -44,23 +46,38 @@ export default function IncomingBookingsPage() {
           ))}
         </div>
 
-        {bookings.length === 0 ? (
+        {isLoading && (
+          <div className="flex items-center justify-center gap-2 py-10 text-sm text-text-muted">
+            <Spinner size="sm" /> {tCommon('loading')}
+          </div>
+        )}
+
+        {isError && (
+          <p className="text-sm text-text-error text-center py-10">{tCommon('error')}</p>
+        )}
+
+        {!isLoading && !isError && bookings.length === 0 && (
           <div className="bg-bg-card rounded-2xl shadow-sm border border-border-default p-10 flex flex-col items-center gap-2">
             <Car size={32} className="text-text-disabled" />
             <p className="text-sm text-text-muted">{t('empty')}</p>
           </div>
-        ) : (
+        )}
+
+        {!isLoading && !isError && bookings.length > 0 && (
           <div className="flex flex-col gap-3">
             {bookings.map((booking) => (
               <BookingIncomingItem
                 key={booking.id}
                 booking={booking}
                 statusLabel={t(`status.${booking.status}`)}
-                daysLabel={t('daysOfRental', { count: booking.days })}
+                totalLabel={t('total', { total: booking.totalPrice })}
                 confirmLabel={t('confirm')}
                 declineLabel={t('decline')}
-                onConfirm={confirmBooking}
-                onDecline={declineBooking}
+                completeLabel={t('complete')}
+                onConfirm={confirm}
+                onDecline={decline}
+                onComplete={complete}
+                disabled={isMutating}
               />
             ))}
           </div>
