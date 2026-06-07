@@ -6,7 +6,7 @@ function diffDays(from: string, to: string): number {
   return Math.max(0, Math.round((new Date(to).getTime() - new Date(from).getTime()) / (1000 * 60 * 60 * 24)));
 }
 
-export function useBookingsPage() {
+export function useBookingNewPage() {
   const today = new Date().toISOString().split('T')[0];
   const defaultEnd = new Date(Date.now() + 4 * 86400000).toISOString().split('T')[0];
 

@@ -19,6 +19,7 @@
     "search": "Search",
     "myBookings": "My bookings",
     "myCars": "My cars",
+    "incoming": "Incoming",
     "notifications": "Notifications",
     "profile": "Profile",
     "settings": "Settings"
@@ -167,6 +168,25 @@
     "confirmed": "✓ Booking confirmed",
     "processing": "Processing...",
     "backToSearch": "Back to search"
+  },
+  "myBookings": {
+    "title": "My bookings",
+    "empty": "You have no bookings yet",
+    "browseCars": "Find a car",
+    "daysOfRental": "{count} days · ${total}",
+    "tabs": {
+      "all": "All",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
   },
   "incomingBookings": {
     "title": "Incoming bookings",

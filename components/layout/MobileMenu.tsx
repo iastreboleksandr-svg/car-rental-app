@@ -57,6 +57,9 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
                 <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('myCars')}
                 </Link>
+                <Link href="/bookings/incoming" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                  {t('incoming')}
+                </Link>
                 <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('notifications')}{unreadCount > 0 && ` (${unreadCount})`}
                 </Link>

@@ -19,6 +19,7 @@
     "search": "Поиск",
     "myBookings": "Мои брони",
     "myCars": "Мои машины",
+    "incoming": "Входящие",
     "notifications": "Уведомления",
     "profile": "Профиль",
     "settings": "Настройки"
@@ -167,6 +168,25 @@
     "confirmed": "✓ Бронирование подтверждено",
     "processing": "Обработка...",
     "backToSearch": "Назад к поиску"
+  },
+  "myBookings": {
+    "title": "Мои брони",
+    "empty": "У вас пока нет броней",
+    "browseCars": "Найти машину",
+    "daysOfRental": "{count} дн. · ${total}",
+    "tabs": {
+      "all": "Все",
+      "active": "Активные",
+      "completed": "Завершённые",
+      "cancelled": "Отменённые"
+    },
+    "status": {
+      "pending": "Ожидает",
+      "confirmed": "Подтверждено",
+      "active": "Активна",
+      "completed": "Завершена",
+      "cancelled": "Отменена"
+    }
   },
   "incomingBookings": {
     "title": "Входящие брони",

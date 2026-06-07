@@ -11,9 +11,9 @@ import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({ href, children, exact }: { href: string; children: React.ReactNode; exact?: boolean }) {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(href + '/');
+  const isActive = exact ? pathname === href : pathname === href || pathname.startsWith(href + '/');
 
   return (
     <Link
@@ -57,8 +57,9 @@ export function Header() {
           {authenticated && (
             <nav className="flex items-center gap-6">
               <NavLink href="/search">{t('search')}</NavLink>
-              <NavLink href="/bookings">{t('myBookings')}</NavLink>
+              <NavLink href="/bookings" exact>{t('myBookings')}</NavLink>
               <NavLink href="/dashboard">{t('myCars')}</NavLink>
+              <NavLink href="/bookings/incoming">{t('incoming')}</NavLink>
               <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} />
               <UserDropdown />
             </nav>

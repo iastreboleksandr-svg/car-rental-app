@@ -1,83 +1,58 @@
 'use client';
 
 import Link from 'next/link';
-import Button from '@/components/atoms/Button';
-import { Calendar, Banknote, ArrowLeft } from 'lucide-react';
-import { useBookingsPage } from '@/hooks/useBookingsPage';
+import { Car } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Button from '@/components/atoms/Button';
+import { MyBookingItem } from '@/components/bookings/MyBookingItem';
+import { useMyBookingsPage, type MyBookingsTab } from '@/hooks/useMyBookingsPage';
 
-function DateInput({ label, value, onChange, min }: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  min: string;
-}) {
+const TABS: MyBookingsTab[] = ['all', 'active', 'completed', 'cancelled'];
+
+export default function MyBookingsPage() {
+  const t = useTranslations('myBookings');
+  const { bookings, activeTab, setActiveTab } = useMyBookingsPage();
+
   return (
-    <div className="flex-1 flex flex-col gap-1.5">
-      <label className="text-sm text-gray-600">{label}</label>
-      <div className="relative">
-        <Calendar size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-        <input
-          type="date"
-          value={value}
-          min={min}
-          onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-xl border border-gray-200 bg-white pl-9 pr-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#48C964]/20 focus:border-[#48C964] transition-colors"
-        />
+    <div className="max-w-lg mx-auto px-4 py-8 flex flex-col gap-6">
+      <h1 className="text-xl font-semibold text-text-base">{t('title')}</h1>
+
+      <div className="flex gap-1 bg-bg-card rounded-xl p-1 shadow-sm border border-border-default">
+        {TABS.map((key) => (
+          <button
+            key={key}
+            onClick={() => setActiveTab(key)}
+            className={`flex-1 py-2 px-2 rounded-lg text-sm font-medium transition-colors ${
+              activeTab === key
+                ? 'bg-brand text-text-inverse shadow-sm'
+                : 'text-text-muted hover:text-text-secondary'
+            }`}
+          >
+            {t(`tabs.${key}`)}
+          </button>
+        ))}
       </div>
+
+      {bookings.length === 0 ? (
+        <div className="bg-bg-card rounded-2xl shadow-sm border border-border-default p-10 flex flex-col items-center gap-3">
+          <Car size={32} className="text-text-disabled" />
+          <p className="text-sm text-text-muted">{t('empty')}</p>
+          <Link href="/search">
+            <Button>{t('browseCars')}</Button>
+          </Link>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {bookings.map((booking) => (
+            <MyBookingItem
+              key={booking.id}
+              booking={booking}
+              statusLabel={t(`status.${booking.status}`)}
+              metaLabel={t('daysOfRental', { count: booking.days, total: booking.total })}
+            />
+          ))}
+        </div>
+      )}
     </div>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="border-t border-gray-100 pt-5 flex flex-col gap-4">
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">{title}</p>
-      {children}
-    </div>
-  );
-}
-
-export default function BookingCheckoutPage() {
-  const t = useTranslations('bookings');
-  const { today, startDate, endDate, days, loading, confirmed, handleStartDateChange, setEndDate, handleConfirm } = useBookingsPage();
-
-  return (
-    <main className="max-w-lg mx-auto px-4 py-6 flex flex-col gap-4">
-
-      <div className="bg-white rounded-2xl shadow-sm p-5">
-        <Section title={t('rentalDates')}>
-          <div className="flex gap-3">
-            <DateInput label={t('startDate')} value={startDate} min={today} onChange={handleStartDateChange} />
-            <DateInput label={t('endDate')} value={endDate} min={startDate} onChange={setEndDate} />
-          </div>
-        </Section>
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-sm p-5">
-        <Section title={t('payment')}>
-          <div className="flex items-center gap-3 border border-gray-200 rounded-xl p-4">
-            <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center shrink-0">
-              <Banknote size={18} className="text-green-600" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-700">{t('cashPayment')}</p>
-              <p className="text-xs text-gray-400">{t('cashDescription')}</p>
-            </div>
-          </div>
-        </Section>
-      </div>
-
-      <div className="flex flex-col gap-3">
-        <Button className="w-full" onClick={handleConfirm} disabled={loading || confirmed || days === 0}>
-          {confirmed ? t('confirmed') : loading ? t('processing') : t('confirm')}
-        </Button>
-        <Link href="/search" className="flex items-center justify-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors">
-          <ArrowLeft size={14} />
-          {t('backToSearch')}
-        </Link>
-      </div>
-
-    </main>
   );
 }

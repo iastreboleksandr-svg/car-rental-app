@@ -19,6 +19,7 @@
     "search": "Suchen",
     "myBookings": "Meine Buchungen",
     "myCars": "Meine Autos",
+    "incoming": "Eingehend",
     "notifications": "Benachrichtigungen",
     "profile": "Profil",
     "settings": "Einstellungen"
@@ -167,6 +168,25 @@
     "confirmed": "✓ Buchung bestätigt",
     "processing": "Wird verarbeitet...",
     "backToSearch": "Zurück zur Suche"
+  },
+  "myBookings": {
+    "title": "Meine Buchungen",
+    "empty": "Sie haben noch keine Buchungen",
+    "browseCars": "Auto finden",
+    "daysOfRental": "{count} Tage · ${total}",
+    "tabs": {
+      "all": "Alle",
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "cancelled": "Storniert"
+    },
+    "status": {
+      "pending": "Ausstehend",
+      "confirmed": "Bestätigt",
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "cancelled": "Storniert"
+    }
   },
   "incomingBookings": {
     "title": "Eingehende Buchungen",
