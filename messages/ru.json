@@ -33,6 +33,14 @@
     "confirmPassword": "Подтверждение пароля",
     "emailHint": "Например: user@example.com",
     "passwordHint": "Например: MyP@ssw0rd!",
+    "rules": {
+      "length": "Минимум {min} символов",
+      "upper": "Заглавная буква (A-Z)",
+      "lower": "Строчная буква (a-z)",
+      "number": "Цифра (0-9)",
+      "special": "Спецсимвол (!@#…)",
+      "match": "Пароли совпадают"
+    },
     "noAccount": "Нет аккаунта?",
     "hasAccount": "Уже есть аккаунт?",
     "loginLoading": "Загрузка..."

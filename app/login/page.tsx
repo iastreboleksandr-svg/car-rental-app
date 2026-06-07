@@ -2,9 +2,18 @@
 
 import { Input } from '@/components/atoms/Input';
 import Button from '@/components/atoms/Button';
-import { Mail, Lock, Eye } from 'lucide-react';
+import { Mail, Lock, Eye, Check, Circle } from 'lucide-react';
 import { useLoginPage } from '@/hooks/useLoginPage';
 import { useTranslations } from 'next-intl';
+
+function PasswordRule({ ok, text }: { ok: boolean; text: string }) {
+  return (
+    <div className={`text-xs flex items-center gap-2 transition-colors ${ok ? 'text-brand' : 'text-text-muted'}`}>
+      {ok ? <Check size={13} /> : <Circle size={13} />}
+      <span>{text}</span>
+    </div>
+  );
+}
 
 export default function LoginPage() {
   const t = useTranslations('auth');
@@ -18,6 +27,8 @@ export default function LoginPage() {
     error,
     loading,
     handleSubmit,
+    passwordRules,
+    passwordMinLength,
   } = useLoginPage();
 
   return (
@@ -93,6 +104,17 @@ export default function LoginPage() {
               onChange={setConfirmPassword}
               required
             />
+          )}
+
+          {tab === 'register' && (
+            <div className="flex flex-col gap-1.5">
+              <PasswordRule ok={passwordRules.length} text={t('rules.length', { min: passwordMinLength })} />
+              <PasswordRule ok={passwordRules.upper} text={t('rules.upper')} />
+              <PasswordRule ok={passwordRules.lower} text={t('rules.lower')} />
+              <PasswordRule ok={passwordRules.number} text={t('rules.number')} />
+              <PasswordRule ok={passwordRules.special} text={t('rules.special')} />
+              <PasswordRule ok={passwordRules.match} text={t('rules.match')} />
+            </div>
           )}
         </div>
 

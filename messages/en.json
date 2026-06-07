@@ -33,6 +33,14 @@
     "confirmPassword": "Confirm password",
     "emailHint": "Example: user@example.com",
     "passwordHint": "Example: MyP@ssw0rd!",
+    "rules": {
+      "length": "At least {min} characters",
+      "upper": "Uppercase letter (A-Z)",
+      "lower": "Lowercase letter (a-z)",
+      "number": "Digit (0-9)",
+      "special": "Special character (!@#…)",
+      "match": "Passwords match"
+    },
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "loginLoading": "Loading..."

@@ -33,6 +33,14 @@
     "confirmPassword": "Passwort bestätigen",
     "emailHint": "Beispiel: user@example.com",
     "passwordHint": "Beispiel: MyP@ssw0rd!",
+    "rules": {
+      "length": "Mindestens {min} Zeichen",
+      "upper": "Großbuchstabe (A-Z)",
+      "lower": "Kleinbuchstabe (a-z)",
+      "number": "Ziffer (0-9)",
+      "special": "Sonderzeichen (!@#…)",
+      "match": "Passwörter stimmen überein"
+    },
     "noAccount": "Noch kein Konto?",
     "hasAccount": "Bereits ein Konto?",
     "loginLoading": "Wird geladen..."
