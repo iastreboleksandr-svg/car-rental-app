@@ -26,14 +26,14 @@ export default function LoginPage() {
         onSubmit={handleSubmit}
         className="bg-white rounded-2xl shadow-md w-full max-w-md p-6 flex flex-col gap-6"
       >
-        <div className="flex border-b border-gray-200">
+        <div className="flex border-b border-border-default">
           <button
             type="button"
             onClick={() => switchTab('login')}
             className={`pb-2 px-4 text-sm font-medium transition-colors ${
               tab === 'login'
-                ? 'text-[#48C964] border-b-2 border-[#48C964]'
-                : 'text-gray-400 hover:text-gray-600'
+                ? 'text-brand border-b-2 border-brand'
+                : 'text-text-muted hover:text-text-secondary'
             }`}
           >
             {t('login')}
@@ -43,8 +43,8 @@ export default function LoginPage() {
             onClick={() => switchTab('register')}
             className={`pb-2 px-4 text-sm font-medium transition-colors ${
               tab === 'register'
-                ? 'text-[#48C964] border-b-2 border-[#48C964]'
-                : 'text-gray-400 hover:text-gray-600'
+                ? 'text-brand border-b-2 border-brand'
+                : 'text-text-muted hover:text-text-secondary'
             }`}
           >
             {t('register')}
@@ -71,7 +71,7 @@ export default function LoginPage() {
             hint={t('passwordHint')}
             trailingIcon={
               <button onClick={() => setShowPassword(!showPassword)} type="button">
-                <Eye size={16} className="text-gray-400 hover:text-gray-600" />
+                <Eye size={16} className="text-text-muted hover:text-text-secondary" />
               </button>
             }
             value={password}
@@ -86,7 +86,7 @@ export default function LoginPage() {
               leadingIcon={<Lock size={16} />}
               trailingIcon={
                 <button onClick={() => setShowConfirmPassword(!showConfirmPassword)} type="button">
-                  <Eye size={16} className="text-gray-400 hover:text-gray-600" />
+                  <Eye size={16} className="text-text-muted hover:text-text-secondary" />
                 </button>
               }
               value={confirmPassword}
@@ -102,18 +102,18 @@ export default function LoginPage() {
           {loading ? t('loginLoading') : tab === 'login' ? t('login') : t('register')}
         </Button>
 
-        <p className="text-center text-sm text-gray-500">
+        <p className="text-center text-sm text-text-muted">
           {tab === 'login' ? (
             <>
               {t('noAccount')}{' '}
-              <button type="button" onClick={() => switchTab('register')} className="text-[#48C964] hover:underline">
+              <button type="button" onClick={() => switchTab('register')} className="text-brand hover:underline">
                 {t('register')}
               </button>
             </>
           ) : (
             <>
               {t('hasAccount')}{' '}
-              <button type="button" onClick={() => switchTab('login')} className="text-[#48C964] hover:underline">
+              <button type="button" onClick={() => switchTab('login')} className="text-brand hover:underline">
                 {t('login')}
               </button>
             </>
