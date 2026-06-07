@@ -40,14 +40,10 @@ export function useLoginPage() {
     special: false,
     confirmMatch: false,
   });
+  const pathminlength = 12;
+ const emailValid = email.includes('@') && email.includes('.');
 
-  const setAuth = useAuthStore((s) => s.setAuth);
-  const router = useRouter();
-
-  useEffect(() => {
-    const emailValid = email.includes('@') && email.includes('.');
-
-    const passLength = password.length >= 8;
+    const passLength = password.length >= pathminlength;
     const upper = /[A-Z]/.test(password);
     const lower = /[a-z]/.test(password);
     const number = /[0-9]/.test(password);
@@ -56,6 +52,11 @@ export function useLoginPage() {
     const confirmMatch =
       tab === 'register' ? password === confirmPassword && confirmPassword.length > 0 : true;
 
+  const setAuth = useAuthStore((s) => s.setAuth);
+  const router = useRouter();
+
+  useEffect(() => {
+   
     setSteps({
       emailValid,
       passLength,
@@ -114,5 +115,6 @@ export function useLoginPage() {
     loading,
     handleSubmit,
     steps,
+    pathminlength
   };
 }

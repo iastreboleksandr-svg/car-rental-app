@@ -26,6 +26,7 @@ export default function LoginPage() {
     loading,
     handleSubmit,
     steps,
+    pathminlength
   } = useLoginPage();
 
   const Rule = ({ ok, text }: { ok: boolean; text: string }) => (
@@ -110,7 +111,7 @@ export default function LoginPage() {
 
               {/* RULES (как на твоём скрине) */}
               <div className="flex flex-col gap-1 mt-2">
-                <Rule ok={steps.passLength} text="Минимум 8 символов" />
+                <Rule ok={steps.passLength} text ={`Минимум ${pathminlength} символов`} />
                 <Rule ok={steps.upper} text="A-Z (заглавные)" />
                 <Rule ok={steps.lower} text="a-z (строчные)" />
                 <Rule ok={steps.number} text="0-9 (цифры)" />
