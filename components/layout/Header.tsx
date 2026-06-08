@@ -1,41 +1,63 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Car } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
 import { useNotificationStore } from '@/store/notification.store';
 import { UserDropdown } from './UserDropdown';
 import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
+import { LanguageSwitcher } from './LanguageSwitcher';
+
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isActive = pathname === href || pathname.startsWith(href + '/');
+
+  return (
+    <Link
+      href={href}
+      className={`text-sm font-medium transition-colors relative ${
+        isActive ? 'text-[#48C964]' : 'text-gray-600 hover:text-gray-900'
+      }`}
+    >
+      {children}
+      {isActive && <span className="absolute -bottom-[18px] left-0 right-0 h-0.5 bg-[#48C964]" />}
+    </Link>
+  );
+}
 
 export function Header() {
+  const t = useTranslations('nav');
   const { isAuthenticated } = useAuthStore();
   const { unreadCount } = useNotificationStore();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
 
   return (
-    <header className="sticky top-0 z-50 shadow-sm border-gray-100 bg-white">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
-        <Link href="/search" className="text-lg font-semibold text-gray-900">
-          CarRental
+        <Link href="/" className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-[#48C964] flex items-center justify-center">
+            <Car size={16} className="text-white" />
+          </div>
+          <span className="text-lg font-bold text-gray-900">
+            Car<span className="text-[#48C964]">Rental</span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {authenticated ? (
-            <>
-              <Link href="/search" className="text-sm text-gray-600 hover:text-gray-900">
-                Search
-              </Link>
-              <Link href="/bookings" className="text-sm text-gray-600 hover:text-gray-900">
-                My bookings
-              </Link>
-              <Link href="/dashboard" className="text-sm text-gray-600 hover:text-gray-900">
-                Dashboard
-              </Link>
-              <NotificationBadge count={unreadCount} href="/notifications" />
+        <div className="hidden items-center gap-6 md:flex">
+          {authenticated && (
+            <nav className="flex items-center gap-6">
+              <NavLink href="/search">{t('search')}</NavLink>
+              <NavLink href="/bookings">{t('myBookings')}</NavLink>
+              <NavLink href="/dashboard">{t('myCars')}</NavLink>
+              <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} />
               <UserDropdown />
-            </>
-          ) : null}
-        </nav>
+            </nav>
+          )}
+          <LanguageSwitcher />
+        </div>
 
         <MobileMenu isAuthenticated={authenticated} unreadCount={unreadCount} />
       </div>

@@ -8,15 +8,13 @@ import { useAuthStore } from '@/store/auth.store';
 export function useDashboardPage() {
   const router = useRouter();
   const token = useAuthStore((s) => s.token);
-  const user = useAuthStore((s) => s.user);
+  const hydrated = useAuthStore((s) => s._hydrated);
 
-  // GET /cars/me не реализован на беке — фильтруем по ownerId
-  const { data: allCars = [], isLoading } = useQuery({
-    queryKey: ['cars'],
-    queryFn: () => carService.getAll(),
+  const { data: cars = [], isLoading } = useQuery({
+    queryKey: ['cars', 'me'],
+    queryFn: () => carService.getMine(),
+    enabled: hydrated && !!token,
   });
-
-  const cars = allCars.filter((car) => car.ownerId === user?.id);
 
   function goToEdit(id: string) {
     router.push(`/cars/${id}/edit`);

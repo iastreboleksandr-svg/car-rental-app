@@ -30,7 +30,6 @@ export default function UaKitPage() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <div className="flex flex-col gap-6 w-80">
-
         <Avatar
           firstName="Анна"
           lastName="Петрова"
@@ -121,7 +120,6 @@ export default function UaKitPage() {
         <Checkbox label="Дизель" checked={diesel} onChange={setDiesel} />
         <Checkbox label="Электро" checked={electric} onChange={setElectric} />
         <Checkbox label="Гибрид" checked={hybrid} onChange={setHybrid} />
-
       </div>
     </div>
   );
