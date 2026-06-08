@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import { Providers } from '@/components/Providers';
 import { getLocale, getMessages, getTimeZone } from 'next-intl/server';
 
@@ -35,6 +36,7 @@ export default async function RootLayout({
         <Providers locale={locale} messages={messages} timeZone={timeZone}>
           <Header />
           <main className="flex-1">{children}</main>
+          <Footer />
           <div id="toast-portal" />
         </Providers>
       </body>
