@@ -59,7 +59,7 @@ export function BookingIncomingItem({
 
         {booking.status === 'PENDING' && (
           <div className="flex gap-2">
-            <Button variant="secondary" size="sm" leftIcon={<X size={14} />} onClick={() => onDecline(booking.id)} disabled={disabled}>
+            <Button variant="danger-outline" size="sm" leftIcon={<X size={14} />} onClick={() => onDecline(booking.id)} disabled={disabled}>
               {declineLabel}
             </Button>
             <Button size="sm" leftIcon={<Check size={14} />} onClick={() => onConfirm(booking.id)} disabled={disabled}>

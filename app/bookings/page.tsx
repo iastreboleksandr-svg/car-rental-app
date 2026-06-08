@@ -6,9 +6,10 @@ import { useTranslations } from 'next-intl';
 import Button from '@/components/atoms/Button';
 import Spinner from '@/components/atoms/Spinner';
 import { MyBookingItem } from '@/components/bookings/MyBookingItem';
+import { BookingsTabs } from '@/components/bookings/BookingsTabs';
 import { useMyBookingsPage, type MyBookingsTab } from '@/hooks/useMyBookingsPage';
 
-const TABS: MyBookingsTab[] = ['all', 'active', 'completed', 'cancelled'];
+const TAB_KEYS: MyBookingsTab[] = ['all', 'active', 'completed', 'cancelled'];
 
 export default function MyBookingsPage() {
   const t = useTranslations('myBookings');
@@ -19,21 +20,11 @@ export default function MyBookingsPage() {
     <div className="max-w-lg mx-auto px-4 py-8 flex flex-col gap-6">
       <h1 className="text-xl font-semibold text-text-base">{t('title')}</h1>
 
-      <div className="flex gap-1 bg-bg-card rounded-xl p-1 shadow-sm border border-border-default">
-        {TABS.map((key) => (
-          <button
-            key={key}
-            onClick={() => setActiveTab(key)}
-            className={`flex-1 py-2 px-2 rounded-lg text-sm font-medium transition-colors ${
-              activeTab === key
-                ? 'bg-brand text-text-inverse shadow-sm'
-                : 'text-text-muted hover:text-text-secondary'
-            }`}
-          >
-            {t(`tabs.${key}`)}
-          </button>
-        ))}
-      </div>
+      <BookingsTabs
+        tabs={TAB_KEYS.map((key) => ({ id: key, label: t(`tabs.${key}`) }))}
+        activeTab={activeTab}
+        onChange={setActiveTab}
+      />
 
       {isLoading && (
         <div className="flex items-center justify-center gap-2 py-10 text-sm text-text-muted">

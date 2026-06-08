@@ -41,7 +41,7 @@ export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, on
 
       {canCancel && (
         <div className="flex justify-end">
-          <Button variant="secondary" size="sm" onClick={() => onCancel(booking.id)} disabled={cancelling}>
+          <Button variant="danger-outline" size="sm" onClick={() => onCancel(booking.id)} disabled={cancelling}>
             {cancelLabel}
           </Button>
         </div>

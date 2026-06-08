@@ -1,6 +1,6 @@
 import React from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost' | 'green';
+type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'danger-outline' | 'ghost' | 'green';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps {
@@ -20,6 +20,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-brand text-text-inverse hover:bg-brand-hover active:bg-brand-active border border-transparent',
   secondary: 'bg-bg-card text-text-base hover:bg-gray-50 active:bg-gray-100 border border-border-default',
   danger: 'bg-red-700 text-text-inverse hover:bg-red-800 active:bg-red-900 border border-transparent',
+  'danger-outline': 'bg-transparent text-red-600 hover:bg-red-50 active:bg-red-100 border border-red-300 hover:border-red-400',
   ghost: 'bg-transparent text-text-secondary hover:bg-gray-100 active:bg-gray-200 border border-transparent',
   green: 'bg-brand text-text-inverse hover:bg-brand-hover active:bg-brand-active border border-transparent',
 };

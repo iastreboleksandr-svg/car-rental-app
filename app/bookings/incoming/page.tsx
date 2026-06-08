@@ -4,9 +4,10 @@ import { Car } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Spinner from '@/components/atoms/Spinner';
 import { BookingIncomingItem } from '@/components/bookings/BookingIncomingItem';
+import { BookingsTabs } from '@/components/bookings/BookingsTabs';
 import { useIncomingBookingsPage, type IncomingFilterTab } from '@/hooks/useIncomingBookingsPage';
 
-const TABS: IncomingFilterTab[] = ['all', 'pending', 'confirmed'];
+const TAB_KEYS: IncomingFilterTab[] = ['all', 'pending', 'confirmed'];
 
 export default function IncomingBookingsPage() {
   const t = useTranslations('incomingBookings');
@@ -19,32 +20,15 @@ export default function IncomingBookingsPage() {
       <div className="max-w-lg mx-auto flex flex-col gap-6">
         <h1 className="text-xl font-semibold text-text-base">{t('title')}</h1>
 
-        <div className="flex gap-1 bg-bg-card rounded-xl p-1 shadow-sm border border-border-default">
-          {TABS.map((key) => (
-            <button
-              key={key}
-              onClick={() => setActiveTab(key)}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
-                activeTab === key
-                  ? 'bg-brand text-text-inverse shadow-sm'
-                  : 'text-text-muted hover:text-text-secondary'
-              }`}
-            >
-              {t(`tabs.${key}`)}
-              {key === 'pending' && pendingCount > 0 && (
-                <span
-                  className={`text-xs font-semibold w-5 h-5 rounded-full flex items-center justify-center ${
-                    activeTab === 'pending'
-                      ? 'bg-white/30 text-text-inverse'
-                      : 'bg-bg-warning text-status-warning'
-                  }`}
-                >
-                  {pendingCount}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
+        <BookingsTabs
+          tabs={TAB_KEYS.map((key) => ({
+            id: key,
+            label: t(`tabs.${key}`),
+            badge: key === 'pending' ? pendingCount : undefined,
+          }))}
+          activeTab={activeTab}
+          onChange={setActiveTab}
+        />
 
         {isLoading && (
           <div className="flex items-center justify-center gap-2 py-10 text-sm text-text-muted">
