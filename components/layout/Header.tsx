@@ -11,38 +11,45 @@ import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({ href, children, exact }: { href: string; children: React.ReactNode; exact?: boolean }) {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(href + '/');
+  const isActive = exact ? pathname === href : pathname === href || pathname.startsWith(href + '/');
 
   return (
     <Link
       href={href}
       className={`text-sm font-medium transition-colors relative ${
-        isActive ? 'text-[#48C964]' : 'text-gray-600 hover:text-gray-900'
+        isActive ? 'text-brand' : 'text-text-muted hover:text-text-base'
       }`}
     >
       {children}
-      {isActive && <span className="absolute -bottom-[18px] left-0 right-0 h-0.5 bg-[#48C964]" />}
+      {isActive && <span className="absolute -bottom-[18px] left-0 right-0 h-0.5 bg-brand" />}
     </Link>
   );
 }
 
+const HIDDEN_ON = ['/'];
+
 export function Header() {
   const t = useTranslations('nav');
+  const pathname = usePathname();
   const { isAuthenticated } = useAuthStore();
   const { unreadCount } = useNotificationStore();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
 
+  if (HIDDEN_ON.includes(pathname)) {
+    return null;
+  }
+
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-bg-card border-b border-border-default shadow-sm">
       <div className="relative mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#48C964] flex items-center justify-center">
-            <Car size={16} className="text-white" />
+          <div className="w-8 h-8 rounded-lg bg-landing-cta-bg flex items-center justify-center">
+            <Car size={16} className="text-text-inverse" />
           </div>
-          <span className="text-lg font-bold text-gray-900">
-            Car<span className="text-[#48C964]">Rental</span>
+          <span className="text-lg font-bold text-text-base">
+            Car<span className="text-brand">Rental</span>
           </span>
         </Link>
 
@@ -50,8 +57,9 @@ export function Header() {
           {authenticated && (
             <nav className="flex items-center gap-6">
               <NavLink href="/search">{t('search')}</NavLink>
-              <NavLink href="/bookings">{t('myBookings')}</NavLink>
+              <NavLink href="/bookings" exact>{t('myBookings')}</NavLink>
               <NavLink href="/dashboard">{t('myCars')}</NavLink>
+              <NavLink href="/bookings/incoming">{t('incoming')}</NavLink>
               <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} />
               <UserDropdown />
             </nav>

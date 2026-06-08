@@ -14,6 +14,7 @@ export function useDashboardPage() {
     queryKey: ['cars', 'me'],
     queryFn: () => carService.getMine(),
     enabled: hydrated && !!token,
+    refetchInterval: 5000,
   });
 
   function goToEdit(id: string) {

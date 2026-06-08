@@ -1,4 +1,5 @@
 import type { Car, CarSearchItem, CarDetail, CreateCarDto } from '@/types/car';
+import type { BookedDate } from '@/types/booking';
 import { apiFetch } from '@/lib/apiFetch';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
@@ -47,10 +48,17 @@ export interface CarFilters {
   lat?: number;
   lng?: number;
   radius?: number;
+  limit?: number;
+  offset?: number;
+}
+
+export interface CarSearchResult {
+  cars: Car[];
+  total: number;
 }
 
 export const carService = {
-  getAll: (filters?: CarFilters): Promise<Car[]> => {
+  getAll: (filters?: CarFilters): Promise<CarSearchResult> => {
     const params = new URLSearchParams();
     if (filters) {
       const { fuel_type, ...rest } = filters;
@@ -61,7 +69,7 @@ export const carService = {
     }
     const qs = params.toString();
     return request<{ cars: CarSearchItem[]; total: number }>(`/cars${qs ? `?${qs}` : ''}`)
-      .then((res) => res.cars.map(normalizeSearchItem));
+      .then((res) => ({ cars: res.cars.map(normalizeSearchItem), total: res.total }));
   },
 
   getMine: (): Promise<Car[]> =>
@@ -70,10 +78,22 @@ export const carService = {
   getById: (id: string): Promise<Car> =>
     request<CarDetail>(`/cars/${id}`).then(normalizeDetail),
 
+  getBookedDates: (id: string): Promise<BookedDate[]> =>
+    request<BookedDate[]>(`/cars/${id}/booked-dates`),
+
   create: (dto: CreateCarDto): Promise<Car> =>
     request<CarDetail>('/cars', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dto),
     }).then(normalizeDetail),
+
+  uploadPhotos: (id: string, files: File[]): Promise<unknown> => {
+    const formData = new FormData();
+    files.forEach((file) => formData.append('files', file));
+    return request(`/cars/${id}/photos`, {
+      method: 'POST',
+      body: formData,
+    });
+  },
 };

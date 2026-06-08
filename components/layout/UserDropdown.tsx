@@ -28,7 +28,7 @@ export function UserDropdown() {
       await authService.logout(token, refreshToken).catch(() => {});
     }
     logout();
-    router.replace('/login');
+    router.replace('/');
   }
 
   useEffect(() => {

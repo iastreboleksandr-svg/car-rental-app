@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useId, useState, useRef, useEffect } from "react";
-import { ChevronDown, Check } from "lucide-react";
+import React, { useId, useState, useRef, useEffect } from 'react';
+import { ChevronDown, Check } from 'lucide-react';
 
 interface SelectOption {
   value: string;
@@ -25,11 +25,11 @@ export const Select: React.FC<SelectProps> = ({
   options = [],
   value = null,
   onChange,
-  placeholder = "Выберите...",
+  placeholder = 'Выберите...',
   error,
   disabled = false,
   required = false,
-  className = "",
+  className = '',
 }) => {
   const id = useId();
   const errorId = `${id}-error`;
@@ -45,8 +45,8 @@ export const Select: React.FC<SelectProps> = ({
         setOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleSelect = (optionValue: string) => {
@@ -55,25 +55,29 @@ export const Select: React.FC<SelectProps> = ({
   };
 
   const triggerStyles = [
-    "flex items-center justify-between w-full h-10 px-3 rounded-lg border text-sm transition-colors duration-150",
+    'flex items-center justify-between w-full h-10 px-3 rounded-lg border text-sm transition-colors duration-150',
     disabled
-      ? "border-gray-200 bg-gray-50 cursor-not-allowed text-gray-400"
+      ? 'border-border-disabled bg-bg-disabled cursor-not-allowed text-text-disabled'
       : hasError
-      ? "border-red-400 bg-white cursor-pointer"
-      : open
-      ? "border-[#48C964] bg-white ring-2 ring-[#48C964]/20 cursor-pointer"
-      : "border-gray-300 bg-white hover:border-gray-400 cursor-pointer",
-  ].join(" ");
+        ? 'border-border-error bg-bg-error cursor-pointer'
+        : open
+          ? 'border-border-focus bg-bg-card ring-2 ring-brand/20 cursor-pointer'
+          : 'border-border-default bg-bg-card hover:border-text-muted cursor-pointer',
+  ].join(' ');
 
   return (
     <div ref={ref} className={`flex flex-col gap-1 w-full ${className}`}>
       {label && (
         <label
           htmlFor={id}
-          className={`text-sm font-medium ${disabled ? "text-gray-400" : "text-gray-700"}`}
+          className={`text-sm font-medium ${disabled ? 'text-text-disabled' : 'text-text-secondary'}`}
         >
           {label}
-          {required && <span className="ml-1 text-red-500" aria-hidden="true">*</span>}
+          {required && (
+            <span className="ml-1 text-text-error" aria-hidden="true">
+              *
+            </span>
+          )}
         </label>
       )}
 
@@ -88,31 +92,31 @@ export const Select: React.FC<SelectProps> = ({
         tabIndex={disabled ? -1 : 0}
         onClick={() => !disabled && setOpen((prev) => !prev)}
         onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             if (!disabled) setOpen((prev) => !prev);
           }
-          if (e.key === "Escape") setOpen(false);
+          if (e.key === 'Escape') setOpen(false);
         }}
         className={triggerStyles}
       >
-        <span className={selectedOption ? "text-gray-900" : "text-gray-400"}>
+        <span className={selectedOption ? 'text-text-base' : 'text-text-placeholder'}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
         <ChevronDown
           size={16}
-          className={`flex-shrink-0 text-gray-400 transition-transform duration-150 ${open ? "rotate-180" : ""}`}
+          className={`shrink-0 text-text-muted transition-transform duration-150 ${open ? 'rotate-180' : ''}`}
         />
       </div>
 
       {open && (
         <div
           role="listbox"
-          className="absolute z-50 mt-1 w-full min-w-[12rem] rounded-lg border border-gray-200 bg-white shadow-lg py-1 overflow-auto max-h-60"
+          className="absolute z-50 mt-1 w-full min-w-48 rounded-lg border border-border-default bg-bg-card shadow-lg py-1 overflow-auto max-h-60"
           style={{ width: ref.current?.offsetWidth }}
         >
           {options.length === 0 ? (
-            <div className="px-3 py-2 text-sm text-gray-400">Нет вариантов</div>
+            <div className="px-3 py-2 text-sm text-text-muted">Нет вариантов</div>
           ) : (
             options.map((option) => {
               const isSelected = option.value === value;
@@ -123,14 +127,14 @@ export const Select: React.FC<SelectProps> = ({
                   aria-selected={isSelected}
                   onClick={() => handleSelect(option.value)}
                   className={[
-                    "flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-colors duration-100",
+                    'flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-colors duration-100',
                     isSelected
-                      ? "bg-[#48C964]/10 text-[#2a9043] font-medium"
-                      : "text-gray-700 hover:bg-gray-50",
-                  ].join(" ")}
+                      ? 'bg-brand-subtle text-brand font-medium'
+                      : 'text-text-secondary hover:bg-gray-50',
+                  ].join(' ')}
                 >
                   {option.label}
-                  {isSelected && <Check size={14} className="text-[#48C964]" />}
+                  {isSelected && <Check size={14} className="text-brand" />}
                 </div>
               );
             })
@@ -139,8 +143,13 @@ export const Select: React.FC<SelectProps> = ({
       )}
 
       {hasError && (
-        <p id={errorId} className="text-xs text-red-500 flex items-center gap-1">
-          <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <p id={errorId} className="text-xs text-text-error flex items-center gap-1">
+          <svg
+            className="w-3.5 h-3.5 shrink-0"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+          >
             <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3.5a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3A.75.75 0 0 1 8 4.5zm0 6.5a.875.875 0 1 1 0-1.75A.875.875 0 0 1 8 11z" />
           </svg>
           {error}

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useId, useEffect, useRef } from "react";
+import React, { useId, useEffect, useRef } from 'react';
 
 interface CheckboxProps {
   label?: string;
@@ -17,7 +17,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
   disabled = false,
   indeterminate = false,
-  className = "",
+  className = '',
 }) => {
   const id = useId();
   const ref = useRef<HTMLInputElement>(null);
@@ -29,22 +29,22 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   }, [indeterminate]);
 
   const boxStyles = [
-    "w-4 h-4 rounded border-2 flex-shrink-0 transition-colors duration-150",
+    "w-4 h-4 rounded border-2 shrink-0 transition-colors duration-150",
     disabled
-      ? "border-gray-200 bg-gray-100 cursor-not-allowed"
+      ? 'border-gray-200 bg-gray-100 cursor-not-allowed'
       : checked || indeterminate
-      ? "border-[#48C964] bg-[#48C964] cursor-pointer"
-      : "border-gray-300 bg-white cursor-pointer hover:border-[#48C964]",
-  ].join(" ");
+        ? 'border-brand bg-brand cursor-pointer'
+        : 'border-border-default bg-bg-card cursor-pointer hover:border-brand',
+  ].join(' ');
 
   return (
     <label
       htmlFor={id}
       className={[
-        "inline-flex items-center gap-2.5",
-        disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+        'inline-flex items-center gap-2.5',
+        disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
         className,
-      ].join(" ")}
+      ].join(' ')}
     >
       <input
         ref={ref}
@@ -81,19 +81,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             className="w-full h-full p-0.5"
           >
-            <path
-              d="M2.5 6h7"
-              stroke="white"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
+            <path d="M2.5 6h7" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
           </svg>
         )}
       </span>
 
-      {label && (
-        <span className="text-sm text-gray-700 select-none">{label}</span>
-      )}
+      {label && <span className="text-sm text-text-secondary select-none">{label}</span>}
     </label>
   );
 };

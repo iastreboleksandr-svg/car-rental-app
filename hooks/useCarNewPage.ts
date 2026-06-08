@@ -25,11 +25,18 @@ export function useCarNewPage() {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [form, setForm] = useState<CreateCarDto>(INITIAL_FORM);
+  const [photoFiles, setPhotoFiles] = useState<File[]>([]);
 
   const { mutate: createCar, isPending, error } = useMutation({
-    mutationFn: (dto: CreateCarDto) => carService.create(dto),
+    mutationFn: async (dto: CreateCarDto) => {
+      const car = await carService.create(dto);
+      if (photoFiles.length > 0) {
+        await carService.uploadPhotos(car.id, photoFiles).catch(() => {});
+      }
+      return car;
+    },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['cars', 'me'] });
+      queryClient.invalidateQueries({ queryKey: ['cars'] });
       router.replace('/dashboard');
     },
   });
@@ -49,6 +56,8 @@ export function useCarNewPage() {
     handleSubmit,
     isPending,
     error,
+    photoFiles,
+    setPhotoFiles,
     fuelType: form.fuelType as FuelType,
     transmission: form.transmission as Transmission,
   };

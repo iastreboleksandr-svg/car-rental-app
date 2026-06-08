@@ -1,0 +1,10 @@
+export function formatBookingDates(startAt: string, endAt: string): string {
+  const fmt = (iso: string) =>
+    new Date(iso).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  return `${fmt(startAt)} — ${fmt(endAt)}`;
+}
+
+export function bookingCarName(car: { brand: string; model: string; year: number } | undefined): string {
+  if (!car) return '—';
+  return `${car.brand} ${car.model} ${car.year}`;
+}

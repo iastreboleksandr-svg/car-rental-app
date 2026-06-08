@@ -21,6 +21,17 @@ export function useLoginPage() {
   const setAuth = useAuthStore((s) => s.setAuth);
   const router = useRouter();
 
+  const PASSWORD_MIN_LENGTH = 12;
+
+  const passwordRules = {
+    length: password.length >= PASSWORD_MIN_LENGTH,
+    upper: /[A-Z]/.test(password),
+    lower: /[a-z]/.test(password),
+    number: /[0-9]/.test(password),
+    special: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+    match: confirmPassword.length > 0 && password === confirmPassword,
+  };
+
   function switchTab(next: 'login' | 'register') {
     setTab(next);
     setError('');
@@ -62,5 +73,7 @@ export function useLoginPage() {
     error,
     loading,
     handleSubmit,
+    passwordRules,
+    passwordMinLength: PASSWORD_MIN_LENGTH,
   };
 }

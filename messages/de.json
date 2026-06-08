@@ -19,6 +19,7 @@
     "search": "Suchen",
     "myBookings": "Meine Buchungen",
     "myCars": "Meine Autos",
+    "incoming": "Eingehend",
     "notifications": "Benachrichtigungen",
     "profile": "Profil",
     "settings": "Einstellungen"
@@ -30,6 +31,16 @@
     "email": "E-Mail",
     "password": "Passwort",
     "confirmPassword": "Passwort bestätigen",
+    "emailHint": "Beispiel: user@example.com",
+    "passwordHint": "Beispiel: MyP@ssw0rd!",
+    "rules": {
+      "length": "Mindestens {min} Zeichen",
+      "upper": "Großbuchstabe (A-Z)",
+      "lower": "Kleinbuchstabe (a-z)",
+      "number": "Ziffer (0-9)",
+      "special": "Sonderzeichen (!@#…)",
+      "match": "Passwörter stimmen überein"
+    },
     "noAccount": "Noch kein Konto?",
     "hasAccount": "Bereits ein Konto?",
     "loginLoading": "Wird geladen..."
@@ -61,6 +72,7 @@
     "resetFilters": "Filter zurücksetzen",
     "found": "Gefunden: {count} Autos",
     "nothingFound": "Nichts gefunden",
+    "loadMore": "Mehr anzeigen",
     "loadError": "Autos konnten nicht geladen werden",
     "noReviews": "keine Bewertungen",
     "fuel": {
@@ -77,6 +89,13 @@
   "car": {
     "new": {
       "title": "Neues Auto",
+      "sectionPhoto": "Foto",
+      "sectionMain": "Allgemein",
+      "sectionLocation": "Standort",
+      "sectionPricing": "Preis",
+      "sectionDescription": "Beschreibung",
+      "uploadPhoto": "Foto hochladen",
+      "cancel": "Abbrechen",
       "brand": "Marke",
       "model": "Modell",
       "year": "Baujahr",
@@ -149,8 +168,14 @@
   "bookings": {
     "title": "Buchung",
     "rentalDates": "Mietdaten",
-    "startDate": "Beginn",
-    "endDate": "Ende",
+    "selectPeriod": "Mietzeitraum",
+    "daysSelected": "{count} Tage",
+    "perDay": "Tag",
+    "legendConfirmed": "Belegt",
+    "legendPending": "Wartet auf Bestätigung",
+    "priceTitle": "Preisberechnung",
+    "deposit": "Kaution",
+    "total": "Gesamt",
     "payment": "Zahlungsmethode",
     "cashPayment": "Barzahlung bei Abholung",
     "cashDescription": "Direkte Zahlung an den Besitzer",
@@ -158,5 +183,148 @@
     "confirmed": "✓ Buchung bestätigt",
     "processing": "Wird verarbeitet...",
     "backToSearch": "Zurück zur Suche"
+  },
+  "myBookings": {
+    "title": "Meine Buchungen",
+    "empty": "Sie haben noch keine Buchungen",
+    "browseCars": "Auto finden",
+    "cancel": "Stornieren",
+    "total": "${total}",
+    "tabs": {
+      "all": "Alle",
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "cancelled": "Storniert"
+    },
+    "status": {
+      "PENDING": "Ausstehend",
+      "CONFIRMED": "Bestätigt",
+      "COMPLETED": "Abgeschlossen",
+      "CANCELLED": "Storniert"
+    }
+  },
+  "incomingBookings": {
+    "title": "Eingehende Buchungen",
+    "empty": "Keine Buchungen in dieser Kategorie",
+    "total": "${total}",
+    "confirm": "Bestätigen",
+    "decline": "Ablehnen",
+    "complete": "Abschließen",
+    "tabs": {
+      "all": "Alle",
+      "pending": "Ausstehend",
+      "confirmed": "Bestätigt"
+    },
+    "status": {
+      "PENDING": "Ausstehend",
+      "CONFIRMED": "Bestätigt",
+      "COMPLETED": "Abgeschlossen",
+      "CANCELLED": "Abgelehnt"
+    }
+  },
+  "slots": {
+    "alwaysAvailable": "Immer verfügbar",
+    "alwaysAvailableNote": "Das Auto ist an allen Tagen buchbar, außer an blockierten und bereits gebuchten.",
+    "loadError": "Verfügbarkeit konnte nicht geladen werden",
+    "hint": "Klicken Sie auf einen Tag, um einen Zeitraum auszuwählen. Klicken Sie auf einen vorhandenen Zeitraum, um ihn zu löschen.",
+    "selectedPeriod": "Ausgewählter Zeitraum: {range}",
+    "markAvailable": "Verfügbar",
+    "markBlocked": "Blockiert",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "deletePeriod": "Zeitraum löschen",
+    "legend": {
+      "available": "Verfügbar",
+      "blocked": "Blockiert",
+      "booked": "Gebucht"
+    }
+  },
+  "landing": {
+    "nav": {
+      "how": "So funktioniert's",
+      "cars": "Autos",
+      "owners": "Für Besitzer",
+      "login": "Anmelden",
+      "start": "Loslegen"
+    },
+    "hero": {
+      "badge": "Verfügbar in 12 Städten in Deutschland",
+      "titleStart": "Miete ein Auto",
+      "titleAccent": "direkt",
+      "titleEnd": "vom Besitzer",
+      "subtitle": "Keine Vermittler. Keine versteckten Gebühren. Tausende Autos von verifizierten Besitzern in ganz Deutschland.",
+      "findCar": "Auto finden",
+      "rentOut": "Eigenes Auto vermieten",
+      "happyRenters": "zufriedene Mieter",
+      "cardLocation": "Berlin · Benzin · Automatik",
+      "perDay": "/ Tag",
+      "reviews": "{rating} ({count} Bewertungen)",
+      "book": "Jetzt buchen",
+      "verified": "Besitzer verifiziert",
+      "responseTime": "Antwort des Besitzers",
+      "responseValue": "~45 Minuten"
+    },
+    "stats": {
+      "cars": "Autos",
+      "trips": "Fahrten",
+      "rating": "Durchschnittsbewertung",
+      "cities": "Deutsche Städte"
+    },
+    "how": {
+      "label": "So funktioniert's",
+      "title": "Drei einfache Schritte",
+      "subtitle": "Auto finden, buchen und losfahren. So einfach ist das.",
+      "step1Title": "Auto finden",
+      "step1Desc": "Gib Stadt, Daten und Filter ein. Wir zeigen verfügbare Autos in deiner Nähe.",
+      "step2Title": "Buchen",
+      "step2Desc": "Sende eine Anfrage an den Besitzer. Barzahlung bei Abholung — keine versteckten Gebühren.",
+      "step3Title": "Losfahren",
+      "step3Desc": "Triff den Besitzer, hol die Schlüssel und mach dich auf den Weg."
+    },
+    "popular": {
+      "label": "Beliebt",
+      "title": "Autos in deiner Nähe",
+      "viewAll": "Alle ansehen",
+      "viewAllMobile": "Alle Autos ansehen"
+    },
+    "features": {
+      "label": "Warum wir",
+      "title": "Zuverlässig und bequem",
+      "f1Title": "Verifizierte Besitzer",
+      "f1Desc": "Jeder Besitzer ist verifiziert. Bewertungen von echten Mietern.",
+      "f2Title": "Schnelle Buchung",
+      "f2Desc": "Anfrage in 2 Minuten. Besitzer antworten innerhalb einer Stunde.",
+      "f3Title": "In ganz Deutschland",
+      "f3Desc": "Berlin, München, Hamburg, Frankfurt und 8 weitere Städte.",
+      "f4Title": "Ehrliche Bewertungen",
+      "f4Desc": "Nur echte Bewertungen von Mietern nach der Fahrt."
+    },
+    "owners": {
+      "label": "Für Besitzer",
+      "title": "Dein Auto steht — es könnte Geld verdienen",
+      "subtitle": "Vermiete dein Auto, wenn du es nicht nutzt. Du legst den Preis fest und wählst die Mieter. Wir nehmen eine minimale Provision.",
+      "benefit1": "Du wählst, an wen du vermietest",
+      "benefit2": "Du legst deine Preise fest",
+      "benefit3": "Du erhältst Barzahlung",
+      "addCar": "Auto hinzufügen",
+      "stat1Value": "€800",
+      "stat1Label": "Durchschnittliches Monatseinkommen",
+      "stat1Sub": "bei 16 Miettagen",
+      "stat2Value": "< 1 Std.",
+      "stat2Label": "Antwortzeit",
+      "stat2Sub": "Plattformdurchschnitt",
+      "stat3Value": "4.8★",
+      "stat3Label": "Plattformbewertung",
+      "stat3Sub": "von Besitzern",
+      "stat4Value": "0%",
+      "stat4Label": "Versteckte Gebühren",
+      "stat4Sub": "nur faire Bedingungen"
+    },
+    "cta": {
+      "title": "Bereit für die Fahrt?",
+      "subtitle": "Tausende Autos warten auf dich. Finde deins in 2 Minuten.",
+      "findCar": "Auto finden",
+      "register": "Registrieren"
+    }
   }
 }

@@ -1,26 +1,123 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand: #1e7e34;
+  --brand-hover: #176128;
+  --brand-active: #10461d;
+  --brand-ring: #48c964;
+  --brand-subtle: #f0faf2;
+
+  --text-base: #111827;
+  --text-secondary: #374151;
+  --text-muted: #4b5563;
+  --text-placeholder: #9ca3af;
+  --text-disabled: #c2c8d0;
+  --text-inverse: #ffffff;
+  --text-error: #b91c1c;
+  --text-link: #1e7e34;
+
+  --border-default: #d1d5db;
+  --border-focus: #1e7e34;
+  --border-error: #dc2626;
+  --border-disabled: #e5e7eb;
+
+  --bg-page: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-disabled: #f9fafb;
+  --bg-error: #fef2f2;
+  --bg-warning: #fff7ed;
+
+  --color-success: #1e7e34;
+  --color-error: #b91c1c;
+  --color-warning: #92400e;
+  --color-error-hover: #991b1b;
+  --color-star: #d97706;
+
+  --landing-dark-bg: #111827;
+  --landing-dark-text: #ffffff;
+  --landing-dark-muted: #9ca3af;
+  --landing-dark-border: rgba(255, 255, 255, 0.1);
+  --landing-cta-bg: #48c964;
+  --landing-cta-hover: #32a84d;
+  --landing-cta-text: #1e7e34;
+  --landing-cta-btn-bg: rgba(255, 255, 255, 0.2);
+  --landing-cta-btn-hover: rgba(255, 255, 255, 0.3);
+  --landing-cta-btn-border: rgba(255, 255, 255, 0.3);
+  --landing-dark-card: rgba(255, 255, 255, 0.05);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-page);
+  --color-foreground: var(--text-base);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-brand-ring: var(--brand-ring);
+  --color-brand-subtle: var(--brand-subtle);
+
+  --color-text-base: var(--text-base);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-placeholder: var(--text-placeholder);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-error: var(--text-error);
+  --color-text-link: var(--text-link);
+
+  --color-border-default: var(--border-default);
+  --color-border-focus: var(--border-focus);
+  --color-border-error: var(--border-error);
+  --color-border-disabled: var(--border-disabled);
+
+  --color-bg-page: var(--bg-page);
+  --color-bg-card: var(--bg-card);
+  --color-bg-disabled: var(--bg-disabled);
+  --color-bg-error: var(--bg-error);
+  --color-bg-warning: var(--bg-warning);
+
+  --color-status-warning: var(--color-warning);
+  --color-error-hover: var(--color-error-hover);
+  --color-status-success: var(--color-success);
+  --color-status-star: var(--color-star);
+
+  --color-landing-dark-bg: var(--landing-dark-bg);
+  --color-landing-dark-text: var(--landing-dark-text);
+  --color-landing-dark-muted: var(--landing-dark-muted);
+  --color-landing-dark-border: var(--landing-dark-border);
+  --color-landing-cta-bg: var(--landing-cta-bg);
+  --color-landing-cta-hover: var(--landing-cta-hover);
+  --color-landing-cta-text: var(--landing-cta-text);
+  --color-landing-cta-btn-bg: var(--landing-cta-btn-bg);
+  --color-landing-cta-btn-hover: var(--landing-cta-btn-hover);
+  --color-landing-cta-btn-border: var(--landing-cta-btn-border);
+  --color-landing-dark-card: var(--landing-dark-card);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-page);
+  color: var(--text-base);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.rdp-busy-confirmed {
+  opacity: 1 !important;
+}
+.rdp-busy-confirmed .rdp-day_button {
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  text-decoration: line-through;
+  border-radius: 6px;
+}
+
+.rdp-busy-pending {
+  opacity: 1 !important;
+}
+.rdp-busy-pending .rdp-day_button {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  text-decoration: line-through;
+  border-radius: 6px;
 }
