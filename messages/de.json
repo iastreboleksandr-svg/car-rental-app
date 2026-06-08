@@ -216,6 +216,23 @@
       "CANCELLED": "Abgelehnt"
     }
   },
+  "slots": {
+    "alwaysAvailable": "Immer verfügbar",
+    "alwaysAvailableNote": "Das Auto ist an allen Tagen buchbar, außer an blockierten und bereits gebuchten.",
+    "loadError": "Verfügbarkeit konnte nicht geladen werden",
+    "hint": "Klicken Sie auf einen Tag, um einen Zeitraum auszuwählen. Klicken Sie auf einen vorhandenen Zeitraum, um ihn zu löschen.",
+    "selectedPeriod": "Ausgewählter Zeitraum: {range}",
+    "markAvailable": "Verfügbar",
+    "markBlocked": "Blockiert",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "deletePeriod": "Zeitraum löschen",
+    "legend": {
+      "available": "Verfügbar",
+      "blocked": "Blockiert",
+      "booked": "Gebucht"
+    }
+  },
   "landing": {
     "nav": {
       "how": "So funktioniert's",

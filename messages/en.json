@@ -216,6 +216,23 @@
       "CANCELLED": "Declined"
     }
   },
+  "slots": {
+    "alwaysAvailable": "Always available",
+    "alwaysAvailableNote": "The car is available for booking on any dates except blocked and already booked ones.",
+    "loadError": "Failed to load availability",
+    "hint": "Click a day to select a period. Click an existing period to delete it.",
+    "selectedPeriod": "Selected period: {range}",
+    "markAvailable": "Available",
+    "markBlocked": "Blocked",
+    "save": "Save",
+    "cancel": "Cancel",
+    "deletePeriod": "Delete period",
+    "legend": {
+      "available": "Available",
+      "blocked": "Blocked",
+      "booked": "Booked"
+    }
+  },
   "landing": {
     "nav": {
       "how": "How it works",
