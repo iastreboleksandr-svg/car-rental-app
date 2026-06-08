@@ -14,7 +14,7 @@ import { useTranslations } from 'next-intl';
 export default function CarNewPage() {
   const t = useTranslations('car.new');
   const tCommon = useTranslations('common');
-  const { form, handleChange, handleSubmit, isPending, error } = useCarNewPage();
+  const { form, handleChange, handleSubmit, isPending, error, setPhotoFiles } = useCarNewPage();
   const [photo, setPhoto] = useState<string | null>(null);
 
   const FUEL_OPTIONS = [
@@ -27,6 +27,7 @@ export default function CarNewPage() {
   function handlePhoto(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+    setPhotoFiles([file]);
     const reader = new FileReader();
     reader.onload = () => setPhoto(reader.result as string);
     reader.readAsDataURL(file);

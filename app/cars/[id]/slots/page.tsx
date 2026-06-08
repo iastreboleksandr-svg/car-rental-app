@@ -52,6 +52,7 @@ function CarSlots({ carId }: { carId: string }) {
     isDeleting,
     alwaysAvailable,
     setAlwaysAvailable,
+    isTogglingAlways,
   } = useCarSlotsPage(carId);
 
   if (isLoading) {
@@ -99,6 +100,7 @@ function CarSlots({ carId }: { carId: string }) {
               onChange={setAlwaysAvailable}
               label={t('alwaysAvailable')}
               labelPosition="left"
+              disabled={isTogglingAlways}
             />
           </div>
 

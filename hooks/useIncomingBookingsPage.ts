@@ -18,6 +18,7 @@ export function useIncomingBookingsPage() {
     queryFn: () => bookingService.getIncoming(),
     enabled: hydrated && !!token,
     refetchInterval: 5000,
+    refetchOnMount: 'always',
   });
 
   const invalidate = () => queryClient.invalidateQueries({ queryKey: ['bookings', 'incoming'] });

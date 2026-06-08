@@ -101,3 +101,23 @@ body {
   color: var(--text-base);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.rdp-busy-confirmed {
+  opacity: 1 !important;
+}
+.rdp-busy-confirmed .rdp-day_button {
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  text-decoration: line-through;
+  border-radius: 6px;
+}
+
+.rdp-busy-pending {
+  opacity: 1 !important;
+}
+.rdp-busy-pending .rdp-day_button {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+  text-decoration: line-through;
+  border-radius: 6px;
+}

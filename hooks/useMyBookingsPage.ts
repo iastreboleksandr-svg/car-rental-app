@@ -21,6 +21,7 @@ export function useMyBookingsPage() {
     queryFn: () => bookingService.getMy(),
     enabled: hydrated && !!token,
     refetchInterval: 5000,
+    refetchOnMount: 'always',
   });
 
   const { mutate: cancel, isPending: isCancelling } = useMutation({

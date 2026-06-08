@@ -1,4 +1,5 @@
 import type { Car, CarSearchItem, CarDetail, CreateCarDto } from '@/types/car';
+import type { BookedDate } from '@/types/booking';
 import { apiFetch } from '@/lib/apiFetch';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
@@ -77,10 +78,22 @@ export const carService = {
   getById: (id: string): Promise<Car> =>
     request<CarDetail>(`/cars/${id}`).then(normalizeDetail),
 
+  getBookedDates: (id: string): Promise<BookedDate[]> =>
+    request<BookedDate[]>(`/cars/${id}/booked-dates`),
+
   create: (dto: CreateCarDto): Promise<Car> =>
     request<CarDetail>('/cars', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dto),
     }).then(normalizeDetail),
+
+  uploadPhotos: (id: string, files: File[]): Promise<unknown> => {
+    const formData = new FormData();
+    files.forEach((file) => formData.append('files', file));
+    return request(`/cars/${id}/photos`, {
+      method: 'POST',
+      body: formData,
+    });
+  },
 };

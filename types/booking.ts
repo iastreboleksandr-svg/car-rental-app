@@ -2,6 +2,12 @@ import type { Car } from './car';
 
 export type BookingStatus = 'PENDING' | 'CONFIRMED' | 'CANCELLED' | 'COMPLETED';
 
+export interface BookedDate {
+  startAt: string;
+  endAt: string;
+  bookingStatus: 'PENDING' | 'CONFIRMED';
+}
+
 export interface CreateBookingDto {
   carId: string;
   startAt: string;

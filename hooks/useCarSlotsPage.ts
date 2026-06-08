@@ -36,7 +36,6 @@ export function useCarSlotsPage(carId: string) {
   const [selEnd, setSelEnd] = useState<Date | null>(null);
   const [pendingType, setPendingType] = useState<SlotKind>('available');
   const [activeSlot, setActiveSlot] = useState<Slot | null>(null);
-  const [alwaysAvailable, setAlwaysAvailable] = useState(false);
 
   const today = useMemo(() => new Date(), []);
   const slotsKey = ['slots', carId];
@@ -78,6 +77,43 @@ export function useCarSlotsPage(carId: string) {
       setActiveSlot(null);
     },
   });
+
+  const FOREVER_YEARS = 5;
+  const foreverSlot = slots.find((s) => {
+    if (s.periodType !== 'available') return false;
+    const spanYears =
+      (new Date(s.dateTo).getTime() - new Date(s.dateFrom).getTime()) / (1000 * 60 * 60 * 24 * 365);
+    return spanYears >= 4;
+  });
+  const alwaysAvailable = Boolean(foreverSlot);
+
+  const alwaysAvailableMut = useMutation({
+    mutationFn: async (enable: boolean) => {
+      if (enable) {
+        const from = new Date();
+        const to = new Date(from.getFullYear() + FOREVER_YEARS, from.getMonth(), from.getDate());
+        const created = await slotService.create(carId, {
+          dateFrom: ymd(from),
+          dateTo: ymd(to),
+          type: 'available',
+        });
+        return { created };
+      }
+      if (foreverSlot) await slotService.remove(carId, foreverSlot.id);
+      return { removedId: foreverSlot?.id };
+    },
+    onSuccess: (res) => {
+      queryClient.setQueryData<Slot[]>(slotsKey, (prev = []) => {
+        if ('created' in res && res.created) return [...prev, res.created];
+        if ('removedId' in res && res.removedId) return prev.filter((s) => s.id !== res.removedId);
+        return prev;
+      });
+    },
+  });
+
+  function setAlwaysAvailable(enable: boolean) {
+    alwaysAvailableMut.mutate(enable);
+  }
 
   function handleDayClick(day: Date) {
     const slot = slots.find((s) => covers(s, day));
@@ -194,5 +230,6 @@ export function useCarSlotsPage(carId: string) {
     isDeleting: deleteMut.isPending,
     alwaysAvailable,
     setAlwaysAvailable,
+    isTogglingAlways: alwaysAvailableMut.isPending,
   };
 }
