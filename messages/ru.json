@@ -326,5 +326,16 @@
       "findCar": "Найти машину",
       "register": "Зарегистрироваться"
     }
+  },
+  "userProfile": {
+    "title": "Мой профиль",
+    "createdAt": "Создан",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "phone": "Телефон",
+    "email": "Email",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "avatar": "Аватар"
   }
 }
