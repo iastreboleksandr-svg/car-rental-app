@@ -13,6 +13,10 @@ function diffDays(from: Date, to: Date): number {
   return Math.max(0, Math.round((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24)));
 }
 
+function toUtcMidnightIso(d: Date): string {
+  return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())).toISOString();
+}
+
 export function useBookingNewPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -49,8 +53,8 @@ export function useBookingNewPage() {
     mutationFn: () =>
       bookingService.create({
         carId,
-        startAt: dateRange!.from!.toISOString(),
-        endAt: dateRange!.to!.toISOString(),
+        startAt: toUtcMidnightIso(dateRange!.from!),
+        endAt: toUtcMidnightIso(dateRange!.to!),
       }),
     onSuccess: () => {
       setTimeout(() => router.replace('/bookings'), 1000);
