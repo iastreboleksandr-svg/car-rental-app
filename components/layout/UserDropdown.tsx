@@ -3,9 +3,12 @@
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { useAuthStore } from '@/store/auth.store';
+import { useSharedAvatar } from '@/store/avatar.store';
 
 export function UserDropdown() {
   const { user, logout } = useAuthStore();
+  const sharedAvatar = useSharedAvatar();
+  const photo = sharedAvatar ?? user?.avatarUrl ?? null;
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -31,10 +34,11 @@ export function UserDropdown() {
         aria-haspopup="true"
         className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-ring text-sm font-medium text-text-inverse"
       >
-        {user?.avatarUrl ? (
+        {photo ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={user.avatarUrl}
-            alt={user.firstName}
+            src={photo}
+            alt={user?.firstName ?? ''}
             className="h-8 w-8 rounded-full object-cover"
           />
         ) : (
