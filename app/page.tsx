@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { Car, Shield, Star, Clock, MapPin, ChevronRight, CheckCircle } from 'lucide-react';
 
 const STEPS = [
@@ -52,9 +53,33 @@ const FEATURES = [
 ];
 
 const CARS = [
-  { name: 'BMW 3 Series', year: 2022, price: 65, rating: 4.9, reviews: 34, fuel: 'Бензин', city: 'Берлин' },
-  { name: 'Volkswagen Golf', year: 2023, price: 45, rating: 4.7, reviews: 21, fuel: 'Электро', city: 'Мюнхен' },
-  { name: 'Mercedes C-Class', year: 2021, price: 80, rating: 5.0, reviews: 18, fuel: 'Дизель', city: 'Гамбург' },
+  {
+    name: 'BMW 3 Series',
+    year: 2022,
+    price: 65,
+    rating: 4.9,
+    reviews: 34,
+    fuel: 'Бензин',
+    city: 'Берлин',
+  },
+  {
+    name: 'Volkswagen Golf',
+    year: 2023,
+    price: 45,
+    rating: 4.7,
+    reviews: 21,
+    fuel: 'Электро',
+    city: 'Мюнхен',
+  },
+  {
+    name: 'Mercedes C-Class',
+    year: 2021,
+    price: 80,
+    rating: 5.0,
+    reviews: 18,
+    fuel: 'Дизель',
+    city: 'Гамбург',
+  },
 ];
 
 function StarRow({ rating }: { rating: number }) {
@@ -75,10 +100,11 @@ function StarRow({ rating }: { rating: number }) {
 }
 
 export default function HomePage() {
+  const [activeSection, setActiveSection] = useState('');
   return (
     <div className="min-h-screen bg-bg-card">
-
       {/* ── Навигация ── */}
+
       <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-card/90 backdrop-blur-md border-b border-border-default">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -91,13 +117,46 @@ export default function HomePage() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#how" className="text-sm text-text-muted hover:text-text-base transition-colors">Как это работает</a>
-            <a href="#cars" className="text-sm text-text-muted hover:text-text-base transition-colors">Машины</a>
-            <a href="#owners" className="text-sm text-text-muted hover:text-text-base transition-colors">Владельцам</a>
+            <a
+              href="#how"
+              onClick={() => setActiveSection('how')}
+              className={`text-sm transition-colors relative pb-1 ${
+                activeSection === 'how'
+                  ? 'text-brand border-t-2 border-brand pt-1'
+                  : 'text-text-muted hover:text-text-base'
+              }`}
+            >
+              Как это работает
+            </a>
+            <a
+              href="#cars"
+              onClick={() => setActiveSection('cars')}
+              className={`text-sm transition-colors relative pb-1 ${
+                activeSection === 'cars'
+                  ? 'text-brand border-t-2 border-brand pt-1'
+                  : 'text-text-muted hover:text-text-base'
+              }`}
+            >
+              Машины
+            </a>
+            <a
+              href="#owners"
+              onClick={() => setActiveSection('owners')}
+              className={`text-sm transition-colors relative pb-1 ${
+                activeSection === 'owners'
+                  ? 'text-brand border-t-2 border-brand pt-1'
+                  : 'text-text-muted hover:text-text-base'
+              }`}
+            >
+              Владельцам
+            </a>
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/login" className="text-sm text-text-secondary hover:text-text-base transition-colors">
+            <Link
+              href="/login"
+              className="text-sm text-text-secondary hover:text-text-base transition-colors"
+            >
               Войти
             </Link>
             <Link
@@ -125,14 +184,22 @@ export default function HomePage() {
                 <span className="text-landing-cta-text relative">
                   напрямую
                   <svg className="absolute -bottom-1 left-0 w-full" height="6" viewBox="0 0 200 6">
-                    <path d="M0 5 Q100 0 200 5" stroke="var(--landing-cta-bg)" strokeWidth="3" fill="none" opacity="0.4" strokeLinecap="round" />
+                    <path
+                      d="M0 5 Q100 0 200 5"
+                      stroke="var(--landing-cta-bg)"
+                      strokeWidth="3"
+                      fill="none"
+                      opacity="0.4"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>{' '}
                 у владельца
               </h1>
 
               <p className="text-lg text-text-muted leading-relaxed mb-8 max-w-lg">
-                Без посредников. Без лишних комиссий. Тысячи машин от проверенных владельцев по всей Германии.
+                Без посредников. Без лишних комиссий. Тысячи машин от проверенных владельцев по всей
+                Германии.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-10">
@@ -168,7 +235,9 @@ export default function HomePage() {
                       <svg key={s} width="14" height="14" viewBox="0 0 24 24">
                         <polygon
                           points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
-                          fill="var(--color-star)" stroke="var(--color-star)" strokeWidth="1"
+                          fill="var(--color-star)"
+                          stroke="var(--color-star)"
+                          strokeWidth="1"
                         />
                       </svg>
                     ))}
@@ -212,7 +281,9 @@ export default function HomePage() {
 
                 <div className="absolute -top-4 -right-4 bg-bg-card rounded-xl shadow-lg border border-border-default px-4 py-3 flex items-center gap-2">
                   <CheckCircle size={16} className="text-landing-cta-bg" />
-                  <span className="text-xs font-semibold text-text-base">Владелец верифицирован</span>
+                  <span className="text-xs font-semibold text-text-base">
+                    Владелец верифицирован
+                  </span>
                 </div>
 
                 <div className="absolute -bottom-4 -left-4 bg-bg-card rounded-xl shadow-lg border border-border-default px-4 py-3">
@@ -247,7 +318,9 @@ export default function HomePage() {
               Как это работает
             </p>
             <h2 className="text-4xl font-bold text-text-base mb-4">Три простых шага</h2>
-            <p className="text-text-muted max-w-md mx-auto">Найди машину, забронируй и поезжай. Всё просто.</p>
+            <p className="text-text-muted max-w-md mx-auto">
+              Найди машину, забронируй и поезжай. Всё просто.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -304,7 +377,9 @@ export default function HomePage() {
                   </p>
                   <div className="flex items-center gap-2">
                     <StarRow rating={car.rating} />
-                    <span className="text-xs text-text-muted">{car.rating} ({car.reviews})</span>
+                    <span className="text-xs text-text-muted">
+                      {car.rating} ({car.reviews})
+                    </span>
                   </div>
                 </div>
               </div>
@@ -312,7 +387,10 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link href="/search" className="inline-flex items-center gap-1 text-sm text-landing-cta-text font-semibold">
+            <Link
+              href="/search"
+              className="inline-flex items-center gap-1 text-sm text-landing-cta-text font-semibold"
+            >
               Смотреть все машины <ChevronRight size={16} />
             </Link>
           </div>
@@ -358,7 +436,8 @@ export default function HomePage() {
                 Твоя машина стоит — она могла бы зарабатывать
               </h2>
               <p className="text-landing-dark-muted leading-relaxed mb-8">
-                Сдавай машину когда не пользуешься. Ты сам устанавливаешь цену и выбираешь арендаторов. Мы берём минимальную комиссию.
+                Сдавай машину когда не пользуешься. Ты сам устанавливаешь цену и выбираешь
+                арендаторов. Мы берём минимальную комиссию.
               </p>
               <div className="flex flex-col gap-3 mb-8">
                 {[
@@ -388,7 +467,10 @@ export default function HomePage() {
                 { value: '4.8★', label: 'Рейтинг платформы', sub: 'от владельцев' },
                 { value: '0%', label: 'Скрытых комиссий', sub: 'только честные условия' },
               ].map(({ value, label, sub }) => (
-                <div key={label} className="bg-landing-dark-card border border-landing-dark-border rounded-2xl p-5">
+                <div
+                  key={label}
+                  className="bg-landing-dark-card border border-landing-dark-border rounded-2xl p-5"
+                >
                   <p className="text-2xl font-bold text-landing-cta-bg mb-1">{value}</p>
                   <p className="text-sm font-semibold text-landing-dark-text mb-1">{label}</p>
                   <p className="text-xs text-landing-dark-muted">{sub}</p>
@@ -423,7 +505,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

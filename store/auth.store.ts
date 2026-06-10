@@ -22,7 +22,7 @@ export const useAuthStore = (): AuthStore => ({
     lastName: 'Васильев',
     email: 'oleg@example.com',
     phone: '+380991234567',
-    role: 'owner',
+    role: 'renter',
   },
   isAuthenticated: true,
   logout: () => {},

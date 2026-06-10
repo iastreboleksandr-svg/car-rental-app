@@ -12,7 +12,7 @@ interface BookingItemProps {
 const statusConfig = {
   CONFIRMED: { label: 'Подтверждена', className: 'text-brand bg-brand-subtle' },
   PENDING: { label: 'Ожидает', className: 'text-status-warning bg-bg-warning' },
-  CANCELLED: { label: 'Отменена', className: 'text-text-disabled bg-transparent' },
+  CANCELLED: { label: 'Отменена', className: 'text-text-muted bg-bg-disabled' },
   COMPLETED: { label: 'Завершена', className: 'text-text-muted bg-bg-disabled' },
 };
 
