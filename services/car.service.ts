@@ -1,4 +1,4 @@
-import type { Car, CarSearchItem, CarDetail, CreateCarDto } from '@/types/car';
+import type { Car, CarSearchItem, CarDetail, CreateCarDto, UpdateCarDto } from '@/types/car';
 import type { BookedDate } from '@/types/booking';
 import { apiFetch } from '@/lib/apiFetch';
 
@@ -35,6 +35,7 @@ function normalizeDetail(item: CarDetail): Car {
     lat: Number(item.lat),
     lng: Number(item.lng),
     address: item.address,
+    photos: item.photos ?? [],
     createdAt: item.createdAt,
   };
 }
@@ -88,6 +89,13 @@ export const carService = {
       body: JSON.stringify(dto),
     }).then(normalizeDetail),
 
+  update: (id: string, dto: UpdateCarDto): Promise<Car> =>
+    request<CarDetail>(`/cars/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dto),
+    }).then(normalizeDetail),
+
   uploadPhotos: (id: string, files: File[]): Promise<unknown> => {
     const formData = new FormData();
     files.forEach((file) => formData.append('files', file));
@@ -96,4 +104,14 @@ export const carService = {
       body: formData,
     });
   },
+
+  deletePhoto: (id: string, photoId: string): Promise<unknown> =>
+    request(`/cars/${id}/photos/${photoId}`, {
+      method: 'DELETE',
+    }),
+
+  remove: (id: string): Promise<unknown> =>
+    request(`/cars/${id}`, {
+      method: 'DELETE',
+    }),
 };

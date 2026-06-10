@@ -5,6 +5,7 @@ interface InputProps {
   type?: 'text' | 'email' | 'password' | 'number' | 'tel';
   value?: string;
   onChange?: (value: string) => void;
+  onBlur?: () => void;
   placeholder?: string;
   error?: string;
   hint?: string;
@@ -22,6 +23,7 @@ export const Input: React.FC<InputProps> = ({
   type = 'text',
   value,
   onChange,
+  onBlur,
   placeholder,
   error,
   hint,
@@ -86,6 +88,7 @@ export const Input: React.FC<InputProps> = ({
           type={type}
           value={value}
           onChange={onChange ? (e) => onChange(e.target.value) : undefined}
+          onBlur={onBlur}
           placeholder={placeholder}
           disabled={disabled}
           readOnly={readOnly}

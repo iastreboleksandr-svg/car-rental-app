@@ -4,6 +4,7 @@ interface TextareaProps {
   label?: string;
   value?: string;
   onChange?: (value: string) => void;
+  onBlur?: () => void;
   placeholder?: string;
   error?: string;
   maxLength?: number;
@@ -18,6 +19,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   label,
   value = '',
   onChange,
+  onBlur,
   placeholder,
   error,
   maxLength,
@@ -63,6 +65,7 @@ export const Textarea: React.FC<TextareaProps> = ({
         id={id}
         value={value}
         onChange={onChange ? (e) => onChange(e.target.value) : undefined}
+        onBlur={onBlur}
         placeholder={placeholder}
         maxLength={maxLength}
         rows={rows}

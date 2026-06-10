@@ -1,7 +1,8 @@
 'use client';
 
 import { use } from 'react';
-import { ChevronLeft, ChevronRight, Trash2 } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowLeft, ChevronLeft, ChevronRight, Trash2 } from 'lucide-react';
 import { PrivateRoute } from '@/components/layout/PrivateRoute';
 import { SlotCalendar } from '@/components/cars/slots/SlotCalendar';
 import Button from '@/components/atoms/Button';
@@ -70,7 +71,14 @@ function CarSlots({ carId }: { carId: string }) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
       <div className="overflow-hidden rounded-2xl border border-border-default bg-bg-card shadow-sm">
-        <div className="flex items-center justify-between border-b border-border-default px-5 py-4">
+        <div className="flex items-center gap-3 border-b border-border-default px-5 py-4">
+          <Link
+            href="/dashboard"
+            aria-label={tCommon('back')}
+            className="flex h-8 w-8 items-center justify-center rounded-lg border border-border-default text-text-muted transition-colors hover:border-text-muted hover:text-text-secondary"
+          >
+            <ArrowLeft size={16} />
+          </Link>
           {car ? (
             <h1 className="text-base font-semibold text-text-base">
               {car.brand} {car.model}
@@ -78,7 +86,6 @@ function CarSlots({ carId }: { carId: string }) {
           ) : (
             <div className="h-5 w-32 animate-pulse rounded bg-bg-disabled" />
           )}
-         
         </div>
 
         <div className="flex flex-col gap-5 p-5">
