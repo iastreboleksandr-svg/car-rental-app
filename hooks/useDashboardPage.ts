@@ -9,11 +9,12 @@ export function useDashboardPage() {
   const router = useRouter();
   const token = useAuthStore((s) => s.token);
   const hydrated = useAuthStore((s) => s._hydrated);
+  const userId = useAuthStore((s) => s.user?.id);
 
   const { data: cars = [], isLoading } = useQuery({
-    queryKey: ['cars', 'me'],
+    queryKey: ['cars', 'me', userId],
     queryFn: () => carService.getMine(),
-    enabled: hydrated && !!token,
+    enabled: hydrated && !!token && !!userId,
     refetchInterval: 5000,
   });
 

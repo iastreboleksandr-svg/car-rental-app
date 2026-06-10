@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { UserResponse } from '@/services/auth.service';
+import { clearQueryCache } from '@/lib/queryClient';
 
 interface AuthState {
   user: UserResponse | null;
@@ -38,8 +39,12 @@ export const useAuthStore = create<AuthState>()(
       setAuth: (user, token, refreshToken) =>
         set({ user, token, refreshToken, isAuthenticated: true }),
       setTokens: (token, refreshToken) => set({ token, refreshToken }),
-      logout: () =>
-        set({ user: null, token: null, refreshToken: null, isAuthenticated: false }),
+      logout: () => {
+        // Wipe the React Query cache so the next user never sees the previous
+        // user's data (e.g. their cars) before it refetches.
+        clearQueryCache();
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+      },
     }),
     {
       name: 'auth',
