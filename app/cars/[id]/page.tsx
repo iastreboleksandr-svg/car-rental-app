@@ -62,7 +62,11 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
 
             <div>
               <p className="text-xs text-gray-400 mb-1">{car.year}</p>
-              <h1 className="text-xl font-semibold text-gray-800 mb-2">{car.brand} {car.model}</h1>
+              <h1 className="text-xl font-semibold text-gray-800 mb-2">
+                {car.brand} {car.model}
+              </h1>
+
+              {/* РЕЙТИНГ БЛОК (закомментирован по задаче)
               <div className="flex items-center gap-2">
                 <StarRating value={car.averageRating ?? 0} size="sm" readonly />
                 {car.averageRating
@@ -70,6 +74,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
                   : <span className="text-sm text-gray-400">{t('noReviews')}</span>
                 }
               </div>
+              */}
             </div>
 
             <div className="flex gap-2 flex-wrap">
@@ -87,6 +92,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
               />
             )}
 
+            {/* OWNER MESSAGE БЛОК (закомментирован по задаче)
             <Section title={t('owner')}>
               <div className="flex items-center gap-3">
                 <Avatar firstName="?" lastName="" size="md" />
@@ -101,6 +107,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
                 </Button>
               </div>
             </Section>
+            */}
 
           </div>
         </div>
@@ -108,14 +115,20 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
         <div className="w-full lg:w-72 lg:sticky lg:top-20 flex flex-col gap-3">
 
           <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-4">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">{t('booking')}</p>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
+              {t('booking')}
+            </p>
 
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-bold text-gray-800">${car.pricePerDay}</span>
+                <span className="text-3xl font-bold text-gray-800">
+                  ${car.pricePerDay}
+                </span>
                 <span className="text-sm text-gray-400">/ день</span>
               </div>
-              <p className="text-sm text-gray-400 mt-0.5">{t('deposit', { amount: car.deposit })}</p>
+              <p className="text-sm text-gray-400 mt-0.5">
+                {t('deposit', { amount: car.deposit })}
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -123,7 +136,11 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
                 { icon: <Fuel size={14} />, label: fuel, value: fuel },
                 { icon: <Settings2 size={14} />, label: 'КПП', value: transmission },
                 { icon: <Users size={14} />, label: 'Мест', value: car.seats ?? '—' },
-                { icon: <StarRating value={0} size="sm" readonly />, label: 'Рейтинг', value: car.averageRating?.toFixed(1) ?? '—' },
+                {
+                  icon: <StarRating value={0} size="sm" readonly />,
+                  label: 'Рейтинг',
+                  value: car.averageRating?.toFixed(1) ?? '—',
+                },
               ].map(({ icon, label, value }) => (
                 <div key={label} className="bg-gray-50 rounded-xl p-3 flex items-center gap-2">
                   <span className="text-gray-400">{icon}</span>

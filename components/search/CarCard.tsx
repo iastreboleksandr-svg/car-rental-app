@@ -22,15 +22,29 @@ export function CarCard({ car, noReviewsLabel }: CarCardProps) {
           <CarIcon size={32} />
         )}
       </div>
-      <p className="text-sm font-medium text-text-base truncate">{car.brand} {car.model}</p>
-      <p className="text-xs text-text-muted truncate">{car.year} · {car.address}</p>
+
+      <p className="text-sm font-medium text-text-base truncate">
+        {car.brand} {car.model}
+      </p>
+
+      <p className="text-xs text-text-muted truncate">
+        {car.year} · {car.address}
+      </p>
+
       <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-brand">${car.pricePerDay}/д</p>
+        <p className="text-sm font-semibold text-brand">
+          ${car.pricePerDay}/д
+        </p>
+
+        {/*
         {car.averageRating ? (
           <StarRating value={car.averageRating} size="sm" />
         ) : (
-          <span className="text-xs text-text-disabled">{noReviewsLabel}</span>
+          <span className="text-xs text-text-disabled">
+            {noReviewsLabel}
+          </span>
         )}
+        */}
       </div>
     </Link>
   );
