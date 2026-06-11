@@ -52,6 +52,7 @@
     "addFirst": "Добавить первую",
     "noCars": "У вас пока нет машин",
     "pricePerDay": "${price}/день",
+    "published": "Опубликована",
     "status": {
       "active": "Активна",
       "rented": "Арендована",
@@ -122,6 +123,55 @@
         "hybrid": "Гибрид"
       }
     },
+    "form": {
+      "titleCreate": "Новая машина",
+      "titleEdit": "Редактирование машины",
+      "sectionPhoto": "Фотографии",
+      "sectionBasic": "Основное",
+      "sectionTechnical": "Характеристики",
+      "sectionPricing": "Цена",
+      "sectionLocation": "Локация",
+      "sectionDescription": "Описание",
+      "brand": "Марка",
+      "model": "Модель",
+      "year": "Год выпуска",
+      "seats": "Количество мест",
+      "fuelType": "Тип топлива",
+      "transmission": "Коробка передач",
+      "pricePerDay": "Цена за день",
+      "deposit": "Депозит",
+      "address": "Адрес",
+      "addressPlaceholder": "ул. Крещатик, 1, Киев",
+      "descriptionPlaceholder": "Расскажите о машине...",
+      "photoDrop": "Перетащите фото сюда или нажмите для выбора",
+      "photoFormats": "JPG, PNG до 5 МБ, максимум 10 фото",
+      "photoRemove": "Удалить",
+      "create": "Создать машину",
+      "update": "Сохранить изменения",
+      "saving": "Сохранение...",
+      "cancel": "Отмена",
+      "fuel": {
+        "petrol": "Бензин",
+        "diesel": "Дизель",
+        "electric": "Электро",
+        "hybrid": "Гибрид"
+      },
+      "gearbox": {
+        "automatic": "Автомат",
+        "manual": "Механика"
+      },
+      "errors": {
+        "required": "Обязательное поле",
+        "photoSize": "Файл больше 5 МБ",
+        "photoType": "Только изображения"
+      },
+      "toastSaved": "Машина сохранена",
+      "toastError": "Не удалось сохранить",
+      "discardTitle": "Отменить изменения?",
+      "discardBody": "Несохранённые изменения будут потеряны.",
+      "discardConfirm": "Отменить",
+      "discardCancel": "Продолжить редактирование"
+    },
     "detail": {
       "notFound": "Машина не найдена",
       "noReviews": "нет отзывов",
@@ -159,6 +209,27 @@
       "photo": "Фото",
       "continue": "Продолжить",
       "skip": "Пропустить"
+    }
+  },
+  "userProfile": {
+    "title": "Мой профиль",
+    "name": "Имя",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "email": "Email",
+    "phone": "Телефон",
+    "edit": "Редактировать профиль",
+    "delete": "Удалить профиль",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "saving": "Сохранение...",
+    "notFound": "Профиль не найден",
+    "deletePage": {
+      "title": "Удалить профиль?",
+      "description": "Это действие необратимо. Все ваши данные, бронирования и объявления будут удалены навсегда.",
+      "confirm": "Да, удалить аккаунт",
+      "deleting": "Удаление...",
+      "cancel": "Отмена, вернуться назад"
     }
   },
   "calendar": {

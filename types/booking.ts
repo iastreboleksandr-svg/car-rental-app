@@ -8,6 +8,17 @@ export interface BookedDate {
   bookingStatus: 'PENDING' | 'CONFIRMED';
 }
 
+export interface AvailabilitySlot {
+  dateFrom: string;
+  dateTo: string;
+  periodType: 'available' | 'blocked';
+}
+
+export interface BookedDatesResponse {
+  bookings: BookedDate[];
+  slots: AvailabilitySlot[];
+}
+
 export interface CreateBookingDto {
   carId: string;
   startAt: string;

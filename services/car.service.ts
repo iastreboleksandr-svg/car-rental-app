@@ -1,5 +1,5 @@
-import type { Car, CarSearchItem, CarDetail, CreateCarDto } from '@/types/car';
-import type { BookedDate } from '@/types/booking';
+import type { Car, CarSearchItem, CarDetail, CreateCarDto, UpdateCarDto } from '@/types/car';
+import type { BookedDatesResponse } from '@/types/booking';
 import { apiFetch } from '@/lib/apiFetch';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
@@ -35,6 +35,7 @@ function normalizeDetail(item: CarDetail): Car {
     lat: Number(item.lat),
     lng: Number(item.lng),
     address: item.address,
+    photos: item.photos ?? [],
     createdAt: item.createdAt,
   };
 }
@@ -78,12 +79,19 @@ export const carService = {
   getById: (id: string): Promise<Car> =>
     request<CarDetail>(`/cars/${id}`).then(normalizeDetail),
 
-  getBookedDates: (id: string): Promise<BookedDate[]> =>
-    request<BookedDate[]>(`/cars/${id}/booked-dates`),
+  getBookedDates: (id: string): Promise<BookedDatesResponse> =>
+    request<BookedDatesResponse>(`/cars/${id}/booked-dates`),
 
   create: (dto: CreateCarDto): Promise<Car> =>
     request<CarDetail>('/cars', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dto),
+    }).then(normalizeDetail),
+
+  update: (id: string, dto: UpdateCarDto): Promise<Car> =>
+    request<CarDetail>(`/cars/${id}`, {
+      method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dto),
     }).then(normalizeDetail),

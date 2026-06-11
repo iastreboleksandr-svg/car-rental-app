@@ -9,7 +9,12 @@ import { ChevronDown } from 'lucide-react';
 export interface BusyRange {
   from: Date;
   to: Date;
-  type: 'confirmed' | 'pending';
+  type: 'confirmed' | 'pending' | 'blocked';
+}
+
+export interface AvailableRange {
+  from: Date;
+  to: Date;
 }
 
 interface DateRangePickerProps {
@@ -17,6 +22,8 @@ interface DateRangePickerProps {
   value: DateRange | undefined;
   onChange: (range: DateRange | undefined) => void;
   busyRanges?: BusyRange[];
+  blockedRanges?: BusyRange[];
+  availableRanges?: AvailableRange[];
   onOpen?: () => void;
 }
 
@@ -24,7 +31,19 @@ function formatDate(date: Date) {
   return date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
-export function DateRangePicker({ label, value, onChange, busyRanges = [], onOpen }: DateRangePickerProps) {
+function startOfDay(d: Date): Date {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+export function DateRangePicker({
+  label,
+  value,
+  onChange,
+  busyRanges = [],
+  blockedRanges = [],
+  availableRanges = [],
+  onOpen,
+}: DateRangePickerProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -81,15 +100,27 @@ export function DateRangePicker({ label, value, onChange, busyRanges = [], onOpe
             locale={ru}
             disabled={[
               { before: new Date() },
-              ...busyRanges.map((r) => ({ from: r.from, to: r.to })),
+              ...busyRanges
+                .filter((r) => r.type === 'confirmed')
+                .map((r) => ({ from: r.from, to: r.to })),
+              ...blockedRanges.map((r) => ({ from: r.from, to: r.to })),
+              (day: Date) => {
+                if (availableRanges.length === 0) return false;
+                const d = startOfDay(day).getTime();
+                return !availableRanges.some(
+                  (r) => d >= startOfDay(r.from).getTime() && d <= startOfDay(r.to).getTime(),
+                );
+              },
             ]}
             modifiers={{
               busyConfirmed: busyRanges.filter((r) => r.type === 'confirmed').map((r) => ({ from: r.from, to: r.to })),
               busyPending: busyRanges.filter((r) => r.type === 'pending').map((r) => ({ from: r.from, to: r.to })),
+              busyBlocked: blockedRanges.map((r) => ({ from: r.from, to: r.to })),
             }}
             modifiersClassNames={{
               busyConfirmed: 'rdp-busy-confirmed',
               busyPending: 'rdp-busy-pending',
+              busyBlocked: 'rdp-busy-blocked',
             }}
             style={{
               '--rdp-accent-color': 'var(--brand)',

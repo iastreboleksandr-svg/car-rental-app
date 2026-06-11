@@ -13,13 +13,14 @@ const ACTIVE_STATUSES: BookingStatus[] = ['PENDING', 'CONFIRMED'];
 export function useMyBookingsPage() {
   const hydrated = useAuthStore((s) => s._hydrated);
   const token = useAuthStore((s) => s.token);
+  const userId = useAuthStore((s) => s.user?.id);
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState<MyBookingsTab>('all');
 
   const { data: allBookings = [], isLoading, isError } = useQuery({
-    queryKey: ['bookings', 'my'],
+    queryKey: ['bookings', 'my', userId],
     queryFn: () => bookingService.getMy(),
-    enabled: hydrated && !!token,
+    enabled: hydrated && !!token && !!userId,
     refetchInterval: 5000,
     refetchOnMount: 'always',
   });

@@ -52,6 +52,7 @@
     "addFirst": "Erstes hinzufügen",
     "noCars": "Sie haben noch keine Autos",
     "pricePerDay": "${price}/Tag",
+    "published": "Veröffentlicht",
     "status": {
       "active": "Aktiv",
       "rented": "Vermietet",
@@ -122,6 +123,55 @@
         "hybrid": "Hybrid"
       }
     },
+    "form": {
+      "titleCreate": "Neues Auto",
+      "titleEdit": "Auto bearbeiten",
+      "sectionPhoto": "Fotos",
+      "sectionBasic": "Grunddaten",
+      "sectionTechnical": "Merkmale",
+      "sectionPricing": "Preis",
+      "sectionLocation": "Standort",
+      "sectionDescription": "Beschreibung",
+      "brand": "Marke",
+      "model": "Modell",
+      "year": "Baujahr",
+      "seats": "Sitzplätze",
+      "fuelType": "Kraftstoffart",
+      "transmission": "Getriebe",
+      "pricePerDay": "Preis pro Tag",
+      "deposit": "Kaution",
+      "address": "Adresse",
+      "addressPlaceholder": "Alexanderplatz 1, Berlin",
+      "descriptionPlaceholder": "Erzählen Sie etwas über das Auto...",
+      "photoDrop": "Fotos hierher ziehen oder zum Auswählen klicken",
+      "photoFormats": "JPG, PNG bis 5 MB, max. 10 Fotos",
+      "photoRemove": "Entfernen",
+      "create": "Auto erstellen",
+      "update": "Änderungen speichern",
+      "saving": "Wird gespeichert...",
+      "cancel": "Abbrechen",
+      "fuel": {
+        "petrol": "Benzin",
+        "diesel": "Diesel",
+        "electric": "Elektro",
+        "hybrid": "Hybrid"
+      },
+      "gearbox": {
+        "automatic": "Automatik",
+        "manual": "Schaltgetriebe"
+      },
+      "errors": {
+        "required": "Pflichtfeld",
+        "photoSize": "Datei größer als 5 MB",
+        "photoType": "Nur Bilder"
+      },
+      "toastSaved": "Auto gespeichert",
+      "toastError": "Speichern fehlgeschlagen",
+      "discardTitle": "Änderungen verwerfen?",
+      "discardBody": "Nicht gespeicherte Änderungen gehen verloren.",
+      "discardConfirm": "Verwerfen",
+      "discardCancel": "Weiter bearbeiten"
+    },
     "detail": {
       "notFound": "Auto nicht gefunden",
       "noReviews": "keine Bewertungen",
@@ -159,6 +209,27 @@
       "photo": "Foto",
       "continue": "Weiter",
       "skip": "Überspringen"
+    }
+  },
+  "userProfile": {
+    "title": "Mein Profil",
+    "name": "Name",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "edit": "Profil bearbeiten",
+    "delete": "Profil löschen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "saving": "Wird gespeichert...",
+    "notFound": "Profil nicht gefunden",
+    "deletePage": {
+      "title": "Profil löschen?",
+      "description": "Diese Aktion ist unwiderruflich. Alle Ihre Daten, Buchungen und Anzeigen werden dauerhaft gelöscht.",
+      "confirm": "Ja, Konto löschen",
+      "deleting": "Wird gelöscht...",
+      "cancel": "Abbrechen, zurück"
     }
   },
   "calendar": {

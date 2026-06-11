@@ -1,9 +1,10 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import type { AbstractIntlMessages } from 'next-intl';
+import { createQueryClient, setActiveQueryClient } from '@/lib/queryClient';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -13,17 +14,11 @@ interface ProvidersProps {
 }
 
 export function Providers({ children, locale, messages, timeZone }: ProvidersProps) {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-            retry: 1,
-          },
-        },
-      }),
-  );
+  const [queryClient] = useState(() => {
+    const client = createQueryClient();
+    setActiveQueryClient(client);
+    return client;
+  });
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>

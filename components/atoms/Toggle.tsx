@@ -70,8 +70,8 @@ export const Toggle: React.FC<ToggleProps> = ({
         aria-checked={checked}
         aria-label={label}
         disabled={disabled}
-        onClick={(e) => e.stopPropagation()}
-        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 rounded-full flex items-center"
+        tabIndex={-1}
+        className="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 rounded-full flex items-center pointer-events-none"
       >
         <div className={track}>
           <div className={thumb} />

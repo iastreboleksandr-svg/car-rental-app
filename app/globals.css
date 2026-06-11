@@ -118,6 +118,15 @@ body {
 .rdp-busy-pending .rdp-day_button {
   background-color: #fef3c7 !important;
   color: #92400e !important;
+  border-radius: 6px;
+}
+
+.rdp-busy-blocked {
+  opacity: 1 !important;
+}
+.rdp-busy-blocked .rdp-day_button {
+  background-color: #e5e7eb !important;
+  color: #6b7280 !important;
   text-decoration: line-through;
   border-radius: 6px;
 }
