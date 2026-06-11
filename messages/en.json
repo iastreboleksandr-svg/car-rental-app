@@ -96,7 +96,8 @@
     "gearbox": {
       "automatic": "Auto",
       "manual": "Manual"
-    }
+    },
+    "hideFilters": "Hide filters"
   },
   "car": {
     "new": {
@@ -423,7 +424,6 @@
     "company": "Company",
     "about": "About us",
     "howItWorks": "How it works",
-    
     "resources": "Resources",
     "insurance": "Insurance",
     "mobileApps": "Mobile apps",

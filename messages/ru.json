@@ -96,7 +96,8 @@
     "gearbox": {
       "automatic": "Авто",
       "manual": "Механ."
-    }
+    },
+    "hideFilters": "Скрыть фильтры"
   },
   "car": {
     "new": {
@@ -423,7 +424,6 @@
     "company": "Компания",
     "about": "О нас",
     "howItWorks": "Как это работает",
-   
     "resources": "Ресурсы",
     "insurance": "Страхование",
     "mobileApps": "Мобильные приложения",
