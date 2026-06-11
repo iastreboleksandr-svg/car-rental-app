@@ -2,7 +2,11 @@ export type FuelType = 'petrol' | 'diesel' | 'electric' | 'hybrid';
 export type Transmission = 'manual' | 'automatic';
 export type CarStatus = 'active' | 'inactive' | 'rented';
 
-// Normalized Car used throughout the frontend
+export interface CarPhoto {
+  id: string;
+  url: string;
+}
+
 export interface Car {
   id: string;
   ownerId: string;
@@ -20,11 +24,11 @@ export interface Car {
   lng: number;
   address: string;
   mainPhoto?: string | null;
+  photos?: CarPhoto[];
   averageRating?: number | null;
   createdAt?: string;
 }
 
-// Raw shape from GET /cars (search endpoint)
 export interface CarSearchItem {
   id: string;
   ownerId: string;
@@ -61,6 +65,7 @@ export interface CarDetail {
   lat: number;
   lng: number;
   address: string;
+  photos?: CarPhoto[];
   createdAt: string;
 }
 
@@ -78,3 +83,7 @@ export interface CreateCarDto {
   lng: number;
   address: string;
 }
+
+export type UpdateCarDto = Partial<CreateCarDto> & {
+  carStatus?: 'active' | 'inactive';
+};

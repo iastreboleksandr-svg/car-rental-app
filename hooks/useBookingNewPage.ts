@@ -7,7 +7,7 @@ import type { DateRange } from 'react-day-picker';
 import { bookingService } from '@/services/booking.service';
 import { carService } from '@/services/car.service';
 import { useAuthStore } from '@/store/auth.store';
-import type { BusyRange } from '@/components/atoms/DateRangePicker';
+import type { BusyRange, AvailableRange } from '@/components/atoms/DateRangePicker';
 
 function diffDays(from: Date, to: Date): number {
   return Math.max(0, Math.round((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24)));
@@ -31,17 +31,25 @@ export function useBookingNewPage() {
     enabled: !!carId && hydrated,
   });
 
-  const { data: bookedDates = [], refetch: refetchBookedDates } = useQuery({
+  const { data: availability, refetch: refetchBookedDates } = useQuery({
     queryKey: ['car', carId, 'booked-dates'],
     queryFn: () => carService.getBookedDates(carId),
     enabled: !!carId && hydrated,
   });
 
-  const busyRanges: BusyRange[] = bookedDates.map((b) => ({
+  const busyRanges: BusyRange[] = (availability?.bookings ?? []).map((b) => ({
     from: new Date(b.startAt),
     to: new Date(b.endAt),
     type: b.bookingStatus === 'CONFIRMED' ? 'confirmed' : 'pending',
   }));
+
+  const availableRanges: AvailableRange[] = (availability?.slots ?? [])
+    .filter((s) => s.periodType === 'available')
+    .map((s) => ({ from: new Date(s.dateFrom), to: new Date(s.dateTo) }));
+
+  const blockedRanges: BusyRange[] = (availability?.slots ?? [])
+    .filter((s) => s.periodType === 'blocked')
+    .map((s) => ({ from: new Date(s.dateFrom), to: new Date(s.dateTo), type: 'blocked' }));
 
   const days = dateRange?.from && dateRange?.to ? diffDays(dateRange.from, dateRange.to) : 0;
   const pricePerDay = car?.pricePerDay ?? 0;
@@ -71,6 +79,8 @@ export function useBookingNewPage() {
     dateRange,
     setDateRange,
     busyRanges,
+    availableRanges,
+    blockedRanges,
     days,
     pricePerDay,
     deposit,

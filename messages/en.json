@@ -52,6 +52,7 @@
     "addFirst": "Add first car",
     "noCars": "You have no cars yet",
     "pricePerDay": "${price}/day",
+    "published": "Published",
     "status": {
       "active": "Active",
       "rented": "Rented",
@@ -122,6 +123,55 @@
         "hybrid": "Hybrid"
       }
     },
+    "form": {
+      "titleCreate": "New car",
+      "titleEdit": "Edit car",
+      "sectionPhoto": "Photos",
+      "sectionBasic": "Basic info",
+      "sectionTechnical": "Specifications",
+      "sectionPricing": "Pricing",
+      "sectionLocation": "Location",
+      "sectionDescription": "Description",
+      "brand": "Brand",
+      "model": "Model",
+      "year": "Year",
+      "seats": "Seats",
+      "fuelType": "Fuel type",
+      "transmission": "Transmission",
+      "pricePerDay": "Price per day",
+      "deposit": "Deposit",
+      "address": "Address",
+      "addressPlaceholder": "Alexanderplatz 1, Berlin",
+      "descriptionPlaceholder": "Tell about the car...",
+      "photoDrop": "Drag photos here or click to select",
+      "photoFormats": "JPG, PNG up to 5 MB, max 10 photos",
+      "photoRemove": "Remove",
+      "create": "Create car",
+      "update": "Save changes",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "fuel": {
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "electric": "Electric",
+        "hybrid": "Hybrid"
+      },
+      "gearbox": {
+        "automatic": "Automatic",
+        "manual": "Manual"
+      },
+      "errors": {
+        "required": "Required field",
+        "photoSize": "File larger than 5 MB",
+        "photoType": "Images only"
+      },
+      "toastSaved": "Car saved",
+      "toastError": "Failed to save",
+      "discardTitle": "Discard changes?",
+      "discardBody": "Unsaved changes will be lost.",
+      "discardConfirm": "Discard",
+      "discardCancel": "Keep editing"
+    },
     "detail": {
       "notFound": "Car not found",
       "noReviews": "no reviews",
@@ -159,6 +209,27 @@
       "photo": "Photo",
       "continue": "Continue",
       "skip": "Skip"
+    }
+  },
+  "userProfile": {
+    "title": "My profile",
+    "name": "Name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone",
+    "edit": "Edit profile",
+    "delete": "Delete profile",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving...",
+    "notFound": "Profile not found",
+    "deletePage": {
+      "title": "Delete profile?",
+      "description": "This action is irreversible. All your data, bookings and listings will be permanently deleted.",
+      "confirm": "Yes, delete account",
+      "deleting": "Deleting...",
+      "cancel": "Cancel, go back"
     }
   },
   "calendar": {

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { UserResponse } from '@/services/auth.service';
+import { clearQueryCache } from '@/lib/queryClient';
 
 interface AuthState {
   user: UserResponse | null;
@@ -10,6 +11,7 @@ interface AuthState {
   _hydrated: boolean;
   setAuth: (user: UserResponse, token: string, refreshToken: string) => void;
   setTokens: (token: string, refreshToken: string) => void;
+  updateUser: (patch: Partial<UserResponse>) => void;
   logout: () => void;
 }
 
@@ -38,8 +40,12 @@ export const useAuthStore = create<AuthState>()(
       setAuth: (user, token, refreshToken) =>
         set({ user, token, refreshToken, isAuthenticated: true }),
       setTokens: (token, refreshToken) => set({ token, refreshToken }),
-      logout: () =>
-        set({ user: null, token: null, refreshToken: null, isAuthenticated: false }),
+      updateUser: (patch) =>
+        set((state) => ({ user: state.user ? { ...state.user, ...patch } : state.user })),
+      logout: () => {
+        clearQueryCache();
+        set({ user: null, token: null, refreshToken: null, isAuthenticated: false });
+      },
     }),
     {
       name: 'auth',
