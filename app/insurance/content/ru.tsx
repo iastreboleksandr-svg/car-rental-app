@@ -6,7 +6,7 @@ export  function InsuranceRu() {
 
           <h1 className="text-3xl font-bold text-text-base mb-2">Страхование</h1>
           <p className="text-text-muted text-sm mb-8">
-            Каждая аренда на платформе CarRental защищена страховкой
+            Каждая аренда на платформе Lunar Carsharing защищена страховкой
           </p>
 
           <Section title="Базовое страхование">
@@ -127,8 +127,8 @@ export  function InsuranceRu() {
           <Section title="Контакты страховой службы" isLast>
             <p className="text-text-secondary">По вопросам страхования обращайтесь:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental — страховая служба</p>
-              <p className="text-text-secondary mt-1">insurance@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing — страховая служба</p>
+              <p className="text-text-secondary mt-1">insurance@lunarcarsharing.de</p>
               <p className="text-text-secondary">+49 721 000 0000 (круглосуточно)</p>
             </div>
           </Section>

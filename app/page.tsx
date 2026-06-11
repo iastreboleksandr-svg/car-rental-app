@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Car, Shield, Star, Clock, MapPin, ChevronRight, CheckCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import StarRating from '@/components/atoms/StarRating';
@@ -30,9 +31,36 @@ export default function HomePage() {
   ];
 
   const cars = [
-    { name: 'BMW 3 Series', year: 2022, price: 65, rating: 4.9, reviews: 34, fuel: 'Benzin', city: 'Berlin' },
-    { name: 'Volkswagen Golf', year: 2023, price: 45, rating: 4.7, reviews: 21, fuel: 'Elektro', city: 'München' },
-    { name: 'Mercedes C-Class', year: 2021, price: 80, rating: 5.0, reviews: 18, fuel: 'Diesel', city: 'Hamburg' },
+    {
+      name: 'BMW 3 Series',
+      year: 2022,
+      price: 65,
+      rating: 4.9,
+      reviews: 34,
+      fuel: 'Benzin',
+      city: 'Berlin',
+      image: '/2025-bmw-3-series-102-66562dcd6a1c6.avif',
+    },
+    {
+      name: 'Volkswagen Golf',
+      year: 2023,
+      price: 45,
+      rating: 4.7,
+      reviews: 21,
+      fuel: 'Elektro',
+      city: 'München',
+      image: '/B2024CW00030_web_1600.jpg',
+    },
+    {
+      name: 'Mercedes C-Class',
+      year: 2021,
+      price: 80,
+      rating: 5.0,
+      reviews: 18,
+      fuel: 'Diesel',
+      city: 'Hamburg',
+      image: '/c-class-exterior-left-front-three-quarter-2.avif',
+    },
   ];
 
   const ownerStats = [
@@ -44,7 +72,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-bg-card">
-
       <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-card/90 backdrop-blur-md border-b border-border-default">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -52,19 +79,37 @@ export default function HomePage() {
               <Car size={16} className="text-text-inverse" />
             </div>
             <span className="text-lg font-bold text-text-base">
-              Car<span className="text-brand">Rental</span>
+              Lunar<span className="text-brand">Carsharing</span>
             </span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#how" className="text-sm text-text-muted hover:text-text-base transition-colors">{t('nav.how')}</a>
-            <a href="#cars" className="text-sm text-text-muted hover:text-text-base transition-colors">{t('nav.cars')}</a>
-            <a href="#owners" className="text-sm text-text-muted hover:text-text-base transition-colors">{t('nav.owners')}</a>
+            <a
+              href="#how"
+              className="text-sm text-text-muted hover:text-text-base transition-colors"
+            >
+              {t('nav.how')}
+            </a>
+            <a
+              href="#cars"
+              className="text-sm text-text-muted hover:text-text-base transition-colors"
+            >
+              {t('nav.cars')}
+            </a>
+            <a
+              href="#owners"
+              className="text-sm text-text-muted hover:text-text-base transition-colors"
+            >
+              {t('nav.owners')}
+            </a>
           </div>
 
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            <Link href="/login" className="text-sm text-text-secondary hover:text-text-base transition-colors">
+            <Link
+              href="/login"
+              className="text-sm text-text-secondary hover:text-text-base transition-colors"
+            >
               {t('nav.login')}
             </Link>
             <Link
@@ -91,7 +136,14 @@ export default function HomePage() {
                 <span className="text-landing-cta-text relative">
                   {t('hero.titleAccent')}
                   <svg className="absolute -bottom-1 left-0 w-full" height="6" viewBox="0 0 200 6">
-                    <path d="M0 5 Q100 0 200 5" stroke="var(--landing-cta-bg)" strokeWidth="3" fill="none" opacity="0.4" strokeLinecap="round" />
+                    <path
+                      d="M0 5 Q100 0 200 5"
+                      stroke="var(--landing-cta-bg)"
+                      strokeWidth="3"
+                      fill="none"
+                      opacity="0.4"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>{' '}
                 {t('hero.titleEnd')}
@@ -143,8 +195,14 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-brand-subtle rounded-3xl" />
               <div className="relative p-8">
                 <div className="bg-bg-card rounded-2xl shadow-xl border border-border-default p-5 mb-4">
-                  <div className="w-full h-40 bg-brand-subtle rounded-xl flex items-center justify-center mb-4">
-                    <Car size={64} className="text-landing-cta-bg" />
+                  <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
+                    <Image
+                      src="/2022-bmw-3-series-330e-xdrive-plug-in-hybrid-angular-front-exterior-view_100826982_l.jpg"
+                      alt="BMW 3 Series 2022"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex items-start justify-between mb-2">
                     <div>
@@ -158,7 +216,9 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <StarRating value={4.9} size="sm" readonly />
-                    <span className="text-xs text-text-muted">{t('hero.reviews', { rating: '4.9', count: 34 })}</span>
+                    <span className="text-xs text-text-muted">
+                      {t('hero.reviews', { rating: '4.9', count: 34 })}
+                    </span>
                   </div>
                   <Link
                     href="/search"
@@ -243,8 +303,14 @@ export default function HomePage() {
                 key={car.name}
                 className="bg-bg-card rounded-2xl border border-border-default overflow-hidden hover:shadow-lg hover:border-brand transition-all group"
               >
-                <div className="h-44 bg-brand-subtle flex items-center justify-center">
-                  <Car size={56} className="text-landing-cta-bg" />
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={car.image}
+                    alt={car.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
                 </div>
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-1">
@@ -259,7 +325,9 @@ export default function HomePage() {
                   </p>
                   <div className="flex items-center gap-2">
                     <StarRating value={car.rating} size="sm" readonly />
-                    <span className="text-xs text-text-muted">{car.rating} ({car.reviews})</span>
+                    <span className="text-xs text-text-muted">
+                      {car.rating} ({car.reviews})
+                    </span>
                   </div>
                 </div>
               </div>
@@ -267,7 +335,10 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link href="/search" className="inline-flex items-center gap-1 text-sm text-landing-cta-text font-semibold">
+            <Link
+              href="/search"
+              className="inline-flex items-center gap-1 text-sm text-landing-cta-text font-semibold"
+            >
               {t('popular.viewAllMobile')} <ChevronRight size={16} />
             </Link>
           </div>
@@ -310,9 +381,7 @@ export default function HomePage() {
               <h2 className="text-4xl font-bold text-landing-dark-text mb-6">
                 {t('owners.title')}
               </h2>
-              <p className="text-landing-dark-muted leading-relaxed mb-8">
-                {t('owners.subtitle')}
-              </p>
+              <p className="text-landing-dark-muted leading-relaxed mb-8">{t('owners.subtitle')}</p>
               <div className="flex flex-col gap-3 mb-8">
                 {[t('owners.benefit1'), t('owners.benefit2'), t('owners.benefit3')].map((item) => (
                   <div key={item} className="flex items-center gap-3">
@@ -332,7 +401,10 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 gap-4">
               {ownerStats.map(({ value, label, sub }) => (
-                <div key={label} className="bg-landing-dark-card border border-landing-dark-border rounded-2xl p-5">
+                <div
+                  key={label}
+                  className="bg-landing-dark-card border border-landing-dark-border rounded-2xl p-5"
+                >
                   <p className="text-2xl font-bold text-landing-cta-bg mb-1">{value}</p>
                   <p className="text-sm font-semibold text-landing-dark-text mb-1">{label}</p>
                   <p className="text-xs text-landing-dark-muted">{sub}</p>
@@ -346,9 +418,7 @@ export default function HomePage() {
       <section className="py-20 px-6 bg-landing-cta-bg">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-text-base mb-4">{t('cta.title')}</h2>
-          <p className="text-text-base mb-8 text-lg">
-            {t('cta.subtitle')}
-          </p>
+          <p className="text-text-base mb-8 text-lg">{t('cta.subtitle')}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/search"
@@ -366,7 +436,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

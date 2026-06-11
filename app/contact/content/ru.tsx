@@ -13,7 +13,7 @@ export function ContactRu() {
               {[
                 {
                   title: 'Электронная почта',
-                  value: 'support@carrental.de',
+                  value: 'support@lunarcarsharing.de',
                   desc: 'Ответим в течение 2 часов',
                 },
                 {
@@ -23,12 +23,12 @@ export function ContactRu() {
                 },
                 {
                   title: 'По вопросам страхования',
-                  value: 'insurance@carrental.de',
+                  value: 'insurance@lunarcarsharing.de',
                   desc: 'Круглосуточно',
                 },
                 {
                   title: 'По юридическим вопросам',
-                  value: 'legal@carrental.de',
+                  value: 'legal@lunarcarsharing.de',
                   desc: 'Ответим в течение 24 часов',
                 },
               ].map(({ title, value, desc }) => (
@@ -43,7 +43,7 @@ export function ContactRu() {
 
           <Section title="Адрес офиса">
             <div className="p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-semibold">CarRental GmbH</p>
+              <p className="text-text-base font-semibold">Lunar Carsharing GmbH</p>
               <p className="text-text-secondary mt-2">Musterstraße 12</p>
               <p className="text-text-secondary">76131 Karlsruhe</p>
               <p className="text-text-secondary">Deutschland</p>

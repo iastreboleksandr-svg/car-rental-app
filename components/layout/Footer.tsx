@@ -34,7 +34,7 @@ export async function Footer() {
 
         <div className="flex flex-col gap-4">
           <span className="text-xl font-bold text-landing-dark-text">
-            Car<span className="text-brand-ring">Rental</span>
+            Lunar <span className="text-brand-ring">Carsharing</span>
           </span>
           <p className="text-sm text-landing-dark-muted leading-relaxed">
             {t('tagline')}

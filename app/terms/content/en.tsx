@@ -6,7 +6,7 @@ export function TermsEn() {
           <h1 className="text-3xl font-bold text-text-base mb-2">Terms of Use</h1>
           <p className="text-text-muted text-sm mb-8">Last updated: January 1, 2025</p>
           <Section title="1. Subject of Agreement">
-            <p>These Terms of Use govern the relationship between CarRental GmbH ("Platform") and users — renters and car owners. By registering on the platform, you accept these terms in full.</p>
+            <p>These Terms of Use govern the relationship between Lunar Carsharing GmbH ("Platform") and users — renters and car owners. By registering on the platform, you accept these terms in full.</p>
           </Section>
           <Section title="2. Registration and Account">
             <ul className="space-y-2">
@@ -59,7 +59,7 @@ export function TermsEn() {
             </ul>
           </Section>
           <Section title="7. Platform Liability">
-            <p>CarRental acts as an intermediary between renters and car owners. The platform is not liable for user actions, vehicle condition or losses arising during the rental. Maximum liability is limited to the commission received for the specific transaction.</p>
+            <p>Lunar Carsharing acts as an intermediary between renters and car owners. The platform is not liable for user actions, vehicle condition or losses arising during the rental. Maximum liability is limited to the commission received for the specific transaction.</p>
           </Section>
           <Section title="8. Prohibited Actions">
             <ul className="space-y-2">
@@ -71,7 +71,7 @@ export function TermsEn() {
             </ul>
           </Section>
           <Section title="9. Applicable Law">
-            <p>These Terms are governed by the law of the Federal Republic of Germany. Disputes are handled by courts at the location of CarRental GmbH — Karlsruhe.</p>
+            <p>These Terms are governed by the law of the Federal Republic of Germany. Disputes are handled by courts at the location of Lunar Carsharing GmbH — Karlsruhe.</p>
           </Section>
           <Section title="10. Changes to Terms">
             <p>We reserve the right to modify these Terms. We will notify you by email at least 14 days before changes take effect. Continued use of the platform after changes take effect constitutes acceptance.</p>
@@ -79,8 +79,8 @@ export function TermsEn() {
           <Section title="11. Contact" isLast>
             <p className="text-text-secondary">For questions related to the terms of use:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">legal@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">legal@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

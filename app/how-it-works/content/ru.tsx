@@ -141,7 +141,7 @@ export function HowItWorksRu() {
             <p className="text-text-secondary">Наша служба поддержки готова помочь в любое время.</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
               <p className="text-text-base font-medium">Центр помощи</p>
-              <p className="text-text-secondary mt-1">support@carrental.de</p>
+              <p className="text-text-secondary mt-1">support@lunarcarsharing.de</p>
               <p className="text-text-secondary">Ответим в течение 2 часов</p>
             </div>
           </Section>

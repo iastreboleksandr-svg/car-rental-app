@@ -8,10 +8,10 @@ export function ContactDe() {
           <Section title="Kontaktmöglichkeiten">
             <div className="grid sm:grid-cols-2 gap-4 mt-2">
               {[
-                { title: 'E-Mail', value: 'support@carrental.de', desc: 'Antwort innerhalb von 2 Stunden' },
+                { title: 'E-Mail', value: 'support@lunarcarsharing.de', desc: 'Antwort innerhalb von 2 Stunden' },
                 { title: 'Telefon', value: '+49 721 000 0000', desc: 'Mo–Fr, 9:00–18:00' },
-                { title: 'Versicherungsfragen', value: 'insurance@carrental.de', desc: 'Rund um die Uhr' },
-                { title: 'Rechtliche Fragen', value: 'legal@carrental.de', desc: 'Antwort innerhalb von 24 Stunden' },
+                { title: 'Versicherungsfragen', value: 'insurance@lunarcarsharing.de', desc: 'Rund um die Uhr' },
+                { title: 'Rechtliche Fragen', value: 'legal@lunarcarsharing.de', desc: 'Antwort innerhalb von 24 Stunden' },
               ].map(({ title, value, desc }) => (
                 <div key={title} className="p-4 border border-border-default rounded-xl">
                   <p className="text-xs text-text-muted mb-1">{title}</p>
@@ -23,7 +23,7 @@ export function ContactDe() {
           </Section>
           <Section title="Büroadresse">
             <div className="p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-semibold">CarRental GmbH</p>
+              <p className="text-text-base font-semibold">Lunar Carsharing GmbH</p>
               <p className="text-text-secondary mt-2">Musterstraße 12</p>
               <p className="text-text-secondary">76131 Karlsruhe</p>
               <p className="text-text-secondary">Deutschland</p>

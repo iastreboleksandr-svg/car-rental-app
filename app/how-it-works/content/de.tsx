@@ -64,7 +64,7 @@ export function HowItWorksDe() {
             <p className="text-text-secondary">Unser Support ist jederzeit für Sie da.</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
               <p className="text-text-base font-medium">Hilfecenter</p>
-              <p className="text-text-secondary mt-1">support@carrental.de</p>
+              <p className="text-text-secondary mt-1">support@lunarcarsharing.de</p>
               <p className="text-text-secondary">Antwort innerhalb von 2 Stunden</p>
             </div>
           </Section>

@@ -60,7 +60,14 @@
     },
     "actions": {
       "edit": "Редактировать",
-      "availability": "Доступность"
+      "availability": "Доступность",
+      "delete": "Удалить"
+    },
+    "deleteConfirm": {
+      "title": "Удалить машину?",
+      "body": "Машина будет удалена из вашего списка. Это действие необратимо.",
+      "yes": "Да, удалить",
+      "no": "Отмена"
     }
   },
   "search": {
@@ -272,6 +279,7 @@
     "empty": "У вас пока нет броней",
     "browseCars": "Найти машину",
     "cancel": "Отменить",
+    "ownerContact": "Контакты владельца",
     "total": "${total}",
     "tabs": {
       "all": "Все",
@@ -425,7 +433,7 @@
     "privacy": "Политика конфиденциальности",
     "terms": "Условия использования",
     "impressum": "Impressum",
-    "copyright": "© CarRental 2024–{year}. Все права защищены.",
+    "copyright": "© Lunar Carsharing 2024–{year}. Все права защищены.",
     "socialNetworks": "Социальные сети",
     "siteFooter": "Футер сайта"
   }

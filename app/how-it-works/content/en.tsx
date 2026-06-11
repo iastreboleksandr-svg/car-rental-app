@@ -64,7 +64,7 @@ export function HowItWorksEn() {
             <p className="text-text-secondary">Our support team is ready to help at any time.</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
               <p className="text-text-base font-medium">Help Center</p>
-              <p className="text-text-secondary mt-1">support@carrental.de</p>
+              <p className="text-text-secondary mt-1">support@lunarcarsharing.de</p>
               <p className="text-text-secondary">Reply within 2 hours</p>
             </div>
           </Section>

@@ -60,7 +60,14 @@
     },
     "actions": {
       "edit": "Bearbeiten",
-      "availability": "Verfügbarkeit"
+      "availability": "Verfügbarkeit",
+      "delete": "Löschen"
+    },
+    "deleteConfirm": {
+      "title": "Auto löschen?",
+      "body": "Das Auto wird aus Ihren Inseraten entfernt. Diese Aktion kann nicht rückgängig gemacht werden.",
+      "yes": "Ja, löschen",
+      "no": "Abbrechen"
     }
   },
   "search": {
@@ -272,6 +279,7 @@
     "empty": "Sie haben noch keine Buchungen",
     "browseCars": "Auto finden",
     "cancel": "Stornieren",
+    "ownerContact": "Kontakt des Besitzers",
     "total": "${total}",
     "tabs": {
       "all": "Alle",
@@ -425,7 +433,7 @@
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "impressum": "Impressum",
-    "copyright": "© CarRental 2024–{year}. Alle Rechte vorbehalten.",
+    "copyright": "© Lunar Carsharing 2024–{year}. Alle Rechte vorbehalten.",
     "socialNetworks": "Soziale Netzwerke",
     "siteFooter": "Seiten-Footer"
   }

@@ -55,7 +55,7 @@ export function HelpDe() {
               {[
                 { q: 'Was tun bei einem Unfall?', a: 'Rufen Sie sofort die Polizei, dokumentieren Sie den Vorfall und kontaktieren Sie unseren Support unter +49 721 000 0000.' },
                 { q: 'Das Fahrzeug entspricht nicht der Beschreibung — was tun?', a: 'Fotografieren Sie die Abweichungen und kontaktieren Sie den Support sofort vor Fahrtbeginn. Wir klären die Situation.' },
-                { q: 'Wie reiche ich eine Beschwerde gegen einen Mieter oder Eigentümer ein?', a: 'Schreiben Sie an support@carrental.de mit einer Beschreibung der Situation und Beweisen. Wir bearbeiten die Anfrage innerhalb von 24 Stunden.' },
+                { q: 'Wie reiche ich eine Beschwerde gegen einen Mieter oder Eigentümer ein?', a: 'Schreiben Sie an support@lunarcarsharing.de mit einer Beschreibung der Situation und Beweisen. Wir bearbeiten die Anfrage innerhalb von 24 Stunden.' },
               ].map(({ q, a }) => (
                 <div key={q}><p className="font-semibold text-text-base mb-1">{q}</p><p className="text-text-secondary text-sm leading-relaxed">{a}</p></div>
               ))}
@@ -64,8 +64,8 @@ export function HelpDe() {
           <Section title="Support kontaktieren" isLast>
             <p className="text-text-secondary">Keine Antwort auf Ihre Frage gefunden? Schreiben Sie uns:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental Support</p>
-              <p className="text-text-secondary mt-1">support@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing Support</p>
+              <p className="text-text-secondary mt-1">support@lunarcarsharing.de</p>
               <p className="text-text-secondary">+49 721 000 0000</p>
               <p className="text-text-secondary mt-2 text-xs">Rund um die Uhr erreichbar, Antwort innerhalb von 2 Stunden</p>
             </div>

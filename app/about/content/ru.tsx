@@ -6,12 +6,12 @@ export function AboutRu() {
 
           <h1 className="text-3xl font-bold text-text-base mb-2">О нас</h1>
           <p className="text-text-muted text-sm mb-8">
-            CarRental — платформа для аренды автомобилей напрямую у владельцев
+            Lunar Carsharing — платформа для аренды автомобилей напрямую у владельцев
           </p>
 
           <Section title="Наша миссия">
             <p>
-              CarRental создана с одной целью — сделать аренду автомобиля простой, честной и
+              Lunar Carsharing создана с одной целью — сделать аренду автомобиля простой, честной и
               доступной. Мы убираем посредников и соединяем арендаторов напрямую с владельцами
               автомобилей по всей Германии.
             </p>
@@ -74,7 +74,7 @@ export function AboutRu() {
               доверяем сами.
             </p>
             <p className="mt-3">
-              CarRental — это портфельный проект, который развивается и улучшается каждый день.
+              Lunar Carsharing — это портфельный проект, который развивается и улучшается каждый день.
               Мы открыты к обратной связи и всегда рады вашим предложениям.
             </p>
           </Section>
@@ -82,8 +82,8 @@ export function AboutRu() {
           <Section title="Контакты" isLast>
             <p className="text-text-secondary">Есть вопросы или предложения?</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">hello@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">hello@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

@@ -55,6 +55,7 @@ export default function MyBookingsPage() {
               statusLabel={t(`status.${booking.status}`)}
               metaLabel={t('total', { total: booking.totalPrice })}
               cancelLabel={t('cancel')}
+              ownerContactLabel={t('ownerContact')}
               onCancel={cancel}
               cancelling={isCancelling}
             />

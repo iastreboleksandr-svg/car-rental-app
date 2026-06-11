@@ -121,7 +121,7 @@ export function HelpRu() {
                 },
                 {
                   q: 'Как подать жалобу на арендатора или владельца?',
-                  a: 'Напишите на support@carrental.de с описанием ситуации и приложите доказательства. Мы рассмотрим обращение в течение 24 часов.',
+                  a: 'Напишите на support@lunarcarsharing.de с описанием ситуации и приложите доказательства. Мы рассмотрим обращение в течение 24 часов.',
                 },
               ].map(({ q, a }) => (
                 <div key={q}>
@@ -135,8 +135,8 @@ export function HelpRu() {
           <Section title="Связаться с поддержкой" isLast>
             <p className="text-text-secondary">Не нашли ответ на свой вопрос? Напишите нам:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">Служба поддержки CarRental</p>
-              <p className="text-text-secondary mt-1">support@carrental.de</p>
+              <p className="text-text-base font-medium">Служба поддержки Lunar Carsharing</p>
+              <p className="text-text-secondary mt-1">support@lunarcarsharing.de</p>
               <p className="text-text-secondary">+49 721 000 0000</p>
               <p className="text-text-secondary mt-2 text-xs">
                 Работаем круглосуточно, ответим в течение 2 часов

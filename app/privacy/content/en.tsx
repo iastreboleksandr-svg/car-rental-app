@@ -11,7 +11,7 @@ export function PrivacyEn() {
           </p>
           <Section title="1. General Provisions">
             <p>
-              This Privacy Policy describes how CarRental ("we", "our", "us")
+              This Privacy Policy describes how Lunar Carsharing ("we", "our", "us")
               collects, uses and protects your personal data when you use our
               car rental platform.
             </p>
@@ -83,8 +83,8 @@ export function PrivacyEn() {
           <Section title="9. Contact" isLast>
             <p className="text-text-secondary">For all questions related to personal data processing:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">privacy@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">privacy@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

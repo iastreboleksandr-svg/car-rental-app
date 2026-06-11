@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { Car } from 'lucide-react';
+import { Car, Phone, Mail } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
-import { formatBookingDates, bookingCarName, bookingCarPhoto } from '@/lib/formatBookingDates';
+import { formatBookingDates, bookingCarName, bookingCarPhoto, bookingOwner } from '@/lib/formatBookingDates';
 import type { Booking, BookingStatus } from '@/types/booking';
 
 interface MyBookingItemProps {
@@ -10,6 +10,7 @@ interface MyBookingItemProps {
   statusLabel: string;
   metaLabel: string;
   cancelLabel: string;
+  ownerContactLabel: string;
   onCancel: (id: string) => void;
   cancelling: boolean;
 }
@@ -21,9 +22,10 @@ const badgeVariant: Record<BookingStatus, 'pending' | 'confirmed' | 'completed' 
   CANCELLED: 'cancelled',
 };
 
-export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, onCancel, cancelling }: MyBookingItemProps) {
+export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, ownerContactLabel, onCancel, cancelling }: MyBookingItemProps) {
   const canCancel = booking.status === 'PENDING' || booking.status === 'CONFIRMED';
   const photo = bookingCarPhoto(booking.car);
+  const owner = bookingOwner(booking.car);
 
   return (
     <div className="bg-bg-card rounded-2xl shadow-sm border border-border-default p-4 flex flex-col gap-3">
@@ -45,6 +47,22 @@ export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, on
 
         <Badge variant={badgeVariant[booking.status]} size="sm" label={statusLabel} className="min-w-0 shrink-0" />
       </Link>
+
+      {owner && (owner.phone || owner.email) && (
+        <div className="border-t border-border-default pt-3 flex flex-col gap-1">
+          <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">{ownerContactLabel}</p>
+          {owner.phone && (
+            <a href={`tel:${owner.phone}`} className="text-sm text-brand flex items-center gap-1.5 hover:underline">
+              <Phone size={13} className="shrink-0" />
+              {owner.phone}
+            </a>
+          )}
+          <a href={`mailto:${owner.email}`} className="text-sm text-text-secondary flex items-center gap-1.5 hover:underline">
+            <Mail size={13} className="shrink-0" />
+            {owner.email}
+          </a>
+        </div>
+      )}
 
       {canCancel && (
         <div className="flex justify-end">

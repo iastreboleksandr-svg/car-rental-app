@@ -34,6 +34,14 @@ export interface BookingRenter {
   phone?: string | null;
 }
 
+export interface BookingOwner {
+  id: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  email: string;
+  phone?: string | null;
+}
+
 export interface BookingRawCar {
   id: string;
   brand: string;
@@ -43,6 +51,7 @@ export interface BookingRawCar {
   deposit: number | string;
   address: string;
   photos?: { id: string; carPhotoUrl: string }[];
+  owner?: BookingOwner | null;
 }
 
 export interface BookingRaw {

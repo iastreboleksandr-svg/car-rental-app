@@ -4,9 +4,9 @@ export function MobileEn() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-bg-card rounded-2xl border border-border-default p-8 sm:p-12">
           <h1 className="text-3xl font-bold text-text-base mb-2">Mobile Apps</h1>
-          <p className="text-text-muted text-sm mb-8">CarRental always at hand — rent and manage directly from your smartphone</p>
-          <Section title="The CarRental App">
-            <p>The CarRental app is available for iOS and Android. All platform features — search, booking, rental management and communication with owners — in one place.</p>
+          <p className="text-text-muted text-sm mb-8">Lunar Carsharing always at hand — rent and manage directly from your smartphone</p>
+          <Section title="The Lunar Carsharing App">
+            <p>The Lunar Carsharing app is available for iOS and Android. All platform features — search, booking, rental management and communication with owners — in one place.</p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
               <div className="flex-1 p-5 border border-border-default rounded-xl flex flex-col gap-3">
                 <p className="font-semibold text-text-base">App Store</p>
@@ -49,13 +49,13 @@ export function MobileEn() {
             </ul>
           </Section>
           <Section title="Web Version">
-            <p>If you prefer to use the platform in a browser, the CarRental web version is fully optimised for mobile devices and works on any smartphone without installing an app.</p>
+            <p>If you prefer to use the platform in a browser, the Lunar Carsharing web version is fully optimised for mobile devices and works on any smartphone without installing an app.</p>
           </Section>
           <Section title="Still have questions?" isLast>
             <p className="text-text-secondary">For questions about the app contact:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental Support</p>
-              <p className="text-text-secondary mt-1">support@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing Support</p>
+              <p className="text-text-secondary mt-1">support@lunarcarsharing.de</p>
               <p className="text-text-secondary">Reply within 2 hours</p>
             </div>
           </Section>
