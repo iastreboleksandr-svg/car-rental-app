@@ -11,6 +11,7 @@ import { Toast } from '@/components/common/Toast';
 import { ConfirmDialog } from '@/components/common/ConfirmDialog';
 import { BrandAutocomplete } from '@/components/cars/BrandAutocomplete';
 import { CarPhotoUploader } from '@/components/cars/CarPhotoUploader';
+import { LocationPicker } from '@/components/atoms/map/LocationPicker';
 import { useCarForm, type CarFormMode } from '@/hooks/useCarForm';
 import { DESCRIPTION_MAX, FUEL_TYPES, TRANSMISSIONS } from '@/lib/carForm';
 import type { FuelType, Transmission } from '@/types/car';
@@ -232,6 +233,16 @@ export function CarForm({ mode, carId }: CarFormProps) {
             error={err('address')}
             disabled={isSubmitting}
             required
+          />
+          <LocationPicker
+            label={t('pickLocation')}
+            hint={t('pickLocationHint')}
+            lat={form.lat}
+            lng={form.lng}
+            onChange={(lat, lng) => {
+              setField('lat', lat);
+              setField('lng', lng);
+            }}
           />
         </Section>
 

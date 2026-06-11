@@ -37,7 +37,7 @@ export default function BookingNewPage() {
 
       <div className="bg-bg-card rounded-2xl shadow-sm p-5">
         <Section title={t('rentalDates')}>
-          <DateRangePicker label={t('selectPeriod')} value={dateRange} onChange={setDateRange} busyRanges={busyRanges} blockedRanges={blockedRanges} availableRanges={availableRanges} onOpen={refetchBookedDates} />
+          <DateRangePicker label={t('selectPeriod')} value={dateRange} onChange={setDateRange} busyRanges={busyRanges} blockedRanges={blockedRanges} availableRanges={availableRanges} restrictToAvailable onOpen={refetchBookedDates} />
           <div className="flex flex-wrap gap-3 text-xs text-text-muted">
             <span className="inline-flex items-center gap-1.5">
               <span className="h-3 w-3 rounded bg-[#fee2e2]" /> {t('legendConfirmed')}

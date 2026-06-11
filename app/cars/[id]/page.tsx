@@ -8,6 +8,7 @@ import StarRating from '@/components/atoms/StarRating';
 import Spinner from '@/components/atoms/Spinner';
 import { Fuel, Settings2, Users, ArrowLeft, ShieldCheck, MessageCircle } from 'lucide-react';
 import { Section } from '@/components/common/Section';
+import { MapView } from '@/components/atoms/map/MapView';
 import { CarGallery } from '@/components/cars/CarGallery';
 import { CarDescription } from '@/components/cars/CarDescription';
 import { useCarDetailPage } from '@/hooks/useCarDetailPage';
@@ -90,6 +91,13 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
                 // showMoreLabel={t('showMore')}
                 // showLessLabel={t('showLess')}
               />
+            )}
+
+            {(car.lat !== 0 || car.lng !== 0) && (
+              <Section title={t('location')}>
+                <p className="text-sm text-gray-500 mb-3">{car.address}</p>
+                <MapView lat={car.lat} lng={car.lng} />
+              </Section>
             )}
 
             {/* <Section title={t('owner')}>

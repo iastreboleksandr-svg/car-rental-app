@@ -27,6 +27,7 @@ interface DateRangePickerProps {
   busyRanges?: BusyRange[];
   blockedRanges?: BusyRange[];
   availableRanges?: AvailableRange[];
+  restrictToAvailable?: boolean;
   onOpen?: () => void;
 }
 
@@ -45,6 +46,7 @@ export function DateRangePicker({
   busyRanges = [],
   blockedRanges = [],
   availableRanges = [],
+  restrictToAvailable = false,
   onOpen,
 }: DateRangePickerProps) {
   const locale = useLocale();
@@ -96,7 +98,7 @@ export function DateRangePicker({
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 z-50 bg-bg-card border border-border-default rounded-2xl shadow-lg p-3">
+        <div className="absolute top-full left-0 mt-1 z-[1000] bg-bg-card border border-border-default rounded-2xl shadow-lg p-3">
           <DayPicker
             mode="range"
             selected={value}
@@ -111,7 +113,7 @@ export function DateRangePicker({
                 .map((r) => ({ from: r.from, to: r.to })),
               ...blockedRanges.map((r) => ({ from: r.from, to: r.to })),
               (day: Date) => {
-                if (availableRanges.length === 0) return false;
+                if (availableRanges.length === 0) return restrictToAvailable;
                 const d = startOfDay(day).getTime();
                 return !availableRanges.some(
                   (r) => d >= startOfDay(r.from).getTime() && d <= startOfDay(r.to).getTime(),

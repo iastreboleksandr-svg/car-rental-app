@@ -39,9 +39,9 @@ export function CarGallery({ photos = [], alt = 'Car' }: CarGalleryProps) {
 
   return (
     <div className="bg-white rounded-2xl shadow-sm p-4 flex flex-col gap-3">
-      <div className="w-full aspect-video rounded-xl overflow-hidden bg-gray-100">
+      <div className="w-full rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center max-h-112">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={active.url} alt={alt} className="w-full h-full object-cover" />
+        <img src={active.url} alt={alt} className="w-full max-h-112 object-contain" />
       </div>
       {photos.length > 1 && (
         <div className="flex gap-2 flex-wrap">

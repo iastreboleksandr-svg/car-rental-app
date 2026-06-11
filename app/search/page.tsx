@@ -6,6 +6,7 @@ import { Checkbox } from '@/components/atoms/Checkbox';
 import { RadioButton } from '@/components/atoms/RadioButton';
 import Input from '@/components/atoms/Input';
 import { DateRangePicker } from '@/components/atoms/DateRangePicker';
+import { LocationPicker } from '@/components/atoms/map/LocationPicker';
 import { CarCard } from '@/components/search/CarCard';
 import { useSearchPage } from '@/hooks/useSearchPage';
 import { useTranslations } from 'next-intl';
@@ -18,6 +19,8 @@ export default function SearchPage() {
     fuel, toggleFuel,
     transmission, setTransmission,
     maxPrice, setMaxPrice,
+    point, setPoint,
+    radius, setRadius,
     applyFilters, resetFilters,
     cars, total, isLoading, isError,
     hasNextPage, isFetchingNextPage, loadMore,
@@ -31,11 +34,36 @@ export default function SearchPage() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 flex gap-6">
-      <div className="flex flex-col gap-4 w-48 shrink-0">
+    <div className="max-w-5xl mx-auto px-4 py-6 flex gap-6">
+      <div className="flex flex-col gap-4 w-64 shrink-0">
         <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">{t('filters')}</p>
 
         <DateRangePicker label={t('rentalDates')} value={dateRange} onChange={setDateRange} />
+
+        <div className="flex flex-col gap-2">
+          <LocationPicker
+            label={t('location')}
+            hint={t('locationHint')}
+            lat={point?.lat ?? 0}
+            lng={point?.lng ?? 0}
+            onChange={(lat, lng) => setPoint({ lat, lng })}
+          />
+          {point && (
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-medium text-text-secondary">
+                {t('radius', { km: radius })}
+              </label>
+              <input
+                type="range"
+                min={1}
+                max={200}
+                value={radius}
+                onChange={(e) => setRadius(Number(e.target.value))}
+                className="w-full accent-brand"
+              />
+            </div>
+          )}
+        </div>
 
         <div className="flex flex-col gap-2">
           <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">{t('fuelType')}</p>

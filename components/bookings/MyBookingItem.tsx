@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Car } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
@@ -26,7 +27,7 @@ export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, on
 
   return (
     <div className="bg-bg-card rounded-2xl shadow-sm border border-border-default p-4 flex flex-col gap-3">
-      <div className="flex items-center gap-3">
+      <Link href={`/cars/${booking.carId}`} className="flex items-center gap-3 group">
         <div className="w-12 h-12 rounded-xl border border-border-default bg-bg-disabled flex items-center justify-center shrink-0 overflow-hidden">
           {photo ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -37,13 +38,13 @@ export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, on
         </div>
 
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-text-base truncate">{bookingCarName(booking.car)}</p>
+          <p className="text-sm font-semibold text-text-base truncate group-hover:text-brand transition-colors">{bookingCarName(booking.car)}</p>
           <p className="text-sm text-text-muted">{formatBookingDates(booking.startAt, booking.endAt)}</p>
           <p className="text-xs text-text-muted mt-0.5">{metaLabel}</p>
         </div>
 
         <Badge variant={badgeVariant[booking.status]} size="sm" label={statusLabel} className="min-w-0 shrink-0" />
-      </div>
+      </Link>
 
       {canCancel && (
         <div className="flex justify-end">

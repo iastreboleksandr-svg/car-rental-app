@@ -12,6 +12,8 @@ export function useSearchPage() {
   const [fuel, setFuel] = useState<string[]>([]);
   const [transmission, setTransmission] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  const [point, setPoint] = useState<{ lat: number; lng: number } | null>(null);
+  const [radius, setRadius] = useState(50);
   const [appliedFilters, setAppliedFilters] = useState<CarFilters>({});
 
   const {
@@ -48,6 +50,11 @@ export function useSearchPage() {
     if (fuel.length > 0) filters.fuel_type = fuel;
     if (transmission) filters.transmission = transmission;
     if (maxPrice) filters.price_max = Number(maxPrice);
+    if (point) {
+      filters.lat = point.lat;
+      filters.lng = point.lng;
+      filters.radius = radius;
+    }
     setAppliedFilters(filters);
   }
 
@@ -56,6 +63,8 @@ export function useSearchPage() {
     setFuel([]);
     setTransmission('');
     setMaxPrice('');
+    setPoint(null);
+    setRadius(50);
     setAppliedFilters({});
   }
 
@@ -64,6 +73,8 @@ export function useSearchPage() {
     fuel, toggleFuel,
     transmission, setTransmission,
     maxPrice, setMaxPrice,
+    point, setPoint,
+    radius, setRadius,
     applyFilters,
     resetFilters,
     cars,
