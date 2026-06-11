@@ -59,7 +59,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
 
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         <div className="flex-1 flex flex-col gap-5">
-          <CarGallery />
+          <CarGallery photos={car.photos} alt={`${car.brand} ${car.model}`} />
 
           <div className="bg-white rounded-2xl shadow-sm p-5 flex flex-col gap-5">
             <div>

@@ -19,6 +19,7 @@ function normalizeSearchItem(item: CarSearchItem): Car {
 }
 
 function normalizeDetail(item: CarDetail): Car {
+  const photos = (item.photos ?? []).map((p) => ({ id: p.id, url: p.carPhotoUrl }));
   return {
     id: item.id,
     ownerId: item.ownerId,
@@ -35,7 +36,8 @@ function normalizeDetail(item: CarDetail): Car {
     lat: Number(item.lat),
     lng: Number(item.lng),
     address: item.address,
-    photos: item.photos ?? [],
+    photos,
+    mainPhoto: photos[0]?.url ?? null,
     createdAt: item.createdAt,
   };
 }
@@ -104,4 +106,9 @@ export const carService = {
       body: formData,
     });
   },
+
+  deletePhoto: (carId: string, photoId: string): Promise<unknown> =>
+    request(`/cars/${carId}/photos/${photoId}`, {
+      method: 'DELETE',
+    }),
 };

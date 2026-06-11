@@ -30,8 +30,13 @@ export function DashboardCarCard({
   return (
     <div className="border border-border-default hover:border-brand-subtle hover:shadow-[0_4px_24px_rgba(72,201,100,0.1)] rounded-xl p-4 flex flex-col gap-4 transition-all">
       <div className="flex items-center gap-3">
-        <div className="w-14 h-14 bg-brand-subtle rounded-xl flex items-center justify-center text-brand shrink-0">
-          <CarIcon size={24} />
+        <div className="w-14 h-14 bg-brand-subtle rounded-xl flex items-center justify-center text-brand shrink-0 overflow-hidden">
+          {car.mainPhoto ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={car.mainPhoto} alt={`${car.brand} ${car.model}`} className="w-full h-full object-cover" />
+          ) : (
+            <CarIcon size={24} />
+          )}
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-text-base">{car.brand} {car.model} · {car.year}</p>

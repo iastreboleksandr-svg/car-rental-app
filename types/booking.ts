@@ -39,6 +39,7 @@ export interface BookingRawCar {
   pricePerDay: number | string;
   deposit: number | string;
   address: string;
+  photos?: { id: string; carPhotoUrl: string }[];
 }
 
 export interface BookingRaw {

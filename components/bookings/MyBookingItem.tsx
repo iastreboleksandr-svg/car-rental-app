@@ -1,7 +1,7 @@
 import { Car } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
-import { formatBookingDates, bookingCarName } from '@/lib/formatBookingDates';
+import { formatBookingDates, bookingCarName, bookingCarPhoto } from '@/lib/formatBookingDates';
 import type { Booking, BookingStatus } from '@/types/booking';
 
 interface MyBookingItemProps {
@@ -22,12 +22,18 @@ const badgeVariant: Record<BookingStatus, 'pending' | 'confirmed' | 'completed' 
 
 export function MyBookingItem({ booking, statusLabel, metaLabel, cancelLabel, onCancel, cancelling }: MyBookingItemProps) {
   const canCancel = booking.status === 'PENDING' || booking.status === 'CONFIRMED';
+  const photo = bookingCarPhoto(booking.car);
 
   return (
     <div className="bg-bg-card rounded-2xl shadow-sm border border-border-default p-4 flex flex-col gap-3">
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-xl border border-border-default bg-bg-disabled flex items-center justify-center shrink-0">
-          <Car size={22} className="text-text-muted" />
+        <div className="w-12 h-12 rounded-xl border border-border-default bg-bg-disabled flex items-center justify-center shrink-0 overflow-hidden">
+          {photo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={photo} alt={bookingCarName(booking.car)} className="w-full h-full object-cover" />
+          ) : (
+            <Car size={22} className="text-text-muted" />
+          )}
         </div>
 
         <div className="flex-1 min-w-0">

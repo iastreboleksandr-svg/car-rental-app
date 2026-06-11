@@ -172,6 +172,9 @@ export function useCarForm(mode: CarFormMode, carId?: string) {
 
       const id = carId as string;
       const updated = await carService.update(id, dto);
+      if (removedPhotoIds.length > 0) {
+        await Promise.all(removedPhotoIds.map((photoId) => carService.deletePhoto(id, photoId)));
+      }
       if (newPhotos.length > 0) {
         await carService.uploadPhotos(
           id,
