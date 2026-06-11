@@ -1,6 +1,5 @@
 import { Car as CarIcon } from 'lucide-react';
 import Link from 'next/link';
-import StarRating from '@/components/atoms/StarRating';
 import type { Car } from '@/types/car';
 
 interface CarCardProps {
@@ -9,11 +8,7 @@ interface CarCardProps {
   perDayLabel: string;
 }
 
-export function CarCard({
-  car,
-  // noReviewsLabel,
-  //  perDayLabel
-}: CarCardProps) {
+export function CarCard({ car, perDayLabel }: CarCardProps) {
   return (
     <Link
       href={`/cars/${car.id}`}
@@ -37,14 +32,7 @@ export function CarCard({
       <p className="text-xs text-text-muted truncate">
         {car.year} · {car.address}
       </p>
-      {/* <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-brand">${car.pricePerDay}{perDayLabel}</p>
-        {car.averageRating ? (
-          <StarRating value={car.averageRating} size="sm" />
-        ) : (
-          <span className="text-xs text-text-disabled">{noReviewsLabel}</span>
-        )}
-      </div> */}
+      <p className="text-sm font-semibold text-brand">${car.pricePerDay}{perDayLabel}</p>
     </Link>
   );
 }

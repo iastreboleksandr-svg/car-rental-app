@@ -28,7 +28,10 @@ export interface CreateBookingDto {
 
 export interface BookingRenter {
   id: string;
+  firstName?: string | null;
+  lastName?: string | null;
   email: string;
+  phone?: string | null;
 }
 
 export interface BookingRawCar {

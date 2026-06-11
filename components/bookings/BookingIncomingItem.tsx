@@ -1,6 +1,6 @@
 'use client';
 
-import { Car, Check, X, Flag } from 'lucide-react';
+import { Car, Check, X, Flag, Mail, Phone } from 'lucide-react';
 import Button from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
 import { formatBookingDates, bookingCarName, bookingCarPhoto } from '@/lib/formatBookingDates';
@@ -54,7 +54,19 @@ export function BookingIncomingItem({
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-text-base truncate">{bookingCarName(booking.car)}</p>
           <p className="text-sm text-text-muted">{formatBookingDates(booking.startAt, booking.endAt)}</p>
-          <p className="text-xs text-text-muted mt-0.5 truncate">{booking.renter?.email ?? '—'}</p>
+          <p className="text-xs text-text-muted mt-0.5 flex items-center gap-1 truncate">
+            <Mail size={12} className="shrink-0" />
+            {booking.renter?.email ?? '—'}
+          </p>
+          {booking.renter?.phone && (
+            <a
+              href={`tel:${booking.renter.phone}`}
+              className="text-xs text-brand mt-0.5 flex items-center gap-1 hover:underline"
+            >
+              <Phone size={12} className="shrink-0" />
+              {booking.renter.phone}
+            </a>
+          )}
         </div>
 
         <Badge variant={badgeVariant[booking.status]} size="sm" label={statusLabel} className="min-w-0 shrink-0" />
