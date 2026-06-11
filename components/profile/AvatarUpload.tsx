@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
-import { Camera } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { Camera, X, ZoomIn } from 'lucide-react';
 
 interface AvatarUploadProps {
   avatar: string | null;
@@ -19,17 +20,29 @@ export function AvatarUpload({
   onAvatarChange,
 }: AvatarUploadProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     onAvatarChange(file);
+    e.target.value = '';
   };
+
+  useEffect(() => {
+    if (!previewOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setPreviewOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [previewOpen]);
 
   return (
     <div className="flex flex-col items-center mb-6">
       <div className="relative">
         <button
+          type="button"
           onClick={() => fileInputRef.current?.click()}
           className="w-24 h-24 rounded-full overflow-hidden bg-bg-page border-2 border-border-default relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
           aria-label="Изменить фото профиля"
@@ -61,6 +74,17 @@ export function AvatarUpload({
             <Camera size={20} className="text-white" />
           </div>
         </button>
+
+        {avatar && (
+          <button
+            type="button"
+            onClick={() => setPreviewOpen(true)}
+            aria-label="Просмотреть фото профиля"
+            className="absolute -bottom-0.5 -right-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-bg-card bg-bg-card text-text-secondary shadow-md transition-colors hover:text-text-base"
+          >
+            <ZoomIn size={14} />
+          </button>
+        )}
       </div>
 
       <input
@@ -78,6 +102,35 @@ export function AvatarUpload({
           {firstName} {lastName}
         </p>
       )}
+
+      {previewOpen && avatar && typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-95 flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Фото профиля"
+            onClick={() => setPreviewOpen(false)}
+          >
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" aria-hidden="true" />
+            <button
+              type="button"
+              onClick={() => setPreviewOpen(false)}
+              aria-label="Закрыть"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25"
+            >
+              <X size={18} />
+            </button>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={avatar}
+              alt="Фото профиля"
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[80vh] max-w-[90vw] rounded-2xl object-contain shadow-2xl"
+            />
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

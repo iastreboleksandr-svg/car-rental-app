@@ -8,7 +8,9 @@ import { useTranslations } from 'next-intl';
 
 function PasswordRule({ ok, text }: { ok: boolean; text: string }) {
   return (
-    <div className={`text-xs flex items-center gap-2 transition-colors ${ok ? 'text-brand' : 'text-text-muted'}`}>
+    <div
+      className={`text-xs flex items-center gap-2 transition-colors ${ok ? 'text-brand' : 'text-text-muted'}`}
+    >
       {ok ? <Check size={13} /> : <Circle size={13} />}
       <span>{text}</span>
     </div>
@@ -18,12 +20,18 @@ function PasswordRule({ ok, text }: { ok: boolean; text: string }) {
 export default function LoginPage() {
   const t = useTranslations('auth');
   const {
-    tab, switchTab,
-    email, setEmail,
-    password, setPassword,
-    confirmPassword, setConfirmPassword,
-    showPassword, setShowPassword,
-    showConfirmPassword, setShowConfirmPassword,
+    tab,
+    switchTab,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    confirmPassword,
+    setConfirmPassword,
+    showPassword,
+    setShowPassword,
+    showConfirmPassword,
+    setShowConfirmPassword,
     error,
     loading,
     handleSubmit,
@@ -79,7 +87,6 @@ export default function LoginPage() {
             type={showPassword ? 'text' : 'password'}
             leadingIcon={<Lock size={16} />}
             placeholder="••••••••"
-            hint={t('passwordHint')}
             trailingIcon={
               <button onClick={() => setShowPassword(!showPassword)} type="button">
                 <Eye size={16} className="text-text-muted hover:text-text-secondary" />
@@ -108,7 +115,10 @@ export default function LoginPage() {
 
           {tab === 'register' && (
             <div className="flex flex-col gap-1.5">
-              <PasswordRule ok={passwordRules.length} text={t('rules.length', { min: passwordMinLength })} />
+              <PasswordRule
+                ok={passwordRules.length}
+                text={t('rules.length', { min: passwordMinLength })}
+              />
               <PasswordRule ok={passwordRules.upper} text={t('rules.upper')} />
               <PasswordRule ok={passwordRules.lower} text={t('rules.lower')} />
               <PasswordRule ok={passwordRules.number} text={t('rules.number')} />
@@ -128,14 +138,22 @@ export default function LoginPage() {
           {tab === 'login' ? (
             <>
               {t('noAccount')}{' '}
-              <button type="button" onClick={() => switchTab('register')} className="text-brand hover:underline">
+              <button
+                type="button"
+                onClick={() => switchTab('register')}
+                className="text-brand hover:underline"
+              >
                 {t('register')}
               </button>
             </>
           ) : (
             <>
               {t('hasAccount')}{' '}
-              <button type="button" onClick={() => switchTab('login')} className="text-brand hover:underline">
+              <button
+                type="button"
+                onClick={() => switchTab('login')}
+                className="text-brand hover:underline"
+              >
                 {t('login')}
               </button>
             </>

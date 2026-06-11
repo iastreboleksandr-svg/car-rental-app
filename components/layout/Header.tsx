@@ -60,7 +60,7 @@ export function Header() {
               <NavLink href="/bookings" exact>{t('myBookings')}</NavLink>
               <NavLink href="/dashboard">{t('myCars')}</NavLink>
               <NavLink href="/bookings/incoming">{t('incoming')}</NavLink>
-              <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} />
+              {/* <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} /> */}
               <UserDropdown />
             </nav>
           )}

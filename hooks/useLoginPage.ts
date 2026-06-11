@@ -1,9 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { authService } from '@/services/auth.service';
 import { useAuthStore } from '@/store/auth.store';
+
+function authCookieHasToken(token: string): boolean {
+  const match = document.cookie.match(/(?:^|; )auth=([^;]*)/);
+  if (!match) return false;
+  try {
+    const parsed = JSON.parse(decodeURIComponent(match[1]));
+    return parsed?.state?.token === token;
+  } catch {
+    return false;
+  }
+}
+
+async function waitForAuthCookie(token: string, attempts = 20): Promise<void> {
+  for (let i = 0; i < attempts; i++) {
+    if (authCookieHasToken(token)) return;
+    await new Promise((r) => setTimeout(r, 25));
+  }
+}
 
 export function useLoginPage() {
   const searchParams = useSearchParams();
@@ -19,7 +37,6 @@ export function useLoginPage() {
   const [loading, setLoading] = useState(false);
 
   const setAuth = useAuthStore((s) => s.setAuth);
-  const router = useRouter();
 
   const PASSWORD_MIN_LENGTH = 12;
 
@@ -54,7 +71,10 @@ export function useLoginPage() {
           : await authService.register(email, password);
 
       setAuth(data.user, data.accessToken, data.refreshToken);
-      router.replace('/search');
+
+      await waitForAuthCookie(data.accessToken);
+      window.location.assign('/search');
+      return;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Что-то пошло не так');
     } finally {

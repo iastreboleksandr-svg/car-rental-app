@@ -102,6 +102,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.leaflet-container {
+  z-index: 0;
+}
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1;
+}
+
 .rdp-busy-confirmed {
   opacity: 1 !important;
 }

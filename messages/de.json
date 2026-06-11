@@ -69,11 +69,15 @@
     "fuelType": "Kraftstoffart",
     "transmission": "Getriebe",
     "maxPrice": "Max. Preis/Tag",
+    "location": "Standort",
+    "locationHint": "Klicken Sie auf die Karte, um in der Nähe zu suchen",
+    "radius": "Radius: {km} km",
     "find": "Suchen",
     "resetFilters": "Filter zurücksetzen",
     "found": "Gefunden: {count} Autos",
     "nothingFound": "Nichts gefunden",
     "loadMore": "Mehr anzeigen",
+    "perDayShort": "/T",
     "loadError": "Autos konnten nicht geladen werden",
     "noReviews": "keine Bewertungen",
     "fuel": {
@@ -142,6 +146,8 @@
       "deposit": "Kaution",
       "address": "Adresse",
       "addressPlaceholder": "Alexanderplatz 1, Berlin",
+      "pickLocation": "Punkt auf der Karte",
+      "pickLocationHint": "Klicken Sie auf die Karte, um den Abholort festzulegen",
       "descriptionPlaceholder": "Erzählen Sie etwas über das Auto...",
       "photoDrop": "Fotos hierher ziehen oder zum Auswählen klicken",
       "photoFormats": "JPG, PNG bis 5 MB, max. 10 Fotos",
@@ -176,6 +182,7 @@
       "notFound": "Auto nicht gefunden",
       "noReviews": "keine Bewertungen",
       "description": "Beschreibung",
+      "location": "Standort",
       "owner": "Besitzer",
       "features": "Merkmale",
       "booking": "Buchung",
@@ -186,6 +193,11 @@
       "booked": "✓ Gebucht",
       "processing": "Wird verarbeitet...",
       "pricePerDay": "${price} / Tag",
+      "perDay": "/ Tag",
+      "fuelLabel": "Kraftstoff",
+      "gearboxLabel": "Getriebe",
+      "seatsLabel": "Sitze",
+      "paymentProtected": "Ihre Zahlung ist geschützt. Das Geld wird erst nach Mietbeginn an den Besitzer ausgezahlt.",
       "deposit": "Kaution: ${amount}",
       "seats": "{count} Sitzplätze",
       "fuel": {
@@ -397,5 +409,24 @@
       "findCar": "Auto finden",
       "register": "Registrieren"
     }
+  },
+  "footer": {
+    "tagline": "Die am schnellsten wachsende Auto-Vermietungsplattform in Europa. Finde ein Auto, buche es und fahr los.",
+    "company": "Unternehmen",
+    "about": "Über uns",
+    "howItWorks": "So funktioniert's",
+    
+    "resources": "Ressourcen",
+    "insurance": "Versicherung",
+    "mobileApps": "Mobile Apps",
+    "helpCenter": "Hilfecenter",
+    "contacts": "Kontakt",
+    "contactUs": "Kontakt aufnehmen",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "impressum": "Impressum",
+    "copyright": "© CarRental 2024–{year}. Alle Rechte vorbehalten.",
+    "socialNetworks": "Soziale Netzwerke",
+    "siteFooter": "Seiten-Footer"
   }
 }

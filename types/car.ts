@@ -7,6 +7,13 @@ export interface CarPhoto {
   url: string;
 }
 
+export interface CarPhotoRaw {
+  id: string;
+  carId: string;
+  carPhotoUrl: string;
+  sortOrder: number;
+}
+
 export interface Car {
   id: string;
   ownerId: string;
@@ -65,7 +72,7 @@ export interface CarDetail {
   lat: number;
   lng: number;
   address: string;
-  photos?: CarPhoto[];
+  photos?: CarPhotoRaw[];
   createdAt: string;
 }
 

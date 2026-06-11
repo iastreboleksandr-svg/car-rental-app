@@ -69,11 +69,15 @@
     "fuelType": "Fuel type",
     "transmission": "Gearbox",
     "maxPrice": "Max price/day",
+    "location": "Location",
+    "locationHint": "Click the map to search nearby",
+    "radius": "Radius: {km} km",
     "find": "Search",
     "resetFilters": "Reset filters",
     "found": "Found: {count} cars",
     "nothingFound": "Nothing found",
     "loadMore": "Load more",
+    "perDayShort": "/d",
     "loadError": "Failed to load cars",
     "noReviews": "no reviews",
     "fuel": {
@@ -142,6 +146,8 @@
       "deposit": "Deposit",
       "address": "Address",
       "addressPlaceholder": "Alexanderplatz 1, Berlin",
+      "pickLocation": "Point on map",
+      "pickLocationHint": "Click the map to set the pickup location",
       "descriptionPlaceholder": "Tell about the car...",
       "photoDrop": "Drag photos here or click to select",
       "photoFormats": "JPG, PNG up to 5 MB, max 10 photos",
@@ -176,6 +182,7 @@
       "notFound": "Car not found",
       "noReviews": "no reviews",
       "description": "Description",
+      "location": "Location",
       "owner": "Owner",
       "features": "Features",
       "booking": "Booking",
@@ -186,6 +193,11 @@
       "booked": "✓ Booked",
       "processing": "Processing...",
       "pricePerDay": "${price} / day",
+      "perDay": "/ day",
+      "fuelLabel": "Fuel",
+      "gearboxLabel": "Gearbox",
+      "seatsLabel": "Seats",
+      "paymentProtected": "Your payment is protected. Funds are released to the owner only after the rental starts.",
       "deposit": "Deposit: ${amount}",
       "seats": "{count} seats",
       "fuel": {
@@ -397,5 +409,24 @@
       "findCar": "Find a car",
       "register": "Sign up"
     }
+  },
+  "footer": {
+    "tagline": "The fastest growing car rental platform in Europe. Find a car, book it and drive.",
+    "company": "Company",
+    "about": "About us",
+    "howItWorks": "How it works",
+    
+    "resources": "Resources",
+    "insurance": "Insurance",
+    "mobileApps": "Mobile apps",
+    "helpCenter": "Help center",
+    "contacts": "Contacts",
+    "contactUs": "Contact us",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "impressum": "Impressum",
+    "copyright": "© CarRental 2024–{year}. All rights reserved.",
+    "socialNetworks": "Social networks",
+    "siteFooter": "Site footer"
   }
 }

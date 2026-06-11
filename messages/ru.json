@@ -69,12 +69,16 @@
     "fuelType": "Тип топлива",
     "transmission": "КПП",
     "maxPrice": "Макс. цена/день",
+    "location": "Геолокация",
+    "locationHint": "Нажмите на карту, чтобы искать рядом",
+    "radius": "Радиус: {km} км",
     "find": "Найти",
     "resetFilters": "Сбросить фильтры",
     "found": "Найдено: {count} машин",
     "nothingFound": "Ничего не найдено",
     "loadMore": "Показать ещё",
     "loadError": "Не удалось загрузить машины",
+    "perDayShort": "/д",
     "noReviews": "нет отзывов",
     "fuel": {
       "petrol": "Бензин",
@@ -142,6 +146,8 @@
       "deposit": "Депозит",
       "address": "Адрес",
       "addressPlaceholder": "ул. Крещатик, 1, Киев",
+      "pickLocation": "Точка на карте",
+      "pickLocationHint": "Нажмите на карту, чтобы указать где забрать машину",
       "descriptionPlaceholder": "Расскажите о машине...",
       "photoDrop": "Перетащите фото сюда или нажмите для выбора",
       "photoFormats": "JPG, PNG до 5 МБ, максимум 10 фото",
@@ -176,6 +182,7 @@
       "notFound": "Машина не найдена",
       "noReviews": "нет отзывов",
       "description": "Описание",
+      "location": "Местоположение",
       "owner": "Владелец",
       "features": "Характеристики",
       "booking": "Бронирование",
@@ -186,6 +193,11 @@
       "booked": "✓ Забронировано",
       "processing": "Обработка...",
       "pricePerDay": "${price} / день",
+      "perDay": "/ день",
+      "fuelLabel": "Топливо",
+      "gearboxLabel": "КПП",
+      "seatsLabel": "Мест",
+      "paymentProtected": "Ваш платёж защищён. Средства поступают владельцу только после начала аренды.",
       "deposit": "Депозит: ${amount}",
       "seats": "{count} мест",
       "fuel": {
@@ -397,5 +409,24 @@
       "findCar": "Найти машину",
       "register": "Зарегистрироваться"
     }
+  },
+  "footer": {
+    "tagline": "Самая быстрорастущая платформа аренды авто в Европе. Найди машину, забронируй и поезжай.",
+    "company": "Компания",
+    "about": "О нас",
+    "howItWorks": "Как это работает",
+   
+    "resources": "Ресурсы",
+    "insurance": "Страхование",
+    "mobileApps": "Мобильные приложения",
+    "helpCenter": "Центр помощи",
+    "contacts": "Контакты",
+    "contactUs": "Связаться с нами",
+    "privacy": "Политика конфиденциальности",
+    "terms": "Условия использования",
+    "impressum": "Impressum",
+    "copyright": "© CarRental 2024–{year}. Все права защищены.",
+    "socialNetworks": "Социальные сети",
+    "siteFooter": "Футер сайта"
   }
 }
