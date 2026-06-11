@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
 const socialLinks = [
   {
@@ -23,40 +24,73 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations('footer');
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer aria-label="Футер сайта" className="bg-landing-dark-bg text-landing-dark-muted mt-auto">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <footer aria-label={t('siteFooter')} className="bg-landing-dark-bg text-landing-dark-muted mt-auto">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+
         <div className="flex flex-col gap-4">
           <span className="text-xl font-bold text-landing-dark-text">
             Car<span className="text-brand-ring">Rental</span>
           </span>
           <p className="text-sm text-landing-dark-muted leading-relaxed">
-            Самая быстрорастущая платформа аренды авто в Европе. Найди машину, забронируй и поезжай.
+            {t('tagline')}
           </p>
         </div>
 
-        <nav aria-label="Правовая информация">
+        {/* Компания */}
+        <nav aria-label={t('company')}>
           <div className="flex flex-col gap-3">
             <p className="text-xs font-semibold text-landing-dark-text uppercase tracking-widest">
-              Правовая информация
+              {t('company')}
             </p>
-            <Link
-              href="/privacy"
-              className="text-sm hover:text-landing-dark-text transition-colors"
-            >
-              Политика конфиденциальности
+            <Link href="/about" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('about')}
+            </Link>
+            <Link href="/how-it-works" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('howItWorks')}
             </Link>
             <Link href="/terms" className="text-sm hover:text-landing-dark-text transition-colors">
-              Условия использования
+              {t('terms')}
             </Link>
-            <Link
-              href="/impressum"
-              className="text-sm hover:text-landing-dark-text transition-colors"
-            >
-              Impressum
+          </div>
+        </nav>
+
+        {/* Ресурсы */}
+        <nav aria-label={t('resources')}>
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold text-landing-dark-text uppercase tracking-widest">
+              {t('resources')}
+            </p>
+            <Link href="/insurance" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('insurance')}
+            </Link>
+            <Link href="/mobile" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('mobileApps')}
+            </Link>
+            <Link href="/help" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('helpCenter')}
+            </Link>
+          </div>
+        </nav>
+
+        {/* Контакты */}
+        <nav aria-label={t('contacts')}>
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold text-landing-dark-text uppercase tracking-widest">
+              {t('contacts')}
+            </p>
+            <Link href="/contact" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('contactUs')}
+            </Link>
+            <Link href="/privacy" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('privacy')}
+            </Link>
+            <Link href="/impressum" className="text-sm hover:text-landing-dark-text transition-colors">
+              {t('impressum')}
             </Link>
           </div>
         </nav>
@@ -65,12 +99,12 @@ export function Footer() {
       <div className="border-t border-landing-dark-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <p className="text-xs text-landing-dark-muted">
-            © CarRental 2024–{currentYear}. Все права защищены.
+            {t('copyright', { year: currentYear })}
           </p>
-          <div className="flex items-center gap-3" role="list" aria-label="Социальные сети">
+          <div className="flex items-center gap-3" role="list" aria-label={t('socialNetworks')}>
             {socialLinks.map(({ label, href, svg }) => (
-              <a
-                key={label}
+              
+            <a  key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -1,7 +1,19 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const PUBLIC_ROUTES = ['/login', '/ua-kit', '/privacy', '/terms', '/impressum'];
+const PUBLIC_ROUTES = [
+  '/login',
+  '/ua-kit',
+  '/privacy',
+  '/terms',
+  '/impressum',
+  '/about',
+  '/contact',
+  '/help',
+  '/how-it-works',
+  '/insurance',
+  '/mobile',
+];
 
 function isAuthenticated(request: NextRequest): boolean {
   const raw = request.cookies.get('auth')?.value;
