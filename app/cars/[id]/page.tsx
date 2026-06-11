@@ -67,14 +67,14 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
               <h1 className="text-xl font-semibold text-gray-800 mb-2">
                 {car.brand} {car.model}
               </h1>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <StarRating value={car.averageRating ?? 0} size="sm" readonly />
                 {car.averageRating ? (
                   <span className="text-sm text-gray-400">{car.averageRating.toFixed(1)}</span>
                 ) : (
                   <span className="text-sm text-gray-400">{t('noReviews')}</span>
                 )}
-              </div>
+              </div> */}
             </div>
 
             <div className="flex gap-2 flex-wrap">
@@ -128,8 +128,18 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
             <div className="grid grid-cols-2 gap-2">
               {[
                 { key: 'fuel', icon: <Fuel size={14} />, label: t('fuelLabel'), value: fuel },
-                { key: 'gearbox', icon: <Settings2 size={14} />, label: t('gearboxLabel'), value: transmission },
-                { key: 'seats', icon: <Users size={14} />, label: t('seatsLabel'), value: car.seats ?? '—' },
+                {
+                  key: 'gearbox',
+                  icon: <Settings2 size={14} />,
+                  label: t('gearboxLabel'),
+                  value: transmission,
+                },
+                {
+                  key: 'seats',
+                  icon: <Users size={14} />,
+                  label: t('seatsLabel'),
+                  value: car.seats ?? '—',
+                },
               ].map(({ key, icon, label, value }) => (
                 <div key={key} className="bg-gray-50 rounded-xl p-3 flex items-center gap-2">
                   <span className="text-gray-400">{icon}</span>
@@ -148,9 +158,7 @@ export default function CarDetailPage({ params }: { params: Promise<{ id: string
 
           <div className="bg-white rounded-2xl shadow-sm p-4 flex gap-3 items-start">
             <ShieldCheck size={16} className="text-[#48C964] mt-0.5 shrink-0" />
-            <p className="text-xs text-gray-400 leading-relaxed">
-              {t('paymentProtected')}
-            </p>
+            <p className="text-xs text-gray-400 leading-relaxed">{t('paymentProtected')}</p>
           </div>
         </div>
       </div>

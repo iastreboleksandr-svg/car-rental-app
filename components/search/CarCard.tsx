@@ -9,7 +9,11 @@ interface CarCardProps {
   perDayLabel: string;
 }
 
-export function CarCard({ car, noReviewsLabel, perDayLabel }: CarCardProps) {
+export function CarCard({
+  car,
+  // noReviewsLabel,
+  //  perDayLabel
+}: CarCardProps) {
   return (
     <Link
       href={`/cars/${car.id}`}
