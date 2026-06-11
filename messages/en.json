@@ -326,5 +326,24 @@
       "findCar": "Find a car",
       "register": "Sign up"
     }
+  },
+  "footer": {
+    "tagline": "The fastest growing car rental platform in Europe. Find a car, book it and drive.",
+    "company": "Company",
+    "about": "About us",
+    "howItWorks": "How it works",
+    
+    "resources": "Resources",
+    "insurance": "Insurance",
+    "mobileApps": "Mobile apps",
+    "helpCenter": "Help center",
+    "contacts": "Contacts",
+    "contactUs": "Contact us",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "impressum": "Impressum",
+    "copyright": "© CarRental 2024–{year}. All rights reserved.",
+    "socialNetworks": "Social networks",
+    "siteFooter": "Site footer"
   }
 }

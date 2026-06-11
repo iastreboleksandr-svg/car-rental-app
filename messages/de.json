@@ -326,5 +326,24 @@
       "findCar": "Auto finden",
       "register": "Registrieren"
     }
+  },
+  "footer": {
+    "tagline": "Die am schnellsten wachsende Auto-Vermietungsplattform in Europa. Finde ein Auto, buche es und fahr los.",
+    "company": "Unternehmen",
+    "about": "Über uns",
+    "howItWorks": "So funktioniert's",
+    
+    "resources": "Ressourcen",
+    "insurance": "Versicherung",
+    "mobileApps": "Mobile Apps",
+    "helpCenter": "Hilfecenter",
+    "contacts": "Kontakt",
+    "contactUs": "Kontakt aufnehmen",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "impressum": "Impressum",
+    "copyright": "© CarRental 2024–{year}. Alle Rechte vorbehalten.",
+    "socialNetworks": "Soziale Netzwerke",
+    "siteFooter": "Seiten-Footer"
   }
 }
