@@ -82,7 +82,7 @@ export default function SearchPage() {
 
             <div className="grid grid-cols-2 gap-3">
               {cars.map((car) => (
-                <CarCard key={car.id} car={car} noReviewsLabel={t('noReviews')} />
+                <CarCard key={car.id} car={car} noReviewsLabel={t('noReviews')} perDayLabel={t('perDayShort')} />
               ))}
             </div>
 

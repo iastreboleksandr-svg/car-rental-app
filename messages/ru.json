@@ -75,6 +75,7 @@
     "nothingFound": "Ничего не найдено",
     "loadMore": "Показать ещё",
     "loadError": "Не удалось загрузить машины",
+    "perDayShort": "/д",
     "noReviews": "нет отзывов",
     "fuel": {
       "petrol": "Бензин",
@@ -186,6 +187,11 @@
       "booked": "✓ Забронировано",
       "processing": "Обработка...",
       "pricePerDay": "${price} / день",
+      "perDay": "/ день",
+      "fuelLabel": "Топливо",
+      "gearboxLabel": "КПП",
+      "seatsLabel": "Мест",
+      "paymentProtected": "Ваш платёж защищён. Средства поступают владельцу только после начала аренды.",
       "deposit": "Депозит: ${amount}",
       "seats": "{count} мест",
       "fuel": {

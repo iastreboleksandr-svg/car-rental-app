@@ -2,9 +2,12 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { DayPicker, type DateRange } from 'react-day-picker';
-import { ru } from 'react-day-picker/locale';
+import { ru, enUS, de } from 'react-day-picker/locale';
 import 'react-day-picker/style.css';
 import { ChevronDown } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+
+const DP_LOCALES = { ru, en: enUS, de } as const;
 
 export interface BusyRange {
   from: Date;
@@ -27,8 +30,8 @@ interface DateRangePickerProps {
   onOpen?: () => void;
 }
 
-function formatDate(date: Date) {
-  return date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+function formatDate(date: Date, locale: string) {
+  return date.toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
 function startOfDay(d: Date): Date {
@@ -44,6 +47,9 @@ export function DateRangePicker({
   availableRanges = [],
   onOpen,
 }: DateRangePickerProps) {
+  const locale = useLocale();
+  const t = useTranslations('calendar');
+  const dpLocale = DP_LOCALES[locale as keyof typeof DP_LOCALES] ?? ru;
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -66,8 +72,8 @@ export function DateRangePicker({
 
   const dateLabel = value?.from
     ? value.to
-      ? `${formatDate(value.from)} — ${formatDate(value.to)}`
-      : `${formatDate(value.from)} — ...`
+      ? `${formatDate(value.from, locale)} — ${formatDate(value.to, locale)}`
+      : `${formatDate(value.from, locale)} — ...`
     : '';
 
   return (
@@ -84,7 +90,7 @@ export function DateRangePicker({
         className="flex items-center justify-between w-full h-10 px-3 rounded-lg border border-border-default bg-bg-card text-sm text-text-secondary hover:border-text-muted focus:outline-none focus:border-border-focus focus:ring-2 focus:ring-brand/20 transition-colors"
       >
         <span className={dateLabel ? 'text-text-base' : 'text-text-placeholder'}>
-          {dateLabel || 'Выберите даты'}
+          {dateLabel || t('selectDates')}
         </span>
         <ChevronDown size={16} className={`text-text-muted transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -97,7 +103,7 @@ export function DateRangePicker({
             onSelect={handleSelect}
             resetOnSelect
             excludeDisabled
-            locale={ru}
+            locale={dpLocale}
             disabled={[
               { before: new Date() },
               ...busyRanges
@@ -133,7 +139,7 @@ export function DateRangePicker({
               onClick={() => { onChange(undefined); setOpen(false); }}
               className="w-full text-xs text-text-muted hover:text-text-secondary mt-1 py-1"
             >
-              Сбросить даты
+              {t('resetDates')}
             </button>
           )}
         </div>

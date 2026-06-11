@@ -6,9 +6,10 @@ import type { Car } from '@/types/car';
 interface CarCardProps {
   car: Car;
   noReviewsLabel: string;
+  perDayLabel: string;
 }
 
-export function CarCard({ car, noReviewsLabel }: CarCardProps) {
+export function CarCard({ car, noReviewsLabel, perDayLabel }: CarCardProps) {
   return (
     <Link
       href={`/cars/${car.id}`}
@@ -25,7 +26,7 @@ export function CarCard({ car, noReviewsLabel }: CarCardProps) {
       <p className="text-sm font-medium text-text-base truncate">{car.brand} {car.model}</p>
       <p className="text-xs text-text-muted truncate">{car.year} · {car.address}</p>
       <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-brand">${car.pricePerDay}/д</p>
+        <p className="text-sm font-semibold text-brand">${car.pricePerDay}{perDayLabel}</p>
         {car.averageRating ? (
           <StarRating value={car.averageRating} size="sm" />
         ) : (

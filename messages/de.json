@@ -74,6 +74,7 @@
     "found": "Gefunden: {count} Autos",
     "nothingFound": "Nichts gefunden",
     "loadMore": "Mehr anzeigen",
+    "perDayShort": "/T",
     "loadError": "Autos konnten nicht geladen werden",
     "noReviews": "keine Bewertungen",
     "fuel": {
@@ -186,6 +187,11 @@
       "booked": "✓ Gebucht",
       "processing": "Wird verarbeitet...",
       "pricePerDay": "${price} / Tag",
+      "perDay": "/ Tag",
+      "fuelLabel": "Kraftstoff",
+      "gearboxLabel": "Getriebe",
+      "seatsLabel": "Sitze",
+      "paymentProtected": "Ihre Zahlung ist geschützt. Das Geld wird erst nach Mietbeginn an den Besitzer ausgezahlt.",
       "deposit": "Kaution: ${amount}",
       "seats": "{count} Sitzplätze",
       "fuel": {

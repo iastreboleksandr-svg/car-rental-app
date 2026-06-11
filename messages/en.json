@@ -74,6 +74,7 @@
     "found": "Found: {count} cars",
     "nothingFound": "Nothing found",
     "loadMore": "Load more",
+    "perDayShort": "/d",
     "loadError": "Failed to load cars",
     "noReviews": "no reviews",
     "fuel": {
@@ -186,6 +187,11 @@
       "booked": "✓ Booked",
       "processing": "Processing...",
       "pricePerDay": "${price} / day",
+      "perDay": "/ day",
+      "fuelLabel": "Fuel",
+      "gearboxLabel": "Gearbox",
+      "seatsLabel": "Seats",
+      "paymentProtected": "Your payment is protected. Funds are released to the owner only after the rental starts.",
       "deposit": "Deposit: ${amount}",
       "seats": "{count} seats",
       "fuel": {
