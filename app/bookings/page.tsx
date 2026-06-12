@@ -8,6 +8,7 @@ import Spinner from '@/components/atoms/Spinner';
 import { MyBookingItem } from '@/components/bookings/MyBookingItem';
 import { BookingsTabs } from '@/components/bookings/BookingsTabs';
 import { useMyBookingsPage, type MyBookingsTab } from '@/hooks/useMyBookingsPage';
+import { useMarkStatsSeen } from '@/hooks/useMarkStatsSeen';
 
 const TAB_KEYS: MyBookingsTab[] = ['all', 'active', 'completed', 'cancelled'];
 
@@ -15,6 +16,7 @@ export default function MyBookingsPage() {
   const t = useTranslations('myBookings');
   const tCommon = useTranslations('common');
   const { bookings, isLoading, isError, activeTab, setActiveTab, cancel, isCancelling } = useMyBookingsPage();
+  useMarkStatsSeen('myBookings');
 
   return (
     <div className="max-w-lg mx-auto px-4 py-8 flex flex-col gap-6">
@@ -55,6 +57,7 @@ export default function MyBookingsPage() {
               statusLabel={t(`status.${booking.status}`)}
               metaLabel={t('total', { total: booking.totalPrice })}
               cancelLabel={t('cancel')}
+              ownerContactLabel={t('ownerContact')}
               onCancel={cancel}
               cancelling={isCancelling}
             />

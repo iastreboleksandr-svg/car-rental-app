@@ -8,7 +8,8 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
     const data = await res.json().catch(() => ({}));
     throw new Error(data?.message ?? `Request failed: ${res.status}`);
   }
-  return res.json() as Promise<T>;
+  const text = await res.text();
+  return (text ? JSON.parse(text) : null) as T;
 }
 
 function normalizeSearchItem(item: CarSearchItem): Car {
@@ -109,6 +110,11 @@ export const carService = {
 
   deletePhoto: (carId: string, photoId: string): Promise<unknown> =>
     request(`/cars/${carId}/photos/${photoId}`, {
+      method: 'DELETE',
+    }),
+
+  remove: (id: string): Promise<unknown> =>
+    request(`/cars/${id}`, {
       method: 'DELETE',
     }),
 };

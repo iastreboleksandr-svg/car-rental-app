@@ -11,7 +11,7 @@ export function PrivacyRu() {
           </p>
           <Section title="1. Общие положения">
             <p>
-              Настоящая Политика конфиденциальности описывает, как CarRental («мы», «наш», «нас»)
+              Настоящая Политика конфиденциальности описывает, как Lunar Carsharing («мы», «наш», «нас»)
               собирает, использует и защищает ваши персональные данные при использовании нашей
               платформы аренды автомобилей.
             </p>
@@ -83,8 +83,8 @@ export function PrivacyRu() {
           <Section title="9. Контакты" isLast>
             <p className="text-text-secondary">По всем вопросам, связанным с обработкой персональных данных:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">privacy@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">privacy@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

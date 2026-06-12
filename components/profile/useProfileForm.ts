@@ -136,6 +136,24 @@ export function useProfileForm() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [avatar]);
 
+  const handleAvatarDelete = useCallback(async () => {
+    if (!avatar) return;
+    setAvatarError('');
+    const previous = avatar;
+    setAvatar(null);
+    try {
+      const res = await apiFetch('/users/me/avatar', { method: 'DELETE' });
+      const text = await res.text();
+      if (!res.ok) throw new Error(`Ошибка ${res.status}: ${text || 'нет ответа'}`);
+      setProfile((prev) => (prev ? { ...prev, avatarUrl: null } : prev));
+      updateUser({ avatarUrl: null });
+    } catch (err) {
+      setAvatar(previous);
+      setAvatarError(err instanceof Error ? err.message : 'Не удалось удалить аватар');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [avatar]);
+
   return {
     user: profile,
     loading,
@@ -151,6 +169,7 @@ export function useProfileForm() {
     handleCancel,
     handleSave,
     handleAvatarChange,
+    handleAvatarDelete,
     handleFieldChange,
   };
 }

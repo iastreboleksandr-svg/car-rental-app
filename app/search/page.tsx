@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Spinner from '@/components/atoms/Spinner';
 import Button from '@/components/atoms/Button';
 import { Checkbox } from '@/components/atoms/Checkbox';
@@ -10,10 +11,12 @@ import { LocationPicker } from '@/components/atoms/map/LocationPicker';
 import { CarCard } from '@/components/search/CarCard';
 import { useSearchPage } from '@/hooks/useSearchPage';
 import { useTranslations } from 'next-intl';
+import { SlidersHorizontal, X } from 'lucide-react';
 
 export default function SearchPage() {
   const t = useTranslations('search');
   const tCommon = useTranslations('common');
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const {
     dateRange, setDateRange,
     fuel, toggleFuel,
@@ -33,9 +36,18 @@ export default function SearchPage() {
     { value: 'hybrid', label: t('fuel.hybrid') },
   ];
 
-  return (
-    <div className="max-w-5xl mx-auto px-4 py-6 flex gap-6">
-      <div className="flex flex-col gap-4 w-64 shrink-0">
+  const handleApply = () => {
+    applyFilters();
+    setFiltersOpen(false);
+  };
+
+  const handleReset = () => {
+    resetFilters();
+    setFiltersOpen(false);
+  };
+
+  const filtersPanel = (
+    <>
         <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase">{t('filters')}</p>
 
         <DateRangePicker label={t('rentalDates')} value={dateRange} onChange={setDateRange} />
@@ -85,11 +97,38 @@ export default function SearchPage() {
 
         <Input label={t('maxPrice')} type="number" placeholder="—" value={maxPrice} onChange={setMaxPrice} />
 
-        <Button className="w-full" onClick={applyFilters}>{t('find')}</Button>
-        <Button variant="ghost" size="sm" className="w-full text-gray-400" onClick={resetFilters}>{t('resetFilters')}</Button>
+        <Button className="w-full" onClick={handleApply}>{t('find')}</Button>
+        <Button variant="ghost" size="sm" className="w-full text-gray-400" onClick={handleReset}>{t('resetFilters')}</Button>
+    </>
+  );
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-6 flex gap-6">
+      <div className="hidden md:flex flex-col gap-4 w-64 shrink-0">
+        {filtersPanel}
       </div>
 
       <div className="flex flex-col gap-4 flex-1">
+        {!isLoading && !isError && (
+          <div className="flex items-center justify-between md:hidden">
+            <p className="text-sm text-gray-600">{t('found', { count: total })}</p>
+            <Button
+              variant="secondary"
+              size="sm"
+              leftIcon={filtersOpen ? <X size={16} /> : <SlidersHorizontal size={16} />}
+              onClick={() => setFiltersOpen((v) => !v)}
+            >
+              {filtersOpen ? t('hideFilters') : t('filters')}
+            </Button>
+          </div>
+        )}
+
+        {filtersOpen && (
+          <div className="flex flex-col gap-4 md:hidden border border-border-default rounded-2xl p-4 bg-bg-card">
+            {filtersPanel}
+          </div>
+        )}
+
         {isLoading && (
           <div className="flex items-center justify-center gap-2 pt-8 text-sm text-gray-400">
             <Spinner size="sm" /> {tCommon('loading')}
@@ -102,7 +141,7 @@ export default function SearchPage() {
 
         {!isLoading && !isError && (
           <>
-            <p className="text-sm text-gray-600">{t('found', { count: total })}</p>
+            <p className="hidden md:block text-sm text-gray-600">{t('found', { count: total })}</p>
 
             {cars.length === 0 && (
               <p className="text-sm text-gray-400 text-center pt-8">{t('nothingFound')}</p>

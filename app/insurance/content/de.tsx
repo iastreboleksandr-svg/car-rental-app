@@ -4,7 +4,7 @@ export function InsuranceDe() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-bg-card rounded-2xl border border-border-default p-8 sm:p-12">
           <h1 className="text-3xl font-bold text-text-base mb-2">Versicherung</h1>
-          <p className="text-text-muted text-sm mb-8">Jede Miete auf der CarRental-Plattform ist versichert</p>
+          <p className="text-text-muted text-sm mb-8">Jede Miete auf der Lunar Carsharing-Plattform ist versichert</p>
           <Section title="Basisversicherung">
             <p>Jede Miete beinhaltet automatisch einen Basisversicherungsschutz. Er gilt für die gesamte Mietdauer und deckt beide Parteien ab — Mieter und Fahrzeugeigentümer.</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
@@ -77,8 +77,8 @@ export function InsuranceDe() {
           <Section title="Versicherungs-Kontakt" isLast>
             <p className="text-text-secondary">Bei Versicherungsfragen wenden Sie sich an:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental — Versicherungsservice</p>
-              <p className="text-text-secondary mt-1">insurance@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing — Versicherungsservice</p>
+              <p className="text-text-secondary mt-1">insurance@lunarcarsharing.de</p>
               <p className="text-text-secondary">+49 721 000 0000 (rund um die Uhr)</p>
             </div>
           </Section>

@@ -4,9 +4,9 @@ export function AboutDe() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-bg-card rounded-2xl border border-border-default p-8 sm:p-12">
           <h1 className="text-3xl font-bold text-text-base mb-2">Über uns</h1>
-          <p className="text-text-muted text-sm mb-8">CarRental — Plattform für Fahrzeugvermietung direkt vom Eigentümer</p>
+          <p className="text-text-muted text-sm mb-8">Lunar Carsharing — Plattform für Fahrzeugvermietung direkt vom Eigentümer</p>
           <Section title="Unsere Mission">
-            <p>CarRental wurde mit einem Ziel gegründet — Fahrzeugvermietung einfach, fair und zugänglich zu machen. Wir eliminieren Zwischenhändler und verbinden Mieter direkt mit Fahrzeugeigentümern in ganz Deutschland.</p>
+            <p>Lunar Carsharing wurde mit einem Ziel gegründet — Fahrzeugvermietung einfach, fair und zugänglich zu machen. Wir eliminieren Zwischenhändler und verbinden Mieter direkt mit Fahrzeugeigentümern in ganz Deutschland.</p>
             <p className="mt-3">Keine versteckten Gebühren, kein Bürokratieaufwand. Nur Menschen, die fahren möchten — und Menschen, die ein Auto haben.</p>
           </Section>
           <Section title="Wie wir arbeiten">
@@ -38,13 +38,13 @@ export function AboutDe() {
           </Section>
           <Section title="Team">
             <p>Wir sind ein kleines Team aus Entwicklern und Unternehmern aus Karlsruhe. Wir haben selbst Probleme mit der Fahrzeugvermietung erlebt und beschlossen, eine Plattform zu schaffen, der wir selbst vertrauen.</p>
-            <p className="mt-3">CarRental ist ein Portfolio-Projekt, das täglich weiterentwickelt wird. Wir sind offen für Feedback und freuen uns über Ihre Vorschläge.</p>
+            <p className="mt-3">Lunar Carsharing ist ein Portfolio-Projekt, das täglich weiterentwickelt wird. Wir sind offen für Feedback und freuen uns über Ihre Vorschläge.</p>
           </Section>
           <Section title="Kontakt" isLast>
             <p className="text-text-secondary">Haben Sie Fragen oder Vorschläge?</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">hello@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">hello@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

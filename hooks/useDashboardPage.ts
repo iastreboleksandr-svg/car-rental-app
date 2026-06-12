@@ -33,6 +33,17 @@ export function useDashboardPage() {
     toggleStatus({ id, status: next });
   }
 
+  const { mutate: removeCar, isPending: isRemoving, variables: removingId } = useMutation({
+    mutationFn: (id: string) => carService.remove(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['cars'] });
+    },
+  });
+
+  function handleRemoveCar(id: string) {
+    removeCar(id);
+  }
+
   function goToEdit(id: string) {
     router.push(`/cars/${id}/edit`);
   }
@@ -54,5 +65,8 @@ export function useDashboardPage() {
     handleToggleStatus,
     isTogglingStatus,
     togglingId: togglingId?.id,
+    handleRemoveCar,
+    isRemoving,
+    removingId,
   };
 }

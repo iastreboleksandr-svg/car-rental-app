@@ -27,6 +27,7 @@ export function ProfileCard() {
     handleCancel,
     handleSave,
     handleAvatarChange,
+    handleAvatarDelete,
     handleFieldChange,
   } = useProfileForm();
 
@@ -68,6 +69,7 @@ export function ProfileCard() {
         lastName={form.lastName}
         isEditing={isEditing}
         onAvatarChange={handleAvatarChange}
+        onAvatarDelete={handleAvatarDelete}
       />
 
       {avatarError && <p className="text-xs text-text-error text-center mb-4">{avatarError}</p>}

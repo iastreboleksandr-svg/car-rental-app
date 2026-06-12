@@ -71,13 +71,13 @@ export function UserDropdown() {
           >
             {t('profile')}
           </Link>
-          {/* <Link
+          <Link
             href="/settings"
             onClick={() => setOpen(false)}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
           >
             {t('settings')}
-          </Link> */}
+          </Link>
           <button
             type="button"
             onClick={handleLogout}

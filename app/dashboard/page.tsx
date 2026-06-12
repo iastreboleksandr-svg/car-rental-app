@@ -13,6 +13,7 @@ export default function DashboardPage() {
   const {
     cars, isLoading, goToEdit, goToSlots, goToNewCar,
     handleToggleStatus, isTogglingStatus, togglingId,
+    handleRemoveCar, isRemoving, removingId,
   } = useDashboardPage();
 
   return (
@@ -51,10 +52,17 @@ export default function DashboardPage() {
             editLabel={t('actions.edit')}
             availabilityLabel={t('actions.availability')}
             publishedLabel={t('published')}
+            deleteLabel={t('actions.delete')}
+            deleteConfirmTitle={t('deleteConfirm.title')}
+            deleteConfirmBody={t('deleteConfirm.body')}
+            deleteConfirmYes={t('deleteConfirm.yes')}
+            deleteConfirmNo={t('deleteConfirm.no')}
             onEdit={goToEdit}
             onSlots={goToSlots}
             onToggleStatus={handleToggleStatus}
+            onRemove={handleRemoveCar}
             toggling={isTogglingStatus && togglingId === car.id}
+            removing={isRemoving && removingId === car.id}
           />
         ))}
       </div>

@@ -4,7 +4,7 @@ export function InsuranceEn() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-bg-card rounded-2xl border border-border-default p-8 sm:p-12">
           <h1 className="text-3xl font-bold text-text-base mb-2">Insurance</h1>
-          <p className="text-text-muted text-sm mb-8">Every rental on the CarRental platform is covered by insurance</p>
+          <p className="text-text-muted text-sm mb-8">Every rental on the Lunar Carsharing platform is covered by insurance</p>
           <Section title="Basic Insurance">
             <p>Every rental automatically includes basic insurance coverage. It applies for the entire rental period and covers both parties — the renter and the car owner.</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
@@ -77,8 +77,8 @@ export function InsuranceEn() {
           <Section title="Insurance Contact" isLast>
             <p className="text-text-secondary">For insurance questions contact:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental — Insurance Service</p>
-              <p className="text-text-secondary mt-1">insurance@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing — Insurance Service</p>
+              <p className="text-text-secondary mt-1">insurance@lunarcarsharing.de</p>
               <p className="text-text-secondary">+49 721 000 0000 (around the clock)</p>
             </div>
           </Section>

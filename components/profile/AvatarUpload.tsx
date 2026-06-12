@@ -10,6 +10,7 @@ interface AvatarUploadProps {
   lastName: string;
   isEditing: boolean;
   onAvatarChange: (file: File) => void;
+  onAvatarDelete: () => void;
 }
 
 export function AvatarUpload({
@@ -18,6 +19,7 @@ export function AvatarUpload({
   lastName,
   isEditing,
   onAvatarChange,
+  onAvatarDelete,
 }: AvatarUploadProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -83,6 +85,17 @@ export function AvatarUpload({
             className="absolute -bottom-0.5 -right-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-bg-card bg-bg-card text-text-secondary shadow-md transition-colors hover:text-text-base"
           >
             <ZoomIn size={14} />
+          </button>
+        )}
+
+        {isEditing && avatar && (
+          <button
+            type="button"
+            onClick={onAvatarDelete}
+            aria-label="Удалить фото профиля"
+            className="absolute -right-0.5 -top-0.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-bg-card bg-text-error text-white shadow-md transition-colors hover:bg-red-700"
+          >
+            <X size={14} />
           </button>
         )}
       </div>

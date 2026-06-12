@@ -6,7 +6,7 @@ export function TermsDe() {
           <h1 className="text-3xl font-bold text-text-base mb-2">Nutzungsbedingungen</h1>
           <p className="text-text-muted text-sm mb-8">Letzte Aktualisierung: 1. Januar 2025</p>
           <Section title="1. Vertragsgegenstand">
-            <p>Diese Nutzungsbedingungen regeln das Verhältnis zwischen CarRental GmbH („Plattform") und den Nutzern — Mietern und Fahrzeugeigentümern. Mit der Registrierung auf der Plattform akzeptieren Sie diese Bedingungen vollständig.</p>
+            <p>Diese Nutzungsbedingungen regeln das Verhältnis zwischen Lunar Carsharing GmbH („Plattform") und den Nutzern — Mietern und Fahrzeugeigentümern. Mit der Registrierung auf der Plattform akzeptieren Sie diese Bedingungen vollständig.</p>
           </Section>
           <Section title="2. Registrierung und Konto">
             <ul className="space-y-2">
@@ -59,7 +59,7 @@ export function TermsDe() {
             </ul>
           </Section>
           <Section title="7. Haftung der Plattform">
-            <p>CarRental ist Vermittler zwischen Mietern und Fahrzeugeigentümern. Die Plattform haftet nicht für das Verhalten der Nutzer, den Zustand der Fahrzeuge oder Schäden, die während der Miete entstehen. Die maximale Haftung ist auf die erhaltene Provision der jeweiligen Transaktion begrenzt.</p>
+            <p>Lunar Carsharing ist Vermittler zwischen Mietern und Fahrzeugeigentümern. Die Plattform haftet nicht für das Verhalten der Nutzer, den Zustand der Fahrzeuge oder Schäden, die während der Miete entstehen. Die maximale Haftung ist auf die erhaltene Provision der jeweiligen Transaktion begrenzt.</p>
           </Section>
           <Section title="8. Verbotene Handlungen">
             <ul className="space-y-2">
@@ -71,7 +71,7 @@ export function TermsDe() {
             </ul>
           </Section>
           <Section title="9. Anwendbares Recht">
-            <p>Diese Bedingungen unterliegen dem Recht der Bundesrepublik Deutschland. Streitigkeiten werden vor den Gerichten am Sitz der CarRental GmbH — Karlsruhe — verhandelt.</p>
+            <p>Diese Bedingungen unterliegen dem Recht der Bundesrepublik Deutschland. Streitigkeiten werden vor den Gerichten am Sitz der Lunar Carsharing GmbH — Karlsruhe — verhandelt.</p>
           </Section>
           <Section title="10. Änderungen der Bedingungen">
             <p>Wir behalten uns das Recht vor, diese Bedingungen zu ändern. Über Änderungen informieren wir Sie per E-Mail mindestens 14 Tage vor Inkrafttreten. Die weitere Nutzung der Plattform nach Inkrafttreten der Änderungen gilt als Zustimmung.</p>
@@ -79,8 +79,8 @@ export function TermsDe() {
           <Section title="11. Kontakt" isLast>
             <p className="text-text-secondary">Bei Fragen zu den Nutzungsbedingungen:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">legal@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">legal@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

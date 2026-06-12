@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Car Rental',
-  description: 'Car rental application',
+  title: 'Lunar Carsharing',
+  description: 'Lunar Carsharing application',
 };
 
 export default async function RootLayout({

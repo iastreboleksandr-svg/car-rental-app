@@ -13,7 +13,7 @@ export function TermsRu() {
 
           <Section title="1. Предмет соглашения">
             <p>
-              Настоящие Условия использования регулируют отношения между CarRental GmbH 
+              Настоящие Условия использования регулируют отношения между Lunar Carsharing GmbH 
               («Платформа») и пользователями — арендаторами и владельцами автомобилей. 
               Регистрируясь на платформе, вы принимаете данные условия в полном объёме.
             </p>
@@ -85,7 +85,7 @@ export function TermsRu() {
 
           <Section title="7. Ответственность платформы">
             <p>
-              CarRental является посредником между арендаторами и владельцами автомобилей. 
+              Lunar Carsharing является посредником между арендаторами и владельцами автомобилей. 
               Платформа не несёт ответственности за действия пользователей, состояние 
               автомобилей или убытки, возникшие в процессе аренды. Максимальная ответственность 
               платформы ограничена суммой комиссии, полученной по конкретной сделке.
@@ -105,7 +105,7 @@ export function TermsRu() {
           <Section title="9. Применимое право">
             <p>
               Настоящие Условия регулируются законодательством Федеративной Республики 
-              Германия. Споры рассматриваются в судах по месту нахождения CarRental GmbH — 
+              Германия. Споры рассматриваются в судах по месту нахождения Lunar Carsharing GmbH — 
               г. Карлсруэ.
             </p>
           </Section>
@@ -122,8 +122,8 @@ export function TermsRu() {
           <Section title="11. Контакты" isLast>
             <p className="text-text-secondary">По вопросам, связанным с условиями использования:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">legal@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">legal@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

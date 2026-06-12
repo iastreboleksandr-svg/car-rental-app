@@ -11,7 +11,7 @@ export function PrivacyDe() {
           </p>
           <Section title="1. Allgemeine Bestimmungen">
             <p>
-              Diese Datenschutzrichtlinie beschreibt, wie CarRental („wir", „unser", „uns")
+              Diese Datenschutzrichtlinie beschreibt, wie Lunar Carsharing („wir", „unser", „uns")
               Ihre personenbezogenen Daten bei der Nutzung unserer Fahrzeugvermietungsplattform
               erhebt, verwendet und schützt.
             </p>
@@ -83,8 +83,8 @@ export function PrivacyDe() {
           <Section title="9. Kontakt" isLast>
             <p className="text-text-secondary">Bei Fragen zur Verarbeitung personenbezogener Daten:</p>
             <div className="mt-4 p-4 bg-brand-subtle rounded-xl border border-border-default">
-              <p className="text-text-base font-medium">CarRental GmbH</p>
-              <p className="text-text-secondary mt-1">privacy@carrental.de</p>
+              <p className="text-text-base font-medium">Lunar Carsharing GmbH</p>
+              <p className="text-text-secondary mt-1">privacy@lunarcarsharing.de</p>
               <p className="text-text-secondary">Karlsruhe, Deutschland</p>
             </div>
           </Section>

@@ -60,7 +60,14 @@
     },
     "actions": {
       "edit": "Edit",
-      "availability": "Availability"
+      "availability": "Availability",
+      "delete": "Delete"
+    },
+    "deleteConfirm": {
+      "title": "Delete car?",
+      "body": "The car will be removed from your listings. This action cannot be undone.",
+      "yes": "Yes, delete",
+      "no": "Cancel"
     }
   },
   "search": {
@@ -89,7 +96,8 @@
     "gearbox": {
       "automatic": "Auto",
       "manual": "Manual"
-    }
+    },
+    "hideFilters": "Hide filters"
   },
   "car": {
     "new": {
@@ -272,6 +280,7 @@
     "empty": "You have no bookings yet",
     "browseCars": "Find a car",
     "cancel": "Cancel",
+    "ownerContact": "Owner contacts",
     "total": "${total}",
     "tabs": {
       "all": "All",
@@ -415,7 +424,6 @@
     "company": "Company",
     "about": "About us",
     "howItWorks": "How it works",
-    
     "resources": "Resources",
     "insurance": "Insurance",
     "mobileApps": "Mobile apps",
@@ -425,8 +433,18 @@
     "privacy": "Privacy policy",
     "terms": "Terms of use",
     "impressum": "Impressum",
-    "copyright": "© CarRental 2024–{year}. All rights reserved.",
+    "copyright": "© Lunar Carsharing 2024–{year}. All rights reserved.",
     "socialNetworks": "Social networks",
     "siteFooter": "Site footer"
+  },
+  "settings": {
+    "title": "Settings",
+    "notifTitle": "Notifications",
+    "notifDesc": "Choose which booking counters to track. When at least one is on, the navbar shows live counts and polls every 10 seconds.",
+    "myBookings": "My bookings",
+    "incoming": "Incoming",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled"
   }
 }

@@ -15,3 +15,15 @@ export function bookingCarPhoto(
   const first = car?.photos?.[0];
   return first?.carPhotoUrl ?? first?.url ?? null;
 }
+
+interface OwnerContact {
+  firstName?: string | null;
+  lastName?: string | null;
+  email: string;
+  phone?: string | null;
+}
+
+export function bookingOwner(car: unknown): OwnerContact | null {
+  const owner = (car as { owner?: OwnerContact | null })?.owner;
+  return owner ?? null;
+}
