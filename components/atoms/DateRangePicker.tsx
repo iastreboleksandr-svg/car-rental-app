@@ -78,6 +78,25 @@ export function DateRangePicker({
       : `${formatDate(value.from, locale)} — ...`
     : '';
 
+  const todayStart = startOfDay(new Date()).getTime();
+
+  function isClickable(day: Date): boolean {
+    const d = startOfDay(day).getTime();
+    if (d < todayStart) return false;
+    const inConfirmed = busyRanges
+      .filter((r) => r.type === 'confirmed')
+      .some((r) => d >= startOfDay(r.from).getTime() && d <= startOfDay(r.to).getTime());
+    if (inConfirmed) return false;
+    const inBlocked = blockedRanges.some(
+      (r) => d >= startOfDay(r.from).getTime() && d <= startOfDay(r.to).getTime(),
+    );
+    if (inBlocked) return false;
+    if (availableRanges.length === 0) return !restrictToAvailable;
+    return availableRanges.some(
+      (r) => d >= startOfDay(r.from).getTime() && d <= startOfDay(r.to).getTime(),
+    );
+  }
+
   return (
     <div className="flex flex-col gap-1 relative" ref={ref}>
       {label && <label className="text-xs font-medium text-text-secondary">{label}</label>}
@@ -124,11 +143,13 @@ export function DateRangePicker({
               busyConfirmed: busyRanges.filter((r) => r.type === 'confirmed').map((r) => ({ from: r.from, to: r.to })),
               busyPending: busyRanges.filter((r) => r.type === 'pending').map((r) => ({ from: r.from, to: r.to })),
               busyBlocked: blockedRanges.map((r) => ({ from: r.from, to: r.to })),
+              clickable: isClickable,
             }}
             modifiersClassNames={{
               busyConfirmed: 'rdp-busy-confirmed',
               busyPending: 'rdp-busy-pending',
               busyBlocked: 'rdp-busy-blocked',
+              clickable: 'rdp-clickable',
             }}
             style={{
               '--rdp-accent-color': 'var(--brand)',
