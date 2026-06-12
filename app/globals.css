@@ -139,3 +139,7 @@ body {
   text-decoration: line-through;
   border-radius: 6px;
 }
+
+.rdp-disabled:not(.rdp-selected) .rdp-day_button {
+  text-decoration: line-through;
+}
