@@ -1,5 +1,5 @@
 import { apiFetch } from '@/lib/apiFetch';
-import type { Booking, BookingRaw, CreateBookingDto } from '@/types/booking';
+import type { Booking, BookingRaw, BookingStats, CreateBookingDto } from '@/types/booking';
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await apiFetch(path, options);
@@ -39,6 +39,9 @@ export const bookingService = {
 
   getIncoming: (): Promise<Booking[]> =>
     request<BookingRaw[]>('/bookings/incoming').then((list) => list.map(normalize)),
+
+  getStats: (): Promise<BookingStats> =>
+    request<BookingStats>('/bookings/stats'),
 
   confirm: (id: string): Promise<Booking> =>
     request<BookingRaw>(`/bookings/${id}/confirm`, { method: 'PATCH' }).then(normalize),

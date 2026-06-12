@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/store/auth.store';
 import { authService } from '@/services/auth.service';
+import { useBookingStats } from '@/hooks/useBookingStats';
+import { StatusBadges } from './StatusBadges';
 
 interface MobileMenuProps {
   isAuthenticated: boolean;
@@ -17,6 +19,7 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
   const tAuth = useTranslations('auth');
   const [open, setOpen] = useState(false);
   const { token, refreshToken, logout } = useAuthStore();
+  const { toggles, newCounts, isGroupEnabled } = useBookingStats();
   const router = useRouter();
 
   async function handleLogout() {
@@ -51,14 +54,20 @@ export function MobileMenu({ isAuthenticated, unreadCount }: MobileMenuProps) {
                 <Link href="/search" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('search')}
                 </Link>
-                <Link href="/bookings" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/bookings" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('myBookings')}
+                  {isGroupEnabled('myBookings') && (
+                    <StatusBadges newCounts={newCounts.myBookings} toggles={toggles.myBookings} />
+                  )}
                 </Link>
                 <Link href="/dashboard" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('myCars')}
                 </Link>
-                <Link href="/bookings/incoming" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <Link href="/bookings/incoming" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('incoming')}
+                  {isGroupEnabled('incoming') && (
+                    <StatusBadges newCounts={newCounts.incoming} toggles={toggles.incoming} />
+                  )}
                 </Link>
                 <Link href="/notifications" onClick={() => setOpen(false)} className="rounded px-3 py-2 text-sm text-gray-700 hover:bg-gray-50">
                   {t('notifications')}{unreadCount > 0 && ` (${unreadCount})`}

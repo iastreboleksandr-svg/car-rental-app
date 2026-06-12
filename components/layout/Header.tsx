@@ -6,8 +6,9 @@ import { useTranslations } from 'next-intl';
 import { Car } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
 import { useNotificationStore } from '@/store/notification.store';
+import { useBookingStats } from '@/hooks/useBookingStats';
 import { UserDropdown } from './UserDropdown';
-import { NotificationBadge } from './NotificationBadge';
+import { StatusBadges } from './StatusBadges';
 import { MobileMenu } from './MobileMenu';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -35,6 +36,7 @@ export function Header() {
   const pathname = usePathname();
   const { isAuthenticated } = useAuthStore();
   const { unreadCount } = useNotificationStore();
+  const { toggles, newCounts, isGroupEnabled } = useBookingStats();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
 
   if (HIDDEN_ON.includes(pathname)) {
@@ -57,10 +59,19 @@ export function Header() {
           {authenticated && (
             <nav className="flex items-center gap-6">
               <NavLink href="/search">{t('search')}</NavLink>
-              <NavLink href="/bookings" exact>{t('myBookings')}</NavLink>
+              <span className="flex items-center gap-1.5">
+                <NavLink href="/bookings" exact>{t('myBookings')}</NavLink>
+                {isGroupEnabled('myBookings') && (
+                  <StatusBadges newCounts={newCounts.myBookings} toggles={toggles.myBookings} />
+                )}
+              </span>
               <NavLink href="/dashboard">{t('myCars')}</NavLink>
-              <NavLink href="/bookings/incoming">{t('incoming')}</NavLink>
-              {/* <NotificationBadge count={unreadCount} href="/notifications" label={t('notifications')} /> */}
+              <span className="flex items-center gap-1.5">
+                <NavLink href="/bookings/incoming">{t('incoming')}</NavLink>
+                {isGroupEnabled('incoming') && (
+                  <StatusBadges newCounts={newCounts.incoming} toggles={toggles.incoming} />
+                )}
+              </span>
               <UserDropdown />
             </nav>
           )}

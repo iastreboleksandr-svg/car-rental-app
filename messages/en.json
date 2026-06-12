@@ -436,5 +436,15 @@
     "copyright": "© Lunar Carsharing 2024–{year}. All rights reserved.",
     "socialNetworks": "Social networks",
     "siteFooter": "Site footer"
+  },
+  "settings": {
+    "title": "Settings",
+    "notifTitle": "Notifications",
+    "notifDesc": "Choose which booking counters to track. When at least one is on, the navbar shows live counts and polls every 10 seconds.",
+    "myBookings": "My bookings",
+    "incoming": "Incoming",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "cancelled": "Cancelled"
   }
 }

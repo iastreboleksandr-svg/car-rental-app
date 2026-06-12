@@ -436,5 +436,15 @@
     "copyright": "© Lunar Carsharing 2024–{year}. Alle Rechte vorbehalten.",
     "socialNetworks": "Soziale Netzwerke",
     "siteFooter": "Seiten-Footer"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "notifTitle": "Benachrichtigungen",
+    "notifDesc": "Wählen Sie, welche Buchungszähler verfolgt werden. Wenn mindestens einer aktiv ist, zeigt die Navigationsleiste aktuelle Zahlen und fragt alle 10 Sekunden ab.",
+    "myBookings": "Meine Buchungen",
+    "incoming": "Eingehend",
+    "pending": "Ausstehend",
+    "confirmed": "Bestätigt",
+    "cancelled": "Storniert"
   }
 }

@@ -40,7 +40,7 @@ export function useIncomingBookingsPage() {
   });
 
   const bookings = allBookings.filter((b) => {
-    if (activeTab === 'all') return b.status !== 'CANCELLED';
+    if (activeTab === 'all') return true;
     if (activeTab === 'pending') return b.status === 'PENDING';
     return b.status === 'CONFIRMED';
   });

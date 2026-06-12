@@ -82,3 +82,14 @@ export interface Booking {
   car?: BookingRawCar | Car;
   renter?: BookingRenter;
 }
+
+export interface BookingStatsCounts {
+  pending: number;
+  confirmed: number;
+  cancelled: number;
+}
+
+export interface BookingStats {
+  myBookings: BookingStatsCounts;
+  incoming: BookingStatsCounts;
+}

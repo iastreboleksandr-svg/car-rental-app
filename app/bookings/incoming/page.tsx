@@ -6,6 +6,7 @@ import Spinner from '@/components/atoms/Spinner';
 import { BookingIncomingItem } from '@/components/bookings/BookingIncomingItem';
 import { BookingsTabs } from '@/components/bookings/BookingsTabs';
 import { useIncomingBookingsPage, type IncomingFilterTab } from '@/hooks/useIncomingBookingsPage';
+import { useMarkStatsSeen } from '@/hooks/useMarkStatsSeen';
 
 const TAB_KEYS: IncomingFilterTab[] = ['all', 'pending', 'confirmed'];
 
@@ -14,6 +15,7 @@ export default function IncomingBookingsPage() {
   const tCommon = useTranslations('common');
   const { bookings, isLoading, isError, activeTab, setActiveTab, confirm, decline, complete, isMutating, pendingCount } =
     useIncomingBookingsPage();
+  useMarkStatsSeen('incoming');
 
   return (
     <div className="min-h-screen bg-bg-page py-8 px-4">
