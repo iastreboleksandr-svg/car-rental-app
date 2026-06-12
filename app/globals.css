@@ -140,7 +140,6 @@ body {
   border-radius: 6px;
 }
 
-.rdp-clickable .rdp-day_button {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.rdp-disabled:not(.rdp-selected) .rdp-day_button {
+  text-decoration: line-through;
 }

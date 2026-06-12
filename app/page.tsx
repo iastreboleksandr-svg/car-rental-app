@@ -79,7 +79,7 @@ export default function HomePage() {
               <Car size={16} className="text-text-inverse" />
             </div>
             <span className="text-lg font-bold text-text-base">
-              Lunar<span className="text-brand">Carsharing</span>
+              Lunar<span className="text-brand"> Carsharing</span>
             </span>
           </div>
 
