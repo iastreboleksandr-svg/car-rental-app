@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import { Select } from '@/components/atoms/Select';
 
 const LANGUAGES = [
-  { value: 'ru', label: 'RU' },
-  { value: 'en', label: 'EN' },
   { value: 'de', label: 'DE' },
+  { value: 'en', label: 'EN' },
 ];
 
 export function LanguageSwitcher() {
