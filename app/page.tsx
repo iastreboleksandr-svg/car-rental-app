@@ -108,21 +108,36 @@ export default function HomePage() {
             <LanguageSwitcher />
             <Link
               href="/login"
-              className="text-sm text-text-secondary hover:text-text-base transition-colors"
+              className="hidden md:inline-flex text-sm text-text-secondary hover:text-text-base transition-colors"
             >
               {t('nav.login')}
             </Link>
             <Link
               href="/login?tab=register"
-              className="bg-landing-cta-bg text-text-base text-sm font-semibold px-4 py-2 rounded-lg hover:bg-landing-cta-hover transition-colors"
+              className="hidden md:inline-flex bg-landing-cta-bg text-text-base text-sm font-semibold px-4 py-2 rounded-lg hover:bg-landing-cta-hover transition-colors"
             >
               {t('nav.start')}
             </Link>
           </div>
         </div>
+
+        <div className="md:hidden max-w-6xl mx-auto px-6 pb-3 flex flex-col gap-2">
+          <Link
+            href="/login"
+            className="w-full text-center text-sm font-semibold text-text-secondary border border-border-default rounded-lg py-2.5 hover:bg-bg-page transition-colors"
+          >
+            {t('nav.login')}
+          </Link>
+          <Link
+            href="/login?tab=register"
+            className="w-full text-center bg-landing-cta-bg text-text-base text-sm font-semibold rounded-lg py-2.5 hover:bg-landing-cta-hover transition-colors"
+          >
+            {t('nav.start')}
+          </Link>
+        </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-44 md:pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
