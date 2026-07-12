@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import type { AbstractIntlMessages } from 'next-intl';
+import { ThemeProvider } from './providers/ThemeProvider';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -26,8 +27,10 @@ export function Providers({ children, locale, messages, timeZone }: ProvidersPro
   );
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </NextIntlClientProvider>
+    <ThemeProvider>
+      <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </NextIntlClientProvider>
+    </ThemeProvider>
   );
 }

@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Car } from 'lucide-react';
+import { Car, Moon, Sun } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
 import { useNotificationStore } from '@/store/notification.store';
 import { UserDropdown } from './UserDropdown';
 import { NotificationBadge } from './NotificationBadge';
 import { MobileMenu } from './MobileMenu';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
 function NavLink({ href, children, exact }: { href: string; children: React.ReactNode; exact?: boolean }) {
   const pathname = usePathname();
@@ -35,6 +36,7 @@ export function Header() {
   const pathname = usePathname();
   const { isAuthenticated } = useAuthStore();
   const { unreadCount } = useNotificationStore();
+  const { theme, toggleTheme } = useTheme();
   const authenticated = process.env.NEXT_PUBLIC_DEV_BYPASS_AUTH === 'true' || isAuthenticated;
 
   if (HIDDEN_ON.includes(pathname)) {
@@ -65,6 +67,13 @@ export function Header() {
             </nav>
           )}
           <LanguageSwitcher />
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="p-2 rounded-lg border border-border-default text-text-muted hover:text-text-base hover:bg-bg-page transition-colors"
+          >
+            {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
         </div>
 
         <MobileMenu isAuthenticated={authenticated} unreadCount={unreadCount} />

@@ -46,6 +46,43 @@
   --landing-dark-card: rgba(255, 255, 255, 0.05);
 }
 
+[data-theme='dark'] {
+  --brand: #48c964;
+  --brand-hover: #32a84d;
+  --brand-active: #1e7e34;
+  --brand-ring: #48c964;
+  --brand-subtle: #0d2e14;
+
+  --text-base: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-placeholder: #6b7280;
+  --text-disabled: #4b5563;
+  --text-inverse: #111827;
+  --text-error: #f87171;
+  --text-link: #48c964;
+
+  --border-default: #374151;
+  --border-focus: #48c964;
+  --border-error: #f87171;
+  --border-disabled: #1f2937;
+
+  --bg-page: #111827;
+  --bg-card: #1f2937;
+  --bg-disabled: #1f2937;
+  --bg-error: #2d1515;
+  --bg-warning: #2d1f0a;
+
+  --color-success: #48c964;
+  --color-error: #f87171;
+  --color-warning: #fbbf24;
+  --color-error-hover: #ef4444;
+  --color-star: #fbbf24;
+
+  --landing-dark-bg: #0d1117;
+  --landing-dark-card: rgba(255, 255, 255, 0.08);
+}
+
 @theme inline {
   --color-background: var(--bg-page);
   --color-foreground: var(--text-base);
